@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=no" />
-    <title>车优惠-本地惠</title>
+    <title>车友惠-本地惠</title>
     
 
 <!--    <link rel="stylesheet" href="<?php echo $this->url->get('/assets/css/bootstrap.min.css'); ?>"/>-->
