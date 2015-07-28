@@ -1,7 +1,7 @@
 <%
     var photo_src = '';
     if(!photo){
-        photo_src = '/assets/img/DefaultFace.jpg';
+        photo_src = '/assets/img/tx.jpg';
     }else{
         photo_src = 'data:image/png;base64,' + photo;
     }
