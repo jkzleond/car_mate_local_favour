@@ -1,0 +1,107 @@
+<table  class="bx_xxnr_div_table">
+    <tr>
+        <td>订单号</td>
+    </tr>
+</table>
+<table  class="bx_xxnr_div_table_txt" align="center">
+    <tr>
+        <td><%= order_no %></td>
+    </tr>
+</table>
+<br/>
+<table  class="bx_xxnr_div_table">
+    <tr>
+        <td>下单时间</td>
+    </tr>
+</table>
+<table  class="bx_xxnr_div_table_txt" align="center">
+    <tr>
+        <td><%= new Date(last_modified_time || create_date).toString('yyyy-MM-dd') %></td>
+    </tr>
+</table>
+<br/>
+<table  class="bx_xxnr_div_table">
+    <tr>
+        <td>车牌号</td>
+    </tr>
+</table>
+<table  class="bx_xxnr_div_table_txt" align="center">
+    <tr>
+        <td><%= hphm %></td>
+    </tr>
+</table>
+<br/>
+<table  class="bx_xxnr_div_table">
+    <tr>
+        <td>保险公司</td>
+    </tr>
+</table>
+<table  class="bx_xxnr_div_table_txt" align="center">
+    <tr>
+        <td><%= company_name %></td>
+    </tr>
+</table>
+<br/>
+<table  class="bx_xxnr_div_table">
+
+    <tr>
+        <td>出单价</td>
+    </tr>
+
+</table>
+<table  class="bx_xxnr_div_table_txt" align="center">
+    <tr>
+        <td>￥<%= totalAfterDiscount %></td>
+    </tr>
+</table><br/>
+<table  class="bx_xxnr_div_table">
+    <tr>
+        <td>出单赠送礼包</td>
+    </tr>
+
+</table>
+<table  class="bx_xxnr_div_table_txt" align="center">
+    <tr>
+        <td><%= giftMoney %></td>
+    </tr>
+</table>
+<br/>
+<table  class="bx_xxnr_div_table">
+    <tr>
+        <td>联系电话</td>
+    </tr>
+</table>
+<table  class="bx_xxnr_div_table_txt" align="center">
+    <tr>
+        <td><%= phone %></td>
+    </tr>
+</table>
+<br/>
+<table  class="bx_xxnr_div_table">
+    <tr>
+        <td>联系人</td>
+    </tr>
+</table>
+<table  class="bx_xxnr_div_table_txt" align="center">
+    <tr>
+        <td><%= user_name %></td>
+    </tr>
+</table>
+<br/>
+<table  class="bx_xxnr_div_table">
+    <tr>
+        <td>送单地址</td>
+    </tr>
+</table>
+<table  class="bx_xxnr_div_table_txt" align="center">
+    <tr>
+        <td>
+            <select name="province_id" class="province-select"></select>省<select name="city_id" class="city-select"></select>市
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input name="address" class="address" type="text" />
+        </td>
+    </tr>
+</table>

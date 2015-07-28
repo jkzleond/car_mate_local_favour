@@ -1,0 +1,73 @@
+<!--新保险入口页面-->
+<div data-role="page" id="insurance_value_set_page" data-theme="a" style="padding-top: 44px; padding-bottom: 0px;">
+    <div data-role="header" class="cm-fixed" data-theme="g">
+        <a class="ui-btn-left ui-btn ui-icon-md-chevron-left ui-btn-icon-notext" href="#"></a>
+        <h1>保险巨惠-经济套餐</h1>
+        <a class="ui-btn-right ui-btn ui-icon-md-menu ui-btn-icon-notext" href="#menu"><i class="icon-reorder"></i></a>
+    </div>
+    <div role="main" class="ui-content">
+        <table class="fb_box">
+            <tr class="fb_box_bt">
+                <td class="cm-span4">交强险：</td>
+                <td colspan="2">
+                    <select name="compulsory_state_id" class="fb_box_input">
+                        <option value="1">上两年度双方无肇事</option>
+                        <option value="2">上一年度双方无肇事</option>
+                        <option value="3">新车或上一年度有一次双方肇事</option>
+                        <option value="4">上年度有两次及以上双方肇事</option>
+                    </select>
+                </td>
+            </tr>
+            <tr class="fb_box_bt">
+                <td>商业三者责任险:</td>
+                <td>
+                    <select name="third" class="fb_box_input">
+                        <option value="0">不购买</option>
+                        <option value="50000">5万</option>
+                        <option value="100000">10万</option>
+                        <option value="200000">20万</option>
+                        <option value="300000">30万</option>
+                        <option value="500000">50万</option>
+                        <option value="1000000">100万</option>
+                        <!--100万以上值为-1, 此值不做计算, 但需说明待算-->
+                        <option value="-1">100以上</option>
+                    </select>
+                </td>
+                <td style="font-size: 10px; color: dodgerblue; line-height: 10px;"><b style="color: red">注:</b>建议普通车主购买三者险保额在30万元-50万元</td>
+            </tr>
+            <tr class="fb_box_bt">
+                <td>司机座位险：</td>
+                <td colspan="2">
+                    <input name="driver" type="text" class="fb_box_input" style="text-align: center;" value="1"/><span >万元</span>
+                </td>
+            </tr>
+            <tr class="fb_box_bt">
+                <td>乘客座位险：</td>
+                <td>
+                    <select name="passenger_number" class="fb_box_input">
+                        <option value="0">不购买</option>
+                        <option value="1">副驾驶</option>
+                        <option value="2">x2</option>
+                        <option value="3">x3</option>
+                        <option value="4">x4</option>
+                    </select>
+                </td>
+                <td>
+                    <input name="passenger" type="text" class="fb_box_input" value="1" style="text-align: center; width: 50%;" disabled /><span>万元</span>
+                </td>
+            </tr>
+            <tr class="fb_box_bt">
+                <td>不计免赔：</td>
+                <td colspan="2">
+                    <select name="not_deductible" class="fb_box_input">
+                        <option value="1">购买</option>
+                        <option value="0">不购买</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <div class="fb_button" style="padding: 0 2%; width: 96%;">
+            <button class="submit" data-theme="g">提交</button>
+        </div>
+    </div>
+</div>

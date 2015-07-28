@@ -1,0 +1,110 @@
+<!-- 活动详情页面 -->
+<div data-role="page" id="activity_detail_page" data-theme="a" style="padding: 51px 0px;">
+    <div data-role="header" class="cm-fixed" data-theme="g">
+        <a class="ui-btn-left ui-btn ui-icon-md-chevron-left ui-btn-icon-notext" href="#" onclick="window.history.back();return false;"></a>
+        <h1>本地惠-活动详情</h1>
+        <a class="ui-btn-right ui-btn ui-icon-md-menu ui-btn-icon-notext" href="#menu"><i class="icon-reorder"></i></a>
+    </div>
+    <div role="main" class="ui-content">
+        <div class="detail-container" style="padding: 0px 1%; width: 98%">
+
+        </div>
+    </div>
+    <div data-role="popup" id="activity_sign_up_popup" data-overlay-theme="g" data-theme="a" data-corners="true" data-enhance="false">
+        <a href="#" data-rel="back" data-theme="j" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right" style="background-color: #333; color: #FFF; border-color:#666; border-radius: 25em; position: absolute; right: -12px; top:-12px;"></a>
+        <div id="activity_sign_up_form_container" style="background-color: #eee; border-radius: 0.5em; min-width:320px; float: left">
+            <table class="fb_box" style="padding:10px">
+                <tr class="fb_box_bt" data-field="id">
+                    <td style="width: 30%">用户名：</td><td><input name="user_id" type="text" value="" disabled/></td>
+                </tr>
+                <tr class="fb_box_bt" data-field="uname">
+                    <td>真实姓名：</td>
+                    <td><input name="uname" type="text" value=""/></td>
+                </tr>
+                <tr class="fb_box_bt" data-field="sex">
+                    <td>性别：</td>
+                    <td>
+                        <input type="radio" name="sex" value="1" checked/>男
+                        <input type="radio" name="sex" value="2"/>女
+                    </td>
+                    <!--<select name="sex">
+                        <option value="1">男</option>
+                        <option value="2">女</option>
+                    </select>-->
+                </tr>
+                <tr class="fb_box_bt" data-field="idcardno">
+                    <td>身份证号：</td>
+                    <td><input name="idno" type="text"/></td>
+                </tr>
+                <tr class="fb_box_bt" data-field="pca">
+                    <td>省市区：</td>
+                    <td>
+                        <select id="activity_province" name="province" class="cm-span4"></select>
+                        <select id="activity_city" name="city" class="cm-span4"></select>
+                        <select id="activity_area" name="area" class="cm-span3"></select>
+                    </td>
+                </tr>
+                <tr class="fb_box_bt" data-field="address">
+                    <td>详细地址：</td>
+                    <td><input name="address" type="text"/></td>
+                </tr>
+                <tr class="fb_box_bt" data-field="phone">
+                    <td>电话/手机：</td>
+                    <td><input name="phone" type="text"/></td>
+                </tr>
+                <tr class="fb_box_bt" data-field="sinaWeibo">
+                    <td>新浪微博昵称：</td>
+                    <td><input name="sina_weibo" type="text"/></td>
+                </tr>
+                <tr class="fb_box_bt" data-field="weixin">
+                    <td>微信昵称：</td>
+                    <td><input name="weixin" type="text"/></td>
+                </tr>
+                <tr class="fb_box_bt" data-field="hphm">
+                    <td>车牌：</td>
+                    <td><input name="hphm" type="text"/></td>
+                </tr>
+
+                <tr class="fb_box_bt" data-field="people">
+                    <td>人数：</td>
+                    <td><input name="people" type="text"/></td>
+                </tr>
+                <tr class="fb_box_bt" data-field="qqNum">
+                    <td>QQ号：</td>
+                    <td><input name="qq_num" type="text"/></td>
+                </tr>
+                <tr class="fb_box_bt" data-field="auto">
+                    <td style="width:30%">其他：</td>
+                    <td>
+                        <p id="activity_option_label"></p>
+                        <input name="auto" type="text"/>
+                    </td>
+                </tr>
+                <tr class="fb_box_bt" data-field="pay_items">
+                    <td>
+                        付款项目:
+                    </td>
+                    <td>
+                        <table id="activity_pay_items_container">
+
+                        </table>
+                    </td>
+                </tr>
+                <tr class="fb_box_bt" data-field="total_fee">
+                    <td>总价：</td>
+                    <td>
+                        <span name="total_fee" class="cm-color-money" style="font-weight:bold"></span>
+                    </td>
+                </tr>
+                <tr class="fb_box_bt">
+                    <td colspan="2">
+                        <button id="activity_sign_up_submit_btn" data-theme="g">提交</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div data-role="footer" class="cm-fixed" style="background-color: rgba(0,0,0,0.2)">
+        <a id="activity_sign_up_btn" data-theme="g" style="padding:0.7em 0.5%;width: 99%;color:white">我要报名</a>
+    </div>
+</div>

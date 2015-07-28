@@ -1,0 +1,55 @@
+<%
+var date_str = '';
+
+if (state == 2) {
+date_str = '已过期';
+} else {
+date_str = new Date(start_date).toString('yyyy-MM-dd') + '至' + new Date(end_date).toString('yyyy-MM-dd');
+}
+
+var sign_date_str = '';
+
+if(sign_end_date)
+{
+    var sign_end_date = new Date(sign_end_date);
+    var sign_start_date = new Date(sign_start_date);
+    sign_date_str = sign_start_date.toString('yyyy-MM-dd') + '至' + sign_end_date.toString('yyyy-MM-dd');
+}
+
+
+%>
+<table class="fb_box" style="padding: 10px">
+    <tr class="fb_box_bt">
+        <td style="width:30%"><span class="cm-label cm-bg-prim">活动名称</span></td>
+        <td><%= name %></td>
+    </tr>
+    <tr class="fb_box_bt">
+        <td><span class="cm-label cm-bg-prim">活动时间</span></td>
+        <td><%= date_str %></td>
+    </tr>
+    <tr class="fb_box_bt">
+        <td><span class="cm-label cm-bg-prim">报名时间</span></td>
+        <td><%= sign_date_str %></td>
+    </tr>
+    <tr class="fb_box_bt">
+        <td><span class="cm-label cm-bg-prim">活动地点</span></td>
+        <td><%= place %></td>
+    </tr>
+    <tr class="fb_box_bt">
+        <td><span class="cm-label cm-bg-prim">支付款项</span></td>
+        <td>
+            <% for(var i = 0; i < goods.length; i++){ %>
+            <span><%= goods[i].name %>:<%= goods[i].price %></span>
+            <% } %>
+        </td>
+    </tr>
+    <tr class="fb_box_bt" >
+        <td><span class="cm-label cm-bg-prim">活动内容</span></td>
+        <td></td>
+    </tr>
+    <tr class="fb_box_bt">
+        <td colspan="2">
+            <%= contents %>
+        </td>
+    </tr>
+</table>

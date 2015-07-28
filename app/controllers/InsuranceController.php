@@ -1,0 +1,389 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: jkzleond
+ * Date: 15-6-17
+ * Time: 下午12:44
+ */
+
+class InsuranceController extends ControllerBase
+{
+    public function indexAction()
+    {
+        $user = $this->session->get('user');
+        $insurance_set_list = InsuranceSet::getList();
+        $compulsory_state_list = CompulsoryState::getList();
+        $this->view->setVars(array(
+            'user' => (object) $user,
+            'insurance_sets' => $insurance_set_list,
+            'compulsory_states' => $compulsory_state_list
+        ));
+    }
+
+    /**
+     * 添加初算结果
+     */
+    public function addFirstResultAction()
+    {
+
+        //直接接受backbone的模型json字符串并解码未关联数组
+        $json_data= $this->request->getJsonRawBody(true);
+        $result = InsuranceCalculator::calFamilyInsuranceResult(new Criteria($json_data));
+
+        $new_param_id = Insurance::addInsuranceParam($json_data);
+
+        if (!$new_param_id) {
+            $this->view->setVars(array(
+                'success' => false
+            ));
+            return;
+        }
+
+
+        $new_result_id = Insurance::addInsuranceResult($result);
+
+        if (!$new_result_id) {
+            $this->view->setVars(array(
+                'success' => false
+            ));
+            return;
+        }
+
+
+        $user = User::getCurrentUser();
+
+        $insurance_info = array(
+            'user_id' => $user['user_id'],
+            'car_type_id' => 1,
+            'insurance_param_id' => $new_param_id,
+            'insurance_result_id' => $new_result_id,
+            'state_id' => 1, //设置为已自算状态
+            'user_name' => isset($user['uname']) ? $user['uname'] : '微博用户',
+            //'phone_no' => $json_data['phone']
+            //'insurance_set_id' => $json_data['insurance_set_id']
+        );
+
+        $new_info_id = Insurance::addInsuranceInfo($insurance_info);
+
+        if (!$new_info_id) {
+            $this->view->setVars(array(
+                'success' => false
+            ));
+            return;
+        }
+
+        $this->view->setVars(array(
+            'success' => true,
+            'row' => array(
+                'info_id' => $new_info_id
+            )
+        ));
+    }
+
+    /**
+     * 申请精算
+     */
+    public function actualAction()
+    {
+        $form_data = $this->request->getJsonRawBody(true);
+        $info_id = $form_data['info_id'];
+//        print_r($form_data);
+//        return;
+        $is_using_attach = !empty($form_data['driving_license_a']);
+
+        $info = Insurance::getInsuranceInfoById($info_id);
+        $user = User::getCurrentUser();
+
+        $info_update = array(
+            'state_id' => 2, //设置状态为待精算
+            'last_modified_time' => date('Y-m-d H:i:s'),
+            'phone' => $form_data['phone'],
+            'weixin' => !empty($form_data['weixin']) ? $form_data['weixin'] : null
+        );
+
+        if(!$is_using_attach)
+        {
+            Insurance::updateInsuranceParam($info['param_id'], $form_data);
+            $car_info = CarInfo::getCarInfoByUserIdAndHphm($user['user_id'], $form_data['hphm']);
+            if(!empty($car_info))
+            {
+                $info_update['car_no_id'] = $car_info['id'];
+            }
+            else
+            {
+                $new_car_no_id = CarInfo::addCarInfo(array(
+                    'user_id' => $user['user_id'],
+                    'hphm' => $form_data['hphm'],
+                    'fdjh' => $form_data['fdjh'],
+                    'frame_number' => $form_data['frame_number'],
+                    'auto_name' => $form_data['auto_name']
+                ));
+
+                $info_update['car_no_id'] = $new_car_no_id;
+            }
+            $info_update['user_name'] = $form_data['user_name'];
+            $info_update['sfzh'] = $form_data['sfzh'];
+        }
+        else
+        {
+            $attach_id = Insurance::addInsuranceAttach($form_data);
+            $info_update['attach_id'] = $attach_id;
+        }
+
+        $success = Insurance::updateInsuranceInfo($info_id, $info_update);
+
+        $return_data = array(
+            'success' => $success
+        );
+
+        if($success)
+        {
+            $return_data['err_msg'] = '申请精算成功';
+        }
+        else
+        {
+            $return_data['err_msg'] = '申请精算失败';
+        }
+
+        $this->view->setVars($return_data);
+    }
+
+    /**
+     * 获取保险信息
+     * @param $id
+     */
+    public function getInsuranceInfoAction($id)
+    {
+        $info = Insurance::getInsuranceInfoById($id);
+
+        $this->view->setVars(array(
+            'row' => $info
+        ));
+    }
+
+    public function getInsuranceInfoListAction($state)
+    {
+        $page_size = $this->request->get('rows');
+        $page_num = $this->request->get('page');
+        $info_list = null;
+        $info_total = 0;
+
+        $user = User::getCurrentUser();
+        $user_id = $user['user_id'];
+
+
+        if($state == 1 or $state == 2)
+        {
+            $info_list = Insurance::getInsuranceInfoList(array('state' => $state, 'user_id' => $user_id), $page_num, $page_size);
+            $info_total = Insurance::getInsuranceInfoCount(array('state' => $state, 'user_id' => $user_id));
+
+            foreach($info_list as &$info)
+            {
+                $result = Insurance::getInsuranceFirstResultById($info['result_id']);
+                $company = Insurance::getMinDiscount();
+                $discount = $company['discount'];
+                $gift = $company['gift'];
+                $gift2 = $company['gift2'];
+
+                $res_crt = new Criteria($result);
+                $total_standard = $res_crt->totalStandard;
+                $total_business = $total_standard - $res_crt->standardCompulsoryInsurance;
+                $after_discount_compulsory = $res_crt->afterDiscountCompulsoryInsurance;
+                $after_discount_business = $total_business * $discount;
+                $total_after_discount = $after_discount_compulsory + $after_discount_business;
+                $info['min_after_discount'] = round($total_after_discount, 2);
+
+                $gift_money = $res_crt->afterDiscountCompulsoryInsurance * $gift + ($res_crt->standardThird < 0 ?  0 : $res_crt->standardThird) * $discount * $gift +  ($total_business - ($res_crt->standardThird<0?0: $res_crt->standardThird) - $res_crt->standardOptionalDeductible - $res_crt->standardNotDeductible) * $discount * $gift2;
+                $info['gift_money'] = round($gift_money, 2);
+            }
+        }
+        elseif($state == 3)
+        {
+            $info_list = Insurance::getActualedInsuranceiNfoList(array('user_id' => $user_id), $page_num, $page_size);
+            $info_total = Insurance::getActualedInsuranceInfoCount(array('user_id' => $user_id));
+        }
+        elseif($state == 4)
+        {
+            $info_list = Insurance::getHasOrderInsuranceInfoList(array('user_id' => $user_id), $page_num, $page_size);
+            $info_total = Insurance::getHasOrderInsuranceCount(array('user_id' => $user_id));
+        }
+        elseif($state == 5)
+        {
+            $info_list = Insurance::getHasPolicyInsuranceList(array('user_id' => $user_id), $page_num, $page_size);
+            $info_total = Insurance::getHasPolicyInsuranceCount(array('user_id' => $user_id));
+        }
+
+        $this->view->setVars(array(
+            'rows' => $info_list,
+            'total' => $info_total
+        ));
+    }
+
+    /**
+     * 获取保险初算结果
+     * @param $id
+     */
+    public function getInsuranceFirstResultAction($id)
+    {
+        $first_result = Insurance::getInsuranceFirstResultById($id);
+
+        $this->view->setVars(array(
+            'row' => $first_result
+        ));
+    }
+
+    /**
+     * 获取保险的所有公司精算结果
+     * @param $info_id
+     */
+    public function getFinalResultsAction($info_id)
+    {
+        $result_list = Insurance::getInsuranceFinalResults($info_id);
+
+        $this->view->setVars(array(
+            'rows' => $result_list,
+            'total' => count($result_list)
+        ));
+    }
+
+    /**
+     * 获取保险公司列表
+     */
+    public function getInsuranceCompanyListAction()
+    {
+        $company_list = Insurance::getInsuranceCompanyList();
+
+        $this->view->setVars(array(
+            'rows' => $company_list
+        ));
+    }
+
+    /**
+     * 保险下单
+     * @param $info_id
+     */
+    public function applyPolicyAction($info_id)
+    {
+        $data = $this->request->getJsonRawBody(true);
+
+        $company_id = $data['company_id'];
+        $final_result_id = $data['result_id'];
+
+        $user = User::getCurrentUser();
+
+        $info = Insurance::getInsuranceInfoById($info_id);
+
+        $final_param_id = $info['final_param_id'];
+
+        Insurance::updateFinalParam($final_param_id, array(
+            'company_id' => $company_id
+        ));
+
+        $return_data = array();
+
+        if($info['state_id'] >= 4)
+        {
+            $return_data['success'] = false;
+            $return_data['err_msg'] = '此订单已下单';
+        }
+        else
+        {
+            $success = Insurance::updateInsuranceInfo($info_id, array(
+                'company_id' => $company_id,
+                'final_result_id' => $final_result_id
+            ));
+
+            if($success)
+            {
+                $final_result = Insurance::getInsuranceFinalResultById($final_result_id);
+
+                $total_fee = $final_result['totalAfterDiscount'];
+
+                $order_result = Order::addOrder('insurance', array(
+                    'info_id' => $info_id,
+                    'user_id' => $user['user_id'],
+                    'total_fee' => $total_fee
+                ));
+
+                if(!$order_result)
+                {
+                    $return_data['success'] = false;
+                    $return_data['err_msg'] = '保险支付订单生成失败';
+                }
+                else
+                {
+                    $return_data['success'] = true;
+                    $return_data['order_info'] = array(
+                        'order_id' => $order_result[0],
+                        'order_no' => $order_result[1],
+                        'order_fee' => $order_result[2]
+                    );
+                }
+            }
+            else
+            {
+                $return_data['success'] = false;
+                $return_data['err_msg'] = '订单生成失败';
+            }
+        }
+
+        $this->view->setVars($return_data);
+    }
+
+    /**
+     * 获取保险订单详情
+     * @param $insurance_info_id
+     */
+    public function getInsuranceOrderInfoAction($insurance_info_id)
+    {
+        $insurance_order_info = Insurance::getInsuranceOrderInfo($insurance_info_id);
+
+        $this->view->setVars(array(
+            'row' => $insurance_order_info
+        ));
+    }
+
+    /**
+     * 确认下单
+     * @param $insurance_info_id
+     */
+    public function certainInsuranceOrderAction($insurance_info_id)
+    {
+        $data = $this->request->getJsonRawBody(true);
+        $connection = $this->db;
+        $connection->begin();
+        $new_address_id = Insurance::addInsuranceAddress($data);
+
+        $return_data = array();
+
+        if(!$new_address_id)
+        {
+            $connection->rollback();
+            $return_data['success'] = false;
+            $return_data['err_msg'] = '下单失败!';
+        }
+
+        $success = Insurance::updateInsuranceInfo($insurance_info_id, array(
+            'address_id' => $new_address_id,
+            'state_id' => 4
+        ));
+
+        if(!$success)
+        {
+            $connection->rollback();
+            $return_data['success'] = false;
+            $return_data['err_msg'] = '下单失败!';
+        }
+
+        $success = $connection->commit();
+
+        if($success)
+        {
+            $return_data['success'] = true;
+            $return_data['err_msg'] = '下单成功!';
+        }
+
+        $this->view->setVars($return_data);
+    }
+
+}
