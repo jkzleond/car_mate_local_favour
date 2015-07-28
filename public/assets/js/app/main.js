@@ -225,6 +225,20 @@ require(['jquery'], function($){
                 this.new_insurance_router = new NewInsuranceRouter();
                 //调用Backbone.history.start,用以侦听window的hashchange事件,从而使路由生效
                 //创建路由
+
+                if(window.app)
+                {
+                    Backbone.history.orig_check_url = Backbone.history.checkUrl;
+                    Backbone.history.checkUrl = function(e){
+                        var result = app.setUrl(window.location.href);
+                        if(result == 'false'){
+                            window.location.href = window.location.href.replace(/#.*$/, '#');
+                            return;
+                        }
+                        Backbone.history.orig_check_url(e);
+                    }
+                }
+
                 Backbone.history.start();
 
                 //local_favour_router.navigate('home', {trigger: true});
