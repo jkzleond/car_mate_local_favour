@@ -80,7 +80,7 @@ define([
                 return;
             }
             var order_info_xml = '<root><orderId>' + order_info.order_id + '<orderId><orderNo>' + order_info.order_no + '</orderNo><orderFee>' + order_info.order_fee + '</orderFee><payType><offline>' + order_info.pay_type.offline + '</offline><alipay>' + order_info.pay_type.alipay + '</alipay><wxpay>' + order_info.pay_type.wxpay + '</wxpay></payType><des>' + order_info.order_des + '</des></root>';
-            window.open('pay://yn.122.net/?ordername=' + encodeURIComponent('活动收费项') + '&orderinfo=' + encodeURIComponent(base64encode(order_info_xml)));
+            window.location.href = 'pay://yn.122.net/?ordername=' + encodeURIComponent('活动收费项') + '&orderinfo=' + encodeURIComponent(base64encode(order_info_xml));
         },
         routes: {
             'activitise(/:type)': 'index',
