@@ -229,7 +229,7 @@ require(['jquery'], function($){
 
                 //local_favour_router.navigate('home', {trigger: true});
                 $('body').fadeIn(function(){
-                    $.cm.trigger('system.bonus', [[{name: 'haha', value: 100, code:'huiGold'}]]);
+                    //$.cm.trigger('system.bonus', [[{name: 'haha', value: 100, code:'huiGold'}]]);
                 });
             });
 

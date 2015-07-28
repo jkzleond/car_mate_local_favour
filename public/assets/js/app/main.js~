@@ -168,7 +168,7 @@ require(['jquery'], function($){
 
 
         //隐藏header
-        /*$('body').on('pagebeforecreate', '[data-role="page"]', function(event){
+        $('body').on('pagebeforecreate', '[data-role="page"]', function(event){
             var $page = $(event.target);
             var $header = $page.find('[data-role="header"]');
             var orig_padding_top = $page.css('padding-top');
@@ -176,7 +176,7 @@ require(['jquery'], function($){
             $page.css('padding-top', Number(orig_padding_top.match(/\d+/)) - 40);
             $header.css('padding', 0);
             $header.find('a:not([data-role="navbar"] a),h1').hide();
-        });*/
+        });
 
     });
 
@@ -229,7 +229,7 @@ require(['jquery'], function($){
 
                 //local_favour_router.navigate('home', {trigger: true});
                 $('body').fadeIn(function(){
-                    $.cm.trigger('system.bonus', [[{name: 'haha', value: 100, code:'huiGold'}]]);
+                    //$.cm.trigger('system.bonus', [[{name: 'haha', value: 100, code:'huiGold'}]]);
                 });
             });
 
