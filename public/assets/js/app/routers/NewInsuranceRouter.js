@@ -59,21 +59,18 @@ define([
         },
         //比价
         parityPrice: function(info_id){
-            this.parity_page_view.loadInfo(info_id);
             $(':mobile-pagecontainer').pagecontainer('change', '#insurance_parity_price_page');
+            this.parity_page_view.loadInfo(info_id);
         },
         //精算比价
-        finalParityPrice: function(info_id){
-            var self = this;
-            $(':mobile-pagecontainer').one('pagecontainershow', function(event, ui){
-                self.final_parity_page_view.loadInfo(info_id);
-            });
-            $(':mobile-pagecontainer').pagecontainer('change', '#insurance_final_parity_price_page');
+    finalParityPrice: function(info_id){
+        $(':mobile-pagecontainer').pagecontainer('change', '#insurance_final_parity_price_page');
+        this.final_parity_page_view.loadInfo(info_id);
         },
         //申请精算
         applyActual: function(info_id){
-            this.apply_actual_page_view.model.set('info_id', info_id);
             $(':mobile-pagecontainer').pagecontainer('change', '#insurance_apply_actual_page');
+            this.apply_actual_page_view.model.set('info_id', info_id);
         },
         //精算结果
         actuaryResult: function(info_id){
@@ -81,17 +78,27 @@ define([
         },
         //确认下单页面
         payOrder: function(info_id){
-            var self = this;
-            $(':mobile-pagecontainer').one('pagecontainershow', function(event, ui){
-                self.pay_order_page_view.loadOrderInfo(info_id);
-            });
             $(':mobile-pagecontainer').pagecontainer('change', '#insurance_pay_order_page');
+            this.pay_order_page_view.loadOrderInfo(info_id);
         },
         insurances: function(state){
-            if(!state) this.insurance_list_page_view.reset();
-            var index = state || 1;
-            this.insurance_list_page_view.changeTap(index);
+
+            if(G.user.user_id == 'WEIBO_ACCOUNT')
+            {
+                $.cm.toast({msg: '游客不可查看订单'});
+                return;
+            }
+
             $(':mobile-pagecontainer').pagecontainer('change', '#insurance_list_page')
+
+            var index = state || 1;
+            if(!state)
+            {
+                this.insurance_list_page_view.reset();
+            }
+
+            this.insurance_list_page_view.changeTap(index);
+
         }
     });
     return NewInsuranceRouter;

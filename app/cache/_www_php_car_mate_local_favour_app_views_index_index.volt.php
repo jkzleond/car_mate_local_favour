@@ -43,7 +43,7 @@
     
 
 </head>
-<body style="display:none">
+<body style="background-color:#EEE; display:none;">
 
 
 <!-- 首页 -->

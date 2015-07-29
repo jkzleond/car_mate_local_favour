@@ -24,6 +24,7 @@ define([
                     user_id: G.user.user_id //设置模型的user_id为当前用户
                 })
             });
+
             this.clock_in_view = new ClockInView({
                 el: $('#user_state'),
                 model: new ClockInModel()

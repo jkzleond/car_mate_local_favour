@@ -8,7 +8,7 @@
     <div role="main" class="ui-content">
         <div style=" float:left;width:100%"><img src="/assets/img/insurance/ad1.jpg" width="100%"  style="min-width:320px;" /></div>
         <div style="text-align:right; position: relative; width:96%; padding:0px 2%;">
-            <a href="#insurances" class="fb_button3 cm-btn cm-radius-s cm-right" data-role="button" data-theme="g">我的订单</a>
+            <a href="#insurances" id="insurance_my_order_btn" class="fb_button3 cm-btn cm-radius-s cm-right" data-role="button" data-theme="g">我的订单</a>
             <!--<input name="Button1" type="button" value=""  class="fb_button3"/>-->
         </div>
         <div class="hjb_box" style="width:100%">
@@ -34,290 +34,168 @@
         </div>
         <div class="zf_box_div_yf" style="width:100%">常见问题：<br/>
             <ul>
-                <li>怎样选择保险组合<b>？</b></li>
-                <li>出险后怎么办span<b>？</b></li>
-                <li>售后服务<b>i</b></li>
-                <li>咨询电话和微信号<b>i</b></li>
+                <li>怎样选择保险组合 <b data-rel="#insurance_qa1_popup" class="qa cm-circle cm-bg-prim" style="font-size:0.75em; text-align: center">？</b></li>
+                <li>出险后怎么办 <b data-rel="#insurance_qa2_popup" class="qa cm-circle cm-bg-prim" style="font-size:0.75em; text-align: center">？</b></li>
+                <li>售后服务 <b data-rel="#insurance_qa4_popup" class="qa cm-circle cm-bg-prim" style="font-size:0.75em; text-align: center">i</b></li>
+                <li>咨询电话和公司地址 <b data-rel="#insurance_qa4_popup" class="qa cm-circle cm-bg-prim" style="font-size:0.75em; text-align: center">i</b></li>
+                <li>微信号 <b data-rel="#insurance_qa5_popup" class="qa cm-circle cm-bg-prim" style="font-size:0.75em; text-align: center">i</b></li>
             </ul>
         </div>
     </div>
-    <div data-role="popup" id="activity_sign_up_popup" data-overlay-theme="g" data-theme="a" data-corners="true" data-enhance="false">
+    <div data-role="popup" id="insurance_qa1_popup" data-overlay-theme="g" data-theme="a" data-corners="true" data-enhance="false">
         <a href="#" data-rel="back" data-theme="j" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right" style="background-color: #333; color: #FFF; border-color:#666; border-radius: 25em; position: absolute; right: -12px; top:-12px;"></a>
-        <div id="activity_sign_up_form_container" style="background-color: #eee; border-radius: 0.5em; min-width:320px; float: left">
-            <table class="fb_box" style="padding:10px">
-                <tr class="fb_box_bt" data-field="id">
-                    <td style="width: 30%">用户名：</td><td><input name="user_id" type="text" value="" disabled/></td>
+        <div class="container" style="padding:5px 10px;">
+            <table  class="bx_xxnr_div_table">
+                <tr>
+                    <td>怎样选择保险组合</td>
                 </tr>
-                <tr class="fb_box_bt" data-field="uname">
-                    <td>真实姓名：</td>
-                    <td><input name="uname" type="text" value=""/></td>
-                </tr>
-                <tr class="fb_box_bt" data-field="sex">
-                    <td>性别：</td>
-                    <td>
-                        <input type="radio" name="sex" value="1" checked/>男
-                        <input type="radio" name="sex" value="2"/>女
-                    </td>
-                    <!--<select name="sex">
-                        <option value="1">男</option>
-                        <option value="2">女</option>
-                    </select>-->
-                </tr>
-                <tr class="fb_box_bt" data-field="idcardno">
-                    <td>身份证号：</td>
-                    <td><input name="idno" type="text"/></td>
-                </tr>
-                <tr class="fb_box_bt" data-field="pca">
-                    <td>省市区：</td>
-                    <td>
-                        <select id="activity_province" name="province" class="cm-span4"></select>
-                        <select id="activity_city" name="city" class="cm-span4"></select>
-                        <select id="activity_area" name="area" class="cm-span3"></select>
-                    </td>
-                </tr>
-                <tr class="fb_box_bt" data-field="address">
-                    <td>详细地址：</td>
-                    <td><input name="address" type="text"/></td>
-                </tr>
-                <tr class="fb_box_bt" data-field="phone">
-                    <td>电话/手机：</td>
-                    <td><input name="phone" type="text"/></td>
-                </tr>
-                <tr class="fb_box_bt" data-field="sinaWeibo">
-                    <td>新浪微博昵称：</td>
-                    <td><input name="sina_weibo" type="text"/></td>
-                </tr>
-                <tr class="fb_box_bt" data-field="weixin">
-                    <td>微信昵称：</td>
-                    <td><input name="weixin" type="text"/></td>
-                </tr>
-                <tr class="fb_box_bt" data-field="hphm">
-                    <td>车牌：</td>
-                    <td><input name="hphm" type="text"/></td>
-                </tr>
-
-                <tr class="fb_box_bt" data-field="people">
-                    <td>人数：</td>
-                    <td><input name="people" type="text"/></td>
-                </tr>
-                <tr class="fb_box_bt" data-field="qqNum">
-                    <td>QQ号：</td>
-                    <td><input name="qq_num" type="text"/></td>
-                </tr>
-                <tr class="fb_box_bt" data-field="auto">
-                    <td style="width:30%">其他：</td>
-                    <td>
-                        <p id="activity_option_label"></p>
-                        <input name="auto" type="text"/>
-                    </td>
-                </tr>
-                <tr class="fb_box_bt" data-field="pay_items">
-                    <td>
-                        付款项目:
-                    </td>
-                    <td>
-                        <table id="activity_pay_items_container">
-
-                        </table>
-                    </td>
-                </tr>
-                <tr class="fb_box_bt" data-field="total_fee">
-                    <td>总价：</td>
-                    <td>
-                        <span name="total_fee" class="cm-color-money" style="font-weight:bold"></span>
-                    </td>
-                </tr>
-                <tr class="fb_box_bt">
-                    <td colspan="2">
-                        <button id="activity_sign_up_submit_btn" data-theme="g">提交</button>
+            </table>
+            <table  class="bx_xxnr_div_table_txt" align="center">
+                <tr>
+                    <td style="font-size: 0.85em; line-height: 1.25em;">险种释义
+                        <br>
+                        A、	交强险保额（只对第三者赔付）：
+                        <br>
+                        ※事故所涉及的第三者死亡或伤残：11万元
+                        <br>
+                        （释义：第三者死亡或全残，保险公司赔付11万元；第三者在事故发生180天后，经鉴定有永久残疾的，按对应伤残等级的赔付比例进行赔偿，从数千元至10万元以内。）<br>
+                        &nbsp;※事故所涉及的第三者因伤就医的医疗费用：1万元
+                        <br>
+                        （该费用为报销制，需按诊疗目录的标准报销）<br>
+                        &nbsp;※事故所涉的第三者的财产损失：2000元<br>
+                        &nbsp;B、	第三者责任险保险金额可以由客户自选：5万、10万、20万、30万、50万、100万，该保险的保额覆盖第三者的人身伤亡、事故医疗费用及财产损失，只要总费用在保额内，保险公司均承担赔偿责任。
+                        考虑当前的社会情况，建议选择第三者责任险的保险额应在20万元以上，30至50万元为宜，避免因交通事故陷入个人或家庭的财务危机，甚至返贫。
+                        <br>
+                        C、	不计免赔附加险：买了该附加险后，只要不超过第三者险的保额，保险公司承担所有的依法赔偿责任
+                        <br>
+                        <br>
+                        保险组合
+                        <br>
+                        1、	实惠又省钱
+                        交强+三者+座位+不计免赔
+                        适合于用车情况简单、技术熟练的老驾，或者关注用车成本的车主
+                        <br>
+                        2、	最省钱
+                        只买交强险
+                        技术好、运气好、家底厚的超级车主
+                        <br>
+                        3、	省心又省钱
+                        交强+三者+车损+座位+不计免赔
+                        怕麻烦又爱车的车主
+                        <br>
+                        4、	甩手掌柜还省钱
+                        能买的险种买全，优惠不停步
+                        有钱、任性
+                        <br>
+                        注：没有固定车位、用车情况复杂的车主请关注“划痕险、抢盗险、玻璃单独破碎险、涉水险”
                     </td>
                 </tr>
             </table>
         </div>
     </div>
-    <div data-role="popup" id="activity_sign_up_popup" data-overlay-theme="g" data-theme="a" data-corners="true" data-enhance="false">
+    <div data-role="popup" id="insurance_qa2_popup" data-overlay-theme="g" data-theme="a" data-corners="true" data-enhance="false">
         <a href="#" data-rel="back" data-theme="j" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right" style="background-color: #333; color: #FFF; border-color:#666; border-radius: 25em; position: absolute; right: -12px; top:-12px;"></a>
-        <div id="activity_sign_up_form_container" style="background-color: #eee; border-radius: 0.5em; min-width:320px; float: left">
-            <table class="fb_box" style="padding:10px">
-                <tr class="fb_box_bt" data-field="id">
-                    <td style="width: 30%">用户名：</td><td><input name="user_id" type="text" value="" disabled/></td>
+        <div class="container" style="padding:5px 10px;">
+            <table  class="bx_xxnr_div_table">
+                <tr>
+                    <td>出险怎么办</td>
                 </tr>
-                <tr class="fb_box_bt" data-field="uname">
-                    <td>真实姓名：</td>
-                    <td><input name="uname" type="text" value=""/></td>
-                </tr>
-                <tr class="fb_box_bt" data-field="sex">
-                    <td>性别：</td>
-                    <td>
-                        <input type="radio" name="sex" value="1" checked/>男
-                        <input type="radio" name="sex" value="2"/>女
-                    </td>
-                    <!--<select name="sex">
-                        <option value="1">男</option>
-                        <option value="2">女</option>
-                    </select>-->
-                </tr>
-                <tr class="fb_box_bt" data-field="idcardno">
-                    <td>身份证号：</td>
-                    <td><input name="idno" type="text"/></td>
-                </tr>
-                <tr class="fb_box_bt" data-field="pca">
-                    <td>省市区：</td>
-                    <td>
-                        <select id="activity_province" name="province" class="cm-span4"></select>
-                        <select id="activity_city" name="city" class="cm-span4"></select>
-                        <select id="activity_area" name="area" class="cm-span3"></select>
-                    </td>
-                </tr>
-                <tr class="fb_box_bt" data-field="address">
-                    <td>详细地址：</td>
-                    <td><input name="address" type="text"/></td>
-                </tr>
-                <tr class="fb_box_bt" data-field="phone">
-                    <td>电话/手机：</td>
-                    <td><input name="phone" type="text"/></td>
-                </tr>
-                <tr class="fb_box_bt" data-field="sinaWeibo">
-                    <td>新浪微博昵称：</td>
-                    <td><input name="sina_weibo" type="text"/></td>
-                </tr>
-                <tr class="fb_box_bt" data-field="weixin">
-                    <td>微信昵称：</td>
-                    <td><input name="weixin" type="text"/></td>
-                </tr>
-                <tr class="fb_box_bt" data-field="hphm">
-                    <td>车牌：</td>
-                    <td><input name="hphm" type="text"/></td>
-                </tr>
-
-                <tr class="fb_box_bt" data-field="people">
-                    <td>人数：</td>
-                    <td><input name="people" type="text"/></td>
-                </tr>
-                <tr class="fb_box_bt" data-field="qqNum">
-                    <td>QQ号：</td>
-                    <td><input name="qq_num" type="text"/></td>
-                </tr>
-                <tr class="fb_box_bt" data-field="auto">
-                    <td style="width:30%">其他：</td>
-                    <td>
-                        <p id="activity_option_label"></p>
-                        <input name="auto" type="text"/>
-                    </td>
-                </tr>
-                <tr class="fb_box_bt" data-field="pay_items">
-                    <td>
-                        付款项目:
-                    </td>
-                    <td>
-                        <table id="activity_pay_items_container">
-
-                        </table>
-                    </td>
-                </tr>
-                <tr class="fb_box_bt" data-field="total_fee">
-                    <td>总价：</td>
-                    <td>
-                        <span name="total_fee" class="cm-color-money" style="font-weight:bold"></span>
-                    </td>
-                </tr>
-                <tr class="fb_box_bt">
-                    <td colspan="2">
-                        <button id="activity_sign_up_submit_btn" data-theme="g">提交</button>
+            </table>
+            <table  class="bx_xxnr_div_table_txt" align="center">
+                <tr>
+                    <td style="font-size: 0.85em; line-height: 1.25em">
+                        云南交警自助处理平台
+                        <br>
+                        轻微事故：无人伤，车辆可正常行驶
+                        <br>
+                        其他事故：
+                        <br>
+                        有人伤：
+                        <br>
+                        ①	拨打120急救或施救电话<br>
+                        ②	拨打交警报警电话（点击立即拨打）
+                        <br>
+                        ③	拨打保险公司报案电话
+                        点击查看各保险公司报案电话目录
+                        <br>
+                        ④	拍摄现场照片
+                        点击查看如何拍摄
+                        <br>
+                        ⑤	保险公司人员现场查勘
+                        <br>
+                        ⑥	医院相关材料、单据收集，保险公司核赔
+                        <br>
+                        ⑦	事故车辆定损、修复
+                        <br>
+                        ⑧	按保险公司要求提供单证索赔
+                        <br>
+                        点击查看保险公司理赔单证一览表
+                        <br>
+                        车辆无法行驶：<br>
+                        &nbsp;①	拨打施救电话
+                        点击查看各保险公司报案电话目录
+                        <br>
+                        ②	拍摄现场照片
+                        点击查看如何拍摄
+                        <br>
+                        ③	保险公司人员现场查勘
+                        <br>
+                        ④	事故车辆定损、修复
+                        <br>
+                        ⑤	按保险公司要求提供单证索赔
+                        <br>
+                        点击查看保险公司理赔单证一览表
                     </td>
                 </tr>
             </table>
         </div>
     </div>
-    <div data-role="popup" id="activity_sign_up_popup" data-overlay-theme="g" data-theme="a" data-corners="true" data-enhance="false">
+    <div data-role="popup" id="insurance_qa3_popup" data-overlay-theme="g" data-theme="a" data-corners="true" data-enhance="false">
         <a href="#" data-rel="back" data-theme="j" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right" style="background-color: #333; color: #FFF; border-color:#666; border-radius: 25em; position: absolute; right: -12px; top:-12px;"></a>
-        <div id="activity_sign_up_form_container" style="background-color: #eee; border-radius: 0.5em; min-width:320px; float: left">
-            <table class="fb_box" style="padding:10px">
-                <tr class="fb_box_bt" data-field="id">
-                    <td style="width: 30%">用户名：</td><td><input name="user_id" type="text" value="" disabled/></td>
-                </tr>
-                <tr class="fb_box_bt" data-field="uname">
-                    <td>真实姓名：</td>
-                    <td><input name="uname" type="text" value=""/></td>
-                </tr>
-                <tr class="fb_box_bt" data-field="sex">
-                    <td>性别：</td>
-                    <td>
-                        <input type="radio" name="sex" value="1" checked/>男
-                        <input type="radio" name="sex" value="2"/>女
-                    </td>
-                    <!--<select name="sex">
-                        <option value="1">男</option>
-                        <option value="2">女</option>
-                    </select>-->
-                </tr>
-                <tr class="fb_box_bt" data-field="idcardno">
-                    <td>身份证号：</td>
-                    <td><input name="idno" type="text"/></td>
-                </tr>
-                <tr class="fb_box_bt" data-field="pca">
-                    <td>省市区：</td>
-                    <td>
-                        <select id="activity_province" name="province" class="cm-span4"></select>
-                        <select id="activity_city" name="city" class="cm-span4"></select>
-                        <select id="activity_area" name="area" class="cm-span3"></select>
-                    </td>
-                </tr>
-                <tr class="fb_box_bt" data-field="address">
-                    <td>详细地址：</td>
-                    <td><input name="address" type="text"/></td>
-                </tr>
-                <tr class="fb_box_bt" data-field="phone">
-                    <td>电话/手机：</td>
-                    <td><input name="phone" type="text"/></td>
-                </tr>
-                <tr class="fb_box_bt" data-field="sinaWeibo">
-                    <td>新浪微博昵称：</td>
-                    <td><input name="sina_weibo" type="text"/></td>
-                </tr>
-                <tr class="fb_box_bt" data-field="weixin">
-                    <td>微信昵称：</td>
-                    <td><input name="weixin" type="text"/></td>
-                </tr>
-                <tr class="fb_box_bt" data-field="hphm">
-                    <td>车牌：</td>
-                    <td><input name="hphm" type="text"/></td>
-                </tr>
+        <div class="container" style="padding:5px 10px;">
 
-                <tr class="fb_box_bt" data-field="people">
-                    <td>人数：</td>
-                    <td><input name="people" type="text"/></td>
-                </tr>
-                <tr class="fb_box_bt" data-field="qqNum">
-                    <td>QQ号：</td>
-                    <td><input name="qq_num" type="text"/></td>
-                </tr>
-                <tr class="fb_box_bt" data-field="auto">
-                    <td style="width:30%">其他：</td>
-                    <td>
-                        <p id="activity_option_label"></p>
-                        <input name="auto" type="text"/>
-                    </td>
-                </tr>
-                <tr class="fb_box_bt" data-field="pay_items">
-                    <td>
-                        付款项目:
-                    </td>
-                    <td>
-                        <table id="activity_pay_items_container">
 
-                        </table>
+        </div>
+    </div>
+    <div data-role="popup" id="insurance_qa4_popup" data-overlay-theme="g" data-theme="a" data-corners="true" data-enhance="false">
+        <a href="#" data-rel="back" data-theme="j" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right" style="background-color: #333; color: #FFF; border-color:#666; border-radius: 25em; position: absolute; right: -12px; top:-12px;"></a>
+        <div class="container" style="padding:5px 10px;">
+            <table  class="bx_xxnr_div_table">
+                <tr>
+                    <td>咨询电话和公司地址</td>
+                </tr>
+            </table>
+            <table  class="bx_xxnr_div_table_txt" align="center">
+                <tr>
+                    <td style="font-size: 0.85em; line-height: 1.25em">
+                        咨询热线 <a href="tel:400-009-0047" style="color:deepskyblue;">400-009-0047</a>转2 <br>
+                        客服电话（亦可添加微信）<br>
+                        <a href="tel:18208765609" style="color:deepskyblue;">18208765609</a> <br>
+                        <a href="tel:18208769819" style="color:deepskyblue;">18208769819</a> <br>
+                        <a href="tel:18208762269" style="color:deepskyblue;">18208762269</a> <br>
+                        <a href="tel:18208762368" style="color:deepskyblue;">18208762368</a> <br>
+                        地址：<a href="http://api.map.baidu.com/geocoder?address=云南省昆明市东风东路东风巷1号勘泰大厦A幢&output=html" style="color:deepskyblue;">东风东路东风巷1号勘泰大厦A幢</a> <br>
+                        <a href="http://api.map.baidu.com/geocoder?address=云南省昆明市东风东路东风巷1号勘泰大厦A幢&output=html" style="color:deepskyblue;"><img src="http://api.map.baidu.com/staticimage?width=300&height=225&zoom=17&scale=1&markers=102.729387,25.045562&center=%E6%98%86%E6%98%8E%E4%B8%9C%E9%A3%8E%E4%B8%9C%E8%B7%AF%E4%B8%9C%E9%A3%8E%E5%B7%B71%E5%8F%B7%E5%8B%98%E6%B3%B0%E5%A4%A7%E5%8E%A6A%E5%B9%A2" style="width:100%;"></a>
                     </td>
                 </tr>
-                <tr class="fb_box_bt" data-field="total_fee">
-                    <td>总价：</td>
-                    <td>
-                        <span name="total_fee" class="cm-color-money" style="font-weight:bold"></span>
-                    </td>
+            </table>
+        </div>
+    </div>
+    <div data-role="popup" id="insurance_qa5_popup" data-overlay-theme="g" data-theme="a" data-corners="true" data-enhance="false">
+        <a href="#" data-rel="back" data-theme="j" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right" style="background-color: #333; color: #FFF; border-color:#666; border-radius: 25em; position: absolute; right: -12px; top:-12px;"></a>
+        <div class="container" style="padding:5px 10px;">
+            <table  class="bx_xxnr_div_table">
+                <tr>
+                    <td>微信号</td>
                 </tr>
-                <tr class="fb_box_bt">
-                    <td colspan="2">
-                        <button id="activity_sign_up_submit_btn" data-theme="g">提交</button>
+            </table>
+            <table  class="bx_xxnr_div_table_txt" align="center">
+                <tr>
+                    <td style="font-size: 0.85em; line-height: 1.25em">
+                        <img src="/assets/img/insurance/18208765609.jpg" class="cm-left" style="width:45%">
+                        <img src="/assets/img/insurance/18208769819.jpg" class="cm-left" style="width:45%">
+                        <img src="/assets/img/insurance/18208762269.jpg" class="cm-left" style="width:45%">
+                        <img src="/assets/img/insurance/18208762368.jpg" class="cm-left" style="width:45%">
                     </td>
                 </tr>
             </table>

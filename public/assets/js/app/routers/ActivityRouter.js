@@ -88,6 +88,8 @@ define([
         },
         index: function(type){
 
+            $(':mobile-pagecontainer').pagecontainer('change', '#activitise_page');
+
             if(!type)
             {
                 this.activity_all_list_view.collection.reset();
@@ -111,14 +113,12 @@ define([
                 this.$navbar.find('[data-type-id="my"]').addClass('ui-btn-active');
             }
 
-            $(':mobile-pagecontainer').pagecontainer('change', '#activitise_page');
-
         },
         activityDetail: function(id){
+            $(':mobile-pagecontainer').pagecontainer('change', '#activity_detail_page');
             this.activity_detail_page_view.model.clear();
             this.activity_detail_page_view.model.set({id: id},{silent: true});
             this.activity_detail_page_view.model.fetch();
-            $(':mobile-pagecontainer').pagecontainer('change', '#activity_detail_page');
         }
     });
 

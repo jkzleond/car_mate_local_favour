@@ -32,6 +32,13 @@ define([
            'click .clock-in-btn': 'clockIn'
        },
        clockIn: function(){
+
+           if(G.user.user_id == 'WEIBO_ACCOUNT')
+           {
+               $.cm.toast({msg: '游客不可签到'});
+               return;
+           }
+
            var self = this;
            this.model.save(null,{parse:false}).done(function(data){
                if(!data.success) return;

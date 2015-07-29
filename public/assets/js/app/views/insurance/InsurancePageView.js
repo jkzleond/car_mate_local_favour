@@ -15,6 +15,15 @@ define([
         el: '#insurance_page',
         initialize: function(options){
 
+        },
+        events: {
+            'click .qa': '_onQaClick'
+        },
+        _onQaClick: function(event)
+        {
+            var $qa = $(event.target);
+            var qa_pop_up = $qa.attr('data-rel');
+            $(qa_pop_up).popup('open');
         }
     });
     return InsurancePageView;

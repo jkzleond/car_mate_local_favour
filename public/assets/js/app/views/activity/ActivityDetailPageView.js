@@ -101,6 +101,11 @@ define([
                             $('#activity_sign_up_form_container [name="total_fee"]').text(Number(total_fee).toFixed(2));
                         }
                     });
+
+                    if(i == 0)
+                    {
+                        $pay_item.find('.cm-numberspinner .cm-plus-btn').click();
+                    }
                 }
             }
             else

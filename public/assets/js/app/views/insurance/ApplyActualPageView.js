@@ -17,6 +17,11 @@ define([
             this.listenTo(this.model, 'change:info_id', this._render);
             this.listenTo(this.model, 'invalid', this._onFormModelInvalid);
 
+            if(navigator.userAgent.indexOf('Android') != -1)
+            {
+                this.$el.find('.to-file').hide();
+            }
+
             this._renderSelect();
         },
         events: {

@@ -1,5 +1,6 @@
 body {
     font-family: 微软雅黑;
+    background-color: #EEE;
 }
 
 header {
@@ -512,7 +513,7 @@ header .right {
 }
 
 [data-role="page"] {
-    background-color: white;
+    /*background-color: white;*/
 }
 
 .controlgroup-textinput {
@@ -569,13 +570,16 @@ header .right {
 }
 
 .cm-circle {
-    width: 32px;
-    height: 32px;
-    border-radius: 5rem;
+    width: 16px;
+    height: 16px;
+    padding: 2px;
+    line-height: 16px;
+    border-radius: 20rem;
+    text-align: center;
+    display: inline-block;
 }
-
-.cm-label {
-    border-radius: 0.25rem;
+.cm-circle.cm-bg-prim {
+    color:white;
 }
 
 
@@ -630,5 +634,31 @@ select.fb_box_input {
     hight: 24px;
     line-height: 24px;
     font-size: 14px;
+}
+
+/*应用样式*/
+
+table.insurance-price-detail th {
+    background-color: steelblue;
+}
+
+table.insurance-price-detail td {
+    font-size: 0.85em;
+}
+
+table.insurance-price-detail tr:nth-child(even) {
+    background-color: #EEE;
+}
+
+table.insurance-price-detail tr:nth-child(odd) {
+    background-color: #EEF;
+}
+
+table.insurance-price-detail tr :nth-child(odd) {
+    width: 35%;
+}
+
+table.insurance-price-detail tr:nth-child(1) td:nth-child(1) {
+    background-color: #FFF;
 }
 
