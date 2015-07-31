@@ -732,8 +732,7 @@ SQL;
         $top = (int) $top;
         $sql = <<<SQL
         select top $top companyId as id, discount, companyName as [name], ename,  shortName as short_name, gift, gift2, isOrder as [order] from Insurance_Discount
-        where companyId != 9
-        order by discount desc, gift desc, isOrder asc
+        order by isOrder asc, discount desc, gift desc
 SQL;
 
         return self::nativeQuery($sql);
