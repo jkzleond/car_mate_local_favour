@@ -2,7 +2,7 @@
 <div data-role="page" id="insurance_full_set_page" data-theme="a" style="padding-top: 44px; padding-bottom: 0px;">
     <div data-role="header" class="cm-fixed" data-theme="g">
         <a class="ui-btn-left ui-btn ui-icon-md-chevron-left ui-btn-icon-notext" href="#"></a>
-        <h1>保险巨惠-经济套餐</h1>
+        <h1>保险巨惠-全险套餐</h1>
         <a class="ui-btn-right ui-btn ui-icon-md-menu ui-btn-icon-notext" href="#menu"><i class="icon-reorder"></i></a>
     </div>
     <div role="main" class="ui-content">
@@ -63,16 +63,15 @@
             <tr class="fb_box_bt">
                 <td>乘客座位险：</td>
                 <td>
-                    <select class="fb_box_input cm-flex2" name="passenger_number">
+                    <select class="fb_box_input" name="passenger_number" style="width:100%;">
                         <option value="0">不购买</option>
                         <option value="1">副驾驶</option>
-                        <option value="2">x2</option>
-                        <option value="3">x3</option>
-                        <option value="4">x4</option>
+                        <option value="3">x3(副驾驶+后排两座)</option>
+                        <option value="4">x4(副驾驶+后排三座)</option>
                     </select>
                 </td>
                 <td>
-                    <input name="passenger" type="text" class="fb_box_input cm-flex2" value="1" style="text-align: center; width: 50%;" disabled /><span>万元</span>
+                    <input name="passenger" type="text" class="fb_box_input" value="1" style="text-align: center; width: 50%;" disabled /><span>万元</span>
                 </td>
             </tr>
             <tr class="fb_box_bt">
@@ -125,7 +124,7 @@
             <tr class="fb_box_bt">
                 <td class="cm-span6">可选免赔额：</td>
                 <td colspan="2">
-                    <input name="optional_deductible" type="text" class="fb_box_input cm-flex1" style="text-align: center; width: 50%;" value="500"/>
+                    <input name="optional_deductible" type="text" class="fb_box_input cm-flex1" style="text-align: center; width: 50%;" value="0"/>
                     <span class="cm-flex1">元</span>
                 </td>
             </tr>

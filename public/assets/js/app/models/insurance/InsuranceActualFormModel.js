@@ -19,7 +19,7 @@ define([
             {
                 return '手机号码不合法';
             }
-            if(!_.isUndefined(attrs.hphm) && !attrs.hphm)
+            if(_.isUndefined(attrs.no_hphm) && !_.isUndefined(attrs.hphm) && !attrs.hphm)
             {
                 return '请填写车牌号';
             }

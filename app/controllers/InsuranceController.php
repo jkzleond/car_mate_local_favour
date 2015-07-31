@@ -107,6 +107,12 @@ class InsuranceController extends ControllerBase
             $car_info = CarInfo::getCarInfoByUserIdAndHphm($user['user_id'], $form_data['hphm']);
             if(!empty($car_info))
             {
+                CarInfo::updateCarInfo($car_info['id'], array(
+                    'engine_number' => $car_info['engine_number'],
+                    'frame_number' => $car_info['frame_number'],
+                    'auto_name' => $car_info['auto_name']
+                ));
+
                 $info_update['car_no_id'] = $car_info['id'];
             }
             else
@@ -114,7 +120,8 @@ class InsuranceController extends ControllerBase
                 $new_car_no_id = CarInfo::addCarInfo(array(
                     'user_id' => $user['user_id'],
                     'hphm' => $form_data['hphm'],
-                    'fdjh' => $form_data['fdjh'],
+                    'no_hphm' => isset($form_data['no_hphm'])? 1 : 0,
+                    'engine_number' => $form_data['engine_number'],
                     'frame_number' => $form_data['frame_number'],
                     'auto_name' => $form_data['auto_name']
                 ));
@@ -251,7 +258,7 @@ class InsuranceController extends ControllerBase
      */
     public function getInsuranceCompanyListAction()
     {
-        $company_list = Insurance::getInsuranceCompanyList();
+        $company_list = Insurance::getInsuranceCompanyList(5);
 
         $this->view->setVars(array(
             'rows' => $company_list

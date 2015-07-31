@@ -16,12 +16,12 @@ define([
     var ParityPageView = Backbone.View.extend({
         el: '#insurance_parity_price_page',
         initialize: function(options){
-            this.plot_after_discount_data = [0];
-            this.plot_discount_data = [0];
+            this.plot_actual_amount_data = [0];
+            this.plot_gift_data = [0];
             this.plot_ticks = [];
 
             this.plot = $.jqplot('insurance_parity_price_chart_container',
-                [this.plot_after_discount_data, this.plot_discount_data],
+                [this.plot_actual_amount_data, this.plot_gift_data],
                 {
                 // Tell the plot to stack the bars.
                     title: '比价',
@@ -50,20 +50,21 @@ define([
                             // axes scaled as if data extended 10% above and below the
                             // actual range to prevent data points right on grid boundaries.
                             // Don't want to do that here.
+                            rendererOptions: {
+                                forceTickAt0: true
+                            },
                             padMin: 0
                         }
                     },
                     legend: {
-                        labels: ['优惠后', '优惠'],
+                        labels: ['实际只需', '礼包'],
                         show: true,
-                        location: 'ne',
+                        location: 'se',
                         placement: 'inside'
                     }
             });
 
             this.total_standard = 0;
-            this.total_business = 0;
-            this.after_discount_compulsory = 0;
 
             this.discount_detail_tpl = _.template(discountDetailTpl);
 
@@ -92,25 +93,56 @@ define([
         _onApplyActualBtnClick: function(event){
             this.trigger('uri', this, 'insurance/apply_actual/' + this.insurance_info.get('id'));
         },
-        _resultProcess: function(model, result, options){
-            this.total_standard = Number(result.get('totalStandard'));
-            this.total_business = Number(this.total_standard) - Number(result.get('standardCompulsoryInsurance'));
-            this.after_discount_compulsory = Number(result.get('afterDiscountCompulsoryInsurance'));
+        _resultProcess: function(model, result_model, options){
+
+            var result = result_model.attributes;
+            this.standard_compulsory = Number(result.standardCompulsoryInsurance) || 0.00;
+            this.standard_damage = Number(result.standardDamageInsurance) || 0.00;
+            this.standard_third = Number(result.standardThird) || 0.00;
+            this.standard_driver = Number(result.standardDriver) || 0.00;
+            this.standard_passenger = Number(result.standardPassenger) || 0.00;
+            this.standard_robbery = Number(result.standardRobbery) || 0.00;
+            this.standard_glass = Number(result.standardGlass) || 0.00;
+            this.standard_scratch = Number(result.standardScratch) || 0.00;
+            this.standard_self_ignition = Number(result.standardSelfIgnition) || 0.00;
+            this.standard_optional_deductible = Number(result.standardOptionalDeductible) || 0.00;
+            this.standard_not_deductible = Number(result.standardNotDeductible) || 0.00;
+            this.total_standard = Number(result.totalStandard) || 0.00;
+
             if(this.company.models.length == 0) return; //保险公司信息还没有加载,则直接返回
 
             var len = this.company.models.length;
-            this.plot_after_discount_data.splice(0, this.plot_after_discount_data.length);
-            this.plot_discount_data.splice(0, this.plot_discount_data.length);
+            this.plot_actual_amount_data.splice(0, this.plot_actual_amount_data.length);
+            this.plot_gift_data.splice(0, this.plot_gift_data.length);
             for( var i = 0; i < len; i++)
             {
-                var after_discount_business = this.total_business * Number(this.company.models[i].get('discount'));
-                var total_after_discount = after_discount_business + this.after_discount_compulsory;
-                this.plot_after_discount_data.push(Math.floor(total_after_discount * 100)/100);
-                this.plot_discount_data.push(Math.ceil((this.total_standard - total_after_discount)*100)/100);
+                var company = this.company.models[i].attributes;
+                var discount = Number(company.discount);
+                var after_discount_compulsory = Number(result.afterDiscountCompulsoryInsurance) || 0.00;
+                var after_discount_damage = this.standard_damage * discount;
+                var after_discount_third = this.standard_third * discount;
+                var after_discount_driver = this.standard_driver * discount;
+                var after_discount_passenger = this.standard_passenger * discount;
+                var after_discount_robbery = this.standard_robbery * discount;
+                var after_discount_glass = this.standard_glass * discount;
+                var after_discount_scratch = this.standard_scratch * discount;
+                var after_discount_self_ignition = this.standard_self_ignition * discount;
+                var after_discount_optional_deductible = this.standard_optional_deductible * discount;
+                var after_discount_not_deductible = this.standard_not_deductible * discount;
+                var total_after_discount = (this.total_standard - this.standard_compulsory) * discount + after_discount_compulsory;
+
+                var gift1 = Number(company.gift);
+                var gift2 = Number(company.gift2);
+
+                var gift_money = Number(after_discount_compulsory * gift1 + (after_discount_third < 0 ? 0 : after_discount_third) * gift1 +
+                    after_discount_damage * gift2 + after_discount_driver * gift2 + after_discount_passenger * gift2 + after_discount_robbery * gift2 + after_discount_glass * gift2 + after_discount_scratch * gift2 + after_discount_self_ignition * gift2);
+
+                this.plot_actual_amount_data.push(Math.floor((total_after_discount - gift_money) * 100)/100);
+                this.plot_gift_data.push(Math.ceil((gift_money)*100)/100);
             }
 
             this.plot.replot({
-                data:[this.plot_after_discount_data, this.plot_discount_data],
+                data:[this.plot_actual_amount_data, this.plot_gift_data],
                 resetAxes: true,
                 axes:{
                     xaxis: {
@@ -130,19 +162,38 @@ define([
 
             if(this.total_standard == 0) return; //如果保险总保费为0,则直接退出
 
-            this.plot_after_discount_data.splice(0, this.plot_after_discount_data.length);
-            this.plot_discount_data.splice(0, this.plot_discount_data.length);
+            this.plot_actual_amount_data.splice(0, this.plot_actual_amount_data.length);
+            this.plot_gift_data.splice(0, this.plot_gift_data.length);
 
             for( var i = 0; i < len; i++)
             {
-                var after_discount_business = this.total_business * Number(this.company.models[i].get('discount'));
-                var total_after_discount = after_discount_business + this.after_discount_compulsory;
-                this.plot_after_discount_data.push(Math.floor(total_after_discount * 100)/100);
-                this.plot_discount_data.push(Math.ceil((this.total_standard - total_after_discount)*100)/100);
+                var company = this.company.models[i].attributes;
+                var discount = Number(company.discount);
+                var after_discount_compulsory = Number(result.afterDiscountCompulsoryInsurance) || 0.00;
+                var after_discount_damage = this.standard_damage * discount;
+                var after_discount_third = this.standard_third * discount;
+                var after_discount_driver = this.standard_driver * discount;
+                var after_discount_passenger = this.standard_passenger * discount;
+                var after_discount_robbery = this.standard_robbery * discount;
+                var after_discount_glass = this.standard_glass * discount;
+                var after_discount_scratch = this.standard_scratch * discount;
+                var after_discount_self_ignition = this.standard_self_ignition * discount;
+                var after_discount_optional_deductible = this.standard_optional_deductible * discount;
+                var after_discount_not_deductible = this.standard_not_deductible * discount;
+                var total_after_discount = (this.total_standard - this.standard_compulsory) * discount + after_discount_compulsory;
+
+                var gift1 = Number(company.gift);
+                var gift2 = Number(company.gift2);
+
+                var gift_money = Number(after_discount_compulsory * gift1 + (after_discount_third < 0 ? 0 : after_discount_third) * gift1 +
+                    after_discount_damage * gift2 + after_discount_driver * gift2 + after_discount_passenger * gift2 + after_discount_robbery * gift2 + after_discount_glass * gift2 + after_discount_scratch * gift2 + after_discount_self_ignition * gift2);
+
+                this.plot_actual_amount_data.push(Math.floor((total_after_discount - gift_money) * 100)/100);
+                this.plot_gift_data.push(Math.ceil((gift_money)*100)/100);
             }
 
             this.plot.replot({
-                data:[this.plot_after_discount_data, this.plot_discount_data],
+                data:[this.plot_actual_amount_data, this.plot_gift_data],
                 resetAxes: true,
                 axes:{
                     xaxis: {

@@ -724,12 +724,14 @@ SQL;
 
     /**
      * 获取指定数目的保险公司列表
+     * @param $top int
      * @return array
      */
-    public static function getInsuranceCompanyList()
+    public static function getInsuranceCompanyList($top)
     {
+        $top = (int) $top;
         $sql = <<<SQL
-        select companyId as id, discount, companyName as [name], ename,  shortName as short_name, gift, gift2, isOrder as [order] from Insurance_Discount
+        select top $top companyId as id, discount, companyName as [name], ename,  shortName as short_name, gift, gift2, isOrder as [order] from Insurance_Discount
         where companyId != 9
         order by discount desc, gift desc, isOrder asc
 SQL;

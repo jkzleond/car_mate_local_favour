@@ -22,13 +22,13 @@ define([
             this.form_model = new PolicyFormModel();
             this.actuary_results = new FinalResultCollection();
 
-            this.plot_after_discount_data = [0];
+            this.plot_actual_amount_data = [0];
             this.plot_discount_data = [0];
             this.plot_gift_money_data = [0];
             this.plot_ticks = [];
 
             this.plot = $.jqplot('insurance_final_parity_price_chart_container',
-                [this.plot_after_discount_data, this.plot_discount_data, this.plot_gift_money_data],
+                [this.plot_actual_amount_data, this.plot_gift_money_data],
                 {
                     // Tell the plot to stack the bars.
                     title: '精算比价',
@@ -50,20 +50,23 @@ define([
                         xaxis: {
                             renderer: $.jqplot.CategoryAxisRenderer,
                             ticks: this.plot_ticks,
-                            label: '点击柱状图,显示初算详情'
+                            label: '点击柱状图,显示精算详情'
                         },
                         yaxis: {
                             // Don't pad out the bottom of the data range.  By default,
                             // axes scaled as if data extended 10% above and below the
                             // actual range to prevent data points right on grid boundaries.
                             // Don't want to do that here.
+                            rendererOptions: {
+                                forceTickAt0: true
+                            },
                             padMin: 0
                         }
                     },
                     legend: {
-                        labels: ['优惠后', '优惠', '礼包'],
+                        labels: ['实际只需', '礼包'],
                         show: true,
-                        location: 'ne',
+                        location: 'se',
                         placement: 'inside'
                     }
                 });
@@ -114,22 +117,21 @@ define([
             var final_results = collection.models;
             var len = final_results.length;
 
-            this.plot_after_discount_data.splice(0, this.plot_after_discount_data.length);
-            this.plot_discount_data.splice(0, this.plot_discount_data.length);
+            this.plot_actual_amount_data.splice(0, this.plot_actual_amount_data.length);
             this.plot_gift_money_data.splice(0, this.plot_gift_money_data.length);
             this.plot_ticks.splice(0, this.plot_ticks.length);
 
             for(var i = 0; i < len; i++)
             {
                 var final_result = final_results[i].attributes;
-                this.plot_after_discount_data.push(Number(Number(final_result.totalAfterDiscount - final_result.giftMoney).toFixed(2)));
+                this.plot_actual_amount_data.push(Number(Number(final_result.totalAfterDiscount - final_result.giftMoney).toFixed(2)));
                 this.plot_discount_data.push(Number(Number(final_result.totalStandard - final_result.totalAfterDiscount).toFixed(2)));
                 this.plot_gift_money_data.push(Number(final_result.giftMoney));
                 this.plot_ticks.push(final_result.company_short_name);
             }
 
             this.plot.replot({
-                data:[this.plot_after_discount_data, this.plot_discount_data, this.plot_gift_money_data],
+                data:[this.plot_actual_amount_data, this.plot_gift_money_data],
                 resetAxes: true,
                 axes:{
                     xaxis: {

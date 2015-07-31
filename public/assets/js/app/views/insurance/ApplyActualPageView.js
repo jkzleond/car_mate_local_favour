@@ -31,6 +31,7 @@ define([
             'click .upload-license-b-btn': '_onUploadLicenseBBtnClick',
             'click .upload-idcard-btn': '_onUploadIdCardBtnClick',
             'click .apply-actual-btn': '_onApplyActualClick',
+            'change [name="no_hphm"]': '_onNoHphmChange',
             'change .driving-license-a-file': '_onLicenseAFileChange',
             'change .driving-license-b-file': '_onLicenseBFileChange',
             'change .idcard-file': '_onIdcardFileChange'
@@ -51,6 +52,17 @@ define([
         },
         _onUploadIdCardBtnClick: function(event){
             this.$el.find('.idcard-file').click();
+        },
+        _onNoHphmChange: function(event){
+            var is_checked = $(event.target).prop('checked');
+            if(is_checked)
+            {
+                this.$el.find('[name="hphm"]').prop('disabled', true).attr('placeholder','还未获取牌照,不需填写').text('');
+            }
+            else
+            {
+                this.$el.find('[name="hphm"]').prop('disabled', false).attr('placeholder', '');
+            }
         },
         _onLicenseAFileChange: function(event){
             var self = this;

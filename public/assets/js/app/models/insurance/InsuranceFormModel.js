@@ -46,9 +46,9 @@ define([
                 return '车身划痕险金额必须大于0';
             }
 
-            if(!_.isUndefined(attrs.optional_deductible) && !attrs.optional_deductible)
+            if(!_.isUndefined(attrs.optional_deductible) && attrs.optional_deductible < 0)
             {
-                return '可选免赔额金额必须大于0';
+                return '可选免赔额金额必须大于等于0';
             }
         }
     });
