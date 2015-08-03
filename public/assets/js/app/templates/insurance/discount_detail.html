@@ -13,8 +13,34 @@
     var total_standard = Number(result.totalStandard) || 0.00;
 
     var discount = Number(company.discount);
+    var car_price_discount = Number(company.car_price_discount);
     var after_discount_compulsory = Number(result.afterDiscountCompulsoryInsurance) || 0.00;
-    var after_discount_damage = standard_damage * discount;
+
+    //计算含折价折扣的折扣后车损险保费
+    var after_discount_damage = 0;
+    var car_price = 0;
+
+    if(this.coefficient == 1)
+    {
+    car_price = (this.standard_damage - 619.00) * 100 / 1.47 * car_price_discount;
+    after_discount_damage = Math.round((car_price * 1.47 / 100.0 + 619.0) * 100) / 100;
+    }
+    else if(this.coefficient == 2)
+    {
+    car_price = (this.standard_damage - 590.00) * 100 / 1.40 * car_price_discount;
+    after_discount_damage = Math.round((car_price * 1.40 / 100.0 + 590.0) * 100) / 100;
+    }
+    else if(this.coefficient == 3 || this.coefficient == 4 || this.coefficient == 5)
+    {
+    car_price = (this.standard_damage - 584.00) * 100 / 1.39 * car_price_discount;
+    after_discount_damage = Math.round((car_price * 1.39 / 100.0 + 584.0) * 100) /100;
+    }
+    else if(this.coefficient == 6)
+    {
+    car_price = (this.standard_damage - 602.00) * 100 / 1.43 * car_price_discount;
+    after_discount_damage = Math.round((car_price * 1.43 / 100.0 + 602.0) * 100) / 100;
+    }
+
     var after_discount_third = standard_third * discount;
     var after_discount_driver = standard_driver * discount;
     var after_discount_passenger = standard_passenger * discount;
@@ -29,9 +55,19 @@
     var gift1 = Number(company.gift);
     var gift2 = Number(company.gift2);
 
-    var gift_money = Number(after_discount_compulsory * gift1 + (after_discount_third < 0 ? 0 : after_discount_third) * gift1 +
-after_discount_damage * gift2 + after_discount_driver * gift2 + after_discount_passenger * gift2 + after_discount_robbery * gift2 + after_discount_glass * gift2 + after_discount_scratch * gift2 + after_discount_self_ignition * gift2)
+    var gift_money = 0;
 
+    if(!(after_discount_damage == 0))
+    {
+    //因为车损险和交强险折扣是单独计算
+    total_after_discount = (this.total_standard - this.standard_damage - this.standard_compulsory) * discount + after_discount_damage + after_discount_compulsory;
+
+    gift_money = total_after_discount * gift1;
+    }
+    else
+    {
+    gift_money = total_after_discount * gift2;
+    }
 %>
 <table  class="bx_xxnr_div_table">
     <tr>

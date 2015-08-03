@@ -96,8 +96,11 @@ define([
         _resultProcess: function(model, result_model, options){
 
             var result = result_model.attributes;
+
             this.standard_compulsory = Number(result.standardCompulsoryInsurance) || 0.00;
+            this.after_discount_compulsory = Number(result.afterDiscountCompulsoryInsurance || 0.00);
             this.standard_damage = Number(result.standardDamageInsurance) || 0.00;
+            this.coefficient = result.coefficient;
             this.standard_third = Number(result.standardThird) || 0.00;
             this.standard_driver = Number(result.standardDriver) || 0.00;
             this.standard_passenger = Number(result.standardPassenger) || 0.00;
@@ -114,12 +117,44 @@ define([
             var len = this.company.models.length;
             this.plot_actual_amount_data.splice(0, this.plot_actual_amount_data.length);
             this.plot_gift_data.splice(0, this.plot_gift_data.length);
+            this.plot_ticks.splice(0, this.plot_ticks.length);
+
             for( var i = 0; i < len; i++)
             {
                 var company = this.company.models[i].attributes;
+
+                if(company.gift == 0.00 && this.standard_damage) continue;//gift1 == 0.00表示该保险公司不承保车损险
+                this.plot_ticks.push(company.short_name);//添加图表X轴ticks
+
                 var discount = Number(company.discount);
-                var after_discount_compulsory = Number(result.afterDiscountCompulsoryInsurance) || 0.00;
-                var after_discount_damage = this.standard_damage * discount;
+                var car_price_discount = Number(company.car_price_discount);
+                var after_discount_compulsory = this.after_discount_compulsory;
+
+                //计算含折价折扣的折扣后车损险保费
+                var after_discount_damage = 0;
+                var car_price = 0;
+
+                if(this.coefficient == 1)
+                {
+                    car_price = (this.standard_damage - 619.00) * 100 / 1.47 * car_price_discount;
+                    after_discount_damage = Math.round((car_price * 1.47 / 100.0 + 619.0) * 100) / 100;
+                }
+                else if(this.coefficient == 2)
+                {
+                    car_price = (this.standard_damage - 590.00) * 100 / 1.40 * car_price_discount;
+                    after_discount_damage = Math.round((car_price * 1.40 / 100.0 + 590.0) * 100) / 100;
+                }
+                else if(this.coefficient == 3 || this.coefficient == 4 || this.coefficient == 5)
+                {
+                    car_price = (this.standard_damage - 584.00) * 100 / 1.39 * car_price_discount;
+                    after_discount_damage = Math.round((car_price * 1.39 / 100.0 + 584.0) * 100) /100;
+                }
+                else if(this.coefficient == 6)
+                {
+                    car_price = (this.standard_damage - 602.00) * 100 / 1.43 * car_price_discount;
+                    after_discount_damage = Math.round((car_price * 1.43 / 100.0 + 602.0) * 100) / 100;
+                }
+
                 var after_discount_third = this.standard_third * discount;
                 var after_discount_driver = this.standard_driver * discount;
                 var after_discount_passenger = this.standard_passenger * discount;
@@ -134,43 +169,84 @@ define([
                 var gift1 = Number(company.gift);
                 var gift2 = Number(company.gift2);
 
-                var gift_money = Number(after_discount_compulsory * gift1 + (after_discount_third < 0 ? 0 : after_discount_third) * gift1 +
-                    after_discount_damage * gift2 + after_discount_driver * gift2 + after_discount_passenger * gift2 + after_discount_robbery * gift2 + after_discount_glass * gift2 + after_discount_scratch * gift2 + after_discount_self_ignition * gift2);
+                var gift_money = 0;
+
+                if(!(after_discount_damage == 0))
+                {
+                    //因为车损险和交强险折扣是单独计算
+                    total_after_discount = (this.total_standard - this.standard_damage - this.standard_compulsory) * discount + after_discount_damage + after_discount_compulsory;
+
+                    gift_money = total_after_discount * gift1;
+                }
+                else
+                {
+                    gift_money = total_after_discount * gift2;
+                }
 
                 this.plot_actual_amount_data.push(Math.floor((total_after_discount - gift_money) * 100)/100);
                 this.plot_gift_data.push(Math.ceil((gift_money)*100)/100);
             }
+
+            //console.log(this.plot_ticks = [1,2,3,4]);
 
             this.plot.replot({
                 data:[this.plot_actual_amount_data, this.plot_gift_data],
                 resetAxes: true,
                 axes:{
                     xaxis: {
-                        ticks: this.plot_ticks
+                        ticks: this.plot_ticks,
+                        numberTicks: this.plot_ticks.length
                     }
                 }
             });
 
         },
         _discountProcess: function(collection, options){
-            var len = this.company.models.length;
-            this.plot_ticks.splice(0, this.plot_ticks.length);
-            for( var i = 0; i < len; i++)
-            {
-                this.plot_ticks.push(this.company.models[i].get('short_name'));
-            }
 
             if(this.total_standard == 0) return; //如果保险总保费为0,则直接退出
+            console.log('company');
 
+            var len = this.company.models.length;
             this.plot_actual_amount_data.splice(0, this.plot_actual_amount_data.length);
             this.plot_gift_data.splice(0, this.plot_gift_data.length);
+            this.plot_ticks.splice(0, this.plot_ticks.length);
 
             for( var i = 0; i < len; i++)
             {
                 var company = this.company.models[i].attributes;
+
+                if(company.gift == 0.00 && this.standard_damage) continue;//gift1 == 0.00表示该保险公司不承保车损险
+                this.plot_ticks.push(company.short_name);//添加图表X轴ticks
+
                 var discount = Number(company.discount);
-                var after_discount_compulsory = Number(result.afterDiscountCompulsoryInsurance) || 0.00;
-                var after_discount_damage = this.standard_damage * discount;
+                var car_price_discount = Number(company.car_price_discount);
+                var after_discount_compulsory = this.after_discount_compulsory;
+
+                //计算含折价折扣的折扣后车损险保费
+                var after_discount_damage = 0;
+                var car_price = 0;
+
+                if(this.coefficient == 1)
+                {
+                    car_price = (this.standard_damage - 619.00) * 100 / 1.47 * car_price_discount;
+                    after_discount_damage = Math.round((car_price * 1.47 / 100.0 + 619.0) * 100) / 100;
+                }
+                else if(this.coefficient == 2)
+                {
+                    car_price = (this.standard_damage - 590.00) * 100 / 1.40 * car_price_discount;
+                    after_discount_damage = Math.round((car_price * 1.40 / 100.0 + 590.0) * 100) / 100;
+                }
+                else if(this.coefficient == 3 || this.coefficient == 4 || this.coefficient == 5)
+                {
+                    car_price = (this.standard_damage - 584.00) * 100 / 1.39 * car_price_discount;
+                    after_discount_damage = Math.round((car_price * 1.39 / 100.0 + 584.0) * 100) /100;
+                }
+                else if(this.coefficient == 6)
+                {
+                    car_price = (this.standard_damage - 602.00) * 100 / 1.43 * car_price_discount;
+                    after_discount_damage = Math.round((car_price * 1.43 / 100.0 + 602.0) * 100) / 100;
+                }
+
                 var after_discount_third = this.standard_third * discount;
                 var after_discount_driver = this.standard_driver * discount;
                 var after_discount_passenger = this.standard_passenger * discount;
@@ -185,8 +261,19 @@ define([
                 var gift1 = Number(company.gift);
                 var gift2 = Number(company.gift2);
 
-                var gift_money = Number(after_discount_compulsory * gift1 + (after_discount_third < 0 ? 0 : after_discount_third) * gift1 +
-                    after_discount_damage * gift2 + after_discount_driver * gift2 + after_discount_passenger * gift2 + after_discount_robbery * gift2 + after_discount_glass * gift2 + after_discount_scratch * gift2 + after_discount_self_ignition * gift2);
+                var gift_money = 0;
+
+                if(!(after_discount_damage == 0))
+                {
+                    //因为车损险和交强险折扣是单独计算
+                    total_after_discount = (this.total_standard - this.standard_damage - this.standard_compulsory) * discount + after_discount_damage + after_discount_compulsory;
+
+                    gift_money = total_after_discount * gift1;
+                }
+                else
+                {
+                    gift_money = total_after_discount * gift2;
+                }
 
                 this.plot_actual_amount_data.push(Math.floor((total_after_discount - gift_money) * 100)/100);
                 this.plot_gift_data.push(Math.ceil((gift_money)*100)/100);
@@ -197,7 +284,8 @@ define([
                 resetAxes: true,
                 axes:{
                     xaxis: {
-                        ticks: this.plot_ticks
+                        ticks: this.plot_ticks,
+                        numberTicks: this.plot_ticks.length
                     }
                 }
             });

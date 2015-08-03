@@ -69,6 +69,12 @@ define([
         },
         //申请精算
         applyActual: function(info_id){
+            if(G.user.user_id === 'INSURANCE_ACCOUNT')
+            {
+                $.cm.toast({msg: '请下载车友惠App进行精算'});
+                window.history.back();
+                return;
+            }
             $(':mobile-pagecontainer').pagecontainer('change', '#insurance_apply_actual_page');
             this.apply_actual_page_view.model.set('info_id', info_id);
         },
