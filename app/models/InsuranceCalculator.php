@@ -225,7 +225,7 @@ class InsuranceCalculator
                 $result = round($standard_compulsory * 1.1, 2);
                 break;
             case 6:
-                $result = round($standard_compulsory * 1.1, 2);
+                $result = round($standard_compulsory * 1.3, 2);
                 break;
             default:
                 break;

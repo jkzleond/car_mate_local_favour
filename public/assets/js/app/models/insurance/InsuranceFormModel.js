@@ -26,12 +26,12 @@ define([
                 return '第三方责任险金额必须大于0';
             }
 
-            if(!_.isUndefined(attrs.driver) && !attrs.driver)
+            if(!_.isUndefined(attrs.driver) && attrs.driver < 0)
             {
                 return '司机座椅责任险金额必须大于0';
             }
 
-            if(!_.isUndefined(attrs.passenger) && !attrs.passenger)
+            if(!_.isUndefined(attrs.passenger) && attrs.passenger < 0)
             {
                 return '乘客座椅责任险金额必须大于0';
             }
@@ -41,7 +41,7 @@ define([
                 return '玻璃单独破损险玻璃种类必须选择';
             }
 
-            if(!_.isUndefined(attrs.scratch) && !attrs.scratch)
+            if(!_.isUndefined(attrs.scratch) && attrs.scratch < 0)
             {
                 return '车身划痕险金额必须大于0';
             }

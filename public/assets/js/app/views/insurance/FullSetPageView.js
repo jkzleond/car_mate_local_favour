@@ -19,6 +19,7 @@ define([
         },
         events: {
             'input input:text': '_onNumberInput',
+            'change [name="third"]': '_onThirdSelectChange',
             'change [name="passenger_number"]': '_onPassengerNumberChange',
             'click .submit': '_onFormSubmit'
         },
@@ -28,6 +29,21 @@ define([
             value = value.replace(/[^\d+]/g, '');
             $(event.target).val(value);
 
+        },
+        _onThirdSelectChange: function(event){
+            var value = $(event.target).val();
+            if(value == 0)
+            {
+                this.$el.find('[name=driver]').prop('disabled', true);
+                this.$el.find('[name=passenger_number]').prop('disabled', true);
+                this.$el.find('[name=passenger]').prop('disabled', true);
+            }
+            else
+            {
+                this.$el.find('[name=driver]').prop('disabled', false);
+                this.$el.find('[name=passenger_number]').prop('disabled', false);
+                this.$el.find('[name=passenger]').prop('disabled', false);
+            }
         },
         _onPassengerNumberChange: function(event){
             var passenger_number = $(event.target).val();
