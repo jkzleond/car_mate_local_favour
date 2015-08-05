@@ -57,9 +57,6 @@ define([
         },
         renderContent: function(model){
             this.$el.find('#discovery_content').html(model.get('content'));
-            /*this.$el.find('#discovery_content img').each(function(i, n){
-                var old_src = $(n).src
-            });*/
         }
     });
     return DiscoveryDetailView;
