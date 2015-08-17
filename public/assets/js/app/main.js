@@ -24,7 +24,7 @@ require.config({
         views: 'app/views',
         templates: 'app/templates'
     },
-    //urlArgs: 'bust=' + Date.now(),
+    urlArgs: 'bust=' + Date.now(),
     waitSeconds: 0,
     shim:{
         backbone:{
