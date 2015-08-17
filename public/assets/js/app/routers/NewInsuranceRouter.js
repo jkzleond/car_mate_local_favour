@@ -8,20 +8,24 @@ define([
     'views/insurance/InsurancePageView',
     'views/insurance/ValueSetPageView',
     'views/insurance/FullSetPageView',
-    'views/insurance/ParityPageView',
-    'views/insurance/FinalParityPageView',
+    //'views/insurance/ParityPageView', 比价页面view
+    'views/insurance/FirstPricePageView', 
+    //'views/insurance/FinalParityPageView', 精算比价页面
+    'views/insurance/ActuaryPricePageView',
     'views/insurance/ApplyActualPageView',
     'views/insurance/PayOrderPageView',
     'views/insurance/InsuranceListPageView'
-], function($, Backbone, InsurancePageView, ValueSetPageView, FullSetPageView, ParityPageView, FinalParityPageView, ApplyActualPageView, PayOrderPageView, InsuranceListPageView){
+], function($, Backbone, InsurancePageView, ValueSetPageView, FullSetPageView, FirstPricePageView, ActuaryPricePageView, ApplyActualPageView, PayOrderPageView, InsuranceListPageView){
     var NewInsuranceRouter = Backbone.Router.extend({
         initialize: function(){
 
             this.insurance_page_view = new InsurancePageView();
             this.insurance_value_set_page_view = new ValueSetPageView();
             this.insurance_full_set_page_view = new FullSetPageView();
-            this.parity_page_view = new ParityPageView();
-            this.final_parity_page_view = new FinalParityPageView();
+            //this.parity_page_view = new ParityPageView();
+            this.first_price_page_view = new FirstPricePageView();
+            //this.final_parity_page_view = new FinalParityPageView();
+            this.actuary_price_page_view = new ActuaryPricePageView();
             this.apply_actual_page_view = new ApplyActualPageView();
             this.pay_order_page_view = new PayOrderPageView();
             this.insurance_list_page_view = new InsuranceListPageView();
@@ -43,29 +47,33 @@ define([
         routes: {
             'insurance': 'index',
             'insurance/set(/:type)': 'firstCalc',
-            'insurance/price/:info_id': 'parityPrice',
-            'insurance/actuary_price/:info_id': 'finalParityPrice',
+            'insurance/price/:info_id': 'firstPrice',
+            'insurance/actuary_price/:info_id': 'actuaryPrice',
             'insurance/apply_actual/:info_id': 'applyActual',
             'insurance/:info_id/actuary_result/': 'actuaryResult',
             'insurance/:info_id/pay_order': 'payOrder',
-            'insurances(/:state)': 'insurances'
+            'insurance/list(/:state)': 'insurances'
         },
         index: function(){
             $(':mobile-pagecontainer').pagecontainer('change', '#insurance_page');
         },
-        //初算
+        //初算(套餐)
         firstCalc: function(set_type){
             $(':mobile-pagecontainer').pagecontainer('change', '#insurance_' + set_type + '_set_page');
         },
-        //比价
+        firstPrice: function(info_id){
+            $(':mobile-pagecontainer').pagecontainer('change', '#insurance_first_price_page');
+            this.first_price_page_view.loadInfo(info_id);
+        },
+        //比价(暂时不用)
         parityPrice: function(info_id){
             $(':mobile-pagecontainer').pagecontainer('change', '#insurance_parity_price_page');
             this.parity_page_view.loadInfo(info_id);
         },
-        //精算比价
-    finalParityPrice: function(info_id){
-        $(':mobile-pagecontainer').pagecontainer('change', '#insurance_final_parity_price_page');
-        this.final_parity_page_view.loadInfo(info_id);
+        //精算比价(暂时不用)
+        finalParityPrice: function(info_id){
+            $(':mobile-pagecontainer').pagecontainer('change', '#insurance_final_parity_price_page');
+            this.final_parity_page_view.loadInfo(info_id);
         },
         //申请精算
         applyActual: function(info_id){
@@ -78,9 +86,10 @@ define([
             $(':mobile-pagecontainer').pagecontainer('change', '#insurance_apply_actual_page');
             this.apply_actual_page_view.model.set('info_id', info_id);
         },
-        //精算结果
-        actuaryResult: function(info_id){
-            console.log('actuary_result/' + info_id);
+        //精算价格
+        actuaryPrice: function(info_id){
+            $(':mobile-pagecontainer').pagecontainer('change', '#insurance_actuary_price_page');
+            this.actuary_price_page_view.loadInfo(info_id);
         },
         //确认下单页面
         payOrder: function(info_id){

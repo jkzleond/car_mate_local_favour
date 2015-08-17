@@ -17,6 +17,14 @@
     <link rel="stylesheet" href="<?php echo $this->url->get('/assets/css/bxjs.css'); ?>"/>
     
 <link rel="stylesheet" type="text/css" href="<?php echo $this->url->get('/assets/css/local_favour.css'); ?>"/>
+<style type="text/css">
+    .index-pic {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        z-index: 99999999;
+    }
+</style>
 
     
 
@@ -43,8 +51,11 @@
     
 
 </head>
-<body style="background-color:#EEE; display:none;">
+<body style="background-color:#EEE; margin: 0px; border: 0px; padding: 0px;">
 
+
+<!-- 开屏图片 -->
+<img class="index-pic" src="data:image/png;base64,<?php echo $index_pic->pic_data; ?>" alt="">
 
 <!-- 首页 -->
 <div data-role="page" id="home_page" data-theme="g" style="padding-top: 51px;">

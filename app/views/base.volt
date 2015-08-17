@@ -38,7 +38,7 @@
     </script>-->
     {% endblock %}
 </head>
-<body style="background-color:#EEE; display:none;">
+<body style="background-color:#EEE; margin: 0px; border: 0px; padding: 0px;">
 {% block content %}
 {% endblock %}
 </body>

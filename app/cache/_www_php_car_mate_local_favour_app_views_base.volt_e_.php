@@ -36,9 +36,9 @@ a:11:{i:0;s:245:"<!doctype html>
             });
         });
     </script>-->
-    ";s:4:"file";s:67:"/www/php/car_mate_local_favour/app/config/../../app/views/base.volt";s:4:"line";i:39;}}i:2;s:61:"
+    ";s:4:"file";s:67:"/www/php/car_mate_local_favour/app/config/../../app/views/base.volt";s:4:"line";i:39;}}i:2;s:87:"
 </head>
-<body style="background-color:#EEE; display:none;">
+<body style="background-color:#EEE; margin: 0px; border: 0px; padding: 0px;">
 ";s:7:"content";a:1:{i:0;a:4:{s:4:"type";i:357;s:5:"value";s:1:"
 ";s:4:"file";s:67:"/www/php/car_mate_local_favour/app/config/../../app/views/base.volt";s:4:"line";i:43;}}i:3;s:9:"
 </body>

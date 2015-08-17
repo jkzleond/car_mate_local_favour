@@ -164,7 +164,7 @@ require(['jquery'], function($){
         $.mobile.loader.prototype.options.theme = "a";
         $.mobile.loader.prototype.options.html = "";
 
-        $.mobile.page.prototype.options.keepNative = "select, input:radio, input:checkbox, input.fb_box_input, input.fb_box_input2, input.fb_box_button";
+        $.mobile.page.prototype.options.keepNative = "select, input:radio, input:checkbox, input.fb_box_input, input.fb_box_input2, input.fb_box_button, .no-enhance";
 
 
         //隐藏header
@@ -242,9 +242,11 @@ require(['jquery'], function($){
                 Backbone.history.start();
 
                 //local_favour_router.navigate('home', {trigger: true});
-                $('body').fadeIn(function(){
-                    //$.cm.trigger('system.bonus', [[{name: 'haha', value: 100, code:'huiGold'}]]);
-                });
+                // $('body').fadeIn(function(){
+                //     $.cm.trigger('system.bonus', [[{name: 'haha', value: 100, code:'huiGold'}]]);
+                // });
+
+                $('.index-pic').fadeOut(1000);
             });
 
         });

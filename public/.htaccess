@@ -4,5 +4,10 @@ AddDefaultCharset UTF-8
     RewriteEngine On
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_URI}% ^/userfiles/
+    RewriteRule ^userfiles/(.*)$ http://116.55.248.76:8080/userfiles/$1 [L]
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_URI}% !^/userfiles/
     RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
 </IfModule>

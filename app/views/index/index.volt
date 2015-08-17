@@ -3,6 +3,14 @@
 {% block header_css %}
 {{ super() }}
 <link rel="stylesheet" type="text/css" href="{{ url('/assets/css/local_favour.css') }}"/>
+<style type="text/css">
+    .index-pic {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        z-index: 99999999;
+    }
+</style>
 {% endblock %}
 
 {% block header_js %}
@@ -10,6 +18,9 @@
 {% endblock %}
 
 {% block content %}
+
+<!-- 开屏图片 -->
+<img class="index-pic" src="data:image/png;base64,{{ index_pic.pic_data }}" alt="">
 
 <!-- 首页 -->
 <div data-role="page" id="home_page" data-theme="g" style="padding-top: 51px;">

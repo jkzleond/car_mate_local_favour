@@ -1,0 +1,47 @@
+<!--新保险申请精算页面-->
+<div data-role="page" id="insurance_reservation_page" data-theme="a" style="padding-top: 44px; padding-bottom: 44px;">
+    <div data-role="header" class="cm-fixed" data-theme="g">
+        <a class="ui-btn-left ui-btn ui-icon-md-chevron-left ui-btn-icon-notext" href="#"></a>
+        <h1>保险巨惠-保险预约</h1>
+        <a class="ui-btn-right ui-btn ui-icon-md-menu ui-btn-icon-notext" href="#menu"><i class="icon-reorder"></i></a>
+    </div>
+    <div role="main" class="ui-content">
+        <div class="fb_box">
+            <div class="fb_box_bt">联系电话:
+                <input name="phone" type="text" class="fb_box_input" style="width: 60%; float: right" />
+            </div>
+        </div>
+        <div class="reservation-form">
+            <div class="fb_box">
+                <div class="fb_box_bt">车牌号:
+                    <input name="hphm" type="text" class="fb_box_input" style="width: 60%; float: right"/>
+                </div>
+                <div class="fb_box_bt">车辆品牌型号:
+                    <input name="auto_name" type="text" class="fb_box_input" style="width: 60%; float: right"/>
+                </div>
+                <div class="fb_box_bt" style="text-align:right">
+                    <input name="no_hphm" type="checkbox" /><span>还未获取牌照</span>
+                </div>
+                <div class="fb_box_bt">车架号:<input name="frame_number" type="text" class="fb_box_input" style="width: 60%; float: right"/>
+                </div>
+                <div class="fb_box_bt">发动机号:
+                    <input name="engine_number" type="text" class="fb_box_input" style="width: 60%; float: right"/>
+                </div>
+                <div class="fb_box_bt">
+                    <table style="width:100%">
+                        <tr>
+                            <td style="width:115px">报价日期:</td>
+                            <td>
+                                <select name="first_year" type="text" class="fb_box_input2" style="width:45%; text-align: center; float:none"></select>
+                                <select name="first_month" type="text" class="fb_box_input2" style="width:45%; text-align: center; float:none"></select>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div data-role="footer" class="cm-fixed" style="background-color: rgba(0,0,0,0.2)">
+        <a class="reservation-btn" data-theme="g" style="padding:0.7em 0.5%;width: 99%;color:white;">立即预约</a>
+    </div>
+</div>
