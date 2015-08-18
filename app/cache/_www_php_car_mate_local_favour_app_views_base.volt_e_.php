@@ -1,5 +1,5 @@
-a:11:{i:0;s:245:"<!doctype html>
-<html lang="en" manifest="app.manifest">
+a:11:{i:0;s:246:"<!doctype html>
+<html lang="en" manifest="app.manifest1">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=no" />

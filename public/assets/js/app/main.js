@@ -116,17 +116,16 @@ require(['jquery'], function($){
     });
 
 
-
     //session id
     var session_id = null;
     //系统全局变量
     window.G = window.G || {};
     //用户信息
     G.user = null;
+
     /*
      配置ajax
      */
-
     $.ajaxPrefilter(function(options){
 
         //自动加上 base_url
@@ -194,7 +193,6 @@ require(['jquery'], function($){
         /*
          初始化数据
          */
-
         //登录
         var params_matches = window.location.href.match(/\?(.*)/);
         var login_params = params_matches ? params_matches[1] : '';
