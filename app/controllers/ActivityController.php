@@ -73,11 +73,11 @@ class ActivityController extends ControllerBase
             $json_data['user_id'] = $json_data['user_id'].time();
         }
 
-        $is_joined = Activity::isUserJoin($user_id, $aid);
+        //$is_joined = Activity::isUserJoin($user_id, $aid);
 
         $return_data = null;
 
-        if($is_joined)
+        /*if($is_joined)
         {
 
             $return_data = array(
@@ -86,7 +86,7 @@ class ActivityController extends ControllerBase
             );
         }
         else
-        {
+        {*/
             $success = Activity::signUp($json_data, $aid);
 
             if(!$success)
@@ -124,7 +124,7 @@ class ActivityController extends ControllerBase
 
                 }
             }
-        }
+        //}
         
         $this->view->setVars($return_data);
     }
