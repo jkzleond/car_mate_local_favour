@@ -12,11 +12,12 @@
     }
     .index-loading {
         width: 100%;
-        bottom: 0px;
-        text-aling: center;
+        bottom: 50px;
+        text-align: center;
         font-size: 14px;
+        font-weight: bold;
         position: fixed;
-        z-index: 99999998;
+        z-index: 99999999;
     }
 </style>
 {% endblock %}
@@ -28,7 +29,13 @@
 {% block content %}
 
 <!-- 开屏图片 -->
-<img class="index-pic" src="data:image/png;base64,{{ index_pic.pic_data }}" alt="">
+<div class="index-pic">    
+    <img class="index-pic" src="data:image/png;base64,{{ index_pic.pic_data }}" alt="">
+    <div class="index-loading">
+        <img src="{{ url('/assets/img/mini-loading.gif') }}" style="display:inline-block;">
+        <span>正在很努力的加载中,请稍候...</span>
+    </div>
+</div>
 
 <!-- 首页 -->
 <div data-role="page" id="home_page" data-theme="g" style="padding-top: 51px;">

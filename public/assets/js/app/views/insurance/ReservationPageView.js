@@ -17,24 +17,10 @@ define([
             this.listenTo(this.model, 'change:info_id', this._render);
             this.listenTo(this.model, 'invalid', this._onFormModelInvalid);
 
-            if(navigator.userAgent.indexOf('Android') != -1)
-            {
-                this.$el.find('.to-file').hide();
-            }
-
             this._renderSelect();
         },
         events: {
-            'click .to-file': '_onToFileClick',
-            'click .to-manual': '_onToManualClick',
-            'click .upload-license-a-btn': '_onUploadLicenseABtnClick',
-            'click .upload-license-b-btn': '_onUploadLicenseBBtnClick',
-            'click .upload-idcard-btn': '_onUploadIdCardBtnClick',
             'click .apply-actual-btn': '_onApplyActualClick',
-            'change [name="no_hphm"]': '_onNoHphmChange',
-            'change .driving-license-a-file': '_onLicenseAFileChange',
-            'change .driving-license-b-file': '_onLicenseBFileChange',
-            'change .idcard-file': '_onIdcardFileChange'
         },
         _onToFileClick: function(event){
             this.$el.find('.manual-form').hide();
