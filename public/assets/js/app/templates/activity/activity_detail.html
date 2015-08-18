@@ -23,6 +23,15 @@ if(sign_end_date)
         <td style="width:30%"><span class="cm-label cm-bg-prim">活动名称</span></td>
         <td><%= name %></td>
     </tr>
+    <tr class="fb_box_bt" >
+        <td><span class="cm-label cm-bg-prim">活动内容</span></td>
+        <td></td>
+    </tr>
+    <tr class="fb_box_bt">
+        <td colspan="2">
+            <%= contents %>
+        </td>
+    </tr>
     <tr class="fb_box_bt">
         <td><span class="cm-label cm-bg-prim">活动时间</span></td>
         <td><%= date_str %></td>
@@ -41,15 +50,6 @@ if(sign_end_date)
             <% for(var i = 0; i < goods.length; i++){ %>
             <span><%= goods[i].name %>:<%= goods[i].price %></span>
             <% } %>
-        </td>
-    </tr>
-    <tr class="fb_box_bt" >
-        <td><span class="cm-label cm-bg-prim">活动内容</span></td>
-        <td></td>
-    </tr>
-    <tr class="fb_box_bt">
-        <td colspan="2">
-            <%= contents %>
         </td>
     </tr>
 </table>
