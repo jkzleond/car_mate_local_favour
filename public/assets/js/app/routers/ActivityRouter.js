@@ -79,7 +79,7 @@ define([
                 $.cm.toast({msg: '请进行线下支付'});
                 return;
             }
-            var order_info_xml = '<root><orderId>' + order_info.order_id + '<orderId><orderNo>' + order_info.order_no + '</orderNo><orderFee>' + order_info.order_fee + '</orderFee><payType><offline>' + order_info.pay_type.offline + '</offline><alipay>' + order_info.pay_type.alipay + '</alipay><wxpay>' + order_info.pay_type.wxpay + '</wxpay></payType><des>' + order_info.order_des + '</des></root>';
+            var order_info_xml = '<root><orderId>' + order_info.order_id + '<orderId><orderNo>' + order_info.order_no + '</orderNo><orderFee>' + order_info.order_fee + '</orderFee><payType><offline>' + order_info.pay_type.offline + '</offline><alipay>' + order_info.pay_type.alipay + '</alipay><wxpay>' + order_info.pay_type.wxpay + '</wxpay></payType></root>'; // 因为中文备注引起IOS订单支付不了的问题,暂时去了 <des> + order_info.order_des + </des>
             window.location.href = 'pay://yn.122.net/?ordername=' + encodeURIComponent('活动收费项') + '&orderinfo=' + encodeURIComponent(base64encode(order_info_xml));
         },
         routes: {

@@ -22,7 +22,15 @@
         width: 100%;
         height: 100%;
         position: fixed;
-        z-index: 99999999;
+        z-index: 99999998;
+    }
+    .index-loading {
+        width: 100%;
+        bottom: 0px;
+        text-aling: center;
+        font-size: 14px;
+        position: fixed;
+        z-index: 99999998;
     }
 </style>
 
