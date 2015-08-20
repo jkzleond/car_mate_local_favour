@@ -71,6 +71,8 @@ define([
 
             $('[data-field="auto"]').find('#activity_option_label').text(model.get('option'));
             $('[name="user_id"]').val(G.user.user_id);
+            $('[name="uname"]').val(G.user.uname || '');
+            $('[name="phone"]').val(G.user.phone || '');
 
             var need_pay = model.get('need_pay');
 
@@ -158,6 +160,7 @@ define([
             this.sign_form_model.clear({silent: true}); //先清空旧的数据
             var self = this;
             $('[name]:visible').each(function(i, n){
+                if( $(n).is('radio') && $(n).prop('checked') == false ) return; //排除未选择的当选项
                 var key = $(n).attr('name');
                 var value = $(n).val();
                 self.sign_form_model.set(key, value, {silent: true});
