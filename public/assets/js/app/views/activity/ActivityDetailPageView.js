@@ -195,7 +195,8 @@ define([
                     order_info['pay_type'].wxpay = 1;
                 }
             }
-            order_info.order_des = this.model.get('name');
+            var order_name = this.model.get('name');
+            order_info.order_des = order_name == 't1' ? '活动名称' : 'for auto life';
             return order_info;
         }
     });
