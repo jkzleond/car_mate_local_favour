@@ -224,14 +224,19 @@ require(['jquery'], function($){
                 //调用Backbone.history.start,用以侦听window的hashchange事件,从而使路由生效
                 //创建路由
 
-                if(window.app && !/.*#$/.test(window.location.href) )
+                //解决android4.4以下多个webview输入框不能输入的问题
+                if(window.app)
                 {
                     Backbone.history.orig_check_url = Backbone.history.checkUrl;
                     Backbone.history.checkUrl = function(e){
-                        var result = app.setUrl(window.location.href);
-                        if(result == 'false'){
-                            window.location.href = window.location.href.replace(/#.*$/, '#');
-                            return;
+                        if( !/.*#$|[^#]*/.test(window.location.href) )
+                        {
+                            var result = app.setUrl(window.location.href);
+                            if(result == 'false')
+                            {
+                                window.location.href = window.location.href.replace(/#.*$/, '#');
+                                return;
+                            }
                         }
                         Backbone.history.orig_check_url(e);
                     }
