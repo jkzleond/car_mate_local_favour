@@ -72,12 +72,12 @@ define([
         {
             $(':mobile-pagecontainer').pagecontainer('change', '#insurance_reservation_page');
         },
-        //比价(暂时不用)
+        //比价
         parityPrice: function(info_id){
             $(':mobile-pagecontainer').pagecontainer('change', '#insurance_parity_price_page');
             this.parity_page_view.loadInfo(info_id);
         },
-        //精算比价(暂时不用)
+        //精算比价
         finalParityPrice: function(info_id){
             $(':mobile-pagecontainer').pagecontainer('change', '#insurance_final_parity_price_page');
             this.final_parity_page_view.loadInfo(info_id);

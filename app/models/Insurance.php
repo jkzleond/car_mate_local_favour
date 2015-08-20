@@ -911,7 +911,26 @@ SQL;
 
         if(!$success) return false;
 
-        $connection = self::_getCOnnection();
+        $connection = self::_getConnection();
         return $connection->lastInsertId();
+    }
+
+    /**
+     * 添加保险预约
+     * @param array|null $criteria
+     * @return  bool
+     */
+    public static function addInsuranceReservation(array $criteria=null)
+    {
+        $crt = new Criteria($criteria);
+        $sql = 'insert into Insurance_Reservation (phone, phpm, auto_name, frame_number, engine_number) values (:phone, :phhm, :auto_name, :frame_number, :engine_number)';
+        $bind = array(
+            'phone' => $crt->phone,
+            'hphm' => $crt->hphm,
+            'auto_name' => $crt->auto_name,
+            'frame_number' => $crt->frame_number,
+            'engine_number' => $crt->engine_number
+        );
+        return self::nativeExecute($sql, $bind);
     }
 }

@@ -130,7 +130,7 @@ $router->addPut('/insurance/{insurance_info_id:\d+}/order_info', array(
 //保险预约
 $router->addPost('/insurance/reservation', array(
     'controller' => 'insurance',
-    'action' => 'reservation'
+    'action' => 'addReservation'
 ));
 
 //获取保险信息列表

@@ -393,4 +393,13 @@ class InsuranceController extends ControllerBase
         $this->view->setVars($return_data);
     }
 
+    /**
+     * 添加保险预约
+     */
+    public function addReservation()
+    {
+        $data = $this->getJsonRawBody(true);
+        $success = Insurance::addInsuranceReservation($data);
+    }
+
 }
