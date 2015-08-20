@@ -410,6 +410,10 @@ header .right {
     background-color: #3D9AE8;
 }
 
+.ui-btn[disabled] {
+    background-color: #BBB;
+}
+
 /*前景色*/
 .cm-color-text-sec {
     color: #696969;

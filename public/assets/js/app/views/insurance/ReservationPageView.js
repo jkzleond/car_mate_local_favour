@@ -6,164 +6,44 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'models/insurance/InsuranceActualFormModel',
-    'text!templates/insurance/reservation_page.html'
-], function($, _, Backbone, InsuranceActualFormModel, pageTpl){
+    'models/insurance/InsuranceReservationFormModel',
+    'text!templates/insurance/reservation_page.html',
+    'jqm',
+    'datetimepicker'
+], function($, _, Backbone, InsuranceReservationFormModel, pageTpl){
     $(pageTpl).appendTo('body');
     var ApplyActualPage = Backbone.View.extend({
         el: '#insurance_reservation_page',
         initialize: function(){
-            this.model = new InsuranceActualFormModel();
+            this.model = new InsuranceReservationFormModel();
+
+            /*
+              创建日期控件(报价时间)
+             */
+            this.$el.find('[name="offer_date"]').datetimepicker({
+            //    //yearOffset:222,
+                lang:'ch',
+                format:'Y-m-d',
+                formatDate:'Y/m/d',
+                timepicker: false
+            //   // minDate:'-1970/01/02', // yesterday is minimum date
+            //   // maxDate:'+1970/01/02' // and tommorow is maximum date calendar
+            });
+
+            this.$el.find('[name=phone]').val(G.user.phone || '');
+
             this.listenTo(this.model, 'change:info_id', this._render);
             this.listenTo(this.model, 'invalid', this._onFormModelInvalid);
-
-            this._renderSelect();
         },
         events: {
-            'click .apply-actual-btn': '_onApplyActualClick',
+            'click .reservation-btn': '_onReservationBtnClick',
         },
-        _onToFileClick: function(event){
-            this.$el.find('.manual-form').hide();
-            this.$el.find('.file-form').show();
-        },
-        _onToManualClick: function(event){
-            this.$el.find('.file-form').hide();
-            this.$el.find('.manual-form').show();
-        },
-        _onUploadLicenseABtnClick: function(event){
-            this.$el.find('.driving-license-a-file').click();
-        },
-        _onUploadLicenseBBtnClick: function(event){
-            this.$el.find('.driving-license-b-file').click();
-        },
-        _onUploadIdCardBtnClick: function(event){
-            this.$el.find('.idcard-file').click();
-        },
-        _onNoHphmChange: function(event){
-            var is_checked = $(event.target).prop('checked');
-            if(is_checked)
-            {
-                this.$el.find('[name="hphm"]').prop('disabled', true).attr('placeholder','还未获取牌照,不需填写').text('');
-            }
-            else
-            {
-                this.$el.find('[name="hphm"]').prop('disabled', false).attr('placeholder', '');
-            }
-        },
-        _onLicenseAFileChange: function(event){
-            var self = this;
-            var file = $(event.target).prop('files')[0];
-            var reader = new FileReader();
-            reader.onload = function(event){
-                var result = event.target.result;
-                self.$el.find('.thumbnail-license-a').attr('src', result).fadeIn(1000);
-
-                var form_data = new FormData();
-                form_data.append('pic', file);
-
-                //ajax上传文件
-                $.ajax({
-                    url:'/upload/file',
-                    method: 'POST',
-                    data: form_data,
-                    dataType: 'json',
-                    processData: false,
-                    contentType: false
-                }).done(function(data){
-                    if(data.success)
-                    {
-                        self.$el.find('[name="driving_license_a"]').val(data.path);
-                    }
-                });
-            };
-            reader.readAsDataURL(file);
-        },
-        _onLicenseBFileChange: function(event){
-            var self = this;
-            var file = $(event.target).prop('files')[0];
-            var reader = new FileReader();
-            reader.onload = function(event){
-                var result = event.target.result;
-                self.$el.find('.thumbnail-license-b').attr('src', result).fadeIn(1000);
-
-                var form_data = new FormData();
-                form_data.append('pic', file);
-
-                //ajax上传文件
-                $.ajax({
-                    url:'/upload/file',
-                    method: 'POST',
-                    data: form_data,
-                    dataType: 'json',
-                    processData: false,
-                    contentType: false
-                }).done(function(data){
-                    if(data.success)
-                    {
-                        self.$el.find('[name="driving_license_b"]').val(data.path);
-
-                    }
-                });
-
-            };
-            reader.readAsDataURL(file);
-        },
-        _onIdcardFileChange: function(event){
-            var self = this;
-            var file = $(event.target).prop('files')[0];
-            var reader = new FileReader();
-            reader.onload = function(event){
-                var result = event.target.result;
-                self.$el.find('.thumbnail-idcard').attr('src', result).fadeIn(1000);
-
-                var form_data = new FormData();
-                form_data.append('pic', file);
-
-                //ajax上传文件
-                $.ajax({
-                    url:'/upload/file',
-                    method: 'POST',
-                    data: form_data,
-                    dataType: 'json',
-                    processData: false,
-                    contentType: false
-                }).done(function(data){
-                    if(data.success)
-                    {
-                        self.$el.find('[name="idcard"]').val(data.path);
-                    }
-                });
-
-            };
-            reader.readAsDataURL(file);
-        },
-        _onApplyActualClick: function(event){
+        _onReservationBtnClick: function(event){
             this._collectionFormData();
             if(this.model.isValid())
             {
                 this.model.save();
             }
-        },
-        _render: function(model, options){
-            this.$el.find('[name=phone]').val(G.user.phone || '');
-        },
-        _renderSelect: function(){
-            var today = new Date();
-            var full_year = today.getFullYear();
-            var begin_year = full_year - 25;
-
-            for(var i = full_year; i >= begin_year; i--)
-            {
-                this.$el.find('[name=first_year]').append('<option value="' + i + '">' + i + '年</option>');
-                this.$el.find('[name=insurance_year]').append('<option value="' + i + '">' + i + '年</option>');
-            }
-
-            for(var m = 12; m >= 1; m--)
-            {
-                this.$el.find('[name=first_month]').append('<option value="' + m + '">' + m + '月</option>');
-                this.$el.find('[name=insurance_month]').append('<option value="' + m + '">' + m + '月</option>');
-            }
-
         },
         _onFormModelInvalid: function(model, err){
             $.cm.toast({msg: err});
@@ -176,26 +56,11 @@ define([
             this.model.set('info_id', info_id, {silent: true});
 
             this.$el.find('[name]:visible').each(function(i, n){
-
-                if($(n).is('input:checkbox') && !$(n).prop('checked')) return;
-
                 var key = $(n).attr('name');
                 var value = $(n).val();
 
                 self.model.set(key, value, {silent: true});
             });
-
-            if(this.$el.find('.file-form').is(':visible'))
-            {
-                var license_a = this.$el.find('[name="driving_license_a"]').val();
-                var license_b = this.$el.find('[name="driving_license_b"]').val();
-                var idcard = this.$el.find('[name="idcard"]').val();
-                this.model.set({
-                    'driving_license_a': license_a,
-                    'driving_license_b': license_b,
-                    'idcard': idcard
-                },{silent: true});
-            }
         }
     });
     return ApplyActualPage;

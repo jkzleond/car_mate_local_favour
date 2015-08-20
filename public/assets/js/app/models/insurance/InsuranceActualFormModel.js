@@ -31,7 +31,7 @@ define([
             {
                 return '请填写车架号';
             }
-            if(!_.isUndefined(attrs.fdjh) && !attrs.fdjh)
+            if(!_.isUndefined(attrs.engine_number) && !attrs.engine_number)
             {
                 return '请填写发动机号';
             }

@@ -127,6 +127,12 @@ $router->addPut('/insurance/{insurance_info_id:\d+}/order_info', array(
     'action' => 'certainInsuranceOrder'
 ));
 
+//保险预约
+$router->addPost('/insurance/reservation', array(
+    'controller' => 'insurance',
+    'action' => 'reservation'
+));
+
 //获取保险信息列表
 $router->addGet('/insurances/{state:\d+}', array(
     'controller' => 'insurance',
