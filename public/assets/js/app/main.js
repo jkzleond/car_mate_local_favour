@@ -223,13 +223,6 @@ require(['jquery'], function($){
                 this.new_insurance_router = new NewInsuranceRouter();
                 //调用Backbone.history.start,用以侦听window的hashchange事件,从而使路由生效
                 //创建路由
-                
-                window.app = {
-                    setUrl: function(url){
-                        console.log(url);
-                        return 'false';
-                    }
-                };
 
                 //解决android4.4以下多个webview输入框不能输入的问题
                 if(window.app)
