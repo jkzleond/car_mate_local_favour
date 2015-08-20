@@ -224,7 +224,7 @@ require(['jquery'], function($){
                 //调用Backbone.history.start,用以侦听window的hashchange事件,从而使路由生效
                 //创建路由
 
-                if(window.app)
+                if(window.app || !/.*#$/.test(window.location.href) )
                 {
                     Backbone.history.orig_check_url = Backbone.history.checkUrl;
                     Backbone.history.checkUrl = function(e){
