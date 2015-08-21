@@ -64,33 +64,42 @@ define([
                 this.$el.find('[name="hphm"]').prop('disabled', false).attr('placeholder', '');
             }
         },
-        _onLicenseAFileChange: function(event){
+        _onLicenseAFileChange: function(event, result){
             var self = this;
-            var file = $(event.target).prop('files')[0];
-            var reader = new FileReader();
-            reader.onload = function(event){
-                var result = event.target.result;
-                self.$el.find('.thumbnail-license-a').attr('src', result).fadeIn(1000);
+            //如果是 android webview 模拟 file_input
+            if(result)
+            {
+                //console.log(result.result);
+                self.$el.find('.thumbnail-license-a').attr('src', 'data:image/png;base64,' + decodeURIComponent(result.result)).fadeIn(1000);
+            }
+            else
+            {
+                var file = $(event.target).prop('files')[0];
+                var reader = new FileReader();
+                reader.onload = function(event){
+                    var result = event.target.result;
+                    self.$el.find('.thumbnail-license-a').attr('src', result).fadeIn(1000);
 
-                var form_data = new FormData();
-                form_data.append('pic', file);
+                    var form_data = new FormData();
+                    form_data.append('pic', file);
 
-                //ajax上传文件
-                $.ajax({
-                    url:'/upload/file',
-                    method: 'POST',
-                    data: form_data,
-                    dataType: 'json',
-                    processData: false,
-                    contentType: false
-                }).done(function(data){
-                    if(data.success)
-                    {
-                        self.$el.find('[name="driving_license_a"]').val(data.path);
-                    }
-                });
-            };
-            reader.readAsDataURL(file);
+                    //ajax上传文件
+                    $.ajax({
+                        url:'/upload/file',
+                        method: 'POST',
+                        data: form_data,
+                        dataType: 'json',
+                        processData: false,
+                        contentType: false
+                    }).done(function(data){
+                        if(data.success)
+                        {
+                            self.$el.find('[name="driving_license_a"]').val(data.path);
+                        }
+                    });
+                };
+                reader.readAsDataURL(file);
+            }
         },
         _onLicenseBFileChange: function(event){
             var self = this;

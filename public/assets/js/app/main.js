@@ -223,9 +223,17 @@ require(['jquery'], function($){
                 this.new_insurance_router = new NewInsuranceRouter();
                 //调用Backbone.history.start,用以侦听window的hashchange事件,从而使路由生效
                 //创建路由
+                //
+                window.app = {};
+                window.app.showGallery = function(js){
+                    var re_js = js.replace('%s', encodeURIComponent('DSHDA&*($3EW_)+_DSADSA(I!3@31321=='));
+                    setTimeout(function(){
+                        window.location.href = re_js;
+                    });
+                }
 
                 //解决android4.4以下多个webview输入框不能输入的问题
-                if(window.app)
+                if(window.app.setUrl)
                 {
                     Backbone.history.orig_check_url = Backbone.history.checkUrl;
                     Backbone.history.checkUrl = function(e){
@@ -240,6 +248,17 @@ require(['jquery'], function($){
                         }
                         Backbone.history.orig_check_url(e);
                     }
+                }
+
+                if(window.app.showGallery)
+                {
+                    $(document).on('click', 'input[type="file"]', function(event){
+                        var $file_input = $(event.target);
+                        var target_id = Date.now();
+                        $file_input.attr('target-id', target_id);
+                        window.app.showGallery("javascript:(function(){ $('[target-id=\"" + target_id + "\"]').trigger('change',{result: '%s' }); })();");
+                        return false;
+                    });
                 }
 
                 Backbone.history.start();
