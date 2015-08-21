@@ -224,13 +224,13 @@ require(['jquery'], function($){
                 //调用Backbone.history.start,用以侦听window的hashchange事件,从而使路由生效
                 //创建路由
                 //
-                window.app = {};
+                /*window.app = {};
                 window.app.showGallery = function(js){
                     var re_js = js.replace('%s', encodeURIComponent('DSHDA&*($3EW_)+_DSADSA(I!3@31321=='));
                     setTimeout(function(){
                         window.location.href = re_js;
                     });
-                }
+                }*/
 
                 //解决android4.4以下多个webview输入框不能输入的问题
                 if(window.app.setUrl)
