@@ -250,6 +250,7 @@ require(['jquery'], function($){
                     }
                 }
 
+                //解决android4.4以下webview不能上传文件问题
                 if(window.app.showGallery)
                 {
                     $(document).on('click', 'input[type="file"]', function(event){
