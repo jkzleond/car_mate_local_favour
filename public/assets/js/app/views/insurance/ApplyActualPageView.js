@@ -144,7 +144,7 @@ define([
 
             if(result)
             {
-                self.$el.find('.thumbnail-idcard').attr('src', 'data:image/png;base64,' + decodeURIComponent(result.result)).fadeIn(1000);
+                self.$el.find('.thumbnail-idcar').attr('src', 'data:image/png;base64,' + decodeURIComponent(result.result)).fadeIn(1000);
             }
             else
             {
