@@ -77,7 +77,7 @@ define([
             //如果是 android webview 模拟 file_input
             if(result)
             {
-                self.$el.find('img.thumbnail-license-a').attr('src', 'data:image/png;base64,' + decodeURIComponent(result.result)).fadeIn(1000);
+                self.$el.find('img.thumbnail-license-a').attr('src', 'data:image/png;base64,' + decodeURIComponent(result.result));
             }
             else
             {
@@ -114,7 +114,7 @@ define([
 
             if(result)
             {
-                self.$el.find('img.thumbnail-license-b').attr('src', 'data:image/png;base64,' + decodeURIComponent(result.result)).fadeIn(1000);
+                self.$el.find('img.thumbnail-license-b').attr('src', 'data:image/png;base64,' + decodeURIComponent(result.result));
             }
             else
             {
@@ -154,7 +154,7 @@ define([
 
             if(result)
             {
-                self.$el.find('img.thumbnail-idcard').attr('src', 'data:image/png;base64,' + decodeURIComponent(result.result)).fadeIn(1000);
+                self.$el.find('img.thumbnail-idcard').attr('src', 'data:image/png;base64,' + decodeURIComponent(result.result));
             }
             else
             {
