@@ -121,7 +121,6 @@ class ActivityController extends ControllerBase
                             'order_fee' => $order_result[2]
                         );
                     }
-
                 }
             }
         //}

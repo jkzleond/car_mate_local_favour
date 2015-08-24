@@ -6,10 +6,10 @@
  * Date: 15-7-21
  * Time: 上午6:21
  */
-class AttachMentController extends ControllerBase
+class AttachmentController extends ControllerBase
 {
 
-    private static $upload_dir = __DIR__.'/../../public/uploads';
+    private static $upload_dir = '/../../public/uploads';
 
     public function uploadAction($data_type)
     {
@@ -18,6 +18,8 @@ class AttachMentController extends ControllerBase
             $files = $this->request->getUploadedFiles();
 
             $file = $files[0];
+
+            $dir = $this->_dir();
 
             if(!is_dir($dir))
             {
@@ -36,5 +38,10 @@ class AttachMentController extends ControllerBase
 
         }
 
+    }
+
+    private function _dir()
+    {
+        return __DIR__.self::$upload_dir;
     }
 }

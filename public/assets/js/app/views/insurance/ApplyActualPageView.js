@@ -16,6 +16,8 @@ define([
             this.model = new InsuranceActualFormModel();
             this.listenTo(this.model, 'change:info_id', this._render);
             this.listenTo(this.model, 'invalid', this._onFormModelInvalid);
+            //绑定缩略图img事件
+            this.$el.find('img.thumbnail').bind('load', _.bind(this._onThumbnailImageLoad, this));
 
             if(navigator.userAgent.indexOf('Android') != -1)
             {
@@ -31,6 +33,7 @@ define([
             'click .upload-license-b-btn': '_onUploadLicenseBBtnClick',
             'click .upload-idcard-btn': '_onUploadIdCardBtnClick',
             'click .apply-actual-btn': '_onApplyActualClick',
+            'click canvas.thumbnail': '_onThumbnailClick',
             'change [name="no_hphm"]': '_onNoHphmChange',
             'change .driving-license-a-file': '_onLicenseAFileChange',
             'change .driving-license-b-file': '_onLicenseBFileChange',
@@ -53,6 +56,11 @@ define([
         _onUploadIdCardBtnClick: function(event){
             this.$el.find('.idcard-file').click();
         },
+        _onThumbnailClick: function(event){
+            var canvas = event.target;
+            this.$el.find('#insurance_attach_preview_img').attr('src', canvas.toDataURL());
+            this.$el.find('#insurance_attach_preview_popup').popup('open');
+        },
         _onNoHphmChange: function(event){
             var is_checked = $(event.target).prop('checked');
             if(is_checked)
@@ -69,7 +77,7 @@ define([
             //如果是 android webview 模拟 file_input
             if(result)
             {
-                self.$el.find('.thumbnail-license-a').attr('src', 'data:image/png;base64,' + decodeURIComponent(result.result)).fadeIn(1000);
+                self.$el.find('img.thumbnail-license-a').attr('src', 'data:image/png;base64,' + decodeURIComponent(result.result)).fadeIn(1000);
             }
             else
             {
@@ -77,11 +85,12 @@ define([
                 var reader = new FileReader();
                 reader.onload = function(event){
                     var result = event.target.result;
-                    self.$el.find('.thumbnail-license-a').attr('src', result).fadeIn(1000);
+                    self.$el.find('img.thumbnail-license-a').attr('src', result);
 
+                    /*
                     var form_data = new FormData();
                     form_data.append('pic', file);
-
+                    
                     //ajax上传文件
                     $.ajax({
                         url:'/upload/file',
@@ -95,7 +104,7 @@ define([
                         {
                             self.$el.find('[name="driving_license_a"]').val(data.path);
                         }
-                    });
+                    });*/
                 };
                 reader.readAsDataURL(file);
             }
@@ -105,7 +114,7 @@ define([
 
             if(result)
             {
-                self.$el.find('.thumbnail-license-b').attr('src', 'data:image/png;base64,' + decodeURIComponent(result.result)).fadeIn(1000);
+                self.$el.find('img.thumbnail-license-b').attr('src', 'data:image/png;base64,' + decodeURIComponent(result.result)).fadeIn(1000);
             }
             else
             {
@@ -113,8 +122,9 @@ define([
                 var reader = new FileReader();
                 reader.onload = function(event){
                     var result = event.target.result;
-                    self.$el.find('.thumbnail-license-b').attr('src', result).fadeIn(1000);
+                    self.$el.find('img.thumbnail-license-b').attr('src', result);
 
+                    /*
                     var form_data = new FormData();
                     form_data.append('pic', file);
 
@@ -132,7 +142,7 @@ define([
                             self.$el.find('[name="driving_license_b"]').val(data.path);
 
                         }
-                    });
+                    });*/
 
                 };
                 reader.readAsDataURL(file);
@@ -144,7 +154,7 @@ define([
 
             if(result)
             {
-                self.$el.find('.thumbnail-idcar').attr('src', 'data:image/png;base64,' + decodeURIComponent(result.result)).fadeIn(1000);
+                self.$el.find('img.thumbnail-idcard').attr('src', 'data:image/png;base64,' + decodeURIComponent(result.result)).fadeIn(1000);
             }
             else
             {
@@ -152,8 +162,9 @@ define([
                 var reader = new FileReader();
                 reader.onload = function(event){
                     var result = event.target.result;
-                    self.$el.find('.thumbnail-idcard').attr('src', result).fadeIn(1000);
+                    self.$el.find('img.thumbnail-idcard').attr('src', result);
 
+                    /*
                     var form_data = new FormData();
                     form_data.append('pic', file);
 
@@ -170,12 +181,45 @@ define([
                         {
                             self.$el.find('[name="idcard"]').val(data.path);
                         }
-                    });
+                    });*/
 
                 };
                 reader.readAsDataURL(file);
             }
 
+        },
+        _onThumbnailImageLoad: function(event){
+            var img = event.target;
+            var img_width = img.width;
+            var img_height = img.height;
+            var compress_width = 640;
+            var compress_height = 480;
+            var data_rel = $(event.target).attr('data-rel');
+            var canvas = this.$el.find(data_rel)[0];
+            var ctx = canvas.getContext('2d');
+
+            var target_x = 0;
+            var target_y = 0;
+            var target_width = 0;
+            var target_height = 0;
+
+            //等比例缩放图片并居中
+            if(img_width > img_height)
+            {
+                //宽图
+                target_width = compress_width;
+                target_height = (compress_width / img_width) * img_height;
+                target_y = (compress_height - target_height) / 2; 
+            }
+            else
+            {
+                //长图
+                target_height = compress_height;
+                target_width = (compress_height / img_height) * img_width;
+                target_x = (compress_width - target_width) / 2;
+            }
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(img, target_x, target_y, target_width, target_height);
         },
         _onApplyActualClick: function(event){
             this._collectionFormData();
