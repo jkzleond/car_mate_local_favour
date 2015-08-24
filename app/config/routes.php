@@ -206,6 +206,13 @@ $router->addPost('/activity/sign_up/', array(
     'action' => 'signUp'
 ));
 
+
+/*车辆信息*/
+$router->addGet('/car_info/{user_id:.*}/{hphm:.*}', array(
+    'controller' => 'car',
+    'action' => 'getCarInfoByUserIdAndHphm'
+));
+
 /*省市*/
 
 //获取省份列表
@@ -221,7 +228,8 @@ $router->addGet('/citise/{province_id:\d+}', array(
 ));
 
 //上传文件
-$router->addPost('/upload/file', array(
-    'controller' => 'file',
+$router->addPost('/upload/file/{data_type:.*}', array(
+    'controller' => 'attachment',
     'action' => 'upload'
 ));
+

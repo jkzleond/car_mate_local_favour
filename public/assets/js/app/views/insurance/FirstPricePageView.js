@@ -9,8 +9,7 @@ define([
     'models/insurance/InsuranceInfoModel',
     'collections/insurance/InsuranceCompanyCollection',
     'text!templates/insurance/first_price_page.html',
-    'text!templates/insurance/discount_detail.html',
-    'jqplot_bar'
+    'text!templates/insurance/discount_detail.html'
 ], function($, _, Backbone, InsuranceInfoModel, InsuranceCompanyCollection, pageTpl, discountDetailTpl){
     $(pageTpl).appendTo('body');
     var ParityPageView = Backbone.View.extend({

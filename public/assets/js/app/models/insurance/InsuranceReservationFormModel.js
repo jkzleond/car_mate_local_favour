@@ -14,11 +14,7 @@ define(
 	            {
 	                return '手机号码不合法';
 	            }
-	            if(_.isUndefined(attrs.no_hphm) && !_.isUndefined(attrs.hphm) && !attrs.hphm)
-	            {
-	                return '请填写车牌号';
-	            }
-	            if(!_.isUndefined(attrs.hpzl) && !attrs.hpzl)
+	            if(!_.isUndefined(attrs.auto_name) && !attrs.auto_name)
 	            {
 	                return '请填写车辆品牌种类(车型)';
 	            }

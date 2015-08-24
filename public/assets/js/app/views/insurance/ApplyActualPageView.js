@@ -186,6 +186,15 @@ define([
         },
         _render: function(model, options){
             this.$el.find('[name=phone]').val(G.user.phone || '');
+            //如果是为只卖交强险套餐进行的精算, 精算按钮的文字改为'我要投保'
+            if(this.is_compulsory)
+            {
+                this.$el.find('.apply-actual-btn').text('我要投保');
+            }
+            else
+            {
+                this.$el.find('.apply-actual-btn').text('我要精算');
+            }
         },
         _renderSelect: function(){
             var today = new Date();

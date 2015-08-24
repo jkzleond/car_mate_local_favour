@@ -923,14 +923,32 @@ SQL;
     public static function addInsuranceReservation(array $criteria=null)
     {
         $crt = new Criteria($criteria);
-        $sql = 'insert into Insurance_Reservation (phone, phpm, auto_name, frame_number, engine_number) values (:phone, :phhm, :auto_name, :frame_number, :engine_number)';
+        $sql = 'insert into Insurance_Reservation (user_id, phone, car_info_id, offer_date) values (:user_id, :phone, :car_info_id, :offer_date)';
         $bind = array(
+            'user_id' => $crt->user_id,
             'phone' => $crt->phone,
-            'hphm' => $crt->hphm,
-            'auto_name' => $crt->auto_name,
-            'frame_number' => $crt->frame_number,
-            'engine_number' => $crt->engine_number
+            'car_info_id' => $crt->car_info_id,
+            'offer_date' => $crt->offer_date
         );
         return self::nativeExecute($sql, $bind);
+    }
+
+    /**
+     * 指定的电话号码和指定车辆信息是否已预约(未报价)
+     * @param  string  $phone
+     * @param  string|int  $car_info_id
+     * @return boolean
+     */
+    public static function isReserved($phone, $car_info_id)
+    {
+        $sql = 'select id from Insurance_Reservation where phone = :phone and car_info_id = :car_info_id and mark is null';
+        $bind = array(
+            'phone' => $phone,
+            'car_info_id' => $car_info_id
+        );
+
+        $result = self::fetchOne($sql, $bind, null, Db::FETCH_ASSOC);
+
+        return !empty($result);
     }
 }

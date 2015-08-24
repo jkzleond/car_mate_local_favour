@@ -6,6 +6,7 @@ define([
     'jquery',
     'backbone',
     'views/insurance/InsurancePageView',
+    'views/insurance/CompulsorySetPageView',
     'views/insurance/ValueSetPageView',
     'views/insurance/FullSetPageView',
     'views/insurance/ReservationPageView',
@@ -16,11 +17,12 @@ define([
     'views/insurance/ApplyActualPageView',
     'views/insurance/PayOrderPageView',
     'views/insurance/InsuranceListPageView'
-], function($, Backbone, InsurancePageView, ValueSetPageView, FullSetPageView, ReservationPageView, ParityPageView, FinalParityPageView, ApplyActualPageView, PayOrderPageView, InsuranceListPageView){
+], function($, Backbone, InsurancePageView, CompulsorySetPageView, ValueSetPageView, FullSetPageView, ReservationPageView, ParityPageView, FinalParityPageView, ApplyActualPageView, PayOrderPageView, InsuranceListPageView){
     var NewInsuranceRouter = Backbone.Router.extend({
         initialize: function(){
 
             this.insurance_page_view = new InsurancePageView();
+            this.insurance_compulsory_set_page_view = new CompulsorySetPageView();
             this.insurance_value_set_page_view = new ValueSetPageView();
             this.insurance_full_set_page_view = new FullSetPageView();
             this.insurance_reservation_page_view = new ReservationPageView();
@@ -34,6 +36,7 @@ define([
 
             this.listenTo(this.insurance_value_set_page_view, 'invalid', this._onFormModelInvalid);
             this.listenTo(this.insurance_full_set_page_view, 'invalid', this._onFormModelInvalid);
+            this.listenTo(this.insurance_compulsory_set_page_view, 'uri', this._onRequestUri);
             this.listenTo(this.insurance_value_set_page_view, 'uri', this._onRequestUri);
             this.listenTo(this.insurance_full_set_page_view, 'uri', this._onRequestUri);
             this.listenTo(this.parity_page_view, 'uri', this._onRequestUri);
@@ -52,7 +55,7 @@ define([
             'insurance/reservation': 'reservation',
             'insurance/price/:info_id': 'parityPrice',
             'insurance/actuary_price/:info_id': 'finalParityPrice',
-            'insurance/apply_actual/:info_id': 'applyActual',
+            'insurance/apply_actual/:info_id(/:is_compulsory)': 'applyActual',
             'insurance/:info_id/actuary_result/': 'actuaryResult',
             'insurance/:info_id/pay_order': 'payOrder',
             'insurance/list(/:state)': 'insurances'
@@ -63,6 +66,10 @@ define([
         //初算(套餐)
         firstCalc: function(set_type){
             $(':mobile-pagecontainer').pagecontainer('change', '#insurance_' + set_type + '_set_page');
+            if(this['insurance_' + set_type + '_set_page_view'] && this['insurance_' + set_type + '_set_page_view'].reset)
+            {
+                this['insurance_' + set_type + '_set_page_view'].reset();
+            }
         },
         firstPrice: function(info_id){
             $(':mobile-pagecontainer').pagecontainer('change', '#insurance_first_price_page');
@@ -71,6 +78,7 @@ define([
         reservation: function()
         {
             $(':mobile-pagecontainer').pagecontainer('change', '#insurance_reservation_page');
+            this.insurance_reservation_page_view.reset();//重置视图
         },
         //比价
         parityPrice: function(info_id){
@@ -83,7 +91,7 @@ define([
             this.final_parity_page_view.loadInfo(info_id);
         },
         //申请精算
-        applyActual: function(info_id){
+        applyActual: function(info_id, is_compulsory){
             if(G.user.user_id === 'INSURANCE_ACCOUNT')
             {
                 $.cm.toast({msg: '请下载车友惠App进行精算'});
@@ -91,6 +99,7 @@ define([
                 return;
             }
             $(':mobile-pagecontainer').pagecontainer('change', '#insurance_apply_actual_page');
+            this.apply_actual_page_view.is_compulsory = is_compulsory;
             this.apply_actual_page_view.model.set('info_id', info_id);
         },
         //精算价格

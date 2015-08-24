@@ -396,10 +396,39 @@ class InsuranceController extends ControllerBase
     /**
      * 添加保险预约
      */
-    public function addReservation()
+    public function addReservationAction()
     {
-        $data = $this->getJsonRawBody(true);
+        $data = $this->request->getJsonRawBody(true);
+
+        //提交数据包含car_info_id说明该车辆信息已存在,则修改
+        if(!empty($data['car_info_id']))
+        {
+            $car_info_id = $data['car_info_id'];
+
+            //同一个号码同一车辆只能预约一次(未报价前)
+            if( Insurance::isReserved($data['phone'], $car_info_id) )
+            {
+                $this->view->setVars(array(
+                    'success' => false,
+                    'err_msg' => '车辆已预约'
+                ));
+                return;
+            }
+
+            CarInfo::updateCarInfo($car_info_id, $data);
+        }
+        else 
+        {
+            //车辆信息不存在,则添加
+            $data['car_info_id'] = CarInfo::addCarInfo($data);
+        }
+
         $success = Insurance::addInsuranceReservation($data);
+
+        $this->view->setVars(array(
+            'success' => $success,
+            'err_msg' => '保险预约成功'
+        ));
     }
 
 }

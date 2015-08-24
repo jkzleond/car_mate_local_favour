@@ -14,30 +14,31 @@
 
     var discount = Number(company.discount);
     var car_price_discount = Number(company.car_price_discount);
+    var coefficient = Number(result.coefficient || 0);
     var after_discount_compulsory = Number(result.afterDiscountCompulsoryInsurance) || 0.00;
 
     //计算含折价折扣的折扣后车损险保费
     var after_discount_damage = 0;
     var car_price = 0;
 
-    if(this.coefficient == 1)
+    if(coefficient == 1)
     {
-    car_price = (this.standard_damage - 619.00) * 100 / 1.47 * car_price_discount;
+    car_price = (standard_damage - 619.00) * 100 / 1.47 * car_price_discount;
     after_discount_damage = Math.round((car_price * 1.47 / 100.0 + 619.0) * 100) / 100;
     }
-    else if(this.coefficient == 2)
+    else if(coefficient == 2)
     {
-    car_price = (this.standard_damage - 590.00) * 100 / 1.40 * car_price_discount;
+    car_price = (standard_damage - 590.00) * 100 / 1.40 * car_price_discount;
     after_discount_damage = Math.round((car_price * 1.40 / 100.0 + 590.0) * 100) / 100;
     }
-    else if(this.coefficient == 3 || this.coefficient == 4 || this.coefficient == 5)
+    else if(coefficient == 3 || coefficient == 4 || coefficient == 5)
     {
-    car_price = (this.standard_damage - 584.00) * 100 / 1.39 * car_price_discount;
+    car_price = (standard_damage - 584.00) * 100 / 1.39 * car_price_discount;
     after_discount_damage = Math.round((car_price * 1.39 / 100.0 + 584.0) * 100) /100;
     }
-    else if(this.coefficient == 6)
+    else if(coefficient == 6)
     {
-    car_price = (this.standard_damage - 602.00) * 100 / 1.43 * car_price_discount;
+    car_price = (standard_damage - 602.00) * 100 / 1.43 * car_price_discount;
     after_discount_damage = Math.round((car_price * 1.43 / 100.0 + 602.0) * 100) / 100;
     }
 
@@ -60,7 +61,7 @@
     if(!(after_discount_damage == 0))
     {
     //因为车损险和交强险折扣是单独计算
-    total_after_discount = (this.total_standard - this.standard_damage - this.standard_compulsory) * discount + after_discount_damage + after_discount_compulsory;
+    total_after_discount = (total_standard - standard_damage - standard_compulsory) * discount + after_discount_damage + after_discount_compulsory;
 
     gift_money = total_after_discount * gift1;
     }

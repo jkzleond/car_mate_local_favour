@@ -16,6 +16,13 @@ define([
             if(!_.isUndefined(attrs.car_price) && (attrs.car_price < 1 || !car_price_regexp.test(attrs.car_price))){
                 return '车价必须为数字且大于1';
             }
+
+            if(!_.isUndefined(attrs.compulsory_state_id) && !attrs.compulsory_state_id)
+            {
+                return '请选择交强险出现情况';
+            }
+
+
             var phone_regexp = /\d{11}/;
             if(!_.isUndefined(attrs.phone) && !phone_regexp.test(attrs.phone)){
                 return '手机号码不合法';

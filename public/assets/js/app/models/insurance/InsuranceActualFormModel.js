@@ -23,7 +23,7 @@ define([
             {
                 return '请填写车牌号';
             }
-            if(!_.isUndefined(attrs.hpzl) && !attrs.hpzl)
+            if(!_.isUndefined(attrs.auto_name) && !attrs.auto_name)
             {
                 return '请填写车辆品牌种类(车型)';
             }
