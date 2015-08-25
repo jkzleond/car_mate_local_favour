@@ -156,7 +156,7 @@ require(['jquery'], function($){
         //禁用jquerymobile的hashchange侦听
         $.mobile.hashListeningEnabled = false;
 
-        $.mobile.defaultPageTransition = 'pop';
+        $.mobile.defaultPageTransition = false;
 
         $.mobile.loader.prototype.options.text = "loading hardly";
         $.mobile.loader.prototype.options.textVisible = false;

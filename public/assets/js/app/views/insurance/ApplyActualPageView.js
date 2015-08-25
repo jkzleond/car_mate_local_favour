@@ -220,6 +220,7 @@ define([
             }
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.drawImage(img, target_x, target_y, target_width, target_height);
+            $(canvas).attr('data-ready', 'true');
         },
         _onApplyActualClick: function(event){
             this._collectionFormData();
@@ -280,16 +281,33 @@ define([
 
             if(this.$el.find('.file-form').is(':visible'))
             {
-                var license_a = this.$el.find('[name="driving_license_a"]').val();
-                var license_b = this.$el.find('[name="driving_license_b"]').val();
-                var idcard = this.$el.find('[name="idcard"]').val();
+                var license_a = null;
+                var license_b = null;
+                var idcard = null;
+
+                if(this.$el.find('canvas.thumbnail-license-a').attr('data-ready') === 'true')
+                {
+                    var canvas_license_a = this.$el.find('canvas.thumbnail-license-a')[0];
+                    license_a = canvas_license_a.toDataURL().match(/data:image\/.*;base64,(.*)/)[1];
+                }
+                if(this.$el.find('canvas.thumbnail-license-b').attr('data-ready') === 'true')
+                {
+                    var canvas_license_b = this.$el.find('canvas.thumbnail-license-b')[0];
+                    license_b = canvas_license_b.toDataURL().match(/data:image\/.*;base64,(.*)/)[1];    
+                }
+                if(this.$el.find('canvas.thumbnail-idcard').attr('data-ready') === 'true')
+                {
+                    var canvas_idcard = this.$el.find('canvas.thumbnail-idcard')[0];
+                    idcard = canvas_idcard.toDataURL().match(/data:image\/.*;base64,(.*)/)[1];    
+                }
+
                 this.model.set({
                     'driving_license_a': license_a,
                     'driving_license_b': license_b,
                     'idcard': idcard
-                },{silent: true});
-            }
-        }
+                },{silent: true});    
+         }
+     }
     });
     return ApplyActualPage;
 });
