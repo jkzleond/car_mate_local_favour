@@ -1,5 +1,5 @@
 <%
-var order_info_xml = '<root><orderId>' + order_id + '<orderId><orderNo>' + order_no + '</orderNo><orderFee>' + order_fee + '</orderFee><payType><offline>1</offline><alipay>1</alipay><wxpay>1</wxpay></payType></root>';
+var order_info_xml = '<root><orderId>' + order_id + '<orderId><orderNo>' + order_no + '</orderNo><orderFee>' + order_fee + '</orderFee><payType><offline>1</offline><alipay>1</alipay><wxpay>1</wxpay></payType><des>' + encodeURIComponent('保险保费') + '</des></root>';
 
 var pay_uri = 'pay://yn.122.net/?ordername=' + encodeURIComponent('保险保费') + '&orderinfo=' + encodeURIComponent(base64encode(order_info_xml));
 %>

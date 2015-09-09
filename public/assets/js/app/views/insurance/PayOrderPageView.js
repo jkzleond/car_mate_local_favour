@@ -52,7 +52,7 @@ define([
                         this.trigger('uri', self, 'insurances/4');
                         return;
                     }
-                     var order_info_xml = '<root><orderId>' + self.model.get('order_id') + '</orderId><orderNo>' + self.model.get('order_no') +  '</orderNo><orderFee>' + self.model.get('order_fee') + '</orderFee><payType><offline>1</offline><alipay>1</alipay><wxpay>1</wxpay></payType><des>保险保费</des></root>';
+                     var order_info_xml = '<root><orderId>' + self.model.get('order_id') + '</orderId><orderNo>' + self.model.get('order_no') +  '</orderNo><orderFee>' + self.model.get('order_fee') + '</orderFee><payType><offline>1</offline><alipay>1</alipay><wxpay>1</wxpay></payType><des>' + encodeURIComponent('保险保费') + '</des></root>';
                      window.location.href = 'pay://yn.122.net/?ordername=' + encodeURIComponent('保险保费') + '&orderinfo=' + encodeURIComponent(base64encode(order_info_xml));
 
                 }});

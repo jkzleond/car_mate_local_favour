@@ -17,7 +17,15 @@ define([
 
         },
         events: {
+            'click .goto-set-compulsory-btn': '_onGotoSetCompulsoryBtnClick',
             'click .qa': '_onQaClick'
+        },
+        _onGotoSetCompulsoryBtnClick: function(event){
+            event.preventDefault();
+            var href = $(event.currentTarget).attr('href'); //currentTarget才是真正侦听的目标
+            var compulsory_state_id = this.$el.find('.compulsory-state').val();
+            this.trigger('uri', this, href + '/' + compulsory_state_id);
+            return false;
         },
         _onQaClick: function(event)
         {

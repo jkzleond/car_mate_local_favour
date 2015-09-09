@@ -23,7 +23,6 @@ define([
 
             this.discount_detail_tpl = _.template(discountDetailTpl);
 
-            this.listenTo(this.model, 'invalid', this._onFormModelInvalid);
             this.listenTo(this.model, 'change:info_id', this._onNewInsuranceInfoGen);
             this.listenTo(this.insurance_info, 'change:result', this._resultProcess);
             this.listenTo(this.company, 'reset', this._discountProcess);
@@ -31,13 +30,6 @@ define([
         events: {
             'change [name=compulsory_state_id]': '_onCompulsoryStateChange',
             'click .apply-actual-btn': '_onApplyActualBtnClick'
-        },
-        _onCompulsoryStateChange: function(event){
-            this._collectFormData();
-            if(this.model.isValid())
-            {
-                this.model.save();
-            }
         },
         _onApplyActualBtnClick: function(event){
             this.trigger('uri', this, 'insurance/apply_actual/' + this.insurance_info.get('id') + '/compulsory');
@@ -76,27 +68,15 @@ define([
             }));
             this.$el.find('.apply-actual-btn').show();
         },
-        //收集表单数据到模型
-        _collectFormData: function()
-        {
-            var model_attrs = {};
-            this.$el.find('[name]:enabled:visible').each(function(index, feild){
-                var attr_key = $(feild).attr('name');
-                var attr_value = $(feild).val() || 0;
-
-                if(attr_key == 'car_price' || attr_key == 'driver' || attr_key == 'passenger') attr_value = attr_value * 10000;
-
-                model_attrs[attr_key] = attr_value;
-            });
-            this.model.clear({silent: true}).set(model_attrs, {silent: true});
-        },
-        reset: function(){
+        reset: function(state_id){
             this.$el.find('[name=compulsory_state_id]').val('');
             this.$el.find('.apply-actual-btn').hide();
             this.$el.find('.discount-detail').empty();
             this.insurance_info.clear({silent: true});
             this.insurance_info.result.clear({silent: true});
             this.company.fetch({reset: true});
+            this.model.set('compulsory_state_id', state_id, {silent: true});
+            this.model.save();
         }
     });
     return CompulsorySetPageView;

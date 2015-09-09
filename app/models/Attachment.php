@@ -46,6 +46,10 @@ class Attachment extends ModelEx
 	public static function getAttachmentById($id)
 	{
 		$sql = 'select id, name, mime_type, data_type, data_string, data_bin from Attachment where id = :id';
+		$bind = array(
+			'id' => $id
+		);
 
+		return self::nativeQuery($sql, $bind);
 	}
 }

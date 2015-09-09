@@ -25,7 +25,7 @@ define([
                 {
                 // Tell the plot to stack the bars.
                     title: '比价',
-                    animate: true,
+                    animate: false,
                     stackSeries: true,
                     captureRightClick: true,
                     seriesDefaults:{

@@ -32,7 +32,7 @@ define([
                 {
                     // Tell the plot to stack the bars.
                     title: '精算比价',
-                    animate: true,
+                    animate: false,
                     stackSeries: true,
                     captureRightClick: true,
                     seriesDefaults:{

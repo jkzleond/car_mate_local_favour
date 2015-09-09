@@ -1,35 +1,62 @@
 <!--新保险入口页面-->
-<div data-role="page" id="insurance_page" data-theme="a" style="padding-top: 44px; padding-bottom: 0px;">
+<div data-role="page" id="insurance_page" data-theme="a" style="padding-top: 95px; padding-bottom: 0px;">
     <div data-role="header" class="cm-fixed" data-theme="g">
         <a class="ui-btn-left ui-btn ui-icon-md-chevron-left ui-btn-icon-notext" href="#"></a>
         <h1>本地惠-保险巨惠</h1>
         <a class="ui-btn-right ui-btn ui-icon-md-menu ui-btn-icon-notext" href="#menu"><i class="icon-reorder"></i></a>
+        <div id="insurance_navbar" data-role="navbar" class="" cellpadding="0" cellspacing="8">
+            <ul>
+                <li>
+                    <a class="cm-right btn no-enhance" href="#insurance/list" style="background-color:#F1F1F1;font-size:16px;color:#3D9AE8;padding:0px;margin:0px">
+                        <img src="/assets/img/tei.png" style="width:30px;height:30px;float:left">
+                        <div style="height: 32px;display:inline-block;float:left;line-height:32px;">我的订单</div>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
     <div role="main" class="ui-content">
-        <div style=" float:left;width:100%">
+        <!-- <div style="float:left;width:100%">
             <a href="#insurance/set/compulsory">
                 <img src="/assets/img/insurance/ad1.jpg" width="100%"  style="min-width:320px;" />
             </a>
+        </div> -->
+        <div class="bx_hjb_box" style="width:93%; margin: 0px 3%;">
+            <div style="font-size:16px;color:#ffffff ;text-align:center; margin-bottom:20px;">
+                <img src="/assets/img/insurance/ad1.jpg" width="100%" />
+            </div>
+            <div  class="bx_hjb_box_txt1">我只买交强险</div>
+            <div style="float:left; width:100%;color: #535353; text-align:center;font-size: 14px;font-family:微软雅黑; margin-top:20px;margin-bottom:20px;">
+                <select class="compulsory-state" style="width:85%; height: auto">
+                    <option value="1">连续三年未出险</option>
+                    <option value="2">上两年度双方无肇事</option>
+                    <option value="3">上一年度双方无肇事</option>
+                    <option value="4">新车或上一年度有一次双方肇事</option>
+                    <option value="5">上年度有两次双方肇事</option>
+                    <option value="6">上年度有三此及次上双方肇事</option>
+                </select>
+            </div>
+            <div  class="bx_fb_button2">
+                <a href="#insurance/set/compulsory" class="goto-set-compulsory-btn">
+                    <button class="bx_fb_box_button9 no-enhance">立即抢优惠</button>
+                </a>
+            </div>
         </div>
-        <div style="text-align:right; position: relative; width:96%; padding:0px 2%;">
-            <a href="#insurance/list" id="insurance_my_order_btn" class="fb_button3 cm-btn cm-radius-s cm-right" data-role="button" data-theme="g">我的订单</a>
-            <!--<input name="Button1" type="button" value=""  class="fb_button3"/>-->
-        </div>
-        <div class="bx_hjb_box" style="width: 93%; margin: 5px 3%; clear:both">
-            <div  class="bx_hjb_box_bja">经济套餐</div>
-            <div  class="bx_hjb_box_txt1" style="width: 80%">交强+三者+不计免赔<br/>老驾自由组合套餐——不含车损险</div>
-            <div  class="bx_hjb_box_txt2">最优惠：华泰财险、中华财险，7折出单，再送保费总额33%本元卡</div>
-            <div  class="bx_fb_button2" style="border-top:none;">
+        <div class="bx_hjb_box1" style="width: 93%; margin: 5px 3%; clear:both">
+            <div class="bx_hjb_box_bja">经济套餐</div>
+            <div class="bx_hjb_box_txt1">老驾自由组合套餐——不含车损险</div>
+            <div class="bx_hjb_box_txt2">最优惠：华泰财险、中华财险，7折出单，再送保费总额33%本元卡</div>
+            <div class="bx_fb_button2" style="border-top:none;">
                 <a href="#insurance/set/value">
                     <button class="bx_fb_box_button7 no-enhance">点此初算</button>
                 </a>
             </div>
-        </div>
-        <div class="bx_hjb_box" style="width: 93%; margin: 5px 3%; clear:both" >
-            <div  class="bx_hjb_box_bja">全险套餐</div>
-            <div  class="bx_hjb_box_txt1" style="width: 80%">交强+三者+不计免赔<br/>老驾自由组合套餐——不含车损险</div>
-            <div  class="bx_hjb_box_txt2">最优惠：中华财险，7折出单，再送保费总额35%本元卡</div>
-            <div  class="bx_fb_button2">
+        </div>  
+        <div class="bx_hjb_box1" style="width: 93%; margin: 5px 3%; clear:both" >
+            <div class="bx_hjb_box_bja">全险套餐</div>
+            <div class="bx_hjb_box_txt1">高保障自由组合套餐——不含车损险</div>
+            <div class="bx_hjb_box_txt2">最优惠：中华财险，7折出单，再送保费总额35%本元卡</div>
+            <div class="bx_fb_button2">
                 <a href="#insurance/set/full">
                     <button class="bx_fb_box_button7 no-enhance">点此初算</button>
                 </a>
@@ -37,7 +64,7 @@
         </div>
         <div class="bx_hjb_box" style="width: 93%; margin: 5px 3%; clear:both" >
             <div  class="bx_hjb_box_bja2">预约</div>
-            <div  class="bx_hjb_box_txt1" style="width: 80%">客服将在您指定时间为您提供多家报价,提前预约可获五十元车优惠服务券,预约、代缴不用愁</div>
+            <div  class="bx_hjb_box_txt1">客服将在您指定时间为您提供多家报价,提前预约可获五十元车优惠服务券,预约、代缴不用愁</div>
             <div  class="bx_hjb_box_txt2">&nbsp;</div>
             <div  class="bx_fb_button2">
                 <a href="#insurance/reservation">

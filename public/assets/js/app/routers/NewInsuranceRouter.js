@@ -36,6 +36,7 @@ define([
 
             this.listenTo(this.insurance_value_set_page_view, 'invalid', this._onFormModelInvalid);
             this.listenTo(this.insurance_full_set_page_view, 'invalid', this._onFormModelInvalid);
+            this.listenTo(this.insurance_page_view, 'uri', this._onRequestUri);
             this.listenTo(this.insurance_compulsory_set_page_view, 'uri', this._onRequestUri);
             this.listenTo(this.insurance_value_set_page_view, 'uri', this._onRequestUri);
             this.listenTo(this.insurance_full_set_page_view, 'uri', this._onRequestUri);
@@ -51,7 +52,7 @@ define([
         },
         routes: {
             'insurance': 'index',
-            'insurance/set(/:type)': 'firstCalc',
+            'insurance/set(/:type)(/:state_id)': 'firstCalc',
             'insurance/reservation': 'reservation',
             'insurance/price/:info_id': 'parityPrice',
             'insurance/actuary_price/:info_id': 'finalParityPrice',
@@ -64,11 +65,11 @@ define([
             $(':mobile-pagecontainer').pagecontainer('change', '#insurance_page');
         },
         //初算(套餐)
-        firstCalc: function(set_type){
+        firstCalc: function(set_type, state_id){
             $(':mobile-pagecontainer').pagecontainer('change', '#insurance_' + set_type + '_set_page');
             if(this['insurance_' + set_type + '_set_page_view'] && this['insurance_' + set_type + '_set_page_view'].reset)
             {
-                this['insurance_' + set_type + '_set_page_view'].reset();
+                this['insurance_' + set_type + '_set_page_view'].reset(state_id);
             }
         },
         firstPrice: function(info_id){
