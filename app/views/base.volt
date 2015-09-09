@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{{ url('/assets/css/jquery.datetimepicker.css')}}"/>
     <link rel="stylesheet" href="{{ url('/assets/css/jquery.jqplot.min.css')}}"/>
     <link rel="stylesheet" href="{{ url('/assets/css/bdh.css')}}"/>
-    <link rel="stylesheet" href="{{ url('/assets/css/bxjs.css')}}"/>
+    <link rel="stylesheet" href="{{ url('/assets/css/bxjs.css?bust=1.04')}}"/>
     {% endblock %}
     {% block header_js %}
     <script type="text/javascript" src="{{ url('/assets/js/date.js') }}"></script>
