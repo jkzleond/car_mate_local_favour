@@ -32,12 +32,14 @@ define([
             'click .upload-license-a-btn': '_onUploadLicenseABtnClick',
             'click .upload-license-b-btn': '_onUploadLicenseBBtnClick',
             'click .upload-idcard-btn': '_onUploadIdCardBtnClick',
+            'click .upload-insurance-card-btn': '_onUploadInsuranceCardBtnClick',
             'click .apply-actual-btn': '_onApplyActualClick',
             'click canvas.thumbnail': '_onThumbnailClick',
             'change [name="no_hphm"]': '_onNoHphmChange',
             'change .driving-license-a-file': '_onLicenseAFileChange',
             'change .driving-license-b-file': '_onLicenseBFileChange',
-            'change .idcard-file': '_onIdcardFileChange'
+            'change .idcard-file': '_onIdcardFileChange',
+            'change .insurance-card-file': '_onInsuranceCardFileChange'
         },
         _onToFileClick: function(event){
             this.$el.find('.manual-form').hide();
@@ -55,6 +57,9 @@ define([
         },
         _onUploadIdCardBtnClick: function(event){
             this.$el.find('.idcard-file').click();
+        },
+        _onUploadInsuranceCardBtnClick: function(event){
+            this.$el.find('.insurance-card-file').click();
         },
         _onThumbnailClick: function(event){
             var canvas = event.target;
@@ -186,7 +191,24 @@ define([
                 };
                 reader.readAsDataURL(file);
             }
+        },
+        _onInsuranceCardFileChange: function(event, result){
+            var self = this;
 
+            if(result)
+            {
+                self.$el.find('img.thumbnail-insurance-card').attr('src', 'data:image/png;base64,' + decodeURIComponent(result.result));
+            }
+            else
+            {
+                var file = $(event.target).prop('files')[0];
+                var reader = new FileReader();
+                reader.onload = function(event){
+                    var result = event.target.result;
+                    self.$el.find('img.thumbnail-insurance-card').attr('src', result);
+                };
+                reader.readAsDataURL(file);
+            }
         },
         _onThumbnailImageLoad: function(event){
             var img = event.target;
@@ -284,6 +306,7 @@ define([
                 var license_a = null;
                 var license_b = null;
                 var idcard = null;
+                var insurance_card = null;
 
                 if(this.$el.find('canvas.thumbnail-license-a').attr('data-ready') === 'true')
                 {
@@ -300,11 +323,17 @@ define([
                     var canvas_idcard = this.$el.find('canvas.thumbnail-idcard')[0];
                     idcard = canvas_idcard.toDataURL().match(/data:image\/.*;base64,(.*)/)[1];    
                 }
+                if(this.$el.find('canvas.thumbnail-insurance-card').attr('data-ready') === 'true')
+                {
+                    var canvas_insurance_card = this.$el.find('canvas.thumbnail-insurance-card')[0];
+                    insurance_card = canvas_insurance_card.toDataURL().match(/data:image\/.*;base64,(.*)/)[1];    
+                }
 
                 this.model.set({
                     'driving_license_a': license_a,
                     'driving_license_b': license_b,
-                    'idcard': idcard
+                    'idcard': idcard,
+                    'insurance_card': insurance_card
                 },{silent: true});    
          }
      }

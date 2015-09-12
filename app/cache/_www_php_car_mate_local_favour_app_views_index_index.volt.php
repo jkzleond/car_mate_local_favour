@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="<?php echo $this->url->get('/assets/css/jquery.datetimepicker.css'); ?>"/>
     <link rel="stylesheet" href="<?php echo $this->url->get('/assets/css/jquery.jqplot.min.css'); ?>"/>
     <link rel="stylesheet" href="<?php echo $this->url->get('/assets/css/bdh.css'); ?>"/>
-    <link rel="stylesheet" href="<?php echo $this->url->get('/assets/css/bxjs.css'); ?>"/>
+    <link rel="stylesheet" href="<?php echo $this->url->get('/assets/css/bxjs.css?bust=1.041'); ?>"/>
     
 <link rel="stylesheet" type="text/css" href="<?php echo $this->url->get('/assets/css/local_favour.css'); ?>"/>
 <style type="text/css">
@@ -43,7 +43,7 @@
 <!--    <script type="text/javascript" src="<?php echo $this->url->get('/assets/js/jquery.mobile-1.4.5.js'); ?>"></script>-->
 <!--    <script type="text/javascript" src="<?php echo $this->url->get('/assets/js/underscore.js'); ?>"></script>-->
 <!--    <script type="text/javascript" src="<?php echo $this->url->get('/assets/js/backbone.js'); ?>"></script>-->
-    <script type="text/javascript" src="<?php echo $this->url->get('/assets/js/app/main.js'); ?>"></script>
+    <script type="text/javascript" src="<?php echo $this->url->get('/assets/js/app/main.js?bust=1.041'); ?>"></script>
    <!-- <script type="text/javascript">
         window.addEventListener('load', function(){
             window.applicationCache.addEventListener('downloading', function(){

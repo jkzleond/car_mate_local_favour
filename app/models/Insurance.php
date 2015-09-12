@@ -229,12 +229,13 @@ SQL;
         $crt = new Criteria($criteria);
 
         $sql = <<<SQL
-        insert into Insurance_Attach (driving_license_a, driving_license_b, idcard)  values (:driving_license_a, :driving_license_b, :idcard)
+        insert into Insurance_Attach (driving_license_a, driving_license_b, idcard, insurance_card)  values (:driving_license_a, :driving_license_b, :idcard, :insurance_card)
 SQL;
         $bind = array(
             'driving_license_a' => $crt->driving_license_a,
             'driving_license_b' => $crt->driving_license_b,
-            'idcard' => $crt->idcard
+            'idcard' => $crt->idcard,
+            'insurance_card' => $crt->insurance_card
         );
 
         $success = self::nativeExecute($sql, $bind);

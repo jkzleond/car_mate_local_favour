@@ -4,251 +4,174 @@
 		"selected_items":
 		[
 			[
-				"native",
-				"nativeQuery	(Insurance.php)"
+				"info",
+				"info_input_top"
 			],
 			[
-				"php",
-				"perhaps	(backbone.js)"
+				"info_text",
+				"info_text_width"
 			],
 			[
-				"canvas",
-				"canvas_license_a"
+				"container",
+				"container_widht"
 			],
 			[
-				"compress",
-				"compress_width"
+				"result",
+				"result_xml_str"
 			],
 			[
-				"_onT",
-				"_onThumbnailImageLoad"
+				"getI",
+				"getIllegalOrderInfoById"
 			],
 			[
-				"total",
-				"total_standard"
+				"condition_",
+				"condition_crt"
 			],
 			[
-				"com",
-				"company"
+				"query",
+				"query_type_select"
 			],
 			[
-				"apply_ac",
-				"apply_actual_page_view"
+				"driver_list",
+				"driver_list_query_btn"
 			],
 			[
-				"is",
-				"is_compulsory"
+				"order_get",
+				"order_get_sql"
 			],
 			[
-				"compulsory",
-				"compulsoryShortCut"
+				"client",
+				"client_type"
 			],
 			[
-				"_onFormModel",
-				"_onFormModelSync"
+				"session",
+				"session_res"
 			],
 			[
-				"car_info",
-				"car_info_id"
+				"res",
+				"res_three"
 			],
 			[
-				"update",
-				"updateCarInfo"
+				"pwd",
+				"pwd_encoded"
 			],
 			[
-				"upload",
-				"upload_dir"
+				"verify",
+				"verify_code"
 			],
 			[
-				"encodeURI",
-				"encodeURIComponent	(ActuaryPricePageView.js)"
+				"cookies",
+				"cookies_vcode"
 			],
 			[
-				"show",
-				"showGallery"
+				"header",
+				"heeader_vcode"
 			],
 			[
-				"get_illegal_",
-				"get_illegal_order_sql"
-			],
-			[
-				"get_illegal_total",
-				"get_illegal_total_bind"
-			],
-			[
-				"get_illegal",
-				"get_illegal_total_sql"
-			],
-			[
-				"page",
-				"page_num"
-			],
-			[
-				"back",
-				"background"
-			],
-			[
-				"echo",
-				"echoAccessXML"
+				"url",
+				"url_vcode"
 			],
 			[
 				"base",
-				"base64"
+				"base64_encode"
+			],
+			[
+				"_",
+				"_utf16to8"
+			],
+			[
+				"http",
+				"http_res_two"
+			],
+			[
+				"img",
+				"img_name"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "public/assets/js/app/views/insurance/InsurancePageView.js",
+			"file": "app/controllers/ProvinceController.php",
 			"settings":
 			{
-				"buffer_size": 1203,
+				"buffer_size": 645,
 				"line_ending": "Unix"
 			}
 		},
 		{
+			"file": "app/controllers/UserController.php",
+			"settings":
+			{
+				"buffer_size": 2169,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "<!--新保险入口页面-->\n<div data-role=\"page\" id=\"insurance_page\" data-theme=\"a\" style=\"padding-top: 95px; padding-bottom: 0px; background:#FFF\">\n    <div data-role=\"header\" class=\"cm-fixed\" data-theme=\"g\">\n        <a class=\"ui-btn-left ui-btn ui-icon-md-chevron-left ui-btn-icon-notext\" href=\"#\"></a>\n        <h1>本地惠-保险巨惠</h1>\n        <a class=\"ui-btn-right ui-btn ui-icon-md-menu ui-btn-icon-notext\" href=\"#menu\"><i class=\"icon-reorder\"></i></a>\n        <div id=\"insurance_navbar\" data-role=\"navbar\" class=\"\" cellpadding=\"0\" cellspacing=\"8\">\n            <ul>\n                <li>\n                    <a class=\"cm-right btn no-enhance\" href=\"#insurance/list\" style=\"background-color:#F1F1F1;font-size:16px;color:#3D9AE8;padding:0px;margin:0px\">\n                        <img src=\"/assets/img/tei.png\" style=\"width:30px;height:30px;float:left\">\n                        <div style=\"height: 32px;display:inline-block;float:left;line-height:32px;\">我的订单</div>\n                    </a>\n                </li>\n            </ul>\n        </div>\n    </div>\n    <div role=\"main\" class=\"ui-content\">\n        <!-- <div style=\"float:left;width:100%\">\n            <a href=\"#insurance/set/compulsory\">\n                <img src=\"/assets/img/insurance/ad1.jpg\" width=\"100%\"  style=\"min-width:320px;\" />\n            </a>\n        </div> -->\n        <div class=\"bx_hjb_box\" style=\"width:93%; margin: 0px 3%;\">\n            <div style=\"font-size:16px;color:#ffffff ;text-align:center; margin-bottom:20px;\">\n                <img src=\"/assets/img/insurance/ad1.jpg\" width=\"100%\" />\n            </div>\n            <div  class=\"bx_hjb_box_txt1\">我只买交强险</div>\n            <div style=\"float:left; width:100%;color: #535353; text-align:center;font-size: 14px;font-family:微软雅黑; margin-top:20px;margin-bottom:20px;\">\n                <select class=\"compulsory-state\" style=\"width:85%; height: auto\">\n                    <option value=\"1\">连续三年未出险</option>\n                    <option value=\"2\">上两年度双方无肇事</option>\n                    <option value=\"3\">上一年度双方无肇事</option>\n                    <option value=\"4\">新车或上一年度有一次双方肇事</option>\n                    <option value=\"5\">上年度有两次双方肇事</option>\n                    <option value=\"6\">上年度有三此及次上双方肇事</option>\n                </select>\n            </div>\n            <div  class=\"bx_fb_button2\">\n                <a href=\"#insurance/set/compulsory\" class=\"goto-set-compulsory-btn\">\n                    <button class=\"bx_fb_box_button9 no-enhance\">立即抢优惠</button>\n                </a>\n            </div>\n        </div>\n        <div class=\"bx_hjb_box1\" style=\"width: 93%; margin: 5px 3%; clear:both\">\n            <div class=\"bx_hjb_box_bja\">经济套餐</div>\n            <div class=\"bx_hjb_box_txt1\">老驾自由组合套餐——不含车损险</div>\n            <div class=\"bx_hjb_box_txt2\">最优惠：华泰财险、中华财险，7折出单，再送保费总额33%本元卡</div>\n            <div class=\"bx_fb_button2\" style=\"border-top:none;\">\n                <a href=\"#insurance/set/value\">\n                    <button class=\"bx_fb_box_button7 no-enhance\">点此初算</button>\n                </a>\n            </div>\n        </div>  \n        <div class=\"bx_hjb_box1\" style=\"width: 93%; margin: 5px 3%; clear:both\" >\n            <div class=\"bx_hjb_box_bja\">全险套餐</div>\n            <div class=\"bx_hjb_box_txt1\">高保障自由组合套餐——含车损险</div>\n            <div class=\"bx_hjb_box_txt2\">最优惠：中华财险，7折出单，再送保费总额35%本元卡</div>\n            <div class=\"bx_fb_button2\">\n                <a href=\"#insurance/set/full\">\n                    <button class=\"bx_fb_box_button7 no-enhance\">点此初算</button>\n                </a>\n            </div>\n        </div>\n        <div class=\"bx_hjb_box\" style=\"width: 93%; margin: 5px 3%; clear:both\" >\n            <div  class=\"bx_hjb_box_bja2\">预约</div>\n            <div  class=\"bx_hjb_box_txt1\">客服将在您指定时间为您提供多家报价,提前预约可获五十元车优惠服务券,预约、代缴不用愁</div>\n            <div  class=\"bx_hjb_box_txt2\">&nbsp;</div>\n            <div  class=\"bx_fb_button2\">\n                <a href=\"#insurance/reservation\">\n                    <button class=\"bx_fb_box_button7 no-enhance\">立即预约</button>\n                </a>\n            </div>\n        </div>\n        <div class=\"bx_zf_box_div_yf\" style=\"width:100%\">常见问题：<br/>\n            <ul>\n                <li>怎样选择保险组合 <b data-rel=\"#insurance_qa1_popup\" class=\"qa cm-circle cm-bg-prim\" style=\"font-size:0.85em; text-align: center\">?</b></li>\n                <li>出险后怎么办 <b data-rel=\"#insurance_qa2_popup\" class=\"qa cm-circle cm-bg-prim\" style=\"font-size:0.85em; text-align: center\">?</b></li>\n                <li>售后服务 <b data-rel=\"#insurance_qa4_popup\" class=\"qa cm-circle cm-bg-prim\" style=\"font-size:0.85em; text-align: center\">i</b></li>\n                <li>咨询电话和公司地址 <b data-rel=\"#insurance_qa4_popup\" class=\"qa cm-circle cm-bg-prim\" style=\"font-size:0.85em; text-align: center\">i</b></li>\n                <li>客服微信号 <b data-rel=\"#insurance_qa5_popup\" class=\"qa cm-circle cm-bg-prim\" style=\"font-size:0.75em; text-align: center\">i</b></li>\n            </ul>\n        </div>\n    </div>\n    <div data-role=\"popup\" id=\"insurance_qa1_popup\" data-overlay-theme=\"g\" data-theme=\"a\" data-corners=\"true\" data-enhance=\"false\">\n        <a href=\"#\" data-rel=\"back\" data-theme=\"j\" class=\"ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right\" style=\"background-color: #333; color: #FFF; border-color:#666; border-radius: 25em; position: absolute; right: -12px; top:-12px;\"></a>\n        <div class=\"container\" style=\"padding:5px 10px;max-height:400px;overflow:scroll;\">\n            <table  class=\"bx_xxnr_div_table\">\n                <tr>\n                    <td>怎样选择保险组合</td>\n                </tr>\n            </table>\n            <table  class=\"bx_xxnr_div_table_txt\" align=\"center\">\n                <tr>\n                    <td style=\"font-size: 0.95em; line-height: 1.25em;\">险种释义\n                        <br>\n                        A、	交强险保额（只对第三者赔付）：\n                        <br>\n                        ※事故所涉及的第三者死亡或伤残：11万元\n                        <br>\n                        （释义：第三者死亡或全残，保险公司赔付11万元；第三者在事故发生180天后，经鉴定有永久残疾的，按对应伤残等级的赔付比例进行赔偿，从数千元至11万元以内。）<br>\n                        &nbsp;※事故所涉及的第三者因伤就医的医疗费用：1万元\n                        <br>\n                        （该费用为报销制，需按诊疗目录的标准报销）<br>\n                        &nbsp;※事故所涉的第三者的财产损失：2000元<br>\n                        &nbsp;B、	第三者责任险保险金额可以由客户自选：5万、10万、20万、30万、50万、100万，该保险的保额覆盖第三者的人身伤亡、事故医疗费用及财产损失，只要总费用在保额内，保险公司均承担赔偿责任。\n                        考虑当前的社会情况，建议选择第三者责任险的保险额应在20万元以上，30至50万元为宜，避免因交通事故陷入个人或家庭的财务危机，甚至返贫。\n                        <br>\n                        C、	不计免赔附加险：买了该附加险后，只要不超过第三者险的保额，保险公司承担所有的依法赔偿责任\n                        <br>\n                        D、 只要保险金额足够覆盖事故的赔偿金额，被保险人在出现第三者事故后，在出现第三者赔偿争议时，可以简单选择由第三者到法院起诉，保险公司会自然地成为第二被告，被保险人无需亲自应诉或委托律师应诉，相关的法律事务均可由保险公司代为处理。\n                        <br>\n                        保险组合\n                        <br>\n                        1、	实惠又省钱\n                        交强+三者+座位+不计免赔\n                        适合于用车情况简单、技术熟练的老驾，或者关注用车成本的车主\n                        <br>\n                        2、	最省钱\n                        只买交强险\n                        技术好、运气好、家底厚的超级车主\n                        <br>\n                        3、	省心又省钱\n                        交强+三者+车损+座位+不计免赔\n                        怕麻烦又爱车的车主\n                        <br>\n                        4、	甩手掌柜还省钱\n                        能买的险种买全，优惠不停步\n                        有钱、任性\n                        <br>\n                        注：没有固定车位、用车情况复杂的车主请关注“划痕险、抢盗险、玻璃单独破碎险、涉水险”\n                    </td>\n                </tr>\n            </table>\n        </div>\n    </div>\n    <div data-role=\"popup\" id=\"insurance_qa2_popup\" data-overlay-theme=\"g\" data-theme=\"a\" data-corners=\"true\" data-enhance=\"false\">\n        <a href=\"#\" data-rel=\"back\" data-theme=\"j\" class=\"ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right\" style=\"background-color: #333; color: #FFF; border-color:#666; border-radius: 25em; position: absolute; right: -12px; top:-12px;\"></a>\n        <div class=\"container\" style=\"padding:5px 10px;max-height:400px;overflow:scroll;\">\n            <table  class=\"bx_xxnr_div_table\">\n                <tr>\n                    <td>出险怎么办</td>\n                </tr>\n            </table>\n            <table  class=\"bx_xxnr_div_table_txt\" align=\"center\">\n                <tr>\n                    <td style=\"font-size: 0.95em; line-height: 1.25em\">\n                        云南交警自助处理平台\n                        <br>\n                        轻微事故：无人伤，车辆可正常行驶\n                        <br>\n                        其他事故：\n                        <br>\n                        有人伤：\n                        <br>\n                        ①	拨打120急救或施救电话<br>\n                        ②	拨打交警报警电话（点击立即拨打）\n                        <br>\n                        ③	拨打保险公司报案电话\n                        点击查看各保险公司报案电话目录\n                        <br>\n                        ④	拍摄现场照片\n                        点击查看如何拍摄\n                        <br>\n                        ⑤	保险公司人员现场查勘\n                        <br>\n                        ⑥	医院相关材料、单据收集，保险公司核赔\n                        <br>\n                        ⑦	事故车辆定损、修复\n                        <br>\n                        ⑧	按保险公司要求提供单证索赔\n                        <br>\n                        点击查看保险公司理赔单证一览表\n                        <br>\n                        车辆无法行驶：<br>\n                        &nbsp;①	拨打施救电话\n                        点击查看各保险公司报案电话目录\n                        <br>\n                        ②	拍摄现场照片\n                        点击查看如何拍摄\n                        <br>\n                        ③	保险公司人员现场查勘\n                        <br>\n                        ④	事故车辆定损、修复\n                        <br>\n                        ⑤	按保险公司要求提供单证索赔\n                        <br>\n                        点击查看保险公司理赔单证一览表\n                    </td>\n                </tr>\n            </table>\n        </div>\n    </div>\n    <div data-role=\"popup\" id=\"insurance_qa3_popup\" data-overlay-theme=\"g\" data-theme=\"a\" data-corners=\"true\" data-enhance=\"false\">\n        <a href=\"#\" data-rel=\"back\" data-theme=\"j\" class=\"ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right\" style=\"background-color: #333; color: #FFF; border-color:#666; border-radius: 25em; position: absolute; right: -12px; top:-12px;\"></a>\n        <div class=\"container\" style=\"padding:5px 10px;\">\n\n\n        </div>\n    </div>\n    <div data-role=\"popup\" id=\"insurance_qa4_popup\" data-overlay-theme=\"g\" data-theme=\"a\" data-corners=\"true\" data-enhance=\"false\">\n        <a href=\"#\" data-rel=\"back\" data-theme=\"j\" class=\"ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right\" style=\"background-color: #333; color: #FFF; border-color:#666; border-radius: 25em; position: absolute; right: -12px; top:-12px;\"></a>\n        <div class=\"container\" style=\"padding:5px 10px;max-height:400px;overflow:scroll;\">\n            <table  class=\"bx_xxnr_div_table\">\n                <tr>\n                    <td>咨询电话和公司地址</td>\n                </tr>\n            </table>\n            <table  class=\"bx_xxnr_div_table_txt\" align=\"center\">\n                <tr>\n                    <td style=\"font-size: 0.95em; line-height: 1.25em\">\n                        咨询热线 <a href=\"tel:400-009-0047\" style=\"color:deepskyblue;\">400-009-0047</a>转2 <br>\n                        客服电话（亦可添加微信）<br>\n                        <a href=\"tel:18208765609\" style=\"color:deepskyblue;\">18208765609</a> <br>\n                        <a href=\"tel:18208769819\" style=\"color:deepskyblue;\">18208769819</a> <br>\n                        <a href=\"tel:18208762269\" style=\"color:deepskyblue;\">18208762269</a> <br>\n                        <a href=\"tel:18208762368\" style=\"color:deepskyblue;\">18208762368</a> <br>\n                        地址：<a href=\"http://api.map.baidu.com/geocoder?address=云南省昆明市东风东路东风巷1号勘泰大厦A幢&output=html\" style=\"color:deepskyblue;\">东风东路东风巷1号勘泰大厦A幢</a> <br>\n                        <a href=\"http://api.map.baidu.com/geocoder?address=云南省昆明市东风东路东风巷1号勘泰大厦A幢&output=html\" style=\"color:deepskyblue;\"><img src=\"http://api.map.baidu.com/staticimage?width=300&height=225&zoom=17&scale=1&markers=102.729387,25.045562&center=%E6%98%86%E6%98%8E%E4%B8%9C%E9%A3%8E%E4%B8%9C%E8%B7%AF%E4%B8%9C%E9%A3%8E%E5%B7%B71%E5%8F%B7%E5%8B%98%E6%B3%B0%E5%A4%A7%E5%8E%A6A%E5%B9%A2\" style=\"width:100%;\"></a>\n                    </td>\n                </tr>\n            </table>\n        </div>\n    </div>\n    <div data-role=\"popup\" id=\"insurance_qa5_popup\" data-overlay-theme=\"g\" data-theme=\"a\" data-corners=\"true\" data-enhance=\"false\">\n        <a href=\"#\" data-rel=\"back\" data-theme=\"j\" class=\"ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right\" style=\"background-color: #333; color: #FFF; border-color:#666; border-radius: 25em; position: absolute; right: -12px; top:-12px;\"></a>\n        <div class=\"container\" style=\"padding:5px 10px;max-height:400px;overflow:scroll;\">\n            <table  class=\"bx_xxnr_div_table\">\n                <tr>\n                    <td>客服微信号</td>\n                </tr>\n            </table>\n            <table  class=\"bx_xxnr_div_table_txt\" align=\"center\">\n                <tr>\n                    <td style=\"font-size: 0.95em; line-height: 1.25em\">\n                        <table style=\"text-align: center\">\n                            <tr>\n                                <td>\n                                    <img src=\"/assets/img/insurance/18208765609.jpg\" class=\"cm-left\" style=\"width:100%\">\n                                </td>\n                                <td>\n                                    <img src=\"/assets/img/insurance/18208769819.jpg\" class=\"cm-left\" style=\"width:100%\">\n                                </td>\n                            </tr>\n                            <tr>\n                                <td>18208765609</td>\n                                <td>18208769819</td>\n                            </tr>\n                            <tr>\n                                <td>\n                                    <img src=\"/assets/img/insurance/18208762269.jpg\" class=\"cm-left\" style=\"width:100%\">\n                                </td>\n                                <td>\n                                    <img src=\"/assets/img/insurance/18208762368.jpg\" class=\"cm-left\" style=\"width:100%\">\n                                </td>\n                            </tr>\n                            <tr>\n                                <td>18208762269</td>\n                                <td>18208762368</td>\n                            </tr>\n                        </table>\n                    </td>\n                </tr>\n            </table>\n        </div>\n    </div>\n</div>",
 			"file": "public/assets/js/app/templates/insurance/insurance_page.html",
+			"file_size": 17137,
+			"file_write_time": 130863409317199921,
 			"settings":
 			{
-				"buffer_size": 14567,
+				"buffer_size": 14582,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "public/assets/js/app/routers/NewInsuranceRouter.js",
+			"file": "public/assets/js/app/templates/insurance/final_parity_price_page.html",
 			"settings":
 			{
-				"buffer_size": 6219,
+				"buffer_size": 899,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "public/assets/js/app/templates/insurance/insurance_list_item_5.html",
+			"file": "public/assets/js/app/templates/insurance/apply_actual_page.html",
 			"settings":
 			{
-				"buffer_size": 847,
+				"buffer_size": 8236,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "public/assets/js/app/templates/insurance/insurance_list_item_4.html",
+			"file": "public/assets/js/app/views/insurance/ApplyActualPageView.js",
 			"settings":
 			{
-				"buffer_size": 2369,
+				"buffer_size": 12910,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "public/assets/js/app/templates/insurance/parity_price_page.html",
+			"file": "public/assets/js/app/templates/insurance/full_set_page.html",
 			"settings":
 			{
-				"buffer_size": 896,
+				"buffer_size": 6840,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "public/assets/js/app/views/insurance/ParityPageView.js",
+			"file": "public/assets/js/app/templates/insurance/value_set_page.html",
 			"settings":
 			{
-				"buffer_size": 14198,
+				"buffer_size": 3614,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "public/assets/js/app/views/insurance/FinalParityPageView.js",
+			"file": "app/controllers/InsuranceController.php",
 			"settings":
 			{
-				"buffer_size": 6564,
+				"buffer_size": 12952,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "public/assets/js/app/main.js",
+			"file": "app/models/Insurance.php",
 			"settings":
 			{
-				"buffer_size": 8540,
+				"buffer_size": 37335,
 				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/index.volt",
-			"settings":
-			{
-				"buffer_size": 333,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/insurance/index.volt",
-			"settings":
-			{
-				"buffer_size": 14488,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "public/app.manifest",
-			"settings":
-			{
-				"buffer_size": 62,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "public/assets/js/app/templates/insurance/pay_order_page.html",
-			"settings":
-			{
-				"buffer_size": 774,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "public/assets/js/app/views/insurance/PayOrderPageView.js",
-			"settings":
-			{
-				"buffer_size": 5259,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "public/assets/js/app/views/insurance/CompulsorySetPageView.js",
-			"settings":
-			{
-				"buffer_size": 3448,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "public/assets/css/bxjs.css",
-			"settings":
-			{
-				"buffer_size": 12164,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "public/assets/js/app/templates/insurance/insurance_list_page.html",
-			"settings":
-			{
-				"buffer_size": 2697,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "public/assets/js/app/templates/insurance/compulsory_set_page.html",
-			"settings":
-			{
-				"buffer_size": 762,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/home/jkzleond/下载/保险首页/首页2.html",
-			"settings":
-			{
-				"buffer_size": 2702,
-				"line_ending": "Windows"
 			}
 		}
 	],
@@ -259,8 +182,8 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 91.0,
-		"last_filter": "Package Control: Install",
+		"height": 81.0,
+		"last_filter": "",
 		"selected_items":
 		[
 			[
@@ -268,19 +191,15 @@
 				"Package Control: Install Package"
 			],
 			[
-				"Package Control: install",
-				"Package Control: Install Package"
-			],
-			[
 				"install",
 				"Package Control: Install Package"
 			]
 		],
-		"width": 467.0
+		"width": 400.0
 	},
 	"console":
 	{
-		"height": 160.0,
+		"height": 195.0,
 		"history":
 		[
 			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
@@ -299,154 +218,122 @@
 	[
 		"/www/php/car_mate_local_favour",
 		"/www/php/car_mate_local_favour/app",
-		"/www/php/car_mate_local_favour/app/config",
 		"/www/php/car_mate_local_favour/app/controllers",
-		"/www/php/car_mate_local_favour/app/library",
-		"/www/php/car_mate_local_favour/app/library/palm",
-		"/www/php/car_mate_local_favour/app/library/palm/utils",
-		"/www/php/car_mate_local_favour/app/library/twm",
-		"/www/php/car_mate_local_favour/app/library/twm/db",
-		"/www/php/car_mate_local_favour/app/library/twm/db/adapter",
-		"/www/php/car_mate_local_favour/app/library/twm/db/dialect",
 		"/www/php/car_mate_local_favour/app/models",
-		"/www/php/car_mate_local_favour/app/plugins",
 		"/www/php/car_mate_local_favour/app/views",
-		"/www/php/car_mate_local_favour/app/views/activity",
-		"/www/php/car_mate_local_favour/app/views/drivingtour",
-		"/www/php/car_mate_local_favour/app/views/index",
 		"/www/php/car_mate_local_favour/app/views/insurance",
 		"/www/php/car_mate_local_favour/public",
 		"/www/php/car_mate_local_favour/public/assets",
-		"/www/php/car_mate_local_favour/public/assets/css",
-		"/www/php/car_mate_local_favour/public/assets/img",
 		"/www/php/car_mate_local_favour/public/assets/js",
 		"/www/php/car_mate_local_favour/public/assets/js/app",
-		"/www/php/car_mate_local_favour/public/assets/js/app/models",
-		"/www/php/car_mate_local_favour/public/assets/js/app/models/discovery",
-		"/www/php/car_mate_local_favour/public/assets/js/app/models/insurance",
-		"/www/php/car_mate_local_favour/public/assets/js/app/routers",
 		"/www/php/car_mate_local_favour/public/assets/js/app/templates",
-		"/www/php/car_mate_local_favour/public/assets/js/app/templates/activity",
-		"/www/php/car_mate_local_favour/public/assets/js/app/templates/discovery",
 		"/www/php/car_mate_local_favour/public/assets/js/app/templates/insurance",
 		"/www/php/car_mate_local_favour/public/assets/js/app/views",
-		"/www/php/car_mate_local_favour/public/assets/js/app/views/activity",
-		"/www/php/car_mate_local_favour/public/assets/js/app/views/discovery",
 		"/www/php/car_mate_local_favour/public/assets/js/app/views/insurance"
 	],
 	"file_history":
 	[
-		"/www/php/car_mate_local_favour/app/views/base.volt",
-		"/www/php/car_mate_local_favour/public/assets/js/app/routers/InsuranceRouter.js",
-		"/www/php/car_mate_local_favour/public/assets/js/app/templates/insurance/insurance_list_item.html",
-		"/www/php/car_mate_local_favour/app/controllers/InsuranceController.php",
-		"/www/php/car_mate_local_favour/public/assets/js/app/templates/insurance/insurance_page.html",
-		"/www/php/car_mate_local_favour/public/assets/js/app/routers/NewInsuranceRouter.js",
-		"/www/php/car_mate_local_favour/public/assets/js/app/views/insurance/ApplyActualPageView.js",
-		"/www/php/car_mate_local_favour/public/assets/js/app/models/discovery/CommentModel.js",
-		"/www/php/car_mate_local_favour/app/controllers/AttachmentController.php",
-		"/www/php/car_mate_local_favour/public/assets/js/app/main.js",
-		"/home/jkzleond/下载/保险首页/首页2.html",
-		"/www/php/car_mate_local_favour/public/assets/js/app/routers/ActivityRouter.js",
-		"/www/php/car_mate_local_favour/public/assets/js/text.js",
-		"/www/php/car_mate_local_favour/app/config/config.php",
-		"/www/php/car_mate_local_favour/public/assets/css/local_favour.css",
-		"/www/php/car_mate_local_favour/app/library/twm/db/adapter/Mssql.php",
-		"/www/php/car_mate_local_favour/public/index.php",
-		"/www/php/car_mate_local_favour/app/views/index/index.volt",
-		"/www/php/car_mate_local_favour/public/app.manifest",
-		"/www/php/car_mate_local_favour/app/plugins/AjaxFilter.php",
-		"/www/php/car_mate_local_favour/app/plugins/MissionFilter.php",
-		"/www/php/car_mate_local_favour/app/plugins/AutoLoginFilter.php",
-		"/www/php/car_mate_local_favour/app/plugins/AuthFilter.php",
-		"/www/php/car_mate_local_favour/app/config/loader.php",
-		"/www/php/car_mate_local_favour/app/config/services.php",
-		"/www/php/car_mate_local_favour/app/models/Attachment.php",
-		"/www/php/car_mate_local_favour/public/assets/js/app/templates/insurance/apply_actual_page.html",
-		"/www/php/car_mate_local_favour/public/assets/js/app/views/insurance/CompulsorySetPageView.js",
-		"/www/php/car_mate_local_favour/public/assets/js/app/views/insurance/ReservationPageView.js",
-		"/www/php/car_mate_local_favour/public/assets/js/app/models/insurance/InsuranceFormModel.js",
-		"/www/php/car_mate_local_favour/public/assets/js/app/views/insurance/FirstPricePageView.js",
-		"/www/php/car_mate_local_favour/public/assets/js/app/templates/insurance/reservation_page.html",
-		"/www/php/car_mate_local_favour/public/assets/js/app/templates/insurance/parity_price_page.html",
-		"/www/php/car_mate_local_favour/public/assets/js/backbone.js",
-		"/www/php/car_mate_local_favour/app/models/Insurance.php",
-		"/www/php/car_mate_local_favour/app/models/CarInfo.php",
-		"/www/php/car_mate_local_favour/app/controllers/CarController.php",
-		"/www/php/car_mate_local_favour/app/config/routes.php",
-		"/home/jkzleond/下载/insurance_test.html",
-		"/www/php/car_mate_local_favour/public/assets/js/app/templates/insurance/compulsory_set_page.html",
-		"/www/php/car_mate_local_favour/public/assets/js/app/views/insurance/ValueSetPageView.js",
-		"/www/php/car_mate_local_favour/public/assets/js/app/templates/insurance/discount_detail.html",
-		"/www/php/car_mate_local_favour/public/assets/js/app/templates/insurance/apply_actual_compulsory_page.html",
-		"/www/php/car_mate_local_favour/public/assets/js/app/views/insurance/ParityPageView.js",
-		"/www/php/car_mate_local_favour/public/assets/js/app/models/insurance/InsuranceReservationFormModel.js",
-		"/www/php/car_mate_local_favour/public/assets/js/app/models/CarInfoModel.js",
-		"/www/php/car_mate_local_favour/public/assets/js/app/models/insurance/InsuranceActualFormModel.js",
-		"/www/php/car_mate_local_favour/public/assets/js/app/models/insurance/FinalResultModel.js",
-		"/www/php/car_mate_local_favour/public/assets/js/app/models/DiscoveryModel.js",
-		"/www/php/car_mate_local_favour/public/assets/js/app/models/ProvinceModel.js",
-		"/www/php/car_mate_local_favour/public/assets/js/app/models/CityModel.js",
-		"/www/php/car_mate_local_favour/app/controllers/ControllerBase.php",
-		"/www/php/car_mate_local_favour/public/assets/js/app/views/activity/ActivityDetailPageView.js",
-		"/www/php/car_mate_local_favour/app/controllers/AttachMentController.php",
-		"/www/php/car_mate_local_favour/public/assets/js/app/templates/activity/activity_detail_page.html",
-		"/www/php/car_mate_local_favour/public/assets/js/app/templates/activity/activity_detail.html",
-		"/www/php/weifa/cyh/Control/OrderPay.php",
-		"/www/php/car_mate_local_favour/public/assets/js/app/views/insurance/ActuaryPricePageView.js",
-		"/www/php/car_mate_local_favour/public/assets/js/app/templates/discovery/comment_list_item.html~",
-		"/www/php/car_mate_local_favour/public/assets/js/app/templates/activity/activity_sign_up_form.html",
-		"/www/php/backbone_test/routers/MainRouter.js",
-		"/www/php/backbone_test/main.js",
-		"/home/jkzleond/.config/sublime-text-3/Packages/User/Base File.sublime-settings",
-		"/home/jkzleond/.config/sublime-text-3/Packages/DocBlockr/Base File.sublime-settings",
-		"/www/php/car_mate_local_favour/public/assets/js/app/models/insurance/InsuranceResultModel.js",
-		"/www/php/car_mate_local_favour/public/assets/js/app/models/insurance/InsuranceInfoModel.js",
-		"/home/jkzleond/文档/www/cyh/statics/reservation.html",
-		"/www/php/car_mate_local_favour/public/assets/js/app/views/insurance/InsurancePageView.js",
-		"/www/php/car_mate_local_favour/public/assets/js/app/views/activity/ActivityPubFormView.js",
-		"/www/php/car_mate_local_favour/public/assets/js/app/views/activity/ActivityListView.js",
-		"/www/php/car_mate_local_favour/public/assets/js/app/routers/LocalFavourRouter.js",
-		"/www/php/car_mate_local_favour/public/assets/js/app/views/DiscoveryDetailPageView.js",
-		"/www/php/car_mate_local_favour/public/assets/js/app/views/discovery/CommentFormView.js",
-		"/www/php/weifa/cyh/Control/view.php",
-		"/www/php/car_mate_local_favour/public/assets/js/app/templates/insurance/insurance_list_page.html",
-		"/www/php/car_mate_local_favour/public/assets/js/app/views/insurance/FinalParityPageView.js",
-		"/www/php/car_mate_local_favour/public/assets/js/app/models/insurance/InsuranceReservationFromModel.js",
-		"/www/php/car_mate_local_favour/public/assets/js/app/templates/activity/activitise_page.html",
-		"/www/php/car_mate_local_favour/app/views/activity/index.volt",
+		"/www/php/car_mate_local_favour/app/views/insurance/index.volt",
+		"/www/php/car_mate_local_favour/app/controllers/UserController.php",
 		"/www/php/car_mate_local_favour/app/controllers/ActivityController.php",
-		"/www/php/car_mate_local_favour/app/models/Activity.php",
-		"/www/php/car_mate_local_favour/public/assets/js/app/templates/insurance/first_price_page.html",
-		"/www/php/car_mate_local_favour/public/assets/js/app/templates/insurance/actuary_price_page.html",
-		"/www/php/car_mate_local_favour/public/assets/js/app/views/insurance/InsuranceListPageView.js",
-		"/www/php/car_mate_local_favour/public/assets/js/app/templates/insurance/full_set_page.html",
-		"/www/php/car_mate_local_favour/public/assets/js/app/routers/TourRouter.js",
-		"/www/php/car_mate_local_favour/public/assets/js/app/models/insurance/PolicyFormModel.js",
-		"/www/php/car_mate_local_favour/app/controllers/FileController.php",
-		"/www/php/car_mate_local_favour/app/controllers/IndexController.php",
-		"/www/php/car_mate_local_favour/app/library/twm/db/dialect/Mssql.php",
-		"/www/php/weifa/cyh/Control/Car.php",
-		"/www/php/car_mate_local_favour/public/assets/css/bxjs.css",
-		"/www/php/car_mate_local_favour/app/models/Adv.php",
-		"/home/jkzleond/下载/首页.html",
-		"/www/php/car_mate_local_favour/app/models/ModelEx.php",
-		"/home/jkzleond/文档/index_adv/1.jpg",
-		"/home/jkzleond/.config/sublime-text-3/Packages/User/SideBarEnhancements/Open With/Side Bar.sublime-menu",
-		"/home/jkzleond/文档/index_adv/index.php",
-		"/home/jkzleond/文档/index_adv/index.html",
-		"/www/php/car_mate_admin/app/models/ModelEx.php",
-		"/www/php/car_mate_admin/app/views/illegal/orderDetail.volt",
+		"/www/php/car_mate_local_favour/app/controllers/ClockinController.php",
+		"/www/php/car_mate_local_favour/app/controllers/ControllerBase.php",
+		"/www/php/car_mate_local_favour/app/controllers/CarController.php",
+		"/www/php/car_mate_local_favour/app/controllers/AttachmentController.php",
+		"/www/php/car_mate_local_favour/public/uploads/php1dBsOO1437433612.jpg",
+		"/www/php/car_mate_local_favour/public/uploads/phpIwgO6Y1437433108.jpg",
+		"/www/php/car_mate_local_favour/public/uploads/phpPWPgBG1437433102.jpg",
+		"/www/php/car_mate_admin/app/controllers/NoticeController.php",
+		"/www/php/car_mate_admin/app/controllers/IllegalController.php",
+		"/www/php/car_mate_admin/app/controllers/AuserController.php",
+		"/www/php/car_mate_admin/app/models/LocalFavour.php",
+		"/www/php/car_mate_admin/app/controllers/LocalfavourController.php",
+		"/www/php/car_mate_admin/app/views/localfavour/localFavourAdvList.volt",
+		"/www/php/car_mate_admin/app/models/Activity.php",
+		"/www/php/car_mate_admin/app/views/activity/activityList.volt",
+		"/www/php/car_mate_admin/app/models/Order.php",
+		"/www/php/backbone_test/php.php",
+		"/www/php/weifa/cyh/Control/OrderPay.php",
 		"/www/php/car_mate_admin/app/views/illegal/orderManage.volt",
-		"/www/php/car_mate_admin/public/js/tinymce/tiny_mce_src.js",
-		"/www/php/car_mate_admin/app/models/ActivityUser.php",
-		"/www/php/car_mate_admin/app/models/Criteria.php",
-		"/home/jkzleond/.config/sublime-text-3/Packages/User/CTags.sublime-settings",
-		"/home/jkzleond/.config/sublime-text-3/Packages/CTags/CTags.sublime-settings",
+		"/www/php/car_mate_admin/app/views/illegal/driverInfoManage.volt",
+		"/www/php/car_mate_admin/app/models/PushNotifications.php",
+		"/www/php/car_mate_admin/app/views/activity/involvedUser.volt",
+		"/www/php/car_mate_admin/app/controllers/EmuController.php",
+		"/www/php/car_mate_admin/app/controllers/InsuranceController.php",
+		"/www/php/car_mate_admin/app/views/index/index.volt",
+		"/www/php/car_mate_admin/app/models/LocalFavourScrollAd.php",
+		"/www/php/car_mate_admin/app/models/LogisticsCompany.php",
+		"/www/php/car_mate_admin/app/models/ModelEx.php",
+		"/www/php/car_mate_admin/app/models/AdminUser.php",
+		"/www/php/car_mate_admin/app/models/AppException.php",
+		"/www/php/car_mate_admin/app/models/AutoTree.php",
 		"/www/php/car_mate_admin/app/models/Award.php",
-		"/www/php/car_mate_admin/scripts/MyModel.php",
-		"/home/jkzleond/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
-		"/home/jkzleond/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings"
+		"/www/php/car_mate_admin/app/models/Criteria.php",
+		"/www/php/car_mate_admin/app/models/Deal.php",
+		"/www/php/car_mate_admin/app/models/ActivityUser.php",
+		"/www/php/car_mate_admin/app/models/IamUser.php",
+		"/home/jkzleond/.config/sublime-text-2/Packages/DocBlockr/Base File.sublime-settings",
+		"/home/jkzleond/.config/sublime-text-2/Packages/User/Base File.sublime-settings",
+		"/home/jkzleond/.config/sublime-text-2/Packages/User/PHP.sublime-settings",
+		"/www/php/car_mate_admin/app/models/DriverInfo.php",
+		"/home/jkzleond/.config/sublime-text-2/Packages/phpDocumentor/phpdocumentor.sublime-settings",
+		"/www/php/weifa/cyh/wx_traffic.html",
+		"/www/php/weifa/cyh/index.php",
+		"/www/php/weifa/cyh/Control/Control.php",
+		"/www/php/weifa/cyh/Control/WeiBo.php",
+		"/www/php/weifa/cyh/车友惠文档.txt",
+		"/www/php/car_mate_admin/app/views/insurance/insuranceResult.volt",
+		"/www/php/car_mate_admin/app/models/Insurance.php",
+		"/home/jkzleond/文档/工作交接方保彦/本地惠/cari/WebRoot/open/helpHuiGold.html",
+		"/home/jkzleond/文档/工作交接方保彦/本地惠/cari/src/model/HuiItem.java",
+		"/home/jkzleond/文档/工作交接方保彦/保险/insurance/src/org/palmlink/insurance/repository/CityRepository.java",
+		"/home/jkzleond/文档/工作交接方保彦/保险/insurance/src/org/palmlink/insurance/domain/InsuranceResult.java",
+		"/home/jkzleond/文档/工作交接方保彦/保险/insurance/src/org/palmlink/insurance/domain/CompulsoryState.java",
+		"/home/jkzleond/文档/工作交接方保彦/保险/insurance/src/org/palmlink/insurance/domain/InsuranceParam.java",
+		"/home/jkzleond/文档/工作交接方保彦/保险/insurance/src/org/palmlink/insurance/repository/CarInfoRepository.java",
+		"/home/jkzleond/文档/工作交接方保彦/保险/insurance/src/org/palmlink/insurance/domain/ExactState.java",
+		"/home/jkzleond/文档/工作交接方保彦/保险/insurance/src/org/palmlink/insurance/repository/InsuranceSetRepository.java",
+		"/home/jkzleond/文档/工作交接方保彦/保险/insurance/src/org/palmlink/insurance/domain/InsuranceSet.java",
+		"/home/jkzleond/文档/工作交接方保彦/保险/insurance/src/org/palmlink/insurance/service/impl/StatusServiceImpl.java",
+		"/home/jkzleond/文档/工作交接方保彦/保险/insurance/src/org/palmlink/insurance/service/impl/UserServiceImpl.java",
+		"/home/jkzleond/文档/工作交接方保彦/保险/insurance/src/org/palmlink/insurance/domain/User.java",
+		"/home/jkzleond/文档/工作交接方保彦/保险/insurance/src/org/palmlink/insurance/domain/InsuranceInfo.java",
+		"/home/jkzleond/文档/工作交接方保彦/保险/insurance/WebRoot/WEB-INF/web.xml",
+		"/home/jkzleond/文档/工作交接方保彦/保险/insurance/src/org/palmlink/insurance/service/InsuranceInfoService.java",
+		"/www/php/car_mate_admin/app/controllers/ItemController.php",
+		"/www/php/car_mate_admin/app/cache/_www_php_car_mate_admin_app_views_activity_involveduser.volt.php",
+		"/www/php/weifa/control/Control.php~",
+		"/www/php/weifa/control/GuiZhou.php",
+		"/home/jkzleond/文档/工作交接方保彦/车友惠后台/TrafficViolation/WebRoot/js/dealMng.js",
+		"/home/jkzleond/文档/工作交接方保彦/车友惠后台/TrafficViolation/WebRoot/jsp/dealMng.jsp",
+		"/home/jkzleond/文档/工作交接方保彦/车友惠后台/TrafficViolation/src/com/palmlink/traffic/violation/action/ItemDealAction.java",
+		"/home/jkzleond/文档/工作交接方保彦/车友惠后台/TrafficViolation/src/com/palmlink/traffic/violation/service/impl/ItemDealServiceImpl.java",
+		"/home/jkzleond/文档/工作交接方保彦/车友惠后台/TrafficViolation/src/com/palmlink/traffic/violation/dao/DealDaoMapper.xml",
+		"/home/jkzleond/文档/工作交接方保彦/车友惠后台/TrafficViolation/src/com/palmlink/traffic/violation/dao/DealDao.java",
+		"/home/jkzleond/文档/工作交接方保彦/车友惠后台/TrafficViolation/src/com/palmlink/traffic/violation/dao/TransactionDaoMapper.xml",
+		"/home/jkzleond/文档/工作交接方保彦/车友惠后台/TrafficViolation/src/com/palmlink/traffic/violation/service/impl/TransactionServiceImpl.java",
+		"/home/jkzleond/文档/工作交接方保彦/车友惠后台/TrafficViolation/WebRoot/jsp/transactionList.jsp",
+		"/home/jkzleond/文档/工作交接方保彦/车友惠后台/TrafficViolation/src/com/palmlink/traffic/violation/action/TransactionAction.java",
+		"/home/jkzleond/文档/工作交接方保彦/车友惠后台/TrafficViolation/WebRoot/jsp/itemDetail.jsp",
+		"/www/php/car_mate_admin/app/views/item/itemManage.volt",
+		"/home/jkzleond/文档/工作交接方保彦/车友惠后台/TrafficViolation/WebRoot/jsp/itemMng.jsp",
+		"/home/jkzleond/文档/工作交接方保彦/车友惠后台/TrafficViolation/src/com/palmlink/traffic/violation/dao/ItemDaoMapper.xml",
+		"/home/jkzleond/文档/工作交接方保彦/车友惠后台/TrafficViolation/src/com/palmlink/traffic/violation/service/impl/ItemServiceImpl.java",
+		"/home/jkzleond/文档/工作交接方保彦/车友惠后台/TrafficViolation/src/com/palmlink/traffic/violation/action/ItemAction.java",
+		"/home/jkzleond/文档/工作交接方保彦/车友惠后台/TrafficViolation/src/com/palmlink/traffic/violation/action/VoteAction.java",
+		"/home/jkzleond/文档/工作交接方保彦/车友惠后台/TrafficViolation/WebRoot/jsp/voteMng.jsp",
+		"/home/jkzleond/文档/工作交接方保彦/车友惠后台/TrafficViolation/src/com/palmlink/traffic/violation/service/impl/VoteServiceImpl.java",
+		"/home/jkzleond/文档/工作交接方保彦/车友惠后台/TrafficViolation/src/com/palmlink/traffic/violation/dao/VoteDaoMapper.xml",
+		"/home/jkzleond/文档/工作交接方保彦/车友惠后台/TrafficViolation/src/com/palmlink/traffic/violation/action/AwardAction.java",
+		"/home/jkzleond/文档/工作交接方保彦/车友惠后台/TrafficViolation/src/com/palmlink/traffic/violation/service/impl/AwardServiceImpl.java",
+		"/home/jkzleond/文档/工作交接方保彦/车友惠后台/TrafficViolation/src/com/palmlink/traffic/violation/dao/AwardDaoMapper.xml",
+		"/home/jkzleond/文档/www/cyh/Control/User.php",
+		"/home/jkzleond/文档/www/cyh/member/index.php",
+		"/home/jkzleond/文档/www/cyh/index_adv/index.php",
+		"/home/jkzleond/文档/www/cyh/menber/index.php",
+		"/home/jkzleond/.config/sublime-text-2/Packages/Default/Preferences.sublime-settings",
+		"/home/jkzleond/.config/sublime-text-2/Packages/User/Preferences.sublime-settings",
+		"/home/jkzleond/文档/工作交接方保彦/车友惠后台/TrafficViolation/src/com/palmlink/traffic/violation/dao/AwardDao.java"
 	],
 	"find":
 	{
@@ -454,7 +341,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 111.0,
+		"height": 0.0,
 		"where_history":
 		[
 		]
@@ -464,19 +351,36 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"3D9AE8",
-			".fb_",
-			".zf_",
-			".hjb_",
-			"clear",
-			"'));",
-			");\n",
-			"bx_bx",
-			".insurance",
-			"\\.insurance",
-			"\\.(.*)",
-			"(\\..*)",
-			"retur"
+			"function getSoap",
+			"form",
+			"excute",
+			"- ",
+			"illegal_order_detail_table",
+			"refund",
+			"_calculateOrderNo",
+			"hphm",
+			"user_id",
+			"车牌号",
+			"info_id",
+			"= ",
+			"info_id",
+			"illegal-",
+			"illegal_",
+			"驾驶员列表",
+			"('')",
+			"option",
+			"已处理",
+			"business",
+			"standard_compulsory_insurance",
+			"\"]').",
+			":([^:,]*)",
+			"session_two",
+			"'",
+			"()",
+			"->session_config",
+			"        \n",
+			"		\n",
+			"Public"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -484,15 +388,11 @@
 		"regex": true,
 		"replace_history":
 		[
-			".bx_fb_",
-			".bx_zf_",
-			".bx_hjb_",
-			"bx",
-			".bx",
-			"bx",
-			"\\.insurance_$1",
-			"#insurance_page $1",
-			"#insurance_page \\1"
+			"driver-info-",
+			"driver_info_",
+			"'$1'",
+			"\"",
+			"->_session_config"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -503,283 +403,16 @@
 	"groups":
 	[
 		{
-			"selected": 10,
+			"selected": 9,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "public/assets/js/app/views/insurance/InsurancePageView.js",
+					"file": "app/controllers/ProvinceController.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1203,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								865,
-								865
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content"
-							],
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 150.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 12,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "public/assets/js/app/templates/insurance/insurance_page.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 14567,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2461,
-								2461
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content"
-							],
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 600.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 13,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "public/assets/js/app/routers/NewInsuranceRouter.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6219,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2028,
-								2028
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content"
-							],
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 750.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "public/assets/js/app/templates/insurance/insurance_list_item_5.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 847,
+						"buffer_size": 645,
 						"regions":
 						{
 						},
@@ -795,860 +428,63 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content"
-							],
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "public/assets/js/app/templates/insurance/insurance_list_item_4.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2369,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								246,
-								246
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content"
-							],
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "public/assets/js/app/templates/insurance/parity_price_page.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 896,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content"
-							],
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "public/assets/js/app/views/insurance/ParityPageView.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 14198,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								998,
-								998
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content"
-							],
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 300.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "public/assets/js/app/views/insurance/FinalParityPageView.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6564,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1305,
-								1305
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content"
-							],
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "public/assets/js/app/main.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8540,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								763,
-								763
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content"
-							],
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 75.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "app/views/index.volt",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 333,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content"
-							],
-							"syntax": "Packages/PHP/PHP.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "app/views/insurance/index.volt",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 14488,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content"
+								"bh_square_content"
 							],
 							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "public/app.manifest",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 62,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								29,
-								29
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content"
-							],
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "public/assets/js/app/templates/insurance/pay_order_page.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 774,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content"
-							],
-							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
@@ -1660,20 +496,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 13,
-					"file": "public/assets/js/app/views/insurance/PayOrderPageView.js",
+					"buffer": 1,
+					"file": "app/controllers/UserController.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5259,
+						"buffer_size": 2169,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2652,
-								2652
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1681,88 +517,88 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content"
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
 							],
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"syntax": "Packages/PHP/PHP.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 2611.0,
-						"translation.y": 825.0,
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 14,
-					"file": "public/assets/js/app/views/insurance/CompulsorySetPageView.js",
+					"buffer": 2,
+					"file": "public/assets/js/app/templates/insurance/insurance_page.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3448,
+						"buffer_size": 14582,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								578,
-								578
+								3220,
+								3220
 							]
 						],
 						"settings":
@@ -1770,265 +606,88 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content"
-							],
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1425.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 14,
-					"type": "text"
-				},
-				{
-					"buffer": 15,
-					"file": "public/assets/css/bxjs.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 12164,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								7080,
-								7080
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content"
-							],
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 11090.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 17,
-					"type": "text"
-				},
-				{
-					"buffer": 16,
-					"file": "public/assets/js/app/templates/insurance/insurance_list_page.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2697,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								449,
-								449
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content"
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
 							],
 							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 177.0,
+						"translation.y": 3975.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 18,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 17,
-					"file": "public/assets/js/app/templates/insurance/compulsory_set_page.html",
+					"buffer": 3,
+					"file": "public/assets/js/app/templates/insurance/final_parity_price_page.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 762,
+						"buffer_size": 899,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								490,
-								490
+								677,
+								677
 							]
 						],
 						"settings":
@@ -2036,31 +695,16 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
@@ -2071,26 +715,41 @@
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content"
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
 							],
 							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"tab_size": 4,
@@ -2100,24 +759,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 16,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 18,
-					"file": "/home/jkzleond/下载/保险首页/首页2.html",
+					"buffer": 4,
+					"file": "public/assets/js/app/templates/insurance/apply_actual_page.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2702,
+						"buffer_size": 8236,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								860,
-								860
+								6445,
+								6445
 							]
 						],
 						"settings":
@@ -2125,31 +784,16 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
@@ -2160,16 +804,75 @@
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
+							],
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3011.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "public/assets/js/app/views/insurance/ApplyActualPageView.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12910,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7524,
+								7524
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
@@ -2179,16 +882,418 @@
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
-								"bh_single_quote_content"
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
 							],
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 1950.0,
+						"translation.x": 72.0,
+						"translation.y": 7700.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 15,
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "public/assets/js/app/templates/insurance/full_set_page.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6840,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6628,
+								6628
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
+							],
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3250.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "public/assets/js/app/templates/insurance/value_set_page.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3614,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3607,
+								3607
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
+							],
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1500.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "app/controllers/InsuranceController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12952,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
+							],
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2850.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "app/models/Insurance.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 37335,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								15261,
+								15261
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
+							],
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 7427.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -2196,7 +1301,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 41.0
+		"height": 33.0
 	},
 	"input":
 	{
@@ -2233,7 +1338,7 @@
 	"project": "car_mate_local_favour.sublime-project",
 	"replace":
 	{
-		"height": 76.0
+		"height": 62.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -2247,12 +1352,12 @@
 	},
 	"select_project":
 	{
-		"height": 0.0,
+		"height": 500.0,
 		"last_filter": "",
 		"selected_items":
 		[
 		],
-		"width": 0.0
+		"width": 380.0
 	},
 	"select_symbol":
 	{
@@ -2268,10 +1373,10 @@
 	{
 	},
 	"show_minimap": true,
-	"show_open_files": true,
+	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 297.0,
+	"side_bar_width": 340.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
