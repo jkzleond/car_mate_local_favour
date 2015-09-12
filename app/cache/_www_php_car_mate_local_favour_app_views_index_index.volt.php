@@ -38,12 +38,12 @@
     
 
     <script type="text/javascript" src="<?php echo $this->url->get('/assets/js/date.js'); ?>"></script>
-    <script type="text/javascript" src="<?php echo $this->url->get('/assets/js/require.js'); ?>"></script>
+    <script type="text/javascript" src="<?php echo $this->url->get('/assets/js/require.js'); ?>" data-main="<?php echo $this->url->get('/assets/js/app/main.js'); ?>"></script>
 <!--    <script type="text/javascript" src="<?php echo $this->url->get('/assets/js/jquery-2.js'); ?>"></script>-->
 <!--    <script type="text/javascript" src="<?php echo $this->url->get('/assets/js/jquery.mobile-1.4.5.js'); ?>"></script>-->
 <!--    <script type="text/javascript" src="<?php echo $this->url->get('/assets/js/underscore.js'); ?>"></script>-->
 <!--    <script type="text/javascript" src="<?php echo $this->url->get('/assets/js/backbone.js'); ?>"></script>-->
-    <script type="text/javascript" src="<?php echo $this->url->get('/assets/js/app/main.js?bust=1.041'); ?>"></script>
+<!--   <script type="text/javascript" src="<?php echo $this->url->get('/assets/js/app/main.js?bust=1.041'); ?>"></script> -->
    <!-- <script type="text/javascript">
         window.addEventListener('load', function(){
             window.applicationCache.addEventListener('downloading', function(){
