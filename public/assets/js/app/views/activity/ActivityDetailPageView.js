@@ -165,17 +165,22 @@ define([
                 var value = $(n).val();
                 self.sign_form_model.set(key, value, {silent: true});
             });
-            var pay_items = [];
-            $('#activity_pay_items_container .activity-pay-item').each(function(i, n){
-                var number = $(n).find('.activity-pay-item-number').numberspinner('getValue');
 
-                if( number == 0) return;
-                var pay_item = {};
-                pay_item.id = $(n).attr('data-id');
-                pay_item.number = number;
-                pay_items.push(pay_item);
-            });
-            self.sign_form_model.set('pay_items', pay_items);
+            if( this.model.get('need_pay') == 1)
+            {
+                var pay_items = [];
+                $('#activity_pay_items_container .activity-pay-item').each(function(i, n){
+                    var number = $(n).find('.activity-pay-item-number').numberspinner('getValue');
+
+                    if( number == 0) return;
+                    var pay_item = {};
+                    pay_item.id = $(n).attr('data-id');
+                    pay_item.number = number;
+                    pay_items.push(pay_item);
+                });
+                self.sign_form_model.set('pay_items', pay_items);
+            }
+
             self.sign_form_model.set('aid', this.model.get('id'));
             self.sign_form_model.set('user_id', G.user.user_id);
         },
