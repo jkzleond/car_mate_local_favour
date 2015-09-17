@@ -70,6 +70,24 @@ define([
             });
 
             $('[data-field="auto"]').find('#activity_option_label').text(model.get('option'));
+            //渲染下拉选择框
+            $('[data-field="select"]').find('#activity_select_label').text(model.get('sel_name'));
+            this.$el.find('[name=selected]').empty();
+            var select_items_text = model.get('sel_items_text');
+            var select_items_value = model.get('sel_items_value');
+
+            if(select_items_text)
+            {
+                var select_items_text_arr = select_items_text.split(',');
+                var select_items_value_arr = select_items_value.split(',');
+                var select_len = select_items_value_arr.length;
+                for(var i = 0; i < select_len; i++)
+                {
+                    this.$el.find('[name=selected]').append('<option value="' + select_items_value_arr[i] + '">' + select_items_text_arr[i] + '</option>');
+                }
+            }
+
+
             $('[name="user_id"]').val(G.user.user_id);
             $('[name="uname"]').val(G.user.uname || '');
             $('[name="phone"]').val(G.user.phone || '');

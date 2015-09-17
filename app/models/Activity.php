@@ -346,8 +346,10 @@ SQL;
         convert(varchar(25),a.signStartDate,126) as sign_start_date,
         convert(varchar(25),a.signEndDate,126) as sign_end_date,
         a.payDes as pay_des, a.signDes as sign_des, a.tripLine as trip_line,
+        act_sel.name as sel_name, act_sel.optionList as sel_items_text, act_sel.shortNames as sel_items_value,
         g.id as goods_id, g.name as goods_name, g.price as goods_price
         from Activity a
+        left join ActivitySelect act_sel on act_sel.aid = a.id
         left join Hui_ActivityToGoods a2g on a2g.activity_id = a.id
         left join Hui_Goods g on g.id = a2g.goods_id
         where a.id = :id
