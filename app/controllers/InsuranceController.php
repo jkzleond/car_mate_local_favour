@@ -28,7 +28,8 @@ class InsuranceController extends ControllerBase
 
         //直接接受backbone的模型json字符串并解码未关联数组
         $json_data= $this->request->getJsonRawBody(true);
-        $result = InsuranceCalculator::calFamilyInsuranceResult(new Criteria($json_data));
+
+        $result = InsuranceCalculator::calInsuranceResult(new Criteria($json_data));
 
         $new_param_id = Insurance::addInsuranceParam($json_data);
 
@@ -54,7 +55,7 @@ class InsuranceController extends ControllerBase
 
         $insurance_info = array(
             'user_id' => $user['user_id'],
-            'car_type_id' => 1,
+            'car_type_id' => !empty($json_data['car_type_id']) ? $json_data['car_type_id'] : 1, 
             'insurance_param_id' => $new_param_id,
             'insurance_result_id' => $new_result_id,
             'state_id' => 1, //设置为已自算状态

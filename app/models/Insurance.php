@@ -78,10 +78,10 @@ SQL;
         $param_crt = new Criteria($insurance_param);
 
         $sql = <<<SQL
-        insert into Insurance_Param (carPrice, carSeat, firstYear, firstMonth, insuranceYear, insuranceMonth, compulsory_id, damage_id, third, driver, passenger, robbery_id, glass_id, optionalDeductible, notDeductible_id, newDevice, goods, offshore, ton, scratch, selfIgnition_id, discount_companyId, tax, displacement, serviceYear) values (
+        insert into Insurance_Param (carPrice, carSeat, firstYear, firstMonth, insuranceYear, insuranceMonth, compulsory_id, damage_id, third, driver, passenger, robbery_id, glass_id, optionalDeductible, notDeductible_id, newDevice, goods, offshore, ton, scratch, selfIgnition_id, discount_companyId, tax, displacement, serviceYear, level) values (
         :car_price, :car_seat, :first_year, :first_month, :insurance_year, :insurance_month,
         :compulsory_id, :damage_id, :third, :driver, :passenger, :robbery_id, :glass_id,
-        :optional_deductible, :not_deductible_id, :new_device, :goods, :offshore, :ton, :scratch, :self_ignition_id, :discount_company_id, :tax, :displacement, :service_year
+        :optional_deductible, :not_deductible_id, :new_device, :goods, :offshore, :ton, :scratch, :self_ignition_id, :discount_company_id, :tax, :displacement, :service_year, :level
         )
 SQL;
         $bind = array(
@@ -109,7 +109,8 @@ SQL;
             'discount_company_id' => $param_crt->discount_company_id,
             'tax' => $param_crt->tax,
             'displacement' => $param_crt->displacement,
-            'service_year' => $param_crt->service_year
+            'service_year' => $param_crt->service_year,
+            'level' => $param_crt->level //标准保费计算等级(家庭自用车与客车按座位数, 货车按吨位)
         );
         
         $success = self::nativeExecute($sql, $bind);

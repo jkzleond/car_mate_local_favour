@@ -9,6 +9,7 @@ define([
     'views/insurance/CompulsorySetPageView',
     'views/insurance/ValueSetPageView',
     'views/insurance/FullSetPageView',
+    //'views/insurance/ProfitSetPageView',
     'views/insurance/ReservationPageView',
     'views/insurance/ParityPageView', //比价页面view
     //'views/insurance/FirstPricePageView', 
@@ -17,7 +18,9 @@ define([
     'views/insurance/ApplyActualPageView',
     'views/insurance/PayOrderPageView',
     'views/insurance/InsuranceListPageView'
-], function($, Backbone, InsurancePageView, CompulsorySetPageView, ValueSetPageView, FullSetPageView, ReservationPageView, ParityPageView, FinalParityPageView, ApplyActualPageView, PayOrderPageView, InsuranceListPageView){
+], function($, Backbone, InsurancePageView, CompulsorySetPageView, ValueSetPageView, FullSetPageView,
+ //ProfitSetPageView, 
+ ReservationPageView, ParityPageView, FinalParityPageView, ApplyActualPageView, PayOrderPageView, InsuranceListPageView){
     var NewInsuranceRouter = Backbone.Router.extend({
         initialize: function(){
 
@@ -25,6 +28,7 @@ define([
             this.insurance_compulsory_set_page_view = new CompulsorySetPageView();
             this.insurance_value_set_page_view = new ValueSetPageView();
             this.insurance_full_set_page_view = new FullSetPageView();
+            //this.insurance_profit_set_page_view = new ProfitSetPageView();
             this.insurance_reservation_page_view = new ReservationPageView();
             this.parity_page_view = new ParityPageView();
             //this.first_price_page_view = new FirstPricePageView();
@@ -40,6 +44,7 @@ define([
             this.listenTo(this.insurance_compulsory_set_page_view, 'uri', this._onRequestUri);
             this.listenTo(this.insurance_value_set_page_view, 'uri', this._onRequestUri);
             this.listenTo(this.insurance_full_set_page_view, 'uri', this._onRequestUri);
+            //this.listenTo(this.insurance_profit_set_page_view, 'uri', this._onRequestUri);
             this.listenTo(this.parity_page_view, 'uri', this._onRequestUri);
             this.listenTo(this.pay_order_page_view, 'uri', this._onRequestUri);
             this.listenTo(this.final_parity_page_view, 'uri', this._onRequestUri);
