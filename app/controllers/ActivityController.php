@@ -87,9 +87,9 @@ class ActivityController extends ControllerBase
         }
         else
         {*/
-            $success = Activity::signUp($json_data, $aid);
+            $new_au_id = Activity::signUp($json_data, $aid); //活动参加用户记录新id
 
-            if(!$success)
+            if($new_au_id === false)
             {
                 $return_data = array(
                     'success' => false,
@@ -106,6 +106,7 @@ class ActivityController extends ControllerBase
                 //如果存在付款项目,即活动市收费的,则生成订单
                 if(!empty($json_data['pay_items']))
                 {
+                    $json_data['au_id'] = $new_au_id;
                     $order_result = Order::addOrder('activity', $json_data);
 
                     if(!$order_result)

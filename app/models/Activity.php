@@ -470,6 +470,10 @@ SQL;
             return false;
         }
 
-        return $connection->commit();
+        $success = $connection->commit();
+
+        if(!$success) return false;
+
+        return $connection->lastInsertId();
     }
 }

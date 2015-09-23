@@ -19,7 +19,7 @@ class Order extends ModelEx
         $crt = new Criteria($criteria);
         if($order_type == 'activity')
         {
-            return self::addActivityOrder($crt->aid, $crt->user_id, $crt->pay_items);
+            return self::addActivityOrder($crt->au_id, $crt->user_id, $crt->pay_items);
         }
         elseif($order_type == 'insurance')
         {
@@ -29,13 +29,13 @@ class Order extends ModelEx
 
     /**
      * 添加活动订单
-     * @param $aid
+     * @param $au_id
      * @param $user_id
      * @param array $pay_items
      * @return bool|array 成功返回 array($order_id, $order_no, $total_fee)
      *                    失败返回 false
      */
-    public static function addActivityOrder($aid, $user_id, array $pay_items)
+    public static function addActivityOrder($au_id, $user_id, array $pay_items)
     {
 
         $connection = self::_getConnection();
@@ -59,11 +59,11 @@ class Order extends ModelEx
             $total_fee += $one_goods['price'] * $goods_number_map[$one_goods['id']];
         }
 
-        $add_order_sql = "insert into PayList (orderNo, orderName, money, userId, orderType, relId) values (:order_no, '活动收费', :total_fee, :user_id, 'activity', :aid)";
+        $add_order_sql = "insert into PayList (orderNo, orderName, money, userId, orderType, relId) values (:order_no, '活动收费', :total_fee, :user_id, 'activity', :au_id)";
         $add_order_bind = array(
             'total_fee' => $total_fee,
             'user_id' => $user_id,
-            'aid' => $aid
+            'au_id' => $au_id
         );
 
         do
