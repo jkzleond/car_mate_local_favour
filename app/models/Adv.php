@@ -10,7 +10,7 @@ class Adv extends ModelEx
 		$sql = <<<SQL
 		select
             top 1    
-			id,pic,url,provinceId,
+			id,pic as pic_data,url,provinceId,
 			case clockType
 			when 1 then 1
 			when 4 then 2
