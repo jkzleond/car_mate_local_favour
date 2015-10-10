@@ -478,6 +478,15 @@
       <column name="keyword" sqlType="nvarchar" precision="500" scale="0" nullable="true" jdbcType="-9"/>
       <primary-key name="PK_AroundType" columns="id"/>
     </table>
+    <table name="Attachment" schema="dbo" catalog="IAMisDB" type="TABLE">
+      <column name="id" sqlType="int identity" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="varchar" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="mime_type" sqlType="varchar" precision="16" scale="0" nullable="false" jdbcType="12" def="JygndGV4dCcpJw=="/>
+      <column name="data_type" sqlType="varchar" precision="16" scale="0" nullable="false" jdbcType="12" def="JygndXJsJykn"/>
+      <column name="data_string" sqlType="text" precision="2147483647" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="data_bin" sqlType="binary" precision="1" scale="0" nullable="true" jdbcType="-2"/>
+      <primary-key name="PK__Attachme__3213E83F37D02F05" columns="id"/>
+    </table>
     <table name="AutoConfig" schema="dbo" catalog="IAMisDB" type="TABLE">
       <column name="id" sqlType="int identity" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="autoName" sqlType="nvarchar" precision="40" scale="0" nullable="false" jdbcType="-9"/>
@@ -736,6 +745,9 @@
       <column name="last_use_time" sqlType="datetime" precision="23" scale="3" nullable="false" jdbcType="93" def="JyhnZXRkYXRlKCkpJw=="/>
       <column name="hphm" sqlType="varchar" precision="45" scale="0" nullable="true" jdbcType="12"/>
       <column name="fdjh" sqlType="varchar" precision="16" scale="0" nullable="true" jdbcType="12"/>
+      <column name="car_license_a_attach_id" sqlType="int" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="car_license_b_attach_id" sqlType="int" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="idcard_attach_id" sqlType="int" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <primary-key name="PK__Illegale__3213E83F0544AF38" columns="id"/>
     </table>
     <table name="ExperienceUser" schema="dbo" catalog="IAMisDB" type="TABLE">
