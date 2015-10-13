@@ -80,11 +80,13 @@ define([
         },
         //比价图标series点击事件
         _onChartSeriesClick: function(ev, seriesIndex, pointIndex, data){
+            var info = this.insurance_info.attributes;
             var selected_company = this.company.models[pointIndex].attributes;
             var result = this.insurance_info.result.attributes;
-
+            
             //渲染保费折扣详情
             this.$el.find('.discount-detail').empty().append(this.discount_detail_tpl({
+                info: info,
                 company: selected_company,
                 result: result
             }));
@@ -168,19 +170,26 @@ define([
 
                 var gift1 = Number(company.gift);
                 var gift2 = Number(company.gift2);
+                var gift3 = Number(company.gift3);
 
                 var gift_money = 0;
-
-                if(!(after_discount_damage == 0))
+                if(model.car_type_id == 1)
                 {
-                    //因为车损险和交强险折扣是单独计算
-                    total_after_discount = (this.total_standard - this.standard_damage - this.standard_compulsory) * discount + after_discount_damage + after_discount_compulsory;
+                    if(!(after_discount_damage == 0))
+                    {
+                        //因为车损险和交强险折扣是单独计算
+                        total_after_discount = (this.total_standard - this.standard_damage - this.standard_compulsory) * discount + after_discount_damage + after_discount_compulsory;
 
-                    gift_money = total_after_discount * gift1;
+                        gift_money = total_after_discount * gift1;
+                    }
+                    else
+                    {
+                        gift_money = total_after_discount * gift2;
+                    }
                 }
                 else
                 {
-                    gift_money = total_after_discount * gift2;
+                    gift_money = 0;
                 }
 
                 this.plot_actual_amount_data.push(Math.floor((total_after_discount - gift_money) * 100)/100);
@@ -260,19 +269,27 @@ define([
 
                 var gift1 = Number(company.gift);
                 var gift2 = Number(company.gift2);
+                var gift3 = Number(company.gift3);
 
                 var gift_money = 0;
 
-                if(!(after_discount_damage == 0))
+                if(model.car_type_id == 1)
                 {
-                    //因为车损险和交强险折扣是单独计算
-                    total_after_discount = (this.total_standard - this.standard_damage - this.standard_compulsory) * discount + after_discount_damage + after_discount_compulsory;
+                    if(!(after_discount_damage == 0))
+                    {
+                        //因为车损险和交强险折扣是单独计算
+                        total_after_discount = (this.total_standard - this.standard_damage - this.standard_compulsory) * discount + after_discount_damage + after_discount_compulsory;
 
-                    gift_money = total_after_discount * gift1;
+                        gift_money = total_after_discount * gift1;
+                    }
+                    else
+                    {
+                        gift_money = total_after_discount * gift2;
+                    }
                 }
                 else
                 {
-                    gift_money = total_after_discount * gift2;
+                    gift_money = 0;
                 }
 
                 this.plot_actual_amount_data.push(Math.floor((total_after_discount - gift_money) * 100)/100);

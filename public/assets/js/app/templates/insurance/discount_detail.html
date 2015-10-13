@@ -1,4 +1,5 @@
 <%
+    var car_type_id = info.car_type_id;
     var standard_compulsory = Number(result.standardCompulsoryInsurance) || 0.00;
     var standard_damage = Number(result.standardDamageInsurance) || 0.00;
     var standard_third = Number(result.standardThird) || 0.00;
@@ -55,19 +56,26 @@
 
     var gift1 = Number(company.gift);
     var gift2 = Number(company.gift2);
+    var gift3 = Number(company.gift3);
 
     var gift_money = 0;
-
-    if(!(after_discount_damage == 0))
+    if(car_type_id == 1)
     {
-    //因为车损险和交强险折扣是单独计算
-    total_after_discount = (total_standard - standard_damage - standard_compulsory) * discount + after_discount_damage + after_discount_compulsory;
+        if(!(after_discount_damage == 0))
+        {
+            //因为车损险和交强险折扣是单独计算
+            total_after_discount = (total_standard - standard_damage - standard_compulsory) * discount + after_discount_damage + after_discount_compulsory;
 
-    gift_money = total_after_discount * gift1;
+            gift_money = total_after_discount * gift1;
+        }
+        else
+        {
+            gift_money = total_after_discount * gift2;
+        }
     }
     else
     {
-    gift_money = total_after_discount * gift2;
+        gift_money = 0; //营运车辆暂时无礼包
     }
 %>
 <table  class="bx_xxnr_div_table">
