@@ -224,7 +224,7 @@ class InsuranceCalculator
      * 计算公路客运车保险结果
      * @return array
      */
-    public static function calRoadPassengerCarInsuranceResult(Criteira $isnurance_param)
+    public static function calRoadPassengerCarInsuranceResult(Criteria $insurance_param)
     {
         $result = array();
 
