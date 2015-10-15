@@ -50,6 +50,7 @@ define([
 
             //渲染保费折扣详情
             this.$el.find('.discount-detail').empty().append(this.discount_detail_tpl({
+                info: this.insurance_info,
                 company: selected_company,
                 result: result
             }));
@@ -63,6 +64,7 @@ define([
 
             //渲染保费折扣详情
             this.$el.find('.discount-detail').empty().append(this.discount_detail_tpl({
+                info: this.insurance_info,
                 company: selected_company,
                 result: result
             }));
