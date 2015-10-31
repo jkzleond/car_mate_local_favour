@@ -96,7 +96,7 @@ define([
             this.trigger('uri', this, 'insurance/apply_actual/' + this.insurance_info.get('id'));
         },
         _resultProcess: function(model, result_model, options){
-
+            
             var result = result_model.attributes;
 
             this.standard_compulsory = Number(result.standardCompulsoryInsurance) || 0.00;
@@ -173,7 +173,8 @@ define([
                 var gift3 = Number(company.gift3);
 
                 var gift_money = 0;
-                if(model.car_type_id == 1)
+                var car_type_id = this.insurance_info.get('car_type_id');
+                if(car_type_id == 1)
                 {
                     if(!(after_discount_damage == 0))
                     {
@@ -272,8 +273,8 @@ define([
                 var gift3 = Number(company.gift3);
 
                 var gift_money = 0;
-
-                if(model.car_type_id == 1)
+                var car_type_id = this.insurance_info.get('car_type_id');
+                if(car_type_id == 1)
                 {
                     if(!(after_discount_damage == 0))
                     {

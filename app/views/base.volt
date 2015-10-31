@@ -13,11 +13,11 @@
     <link rel="stylesheet" href="{{ url('/assets/css/jquery.datetimepicker.css')}}"/>
     <link rel="stylesheet" href="{{ url('/assets/css/jquery.jqplot.min.css')}}"/>
     <link rel="stylesheet" href="{{ url('/assets/css/bdh.css')}}"/>
-    <link rel="stylesheet" href="{{ url('/assets/css/bxjs.css?bust=1.043')}}"/>
+    <link rel="stylesheet" href="{{ url('/assets/css/bxjs.css?bust=1.0433')}}"/>
     {% endblock %}
     {% block header_js %}
     <script type="text/javascript" src="{{ url('/assets/js/date.js') }}"></script>
-    <script type="text/javascript" src="{{ url('/assets/js/require.js') }}" data-main="{{ url('/assets/js/app/main.js?bust=1.0432') }}"></script>
+    <script type="text/javascript" src="{{ url('/assets/js/require.js') }}" data-main="{{ url('/assets/js/app/main.js?bust=1.0433') }}"></script>
 <!--    <script type="text/javascript" src="{{ url('/assets/js/jquery-2.js') }}"></script>-->
 <!--    <script type="text/javascript" src="{{ url('/assets/js/jquery.mobile-1.4.5.js') }}"></script>-->
 <!--    <script type="text/javascript" src="{{ url('/assets/js/underscore.js') }}"></script>-->
