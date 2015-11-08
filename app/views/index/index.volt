@@ -109,7 +109,7 @@
                         <a href="#">
                             <img src="{{ url('/assets/img/c1.png') }}" width="100%" style="max-width: 70px; min-width: 30px;" />
                         </a>
-                        <a href="#"><img src="{{ url('/assets/img/c2.png') }}" width="100%" style="max-width: 70px; min-width: 30px;" />
+                        <a href="#collection/list"><img src="{{ url('/assets/img/c2.png') }}" width="100%" style="max-width: 70px; min-width: 30px;" />
                         </a>
                     </div>
                 </td>

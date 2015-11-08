@@ -85,8 +85,13 @@ define([
         },
         home: function(){
             $(':mobile-pagecontainer').pagecontainer('change', '#home_page');
+
+            if(this.user_data_fetched) return;
+
             this.user_state_view.model.fetch();
             this.clock_in_view.model.fetch();
+
+            this.user_data_fetched = true;
         },
         developing: function(){
             $.cm.toast({msg: '此功能正在开发中,敬请期待'});

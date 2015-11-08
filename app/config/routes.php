@@ -53,6 +53,14 @@ $router->addPost('/clock_in.json', array(
     'action' => 'doClockIn'
 ));
 
+/*收藏*/
+
+//获取收藏数据列表
+$router->addGet('/collection/list', array(
+    'controller' => 'collection',
+    'action' => 'getList'
+));
+
 /*保险巨惠*/
 
 //保险聚会入口页面

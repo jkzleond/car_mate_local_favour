@@ -144,7 +144,7 @@
                         <a href="#">
                             <img src="<?php echo $this->url->get('/assets/img/c1.png'); ?>" width="100%" style="max-width: 70px; min-width: 30px;" />
                         </a>
-                        <a href="#"><img src="<?php echo $this->url->get('/assets/img/c2.png'); ?>" width="100%" style="max-width: 70px; min-width: 30px;" />
+                        <a href="#collection/list"><img src="<?php echo $this->url->get('/assets/img/c2.png'); ?>" width="100%" style="max-width: 70px; min-width: 30px;" />
                         </a>
                     </div>
                 </td>

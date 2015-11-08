@@ -212,15 +212,19 @@ require(['jquery'], function($){
             require(['backbone', 'routers/LocalFavourRouter', 'routers/TourRouter',
                 //'routers/InsuranceRouter',
                 'routers/NewInsuranceRouter',
-                'routers/ActivityRouter'], function(Backbone, LocalFavourRouter, TourRouter,
+                'routers/ActivityRouter',
+                'routers/CollectionRouter'
+                ], function(Backbone, LocalFavourRouter, TourRouter,
                                                     //InsuranceRouter,
                                                     NewInsuranceRouter,
-                                                    ActivityRouter){
+                                                    ActivityRouter,
+                                                    CollectionRouter){
                 this.local_favour_router = new LocalFavourRouter();
                 this.tour_router = new TourRouter();
                 this.activity_router = new ActivityRouter();
                 //this.insurance_router = new InsuranceRouter();
                 this.new_insurance_router = new NewInsuranceRouter();
+                this.collection_router = new CollectionRouter();
                 //调用Backbone.history.start,用以侦听window的hashchange事件,从而使路由生效
                 //创建路由
                 //
