@@ -242,7 +242,7 @@ require(['jquery'], function($){
                     Backbone.history.orig_check_url = Backbone.history.checkUrl;
                     Backbone.history.checkUrl = function(e){
 
-                        $.cm.toast({msg: winodw.location.href});//
+                        $.cm.toast({msg: window.location.href});//
 
                         if( !/.*#$|^[^#]*$/.test(window.location.href) )
                         {
