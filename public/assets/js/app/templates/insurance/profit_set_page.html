@@ -39,13 +39,22 @@
                 </td>
             </tr>
             <tr class="fb_box_bt">
+                <td style="width:40%;">车损险：</td>
+                <td colspan="2">
+                    <select name="is_buy_damage" type="text" class="fb_box_input" data-ignore="true" style="text-align: center; width: 50%;">
+                        <option value="0">不购买</option>
+                        <option value="1">购买</option>
+                    </select>
+                </td>
+            </tr>
+            <tr class="fb_box_bt rel-damage">
                 <td style="width:40%;">车价：</td>
                 <td colspan="2">
                     <input name="car_price" type="text" class="fb_box_input" style="text-align: center; width: 50%;"/>
                     <span class="cm-flex1">万元</span>
                 </td>
             </tr>
-            <tr class="fb_box_bt">
+            <tr class="fb_box_bt rel-damage">
                 <td>使用年限：</td>
                 <td colspan="2">
                     <select name="service_year" class="fb_box_input">
@@ -107,7 +116,7 @@
                     <input name="passenger" type="text" class="fb_box_input" value="1" style="text-align: center; width: 50%;" disabled /><span>万元</span>
                 </td>
             </tr>
-            <tr class="fb_box_bt">
+            <tr class="fb_box_bt rel-damage">
                 <td class="cm-span6">玻璃单独破损险：</td>
                 <td colspan="2">
                     <select name="glass_id" class="fb_box_input cm-flex1">
@@ -117,7 +126,7 @@
                     </select>
                 </td>
             </tr>
-            <tr class="fb_box_bt">
+            <tr class="fb_box_bt rel-damage">
                 <td>全车抢盗险：</td>
                 <td colspan="2">
                     <select name="robbery" type="text" class="fb_box_input">
@@ -126,7 +135,7 @@
                     </select>
                 </td>
             </tr>
-            <tr class="fb_box_bt">
+            <tr class="fb_box_bt rel-damage">
                 <td class="cm-span6">车身划痕险：</td>
                 <td colspan="2">
                     <select name="scratch" class="fb_box_input cm-flex1">
@@ -136,7 +145,7 @@
                     </select>
                 </td>
             </tr>
-            <tr class="fb_box_bt">
+            <tr class="fb_box_bt rel-damage">
                 <td class="cm-span6">自燃损失险：</td>
                 <td colspan="2">
                     <select name="self_ignition" class="fb_box_input cm-flex1">
@@ -145,7 +154,7 @@
                     </select>
                 </td>
             </tr>
-            <tr class="fb_box_bt">
+            <tr class="fb_box_bt rel-damage">
                 <td class="cm-span6">涉水损失险：</td>
                 <td colspan="2">
                     <select name="insurance_wading" class="fb_box_input cm-flex1">
@@ -176,3 +185,8 @@
         <button class="submit" data-theme="f" style="padding:0.7em 0.5%;width: 99%;color:white;">初算保费</button>
     </div>
 </div>
+<style type="text/css">
+    .rel-damage {
+        display: none;
+    }
+</style>

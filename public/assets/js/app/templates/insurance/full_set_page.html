@@ -58,8 +58,14 @@
             </tr>
             <tr class="fb_box_bt">
                 <td>司机座位险：</td>
-                <td colspan="2">
-                    <input name="driver" type="text" class="fb_box_input cm-flex1" style="text-align: center; width: 50%;" value="1" disabled /><span class="cm-flex1">万元</span>
+                <td>
+                    <select name="is_buy_driver" data-ignore="true" class="fb_box_input" disabled>
+                        <option value="1">购买</option>
+                        <option value="0" selected>不购买</option>
+                    </select>
+                </td>
+                <td>
+                    <input name="driver" type="text" class="fb_box_input cm-flex1" style="text-align: center; width: 50%;" value="0" disabled /><span class="cm-flex1">万元</span>
                 </td>
             </tr>
             <tr class="fb_box_bt">
@@ -73,7 +79,7 @@
                     </select>
                 </td>
                 <td>
-                    <input name="passenger" type="text" class="fb_box_input" value="1" style="text-align: center; width: 50%;" disabled /><span>万元</span>
+                    <input name="passenger" type="text" class="fb_box_input" value="0" style="text-align: center; width: 50%;" disabled /><span>万元</span>
                 </td>
             </tr>
             <tr class="fb_box_bt">

@@ -33,10 +33,12 @@ define([
 
             //this.$el.find('[name=phone]').val(G.user.phone || '');
 
-            this.listenTo(this.model, 'change:info_id', this._render);
+            //this.listenTo(this.model, 'change:info_id', this._render);
             this.listenTo(this.model, 'invalid', this._onFormModelInvalid);
             this.listenTo(this.model, 'sync', this._onFormModelSync);
+            this.listenTo(this.car_info_model, 'request', this._lockSubmit);
             this.listenTo(this.car_info_model, 'sync', this._renderCarInfo);
+            this.listenTo(this.car_info_model, 'sync', this._unlockSubmit);
         },
         events: {
             'input [name=hphm]': '_onHphmInput',
@@ -44,17 +46,16 @@ define([
             'click .reservation-btn': '_onReservationBtnClick'
         },
         _onHphmInput: function(event){
-            this.$el.find('[name=auto_name]').prop('disabled', true).val('');
-            this.$el.find('[name=frame_number]').prop('disabled', true).val('');
-            this.$el.find('[name=engine_number]').prop('disabled', true).val('');
+            this.$el.find('[name=auto_name]').prop('disabled', false).val('');
+            this.$el.find('[name=frame_number]').prop('disabled', false).val('');
+            this.$el.find('[name=engine_number]').prop('disabled', false).val('');
         },
         _onHphmChange: function(event){
             //hphm值发生改变后获取已存在CarInfo
-            var new_value = $(event.target).val();
-            console.log(new_value);
+            var hphm = this.$el.find('[name="hphm_header"]').val() + $(event.target).val();
             this.car_info_model.clear({silent: true});
             this.car_info_model.set({
-                hphm: new_value,
+                hphm: hphm,
                 user_id: G.user.user_id
             })
             this.car_info_model.fetch({reset: true});
@@ -90,18 +91,21 @@ define([
             self.model.set('user_id', G.user.user_id, {silent: true});//用户名
             self.model.set('car_info_id', this.car_info_model.get('id'));//car_info_id
         },
+        _lockSubmit: function(model, resp, options){
+            this.$el.find('.reservation-btn').prop('disabled', true);
+        },
+        _unlockSubmit: function(model, resp, options){
+            this.$el.find('.reservation-btn').prop('disabled', false);
+        },
         _renderCarInfo: function(model, resp, options){
-            this.$el.find('[name=hphm]').val(model.get('hphm'));//model为car_info_model
-            this.$el.find('[name=auto_name]').val(model.get('auto_name')).prop('disabled', false);//model为car_info_model
-            this.$el.find('[name=frame_number]').val(model.get('frame_number')).prop('disabled', false);
-            this.$el.find('[name=engine_number]').val(model.get('engine_number')).prop('disabled', false);
+            if(!resp.row) return;
+            this.$el.find('[name=auto_name]').val(model.get('auto_name')).prop('disabled', true);//model为car_info_model
+            this.$el.find('[name=frame_number]').val(model.get('frame_number')).prop('disabled', true);
+            this.$el.find('[name=engine_number]').val(model.get('engine_number')).prop('disabled', true);
         },
         reset: function(){
             //重置表单
             this.$el.find('[name=phone]').val(G.user.phone || '');
-            this.$el.find('[name=auto_name]').prop('disabled', true);
-            this.$el.find('[name=frame_number]').prop('disabled', true);
-            this.$el.find('[name=engine_number]').prop('disabled', true);
         }
     });
     return ReservationPageView;

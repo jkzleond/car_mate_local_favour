@@ -241,3 +241,8 @@ $router->addPost('/upload/file/{data_type:.*}', array(
     'action' => 'upload'
 ));
 
+$router->addGet('/text/', array(
+    'controller' => 'activity',
+    'action' => 'text'
+));
+

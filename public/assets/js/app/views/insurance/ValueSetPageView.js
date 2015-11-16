@@ -20,6 +20,7 @@ define([
         events: {
             'input input:text': '_onNumberInput',
             'change [name="third"]': '_onThirdSelectChange',
+            'change [name="is_buy_driver"]': '_onIsBuyDriverChange',
             'change [name="passenger_number"]': '_onPassengerNumberChange',
             'click .submit': '_onFormSubmit'
         },
@@ -34,26 +35,35 @@ define([
             var value = $(event.target).val();
             if(value == 0)
             {
-                this.$el.find('[name=driver]').prop('disabled', true);
-                this.$el.find('[name=passenger_number]').prop('disabled', true);
-                this.$el.find('[name=passenger]').prop('disabled', true);
+                this.$el.find('[name=is_buy_driver]').prop('disabled', true).val(0).change();
+                this.$el.find('[name=passenger_number]').prop('disabled', true).val(0).change();
             }
             else
             {
-                this.$el.find('[name=driver]').prop('disabled', false);
-                this.$el.find('[name=passenger_number]').prop('disabled', false);
-                this.$el.find('[name=passenger]').prop('disabled', false);
+                this.$el.find('[name=is_buy_driver]').prop('disabled', false).val(1).change();
+                this.$el.find('[name=passenger_number]').prop('disabled', false).val(1).change();
+            }
+        },
+        _onIsBuyDriverChange: function(event){
+            var value = $(event.target).val();
+            if(value == 0)
+            {
+                this.$el.find('[name="driver"]').prop('disabled', true).val(0);
+            }
+            else
+            {
+                this.$el.find('[name="driver"]').prop('disabled', false).val(1);
             }
         },
         _onPassengerNumberChange: function(event){
             var passenger_number = $(event.target).val();
             if(passenger_number == 0)
             {
-                this.$el.find('[name="passenger"]').prop('disabled', true); //选择不投座位险, 就禁用座位险保额输入框
+                this.$el.find('[name="passenger"]').prop('disabled', true).val(0); //选择不投座位险, 就禁用座位险保额输入框
             }
             else
             {
-                this.$el.find('[name="passenger"]').prop('disabled', false);
+                this.$el.find('[name="passenger"]').prop('disabled', false).val(1);
             }
         },
         _onFormSubmit: function(event){
@@ -73,7 +83,7 @@ define([
         _collectFormData: function()
         {
             var model_attrs = {};
-            this.$el.find('[name]:enabled:visible').each(function(index, feild){
+            this.$el.find('[name][data-ignore!="true"]:enabled:visible').each(function(index, feild){
                 var attr_key = $(feild).attr('name');
                 var attr_value = $(feild).val() || 0;
 

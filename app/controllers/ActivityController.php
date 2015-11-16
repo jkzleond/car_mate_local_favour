@@ -13,6 +13,11 @@ class ActivityController extends ControllerBase
 
     }
 
+    public function textAction()
+    {
+        
+    }
+
     /**
      * 获取活动列表
      * @param $type

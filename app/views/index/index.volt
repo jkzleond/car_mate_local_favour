@@ -49,7 +49,7 @@
             <tr>
                 <td id="user_state">
                     <div class="sign_in_div_tp">
-                        <img class="user-avatar" src="{{ url('/assets/img/DefaultFace.png') }}" width="100%" style="min-width: 60px;" />
+                        <img class="user-avatar" src="{{ url('/assets/img/DefaultFace.png') }}" style="width:100%; height: 100%; min-width: 60px;" />
                     </div>
                     <div class="sign_in_div_name_box">
                         <div class="sign_in_div_name">
@@ -106,7 +106,7 @@
             <tr>
                 <td>
                     <div class="gn_div_box_div">
-                        <a href="#">
+                        <a href="/text/#activity">
                             <img src="{{ url('/assets/img/c1.png') }}" width="100%" style="max-width: 70px; min-width: 30px;" />
                         </a>
                         <a href="#collection/list"><img src="{{ url('/assets/img/c2.png') }}" width="100%" style="max-width: 70px; min-width: 30px;" />

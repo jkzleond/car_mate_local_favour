@@ -20,6 +20,7 @@ define([
         events: {
             'input input:text': '_onNumberInput',
             'change [name=car_type_id]': '_onCarTypeIdChange',
+            'change [name="is_buy_damage"]': '_onIsBuyDamageChange',
             'change [name="third"]': '_onThirdSelectChange',
             'change [name="passenger_number"]': '_onPassengerNumberChange',
             'click .submit': '_onFormSubmit'
@@ -44,6 +45,17 @@ define([
                 this.$el.find('.truck-level').hide();
             }
 
+        },
+        _onIsBuyDamageChange: function(event){
+            var value = $(event.target).val();
+            if(value == 0)
+            {
+                this.$el.find('.rel-damage').hide();
+            }
+            else
+            {
+                this.$el.find('.rel-damage').show();
+            }
         },
         _onThirdSelectChange: function(event){
             var value = $(event.target).val();
