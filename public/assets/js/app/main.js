@@ -237,7 +237,7 @@ require(['jquery'], function($){
                 }*/
 
                 //解决android4.4以下多个webview输入框不能输入的问题
-                if(window.app && window.app.setUrl)
+                /*if(window.app && window.app.setUrl)
                 {
                     Backbone.history.orig_check_url = Backbone.history.checkUrl;
                     Backbone.history.checkUrl = function(e){
@@ -255,7 +255,7 @@ require(['jquery'], function($){
                         }
                         Backbone.history.orig_check_url(e);
                     }
-                }
+                }*/
 
                 //解决android4.4以下webview不能上传文件问题
                 if(window.app && window.app.showGallery)
