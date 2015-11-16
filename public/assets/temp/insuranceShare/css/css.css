@@ -1,0 +1,50 @@
+﻿.body_fx {
+	margin: 0px;
+	background-color: #FFFCDB;
+	font-family: 微软雅黑;
+}
+.fx_div_sr {
+	width: 100%;
+	margin: auto;
+	text-align: center;
+}
+.fx_div_sr_table {
+	width: 100%;
+	font-size: 15px;
+}
+.fx_div_sr_input {
+	width: 80%;
+	height: 40px;
+}
+.fx_div_sr_z {
+	background-color: #EAEAEA;
+	text-align: left;
+	font-size: 12px;
+	padding: 10px;
+}
+.body_zj {
+	margin: 0px;
+	background-color: #AF2175;
+	font-family: 微软雅黑;
+}
+.zj_div {
+	background-color: #ffffff;
+	width: 96.6%;
+	margin: auto;
+	text-align: center;
+}
+.zj_div_txt {
+	width: 100%;
+	font-size: 14px;
+}
+.zj_div_cj {
+	background-color: #A45EFD;
+	width: 95%;
+}
+.zj_div_cj_div {
+	background-color: #FFF282;
+	margin: 15px;
+;	height: 100px;
+	line-height: 100px;
+	color: #74401E;
+}

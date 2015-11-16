@@ -179,15 +179,15 @@ SQL;
         $page_condition_str = '';
 
         $bind = array();
-
+        
         if($crt->pub_user_id)
         {
             $cte_condition_arr[] = 'pubUser = :pub_user_id';
             $cte_condition_arr[] = '(state <= 3)';
             $bind['pub_user_id'] = $crt->pub_user_id;
         }
-        else
-        {
+        else if(!$crt->is_test)
+        {   
             $cte_condition_arr[] = '(state = 1 or state = 2)'; // 0:未进行 1: 进行中 2:已过期 3:待审核
         }
 
@@ -206,7 +206,7 @@ SQL;
 
         $sql = <<<SQL
         with ACT_DT_CTE as(
-          select id, [name], url,
+          select id, [name], url, [type], 
           convert(varchar(25),startDate,126) as start_date,
           convert(varchar(25),endDate,126) as end_date,
           a.place,
@@ -225,7 +225,6 @@ SQL;
         select * from ACT_DT_CTE
         $page_condition_str
 SQL;
-
         return self::nativeQuery($sql, $bind);
     }
 

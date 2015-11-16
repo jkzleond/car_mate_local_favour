@@ -19,10 +19,21 @@ if (state == 2) {
 }
 date_str = new Date(start_date).toString('yyyy-MM-dd') + '至' + new Date(end_date).toString('yyyy-MM-dd');
 
+var target_url = '';
+if(type == 2)
+{
+    target_url = url;    
+}
+else
+{
+    target_url = '#activity/detail/' + id;    
+}
+
+
 %>
 
 <div class="fs_list_box">
-    <a class="cm-block cm-span12" href="#activity/detail/<%= id %>">
+    <a class="cm-block cm-span12" href="<%= target_url %>">
         <table style="width: 100%">
             <tr>
                 <td style="width: 100px">
@@ -38,12 +49,14 @@ date_str = new Date(start_date).toString('yyyy-MM-dd') + '至' + new Date(end_da
                     <div class="fs_list_box_bt ">
                         地点：<%= place %>
                     </div>
+                    <% if(type != 2) { %>
                     <div class="fs_list_box_bt ">
                         <span class="cm-left">报名人数：<%= user_num %>人</span>
                         <span class="cm-label cm-right" style="background-color:<%= label_bg_color %>">
                             <%= state_str %>
                         </span>
                     </div>
+                    <% } %>
                 </td>
             </tr>
         </table>

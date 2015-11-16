@@ -13,11 +13,6 @@ class ActivityController extends ControllerBase
 
     }
 
-    public function textAction()
-    {
-        
-    }
-
     /**
      * 获取活动列表
      * @param $type
@@ -29,10 +24,17 @@ class ActivityController extends ControllerBase
 
         $criteria = array();
 
+        $user = User::getCurrentUser();
+
         if($type == 'my')
         {
-            $user = User::getCurrentUser();
             $criteria['pub_user_id'] = $user['user_id'];
+        }
+
+        //测试账号
+        if($user['user_id'] == 'jkzleond@163.com')
+        {
+            $criteria['is_test'] = true;
         }
 
         $activitise = Activity::getActivityList($criteria, $page_num, $page_size);
