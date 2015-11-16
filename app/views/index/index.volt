@@ -106,7 +106,7 @@
             <tr>
                 <td>
                     <div class="gn_div_box_div">
-                        <a href="/text/#activity">
+                        <a href="http://116.55.248.76:8092/text/#activity">
                             <img src="{{ url('/assets/img/c1.png') }}" width="100%" style="max-width: 70px; min-width: 30px;" />
                         </a>
                         <a href="#collection/list"><img src="{{ url('/assets/img/c2.png') }}" width="100%" style="max-width: 70px; min-width: 30px;" />
