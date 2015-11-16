@@ -106,7 +106,7 @@
             <tr>
                 <td>
                     <div class="gn_div_box_div">
-                        <a href="http://116.55.248.76:8092/text/#activity">
+                        <a href="#">
                             <img src="{{ url('/assets/img/c1.png') }}" width="100%" style="max-width: 70px; min-width: 30px;" />
                         </a>
                         <a href="#collection/list"><img src="{{ url('/assets/img/c2.png') }}" width="100%" style="max-width: 70px; min-width: 30px;" />
@@ -142,7 +142,7 @@
         <table class="ad_box_div" cellpadding="0" cellspacing="10">
             <tr>
                 <td>
-                    <a href="#"><img src="{{ url('/assets/img/ad1.png') }}" style="width:100%; max-width: 100%; min-width: 100px;" /></a>
+                    <a href="#collection"><img src="{{ url('/assets/img/ad1.png') }}" style="width:100%; max-width: 100%; min-width: 100px;" /></a>
                 </td>
                 <td>
                     <a href="#"><img src="{{ url('/assets/img/ad2.png') }}" style="width:100%; max-width: 100%; min-width: 100px;" /></a>
