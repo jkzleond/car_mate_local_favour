@@ -142,7 +142,7 @@
         <table class="ad_box_div" cellpadding="0" cellspacing="10">
             <tr>
                 <td>
-                    <a href="#collection"><img src="{{ url('/assets/img/ad1.png') }}" style="width:100%; max-width: 100%; min-width: 100px;" /></a>
+                    <a href="http://www.baidu.com"><img src="{{ url('/assets/img/ad1.png') }}" style="width:100%; max-width: 100%; min-width: 100px;" /></a>
                 </td>
                 <td>
                     <a href="#"><img src="{{ url('/assets/img/ad2.png') }}" style="width:100%; max-width: 100%; min-width: 100px;" /></a>
