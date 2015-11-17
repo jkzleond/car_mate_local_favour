@@ -95,6 +95,7 @@ class TempController extends ControllerBase
 	 */
 	public function insuranceShareDrawAction($aid)
 	{
+		echo $this->request->get('ssid', null, 123); 
 		$user = User::getCurrentUser();
 		var_dump($user);
 		exit;
