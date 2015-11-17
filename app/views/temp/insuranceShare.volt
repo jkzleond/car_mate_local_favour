@@ -47,6 +47,7 @@
 		</tr>
 		<tr>
 			<td>
+				<a href="http://116.55.248.76/cyh_weixin/joinus.html"></a>
 				<img src="{{ url('/assets/temp/insuranceShare/img/bt_xz.png') }}" style="max-width: 100%; min-width: 320px; width: 80%" />
 			</td>
 		</tr>

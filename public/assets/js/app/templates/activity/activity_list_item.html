@@ -22,13 +22,15 @@ date_str = new Date(start_date).toString('yyyy-MM-dd') + '至' + new Date(end_da
 var target_url = '';
 if(type == 2)
 {
-    if(url.indexOf('?') != -1)
+    if(url.indexOf('?') == -1)
     {
         target_url = url + '?ssid=' + G.user.session_id;
     }
     else
     {
-        target_url = url + '&ssid=' + G.user.session_id;
+        var url_parts = url.split('#');
+        url_parts[0] = url_parts[0] + '&ssid=' + G.user.session_id;
+        target_url =  url_parts.join('#');
     }
 }
 else

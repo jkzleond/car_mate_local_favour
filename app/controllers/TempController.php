@@ -95,9 +95,178 @@ class TempController extends ControllerBase
 	 */
 	public function insuranceShareDrawAction($aid)
 	{
-		echo $this->request->get('ssid', null, 123); 
+		//$this->view->disable();
 		$user = User::getCurrentUser();
-		var_dump($user);
-		exit;
+		$chance = Activity::getDrawChance($aid, $user['user_id']); //获取抽奖机会
+		$this->view->setVar('chance', $chance);
+		$this->view->setVar('session_id', $this->session->getSessionId);
+
+		if($chance == 0)
+		{
+			return;
+		}
+
+		$db = $this->db;
+		//验证是否再开奖时段
+		$valid_time_sql = <<<SQL
+		select top 1 a.is_period, dp.id as period_id from Activity a
+		left join Hui_DrawPeriod dp on dp.aid = a.id
+		where ( 
+				datediff(n, start_time, :cur_time) >= 0 and datediff(n, :cur_time, end_time) >= 0 or is_period = 0
+			  ) and aid = :aid
+SQL;
+		$valid_time_bind = array(
+			'cur_time' => '11:20',
+			'aid' => $aid
+		);
+
+		$valid_time_result = $db->query($valid_time_sql, $valid_time_bind);
+		$valid_time_result->setFetchMode(Db::FETCH_ASSOC);
+		$valid_time = $valid_time_result->fetch();
+		
+		$is_on_time = !empty($valid_time);
+
+		$this->view->setVar('is_on_time', $is_on_time);
+
+		if(!$is_on_time)
+		{
+			//不在抽奖时段,则取最近开始时间
+			$nearest_time_sql = <<<SQL
+			select min(start_time) from Hui_DrawPeriod where aid = :aid
+SQL;
+			$nearest_time_bind = array(
+				'aid' => $aid
+			);
+
+			$nearest_time_result = $db->query($nearest_time_sql, $nearest_time_bind);
+			$nearest_time_assoc = $nearest_time_result->fetch();
+			$nearest_time = $nearest_time_assoc['start_time'];
+			$this->view->setVar('nearest_time', date('H:i', $nearest_time) );
+		}
+		else
+		{
+			//在抽奖时段则开始抽奖
+			
+			//减少抽奖机会
+			$minus_chance_sql = <<<SQL
+			update AwardChance set chance = chance - 1, updateDate = getdate() where userid = :user_id and aid = :aid
+			and chance > 0
+SQL;
+			$minus_chance_bind = array(
+				'user_id' => $user['user_id'],
+				'aid' => $aid
+			);
+			$minus_chance_success = $db->execute($minus_chance_sql, $minus_chance_bind);
+
+			$period_id = isset($valid_time['period_id']) ? $valid_time['period_id'] : null;
+			$is_period = $valid_time['is_period'];
+
+			mt_srand(time()); //以时间戳做随机种子
+			$award_rand = mt_rand(1, 10000); //计算随机数
+
+			//查询中奖几率大于随机数的奖品
+			$get_award_sql = <<<SQL
+			select a.id, a.rate, a.name, a.pic, a.dayLimit as day_limit from Award a
+			left join Hui_DrawToAward d2a on d2a.award_id = a.id
+			where a.rate >= :rate and ( :is_period = 0 or d2a.period_id = :period_id) and a.aid = :aid
+SQL;
+			$get_award_bind = array(
+				'rate' => $award_rand,
+				'is_period' => $is_period,
+				'period_id' => $period_id,
+				'aid' => $aid
+			);
+			
+			$award_result = $db->query($get_award_sql, $get_award_bind);
+			$award_result->setFetchMode(Db::FETCH_ASSOC);
+			$award_list = $award_result->fetchAll();
+			if(empty($award_list))
+			{
+				$this->view->setVar('is_bingo', false);
+			}
+			else
+			{
+				$this->view->setVar('is_bingo', true);
+
+				$rand_index = array_rand($award_list);
+
+				$award = $award_list[$rand_index];
+
+				//计算单日中人奖数
+				$bingo_num_sql = <<<SQL
+				select count(1) from AwardGain where awid = :award_id and aid = :aid
+				and datediff(d, winDate, getdate()) = 0
+SQL;
+				$bingo_num_bind = array(
+					'award_id' => $award['id'],
+					'aid' => $aid
+				);
+				$bingo_num_result = $db->query($bingo_num_sql, $bingo_num_bind);
+				$bingo_num_result->setFetchMode(Db::FETCH_NUM);
+				$bingo_num_row = $bingo_num_result->fetch();
+				$bingo_num = $bingo_num_row[0];
+				
+				if($bingo_num >= $award['day_limit'])
+				{
+					//中奖人数达到奖品单日限额
+					$this->view->setVar('is_bingo', false);
+					return;
+				}
+				else
+				{
+					//未达到单日限额, 处理中奖
+					
+					//计算6位随机码
+					$code_str = '';
+
+					for($i = 0; $i < 6; $i++)
+					{
+						//利用ascii码表
+						$rand_ord = rand(48, 122);
+
+						//处理不是数字或字母的ord
+						if($rand_ord > 57 and $rand_ord < 65)
+						{
+							$rand_ord = 51;
+						}	
+						elseif($rand_ord > 90 and $rand_ord < 97)
+						{
+							$rand_ord = 101;
+						}
+						elseif($rand_ord == 48 or $rand_ord == 111)
+						{
+							//把0和o换成q
+							$rand_ord = 113;
+						}
+						elseif($rand_ord == 79 )
+						{
+							//把O换成Q
+							$rand_ord = 81;
+						}
+
+						$code_str .= chr($rand_ord);
+					}
+
+					$bingo_sql = <<<SQL
+					insert into AwardGain (aid, awid, userid, winDate, randomCode) values (:aid, :award_id, :user_id, getdate(), :code)
+SQL;
+					$bingo_bind = array(
+						'aid' => $aid,
+						'award_id' => $award['id'],
+						'user_id' => $user['user_id'],
+						'code' => $code_str
+					);
+
+					$bingo_success = $db->execute($bingo_sql, $bingo_bind);
+
+					$this->view->setVar('award', $award);
+
+				}
+
+			}
+		}
+
+
+
 	}
 }

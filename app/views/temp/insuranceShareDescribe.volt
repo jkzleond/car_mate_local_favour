@@ -19,7 +19,7 @@
 					</a>
 				</td>
 				<td>
-					<a href="{{ url('/insurance_share/open_app') }}">
+					<a href="http://116.55.248.76/cyh_weixin/joinus.html">
 						<img src="{{ url('/assets/temp/insuranceShare/img/bt_bf.jpg') }}" style="max-width: 100%; min-width: 100px; width: 80%; height: 80%;"/>
 					</a>
 				</td>

@@ -475,4 +475,20 @@ SQL;
 
         return $connection->lastInsertId();
     }
+
+    /**
+     * 获取指定用户抽奖机会
+     * @return int
+     */
+    public static function getDrawChance($aid, $user_id)
+    {
+        $sql = 'select chance from AwardChance where aid = :aid and userid = :user_id';
+        $bind = array(
+            'aid' => $aid,
+            'user_id' => $user_id
+        );
+
+        $result = self::fetchOne($sql, $bind, null, Db::FETCH_ASSOC);
+        return  !empty($result) ? $result['chance'] : 0;
+    }
 }
