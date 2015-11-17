@@ -15,12 +15,12 @@
 			<tr>
 				<td>
 					<a href="{{ url('/insurance_share') }}">
-						<img src="{{ url('/assets/temp/insuranceShare/img/bt_hy.jpg') }}" style="max-width: 100%; min-width: 100px; width: 80%; height: 80%;"/>	
+						<img src="{{ url('/assets/temp/insuranceShare/img/bt_hy.jpg') }}" style="max-width: 100%; min-width: 100px; width: 80%; height: 60%;"/>	
 					</a>
 				</td>
 				<td>
 					<a href="http://116.55.248.76/cyh_weixin/joinus.html">
-						<img src="{{ url('/assets/temp/insuranceShare/img/bt_bf.jpg') }}" style="max-width: 100%; min-width: 100px; width: 80%; height: 80%;"/>
+						<img src="{{ url('/assets/temp/insuranceShare/img/bt_bf.jpg') }}" style="max-width: 100%; min-width: 100px; width: 80%; height: 60%;"/>
 					</a>
 				</td>
 			</tr>
