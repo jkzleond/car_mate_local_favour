@@ -76,8 +76,8 @@
 			event.preventDefault();
 			var href = $(this).attr('href');
 			var param = window.location.href.match(/\?.*/) || '';
-			window.location.href = href + param;
 			$('#debug').text(window.location.href);
+			window.location.href = href + param;
 			return false;
 		});
 
@@ -86,6 +86,7 @@
 		var $canvas = $('#scratch_canvas');
 		var width = $container.innerWidth();
 		var height = $container.innerHeight();
+		var offset = $canvas.offset();
 
 		$canvas.attr('width', width);
 		$canvas.attr('height', height);
@@ -132,8 +133,8 @@
 
 	             with(ctx) {
 	                 beginPath()
-	                 $('#debug').text(e.offsetX + ':' + e.offsetY);
-	                 arc(e.offsetX, e.offsetY, 10, 0, Math.PI * 2);
+	                 $('#debug').text((e.pageX - offset.left) + ':' + (e.pageY - offset.top));
+	                 arc(e.pageX - offset.left, e.pageY - offset.top, 10, 0, Math.PI * 2);
 	                 fill();
 	             }
 
