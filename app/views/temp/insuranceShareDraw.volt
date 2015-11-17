@@ -61,7 +61,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td>&nbsp;</td>
+			<td id="debug">&nbsp;</td>
 			<td>&nbsp;</td>
 		</tr>
 	</table>
@@ -77,6 +77,7 @@
 			var href = $(this).attr('href');
 			var param = window.location.href.match(/\?.*/) || '';
 			window.location.href = href + param;
+			$('#debug').text(window.location.href);
 			return false;
 		});
 
@@ -131,6 +132,7 @@
 
 	             with(ctx) {
 	                 beginPath()
+	                 $('#debug').text(e.offsetX + ':' + e.offsetY);
 	                 arc(e.offsetX, e.offsetY, 10, 0, Math.PI * 2);
 	                 fill();
 	             }
