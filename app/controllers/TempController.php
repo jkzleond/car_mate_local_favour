@@ -50,7 +50,7 @@ class TempController extends ControllerBase
 			$is_already = $result[0] > 0;
 
 			$this->view->setVar('is_already', $is_already);
-			
+
 			if($is_already)
 			{
 				return;
@@ -89,6 +89,7 @@ class TempController extends ControllerBase
 
 	public function insuranceShareDrawAction($aid)
 	{
-		
+		$user = User::getCurrentUser();
+		print_r($user);
 	}
 }
