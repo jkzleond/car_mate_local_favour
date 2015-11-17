@@ -24,7 +24,7 @@ require.config({
         views: 'app/views',
         templates: 'app/templates'
     },
-    urlArgs: 'bust=5.2.2', //+ Date.now(),
+    urlArgs: 'bust=5.2.3', //+ Date.now(),
     waitSeconds: 0,
     shim:{
         backbone:{
@@ -204,7 +204,7 @@ require(['jquery'], function($){
         }).done(function(data){
             //初始化完成之后再显示页面
             //存储session_id
-            session_id = data.session_id;
+            session_id = G.user.session_id = data.session_id;
             //存储登录后的用户信息
             G.user = data.user_info;
 
