@@ -133,7 +133,6 @@
 
 	             with(ctx) {
 	                 beginPath()
-	                 $('#debug').text((e.pageX - offset.left) + ':' + (e.pageY - offset.top));
 	                 arc(e.pageX - offset.left, e.pageY - offset.top, 10, 0, Math.PI * 2);
 	                 fill();
 	             }
