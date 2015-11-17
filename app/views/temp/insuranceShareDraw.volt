@@ -76,7 +76,6 @@
 			event.preventDefault();
 			var href = $(this).attr('href');
 			var param = window.location.href.match(/\?.*/) || '';
-			$('#debug').text(window.location.href);
 			window.location.href = href + param;
 			return false;
 		});
