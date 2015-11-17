@@ -35,7 +35,9 @@
 					</canvas>
 				</div>
 				{% else %}
+				<div id="scratch_container" class="zj_div_cj_div" style="position:relative">
 					还没到抽奖时间,下次抽奖时间是<span style="color: #8E236F;">{{ nearest_time }}</span>
+				</div>
 				{% endif %}
 			</td>
 		</tr>

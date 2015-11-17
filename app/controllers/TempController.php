@@ -108,6 +108,9 @@ class TempController extends ControllerBase
 
 		$db = $this->db;
 		//验证是否再开奖时段
+		
+		$cur_time = date('H:i');
+		
 		$valid_time_sql = <<<SQL
 		select top 1 a.is_period, dp.id as period_id from Activity a
 		left join Hui_DrawPeriod dp on dp.aid = a.id
@@ -116,7 +119,7 @@ class TempController extends ControllerBase
 			  ) and aid = :aid
 SQL;
 		$valid_time_bind = array(
-			'cur_time' => '11:20',
+			'cur_time' => $cur_time,
 			'aid' => $aid
 		);
 
@@ -132,10 +135,11 @@ SQL;
 		{
 			//不在抽奖时段,则取最近开始时间
 			$nearest_time_sql = <<<SQL
-			select min(start_time) from Hui_DrawPeriod where aid = :aid
+			select min(start_time) from Hui_DrawPeriod where aid = :aid and start_time > :cur_time
 SQL;
 			$nearest_time_bind = array(
-				'aid' => $aid
+				'aid' => $aid,
+				'cur_time' => $cur_time
 			);
 
 			$nearest_time_result = $db->query($nearest_time_sql, $nearest_time_bind);
