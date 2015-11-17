@@ -96,7 +96,7 @@ class TempController extends ControllerBase
 	public function insuranceShareDrawAction($aid)
 	{
 		$user = User::getCurrentUser();
-		print_r($user);
+		var_dump($user);
 		exit;
 	}
 }
