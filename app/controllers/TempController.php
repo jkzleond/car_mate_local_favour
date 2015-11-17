@@ -13,6 +13,9 @@ class TempController extends ControllerBase
 
 	}
 
+	/**
+	 * 车险20免一, 分享
+	 */
 	public function insuranceShareAction()
 	{
 		$p_user_phone = $this->dispatcher->getParam('p_user_phone', null, '0');
@@ -87,9 +90,13 @@ class TempController extends ControllerBase
 		}
 	}
 
+	/**
+	 * 车险20免一, 抽奖
+	 */
 	public function insuranceShareDrawAction($aid)
 	{
 		$user = User::getCurrentUser();
 		print_r($user);
+		exit;
 	}
 }
