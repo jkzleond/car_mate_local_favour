@@ -246,8 +246,18 @@ $router->addPost('/upload/file/{data_type:.*}', array(
 其他tmp
  */
 //保险20免一活动
-//分享步骤
+//分享步骤 一
 $router->addGet('/insurance_share', array(
+    'controller' => 'temp',
+    'action' => 'insuranceShare'
+));
+
+//分享步骤 二
+$router->addGet('/insurance_share/{p_user_phone:\d+}', array(
+    'controller' => 'temp',
+    'action' => 'insuranceShare'
+));
+$router->addGet('/insurance_share/{p_user_phone:\d+}/{user_phone:\d+}', array(
     'controller' => 'temp',
     'action' => 'insuranceShare'
 ));
@@ -259,7 +269,7 @@ $router->addGet('/insurance_share/describe', array(
 ));
 
 //活动
-$router->addGet('/insurance_share/draw', array(
+$router->addGet('/insurance_share/draw/{aid:\d+}', array(
     'controller' => 'temp',
     'action' => 'insuranceShareDraw'
 ));

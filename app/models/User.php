@@ -34,6 +34,28 @@ SQL;
     }
 
     /**
+     * 根据用户phone获取用户信息
+     * @param  string $phone
+     * @return array
+     */
+    public static function getUserByPhone($phone)
+    {
+        $sql = <<<SQL
+        select top 1 u.id as id, u.userid as user_id, u.uname, u.nickname,
+        u.sex,
+        c.name as city, p.name as province, u.provinceId as province_id, u.cityid as city_id,
+        u.phone as phone, u.HuiGold
+        from IAM_USER u
+        left join City c on u.cityid=c.id
+        left join Province p on u.provinceid=p.id
+        where u.phone = :phone
+SQL;
+        $bind['phone'] = $phone;
+
+        return self::fetchOne($sql, $bind, null, Db::FETCH_ASSOC);
+    }
+
+    /**
      * 获取当前登录的用户信息
      * @return mixed
      */

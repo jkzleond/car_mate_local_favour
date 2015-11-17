@@ -96,6 +96,19 @@ $di->setShared('session', function () {
 });
 
 /**
+ * set flash component
+ */
+$di->setShared('flashSession', function() use($di) {
+    $di->getShared('session');
+    $flashSession = new \Phalcon\Flash\Session(array(
+        'error' => 'alert alert-error',
+        'success' => 'alert alert-success',
+        'notice' => 'alert alert-info'
+    ));
+    return $flashSession;
+});
+
+/**
  * Set Crypt Component use to Cookies
  */
 
