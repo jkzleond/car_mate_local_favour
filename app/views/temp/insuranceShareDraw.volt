@@ -24,7 +24,7 @@
 	<table cellpadding="0" cellspacing="0" class="zj_div_cj" align="center">
 		<tr>
 			<td>
-				{% if is_on_time %}
+				{% if is_on_time and chance > 0 %}
 				<div id="scratch_container" class="zj_div_cj_div" style="position:relative">
 					{% if is_bingo %}
 					<img src="data:image/png;base64,{{ award['pic'] }}" alt="" style="height:40%"><span style="font-size:2em;">{{ award['name'] }}</span>
@@ -34,16 +34,20 @@
 					<canvas id="scratch_canvas" width="100%" height="100%" style="position:absolute; top:0px; left:0px">
 					</canvas>
 				</div>
-				{% else %}
+				{% elseif chance > 0 %}
 				<div id="scratch_container" class="zj_div_cj_div" style="position:relative">
 					还没到抽奖时间,下次抽奖时间是<span style="color: #8E236F;">{{ nearest_time }}</span>
+				</div>
+				{% else %}
+				<div id="scratch_container" class="zj_div_cj_div" style="position:relative">
+					您的抽奖机会已用完
 				</div>
 				{% endif %}
 			</td>
 		</tr>
 	</table>
 	<table style="width: 100%" cellpadding="0" cellspacing="10">
-		{% if is_on_time %}
+		{% if is_on_time and chance > 0 %}
 		<tr>
 			<td colspan="2">
 				<a href="{{url('/insurance_share/draw/228')}}">
