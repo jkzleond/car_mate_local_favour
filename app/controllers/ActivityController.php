@@ -32,7 +32,7 @@ class ActivityController extends ControllerBase
         }
 
         //测试账号
-        if($user['user_id'] == 'jkzleond@163.com')
+        if($user['user_id'] == 'jkzleond@163.com' or $user['user_id'] == '283993604@qq.com')
         {
             $criteria['is_test'] = true;
         }
