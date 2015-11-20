@@ -66,23 +66,23 @@ class TempController extends ControllerBase
 			{
 				$p_user = User::getUserByPhone($p_user_phone);
 
-				$insert_sql = 'insert into Hui_UserToPuser(userid, p_user_id, aid) values (:user_id, :p_user_id, :aid)';
-				$insert_bind = array(
+				$insert_u2p_sql = 'insert into Hui_UserToPuser(user_id, p_user_id, aid) values (:user_id, :p_user_id, :aid)';
+				$insert_u2p_bind = array(
 					'user_id' => $user['user_id'],
 					'p_user_id' => $p_user['user_id'],
 					'aid' => 228	
 				);
-			}
-			else
-			{
-				$insert_sql = 'insert into ActivityUser(userid, aid) values (:user_id, :aid)';
-				$insert_bind = array(
-					'user_id' => $user['user_id'],
-					'aid' => 228
-				);					
-			}
 
-			$insert_success = $db->execute($insert_sql, $insert_bind);
+				$insert_u2p_success = $db->execute($insert_u2p_sql, $insert_u2p_bind);
+			}
+	
+
+			$insert_au_sql = 'insert into ActivityUser(userid, aid) values (:user_id, :aid)';
+			$insert_au_bind = array(
+				'user_id' => $user['user_id'],
+				'aid' => 228
+			);					
+			$insert_au_success = $db->execute($insert_au_sql, $insert_au_bind);
 
 			$this->flashSession->success('您已成功参加活动, 可以分享给您的好友咯！<br/>(让TA为你做贡献O(∩_∩)O哈哈~)');
 			$this->response->redirect('/insurance_share/'.$user_phone, false);
