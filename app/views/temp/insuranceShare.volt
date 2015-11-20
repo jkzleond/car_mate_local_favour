@@ -79,6 +79,13 @@
 
 		submit_btn.addEventListener('click', function(event){
 			event.preventDefault();
+
+			if(!phone_input.value)
+			{
+				alert('请填写您的电话号码！');
+				return;
+			}
+
 			window.location.href = "{{ url('/insurance_share/') }}" + p_user_phone +'/' + phone_input.value;
 			return false;
 		})

@@ -66,7 +66,7 @@ class TempController extends ControllerBase
 			{
 				$p_user = User::getUserByPhone($p_user_phone);
 
-				$insert_sql = 'insert into ActivityUser(userid, p_user_id, aid) values (:user_id, :p_user_id, :aid)';
+				$insert_sql = 'insert into Hui_UserToPuser(userid, p_user_id, aid) values (:user_id, :p_user_id, :aid)';
 				$insert_bind = array(
 					'user_id' => $user['user_id'],
 					'p_user_id' => $p_user['user_id'],
