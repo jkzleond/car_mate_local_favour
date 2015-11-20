@@ -59,9 +59,10 @@
     var gift3 = Number(company.gift3);
 
     var gift_money = 0;
+    
     if(car_type_id == 1)
     {
-        if(!(after_discount_damage == 0))
+        if(after_discount_damage != 0)
         {
             //因为车损险和交强险折扣是单独计算
             total_after_discount = (total_standard - standard_damage - standard_compulsory) * discount + after_discount_damage + after_discount_compulsory;

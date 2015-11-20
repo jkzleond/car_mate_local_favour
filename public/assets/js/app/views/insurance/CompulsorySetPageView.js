@@ -47,10 +47,10 @@ define([
 
             var selected_company = this.company.models[0].attributes; //这里只需要第一家(首推的保险公司)
             var result = this.insurance_info.result.attributes;
-
+            
             //渲染保费折扣详情
             this.$el.find('.discount-detail').empty().append(this.discount_detail_tpl({
-                info: this.insurance_info,
+                info: this.insurance_info.attributes,
                 company: selected_company,
                 result: result
             }));
@@ -64,7 +64,7 @@ define([
 
             //渲染保费折扣详情
             this.$el.find('.discount-detail').empty().append(this.discount_detail_tpl({
-                info: this.insurance_info,
+                info: this.insurance_info.attributes,
                 company: selected_company,
                 result: result
             }));
