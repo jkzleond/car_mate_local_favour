@@ -553,8 +553,8 @@ class Mssql extends AdapterPdo implements EventsAwareInterface, AdapterInterface
 
     public function lastInsertId($tableName = null, $primaryKey = null)
     {
-        //$sql = 'SELECT SCOPE_IDENTITY()';
-        $sql = 'SELECT @@IDENTITY';
+        $sql = 'SELECT SCOPE_IDENTITY()';
+        //$sql = 'SELECT @@IDENTITY';
         $result = $this->fetchOne($sql);
         return array_pop($result);
     }

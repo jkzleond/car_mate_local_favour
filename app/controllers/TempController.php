@@ -56,6 +56,19 @@ class TempController extends ControllerBase
 
 			if($is_already)
 			{
+				$query_sub_user_sql = <<<SQL
+				select u.phone from Hui_UserToPuser u2p
+				left join IAM_USER u
+				where p_user_id = :p_user_id and aid = :aid
+SQL;
+				$query_sub_user_bind = array(
+					'p_user_id' => $user['user_id'],
+					'aid' => 228
+				);
+
+				$query_sub_user_result = $db->query($query_sub_user_sql, $query_sub_user_bind);
+				$sub_user_list = $query_sub_user_result->fetchAll();
+				$this->view->setVar('sub_user_list', $sub_user_list);
 				return;
 			}
 
