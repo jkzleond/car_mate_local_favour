@@ -120,7 +120,6 @@ class TempController extends ControllerBase
 						'wx_user_id' => $wx_user_id,
 						'aid' => 228
 					);
-					//file_put_contents('wx.log', $insert_view_sql);
 					$insert_view_success = $db->execute($insert_view_sql, $insert_view_bind);
 				}
 			}
@@ -172,7 +171,7 @@ class TempController extends ControllerBase
 			if($is_already)
 			{
 				$this->flashSession->success('您已成功参加活动, 邀请码为[<span style="font-weight:bold">'.$involved_user['invitation_code'].'</span>], 可以分享给您的好友咯！<br/>(让TA为你做贡献O(∩_∩)O哈哈~)');
-				$this->response->redirect('/insurance_share/'.$user_phone, false);
+				$this->response->redirect('/insurance_share/'.$user['phone'], false);
 				return $this->response; //这里一定要返回 response 对象 否则原本的模板还是会被执行 flashSession 就会被消耗
 			}
 
@@ -192,7 +191,7 @@ class TempController extends ControllerBase
 
 
 			$this->flashSession->success('您已成功参加活动, 邀请码为['.$invitation_code.'], 可以分享给您的好友咯！<br/>(让TA为你做贡献O(∩_∩)O哈哈~)');
-			$this->response->redirect('/insurance_share/'.$user_phone, false);
+			$this->response->redirect('/insurance_share/'.$user['phone'], false);
 			return $this->response; //这里一定要返回 response 对象 否则原本的模板还是会被执行 flashSession 就会被消耗
 		}
 	}
