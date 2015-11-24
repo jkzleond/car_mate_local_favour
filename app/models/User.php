@@ -85,12 +85,9 @@ SQL;
         }
 
         $sql = <<<SQL
-        select id, userid as user_id, name, nickname, phone from IAM_USER
+        select id, userid as user_id, uname, nickname, phone from IAM_USER
         $condition_str
 SQL;
-        echo $sql.PHP_EOL;
-        print_r($bind);
-        exit;
         return self::nativeQuery($sql, $bind);
     }
 
