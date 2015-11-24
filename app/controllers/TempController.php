@@ -28,12 +28,18 @@ class TempController extends ControllerBase
 		$p_user_phone = $this->dispatcher->getParam('p_user_phone', null, '0');
 		$user_phone = $this->dispatcher->getParam('user_phone');
 
+		$wx_token_json = file_get_contents('https://api.weixin.qq.com/sns/oauth2/access_token?appid='.$this->_app_id.'&secret='.$this->_app_secret.'&code='.$wx_code.'&grant_type=authorization_code');
+		$wx_token = json_decode($wx_token_json);
+		print_r($wx_token);
+		exit;
+
+
 		$p_user_id = null;
-		// if($p_user_phone !== '0')
-		// {
-		// 	$p_user = User::getUserByPhone($p_user_phone);
-		// 	$p_user_id = $p_user['user_id'];
-		// }
+		if($p_user_phone !== '0')
+		{
+			$p_user = User::getUserByPhone($p_user_phone);
+			$p_user_id = $p_user['user_id'];
+		}
 
 		$wx_state = $this->request->get('state', null, false);
 
