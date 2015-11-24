@@ -14,7 +14,14 @@
 		<table style="width:100%; height:100%" cellpadding="0" cellspacing="10">
 			<tr>
 				<td>
-					<a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx1f42c4cb56c5095d&redirect_uri={{ 'http://ip.yn122.net:8092/insurance_share'|urlencode }}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect">
+					{% if not is_wx %}
+					{% set url = url('/insurance_share') %}
+					{% else %}
+					<?php 
+						$url =  'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx1f42c4cb56c5095d&redirect_uri='.urlencode('http://ip.yn122.net:8092/insurance_share').'&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
+					?>
+					{% endif %}
+					<a href="{{ url }}">
 						<img src="{{ url('/assets/temp/insuranceShare/img/bt_hy.jpg') }}" style="max-width: 100%; min-width: 100px; width: 80%; height: 40%;"/>	
 					</a>
 				</td>

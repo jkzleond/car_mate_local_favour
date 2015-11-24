@@ -10,7 +10,10 @@ class TempController extends ControllerBase
 
 	public function insuranceShareDescribeAction()
 	{
-
+		$is_wx = $this->request->get('is_wx', null, false);
+		$this->view->setVars(array(
+			'is_wx' => $is_wx
+		));
 	}
 
 	/**
@@ -23,6 +26,13 @@ class TempController extends ControllerBase
 
 		if(!$user_phone)
 		{
+			$this->view->disable();
+			$wx_state = $this->request->get('state');
+			$wx_code = $this->request->get('code');
+
+			echo 'state:'.$wx_state;
+			echo 'code:'.$wx_code;
+
 			$this->view->setVar('is_user', true);
 			$this->view->setVar('p_user_phone', $p_user_phone);
 			return;
