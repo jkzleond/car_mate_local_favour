@@ -54,6 +54,8 @@ class TempController extends ControllerBase
 			{
 				$wx_token_json = file_get_contents('https://api.weixin.qq.com/sns/oauth2/access_token?appid='.$this->_app_id.'&secret='.$this->_app_secret.'&code='.$wx_code.'&grant_type=authorization_code');
 				$wx_token = json_decode($wx_token_json);
+				print_r($wx_token);
+				echo PHP_EOL;
 
 				$bind_user_list = User::getUserList(array(
 					'wx_opnenid' => $wx_token['openid']
@@ -65,7 +67,7 @@ class TempController extends ControllerBase
 				}
 
 				$wx_userinfo_json = file_get_contents('https://api.weixin.qq.com/sns/userinfo?access_token='.$wx_token['access_token'].'&openid='.$wx_token['openid'].'&lang=zh_CN');
-
+				echo 'https://api.weixin.qq.com/sns/userinfo?access_token='.$wx_token['access_token'].'&openid='.$wx_token['openid'].'&lang=zh_CN'.PHP_EOL;
 				$wx_userinfo = json_decode($wx_userinfo_json);
 				$this->view->disable();
 				print_r($wx_userinfo);
