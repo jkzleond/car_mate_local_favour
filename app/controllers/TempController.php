@@ -182,7 +182,7 @@ class TempController extends ControllerBase
 				{
 					$get_view_sql = <<<SQL
 					select u.nickname, u.headimgurl from Hui_ActivityShareView v
-					left join WX_USER u
+					left join WX_USER u on u.id = v.wx_user_id
 					where wx_user_id is not null and v.p_user_id = :p_user_id and v.aid = :aid
 SQL;
 					$get_view_bind = array(
