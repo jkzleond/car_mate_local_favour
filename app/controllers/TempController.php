@@ -36,7 +36,7 @@ class TempController extends ControllerBase
 		$wx_state = $this->request->get('state', null, false);
 		$user_agent = $this->request->getUserAgent();
 		$is_wx = strpos($user_agent, 'MicroMessage') !== false;
-
+		echo $user_agent;exit;
 		//使用微信客户端访问,并且不是从授权页面跳转过来的(跳转过来都带state),重定向到授权页面
 		if($is_wx and !$wx_state)
 		{
@@ -180,8 +180,9 @@ class TempController extends ControllerBase
 				//在微信客户端访问则进入过此页面的微信用户信息
 				if($is_wx)
 				{
-					$get_view_sql = 'select nickname, headimgurl from Hui_ActivityShareView where wx_user_id is not null aid = :aid';
+					$get_view_sql = 'select nickname, headimgurl from Hui_ActivityShareView where wx_user_id is not null and p_user_id = :p_user_id and aid = :aid';
 					$get_view_bind = array(
+						'p_user_id' => $p_user_id ? $p_user_id : '',
 						'aid' => 228
 					);
 					$view_result = $db->query($get_view_sql, $get_view_bind);
@@ -189,7 +190,7 @@ class TempController extends ControllerBase
 					$view_record_list = $view_result->fetchAll();
 					$this->view->setVar('view_record_list', $view_record_list);
 				}
-				
+
 				$this->flashSession->success('您已成功参加活动, 邀请码为[<span style="font-weight:bold">'.$involved_user['invitation_code'].'</span>], 可以分享给您的好友咯！<br/>(让TA为你做贡献O(∩_∩)O哈哈~)');
 				return;
 			}
