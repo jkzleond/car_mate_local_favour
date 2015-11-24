@@ -42,62 +42,47 @@ class TempController extends ControllerBase
 
 			$db = $this->db;
 
-			$query_sql = 'select count(1) from ActivityUser where (userid = :user_id or p_user_id = :user_id) and aid = :aid';
+			$query_sql = 'select invitation_code from ActivityUser where userid = :user_id and aid = :aid';
 			$query_bind = array(
 				'user_id' => $user['user_id'],
 				'aid' => 228
 			);
 			$query_result = $db->query($query_sql, $query_bind);
-			$query_result->setFetchMode(Db::FETCH_NUM);
-			$result = $query_result->fetch();
-			$is_already = $result[0] > 0;
-
-			$this->view->setVar('is_already', $is_already);
+			$query_result->setFetchMode(Db::FETCH_ASSOC);
+			$involved_user = $query_result->fetch();
+			$is_already = !empty($involved_user);
 
 			if($is_already)
 			{
-				$query_sub_user_sql = <<<SQL
-				select u.phone from Hui_UserToPuser u2p
-				left join IAM_USER u
-				where p_user_id = :p_user_id and aid = :aid
-SQL;
-				$query_sub_user_bind = array(
-					'p_user_id' => $user['user_id'],
-					'aid' => 228
-				);
-
-				$query_sub_user_result = $db->query($query_sub_user_sql, $query_sub_user_bind);
-				$sub_user_list = $query_sub_user_result->fetchAll();
-				$this->view->setVar('sub_user_list', $sub_user_list);
-				return;
+				$this->flashSession->success('您已成功参加活动, 邀请码为[<span style="font-weight:bold">'.$involved_user['invitation_code'].'</span>], 可以分享给您的好友咯！<br/>(让TA为你做贡献O(∩_∩)O哈哈~)');
+				$this->response->redirect('/insurance_share/'.$user_phone, false);
+				return $this->response; //这里一定要返回 response 对象 否则原本的模板还是会被执行 flashSession 就会被消耗
 			}
 
 			$insert_sql = null;
 			$insert_bind = null;
 
+
+			$p_user_id = null;
 			if($p_user_phone !== '0')
 			{
 				$p_user = User::getUserByPhone($p_user_phone);
-
-				$insert_u2p_sql = 'insert into Hui_UserToPuser(user_id, p_user_id, aid) values (:user_id, :p_user_id, :aid)';
-				$insert_u2p_bind = array(
-					'user_id' => $user['user_id'],
-					'p_user_id' => $p_user['user_id'],
-					'aid' => 228	
-				);
-
-				$insert_u2p_success = $db->execute($insert_u2p_sql, $insert_u2p_bind);
+				$p_user_id = $p_user['user_id'];
 			}
 	
+			$invitation_code = strtoupper((str_pad(dechex($user['id']), 5, '0', STR_PAD_LEFT)));
 
-			$insert_au_sql = 'insert into ActivityUser(userid, aid) values (:user_id, :aid)';
+			$insert_au_sql = 'insert into ActivityUser(userid, aid, p_user_id, invitation_code) values (:user_id, :aid, :p_user_id, :invitation_code)';
 			$insert_au_bind = array(
 				'user_id' => $user['user_id'],
-				'aid' => 228
+				'aid' => 228,
+				'p_user_id' => $p_user_id,
+				'invitation_code' => $invitation_code
 			);					
 			$insert_au_success = $db->execute($insert_au_sql, $insert_au_bind);
 
-			$this->flashSession->success('您已成功参加活动, 可以分享给您的好友咯！<br/>(让TA为你做贡献O(∩_∩)O哈哈~)');
+
+			$this->flashSession->success('您已成功参加活动, 邀请码为['.$invitation_code.'], 可以分享给您的好友咯！<br/>(让TA为你做贡献O(∩_∩)O哈哈~)');
 			$this->response->redirect('/insurance_share/'.$user_phone, false);
 			return $this->response; //这里一定要返回 response 对象 否则原本的模板还是会被执行 flashSession 就会被消耗
 		}

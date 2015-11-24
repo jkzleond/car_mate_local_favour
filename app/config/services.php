@@ -55,6 +55,18 @@ $di->set('view', function () use ($config) {
                 'compileAlways' => true
             ));
 
+            //add filter functions
+            $compiler = $volt->getCompiler();
+            $compiler->addFilter('uniform_time', function($resolvedArgs, $exprAgs){
+                return "date('Y-m-d H:i:s', strtotime(".$resolvedArgs."))";
+            });
+            $compiler->addFilter('number_format', function($resolveArgs, $exprAgs){
+                return 'number_format('.$resolveArgs.')';
+            });
+            $compiler->addFilter('urlencode', function($resolveArgs, $exprAgs){
+                return 'urlencode('.$resolveArgs.')';
+            });
+
             return $volt;
         },
         '.phtml' => 'Phalcon\Mvc\View\Engine\Php'
