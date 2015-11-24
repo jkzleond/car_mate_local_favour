@@ -18,7 +18,7 @@
 					{% set url = url('/insurance_share') %}
 					{% else %}
 					<?php 
-						$url =  'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx1f42c4cb56c5095d&redirect_uri='.urlencode('http://ip.yn122.net:8092/insurance_share').'&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
+						$url =  'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx1f42c4cb56c5095d&redirect_uri='.urlencode('http://ip.yn122.net:8092/insurance_share?is_wx=true').'&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
 					?>
 					{% endif %}
 					<a href="{{ url }}">
