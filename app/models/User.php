@@ -88,6 +88,9 @@ SQL;
         select id, userid as user_id, name, nickname, phone
         $condition_str
 SQL;
+        echo $sql.PHP_EOL;
+        print_r($bind);
+        exit;
         return self::nativeQuery($sql, $bind);
     }
 

@@ -57,8 +57,6 @@ class TempController extends ControllerBase
 				$wx_token_json = file_get_contents('https://api.weixin.qq.com/sns/oauth2/access_token?appid='.$this->_app_id.'&secret='.$this->_app_secret.'&code='.$wx_code.'&grant_type=authorization_code');
 				$wx_token = json_decode($wx_token_json, true);
 				
-
-
 				$bind_user_list = User::getUserList(array(
 					'wx_opnenid' => $wx_token['openid']
 				));
