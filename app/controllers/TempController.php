@@ -3,6 +3,10 @@ use \Phalcon\Db;
 
 class TempController extends ControllerBase
 {
+	//微信appid,secrect
+	private $_app_id = 'wx1f42c4cb56c5095d';
+	private $_app_secret = '276e08a1e2d2c9680823e6ddd0720c4c';
+
 	public function initialize()
 	{
 		ini_set('display_errors', 0);
@@ -28,14 +32,23 @@ class TempController extends ControllerBase
 		{
 			$this->view->disable();
 
-			$is_wx = $this->request->get('is_wx');
+			$is_wx = $this->request->get('is_wx', null, false);
 
-			echo $is_wx;
+			$this->view->setVar('is_wx', $is_wx);
 
-			$wx_state = $this->request->get('state');
-			$wx_code = $this->request->get('code');
+			if($is_wx)
+			{
+				$wx_state = $this->request->get('state');
+				$wx_code = $this->request->get('code', null, false);
 
+				if($wx_code)
+				{
+					$wx_data = file_get_contents('https://api.weixin.qq.com/sns/oauth2/access_token?appid='.$this->_app_id.'&secret='.$this->_app_secret.'&code='.$wx_code.'&grant_type=authorization_code');
 
+					echo $wx_data;
+				}
+
+			}
 
 			$this->view->setVar('is_user', true);
 			$this->view->setVar('p_user_phone', $p_user_phone);
