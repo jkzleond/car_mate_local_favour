@@ -36,7 +36,7 @@ class TempController extends ControllerBase
 		$wx_state = $this->request->get('state', null, false);
 		$user_agent = $this->request->getUserAgent();
 		$is_wx = preg_match('@MicroMessager@', $user_agent);
-		echo $user_agent.PHP_EOL;echo $wx_state.PHP_EOL;var_dump($is_wx);
+		echo $user_agent.PHP_EOL;echo $wx_state.PHP_EOL;var_dump($is_wx);exit;
 		//使用微信客户端访问,并且不是从授权页面跳转过来的(跳转过来都带state),重定向到授权页面
 		if($is_wx and !$wx_state)
 		{
