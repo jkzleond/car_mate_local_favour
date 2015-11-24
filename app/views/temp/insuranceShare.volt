@@ -73,7 +73,7 @@
 				<ul style="">
 					{% for view_record in view_record_list %}
 					<li><img src="{{ view_record['headimgurl'] }}" alt="" style="width:32px;height:32px;"><span>{{ view_record['nickname'] }}</span></li>
-					{% endfo %}
+					{% endfor %}
 				</ul>
 			</td>
 		</tr>
