@@ -58,7 +58,7 @@ class TempController extends ControllerBase
 				$wx_token = json_decode($wx_token_json, true);
 				
 				$bind_user_list = User::getUserList(array(
-					'wx_opnenid' => $wx_token['openid']
+					'wx_openid' => $wx_token['openid']
 				));
 
 				if(!empty($bind_user_list))
