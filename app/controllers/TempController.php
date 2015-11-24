@@ -59,7 +59,7 @@ class TempController extends ControllerBase
 				$wx_token = json_decode($wx_token_json);
 				print_r($wx_token);
 				echo PHP_EOL;
-				exit;
+				
 
 
 				$bind_user_list = User::getUserList(array(
@@ -76,7 +76,7 @@ class TempController extends ControllerBase
 				$wx_userinfo = json_decode($wx_userinfo_json);
 				$this->view->disable();
 				print_r($wx_userinfo);
-				exit;
+				
 
 				//保存微信用户信息
 				
