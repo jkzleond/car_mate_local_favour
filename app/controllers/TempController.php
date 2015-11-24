@@ -67,7 +67,6 @@ class TempController extends ControllerBase
 				}
 
 				$wx_userinfo_json = file_get_contents('https://api.weixin.qq.com/sns/userinfo?access_token='.$wx_token['access_token'].'&openid='.$wx_token['openid'].'&lang=zh_CN');
-				echo 'https://api.weixin.qq.com/sns/userinfo?access_token='.$wx_token['access_token'].'&openid='.$wx_token['openid'].'&lang=zh_CN'.PHP_EOL;
 				$wx_userinfo = json_decode($wx_userinfo_json, true);
 				
 				//保存微信用户信息
@@ -77,7 +76,7 @@ class TempController extends ControllerBase
 				$get_wx_user_sql = 'select top 1 id from WX_USER where openid = :openid';
 				$get_wx_user_bind = array('openid' => $wx_userinfo['openid']);
 				$wx_user_result = $db->query($get_wx_user_sql, $get_wx_user_bind);
-				$wx_user_result->setFetchMod(Db::FETCH_ASSOC);
+				$wx_user_result->setFetchMode(Db::FETCH_ASSOC);
 				$wx_user = $wx_user_result->fetch();
 
 				$wx_user_id = !empty($wx_user) ? $wx_user['id'] : null;
