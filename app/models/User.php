@@ -20,7 +20,7 @@ class User extends ModelEx
 
         $sql = <<<SQL
         select u.id as id, u.userid as user_id, u.uname, u.nickname,
-		u.sex,
+		u.sex, u.wx_openid, u.wx_unoinid, u.wx_token,
 		c.name as city, p.name as province, u.provinceId as province_id, u.cityid as city_id,
 		u.phone as phone, u.HuiGold
 		from IAM_USER u
@@ -53,6 +53,42 @@ SQL;
         $bind['phone'] = $phone;
 
         return self::fetchOne($sql, $bind, null, Db::FETCH_ASSOC);
+    }
+
+    /**
+     * 获取用户列表数据
+     * @param  array|null $criteria
+     * @return array
+     */
+    public static function getUserList(array $criteria=null)
+    {
+        $crt = new Criteria($criteria);
+        $condition_arr = array();
+        $condition_str = '';
+        $bind = array();
+
+        if($crt->user_id)
+        {
+            $condition_arr[] = 'userid = :user_id';
+            $bind['user_id'] = $crt->user_id;
+        }
+
+        if($crt->wx_openid)
+        {
+            $condition_arr[] = 'weixintoken = :wx_openid';
+            $bind['wx_openid'] = $crt->wx_openid;
+        }
+
+        if(!empty($condition_arr))
+        {
+            $condition_str = 'where '.implode(' and ', $condition_arr);
+        }
+
+        $sql = <<<SQL
+        select id, userid as user_id, name, nickname, phone
+        $condition_str
+SQL;
+        return self::nativeQuery($sql, $bind);
     }
 
     /**

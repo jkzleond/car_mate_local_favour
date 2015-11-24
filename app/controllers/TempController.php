@@ -28,34 +28,114 @@ class TempController extends ControllerBase
 		$p_user_phone = $this->dispatcher->getParam('p_user_phone', null, '0');
 		$user_phone = $this->dispatcher->getParam('user_phone');
 
-		if(!$user_phone)
+		$p_user_id = null;
+		if($p_user_phone !== '0')
 		{
-			$this->view->disable();
+			$p_user = User::getUserByPhone($p_user_phone);
+			$p_user_id = $p_user['user_id'];
+		}
 
-			$is_wx = $this->request->get('is_wx', null, false);
+		$wx_state = $this->request->get('state', null, false);
 
-			$this->view->setVar('is_wx', $is_wx);
+		$this->view->setVar('wx_state', $wx_state);
 
-			if($is_wx)
+		$wx_code = $this->request->get('code', null, null);
+		$wx_openid = $this->request->get('wx_openid', null, null)
+		$wx_unionid = $this->request->get('wx_unionid', null, null)
+		$wx_token = null;
+		$wx_userinfo = null;
+
+		$bind_user = null;
+
+		if($wx_state and !$user_phone)
+		{
+
+			if($wx_code)
 			{
-				$wx_state = $this->request->get('state');
-				$wx_code = $this->request->get('code', null, false);
+				$wx_token_json = file_get_contents('https://api.weixin.qq.com/sns/oauth2/access_token?appid='.$this->_app_id.'&secret='.$this->_app_secret.'&code='.$wx_code.'&grant_type=authorization_code');
+				$wx_token = json_decode($wx_token_json);
 
-				if($wx_code)
+				$bind_user_list = User::getUserList(array(
+					'wx_opnenid' => $wx_token['openid']
+				));
+
+				if(!empty($bind_user_list))
 				{
-					$wx_data = file_get_contents('https://api.weixin.qq.com/sns/oauth2/access_token?appid='.$this->_app_id.'&secret='.$this->_app_secret.'&code='.$wx_code.'&grant_type=authorization_code');
-
-					echo $wx_data;
+					$bind_user = $bind_user_list[0];
 				}
 
+				$wx_userinfo_json = file_get_contents('https://api.weixin.qq.com/sns/userinfo?access_token='.$wx_token['access_token'].'&openid='.$wx_token['openid'].'&lang=zh_CN');
+
+				$wx_userinfo = json_decode($wx_userinfo_json);
+				$this->view->disable();
+				print_r($wx_userinfo);
+				exit;
+
+				//保存微信用户信息
+				
+				$db = $this->db;
+
+				$get_wx_user_sql = 'select top 1 id from WX_USER where openid = :openid';
+				$get_wx_user_bind = array('openid' => $wx_userinfo['openid']);
+				$wx_user_result = $db->query($get_wx_user_sql, $get_wx_user_bind);
+				$wx_user_result->setFetchMod(Db::FETCH_ASSOC);
+				$wx_user = $wx_user_result->fetch();
+
+				$wx_user_id = !empty($wx_user) ? $wx_user['id'] : null;
+
+				//没有此微信用户记录则添加
+				
+				if(!$wx_user_id)
+				{
+					$insert_wx_user_sql = 'insert into WX_USER (openid, nickname, sex, province, city, country, privilege, unionid) values (:openid, :nickname, :sex, :province, :city, :country, :privilege, :unionid)';
+					$insert_wx_user_bind = array(
+						'openid' => $wx_userinfo['openid'],
+						'nickname' => $wx_userinfo['nickname'],
+						'sex' => $wx_userinfo['sex'],
+						'province' => $wx_userinfo['province'],
+						'city' => $wx_userinfo['city'],
+						'country' => $wx_userinfo['country'],
+						'privilege' => $wx_userinfo['privilege'],
+						'unionid' => $wx_userinfo['unionid']
+					);
+					$db->execute($insert_wx_user_sql, $insert_wx_user_sql);
+					$wx_user_id = $db->lastInsertId();
+				}
+
+				$get_view_sql = 'select top 1 id from Hui_ActivityShareView where wx_user_id = :wx_user_id and p_user_id = :p_user_id and aid = :aid';
+				$get_view_bind = array(
+					'wx_user_id' => $wx_user_id,
+					'p_user_id' => $p_user_id,
+					'aid' => 228;
+				);
+				$view_result = $db->query($get_view_sql, $get_view_bind);
+				$view_result->setFetchMode(Db::FETCH_ASSOC);
+				$view_record = $view_result->fetch()
+
+				if($wx_user_id and empty($view_record))
+				{
+					//添加微信用户访问记录(本次活动)
+					$insert_view_sql = 'insert into Hui_ActivityShareView (p_user_id, wx_user_id, aid) values (:p_user_id, :wx_user_id, :aid)';
+					$insert_view_bind = array(
+						'p_user_id' => $p_user_id,
+						'wx_user_id' => $wx_user_id,
+						'aid' => $aid
+					);
+					$insert_view_success = $db->execute($insert_view_sql, $insert_view_bind);
+				}
 			}
 
+			$this->view->setVar('wx_openid', $wx_token['openid']);
+		}
+
+		if(!$user_phone and !$bind_user)
+		{
 			$this->view->setVar('is_user', true);
 			$this->view->setVar('p_user_phone', $p_user_phone);
 			return;
 		}
 
-		$user = User::getUserByPhone($user_phone);
+		$user = !empty($bind_user) ? $bind_user : User::getUserByPhone($user_phone);
 
 		if(empty($user))
 		{	
@@ -68,6 +148,16 @@ class TempController extends ControllerBase
 		{	
 
 			$db = $this->db;
+
+			//如果用户没绑定,则绑定(微信客户端访问页面时)
+			if($wx_state and !$bind_user)
+			{
+				$bind_user_sql = 'update IAM_USER set weixintoken = :wx_openid, wx_opnenid = :wx_openid';
+				$bind_user_bind = array(
+					'wx_openid' => $wx_openid
+				);
+				$bind_user_success = $db->execute($bind_user_sql, $bind_user_bind);
+			}
 
 			$query_sql = 'select invitation_code from ActivityUser where userid = :user_id and aid = :aid';
 			$query_bind = array(
@@ -88,14 +178,6 @@ class TempController extends ControllerBase
 
 			$insert_sql = null;
 			$insert_bind = null;
-
-
-			$p_user_id = null;
-			if($p_user_phone !== '0')
-			{
-				$p_user = User::getUserByPhone($p_user_phone);
-				$p_user_id = $p_user['user_id'];
-			}
 	
 			$invitation_code = strtoupper((str_pad(dechex($user['id']), 5, '0', STR_PAD_LEFT)));
 

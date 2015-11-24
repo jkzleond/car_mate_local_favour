@@ -19,6 +19,8 @@
 		<tr>
 			<td style="color: #3F3F3F;">
 				<input type="hidden" name="p_user_phone" value="{{ p_user_phone }}" />
+				<input type="hidden" name="wx_state" value="{{ wx_state }}" />
+				<input type="hidden" name="wx_openid" value="{{ wx_openid }}" />
 				<input id="phone_input" name="phone" type="text"  class="fx_div_sr_input" placeholder="输入您的手机号"/>
 			</td>
 		</tr>
