@@ -94,13 +94,13 @@ class TempController extends ControllerBase
 						'city' => $wx_userinfo['city'],
 						'country' => $wx_userinfo['country'],
 						'headimgurl' => $wx_userinfo['headimgurl'],
-						'privilege' => $wx_userinfo['privilege'],
-						'unionid' => !isset($wx_userinfo['unionid']) ? $wx_userinfo['unionid'] : null
+						'privilege' => json_encode($wx_userinfo['privilege']),
+						'unionid' => isset($wx_userinfo['unionid']) ? $wx_userinfo['unionid'] : null
 					);
 
 					echo $insert_wx_user_sql.PHP_EOL;
 					print_r($insert_wx_user_bind);
-					exit;
+					//exit;
 
 					$db->execute($insert_wx_user_sql, $insert_wx_user_sql);
 					$wx_user_id = $db->lastInsertId();
