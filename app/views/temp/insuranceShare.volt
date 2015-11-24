@@ -87,6 +87,8 @@
 	 */
 	(function(window, document){
 		var p_user_phone = document.getElementsByName('p_user_phone')[0].value;
+		var wx_state = document.getElementsByName('wx_state')[0].value;
+		var wx_openid = document.getElementsByName('wx_openid')[0].value;
 		var phone_input = document.getElementById('phone_input');
 		var submit_btn = document.getElementById('submit_btn');
 
@@ -104,7 +106,7 @@
 				return;
 			}
 
-			window.location.href = "{{ url('/insurance_share/') }}" + p_user_phone +'/' + phone_input.value;
+			window.location.href = "{{ url('/insurance_share/') }}" + p_user_phone +'/' + phone_input.value + '?state=' + wx_state + '&wx_openid=' + wx_openid;
 			return false;
 		})
 	})(window, document);

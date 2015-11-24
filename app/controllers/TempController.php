@@ -36,6 +36,7 @@ class TempController extends ControllerBase
 		$wx_state = $this->request->get('state', null, false);
 		$user_agent = $this->request->getUserAgent();
 		$is_wx = strpos($user_agent, 'MicroMessenger') !== false;
+		$this->view->setVar('is_wx', $is_wx);
 
 		//使用微信客户端访问,并且不是从授权页面跳转过来的(跳转过来都带state),重定向到授权页面
 		if($is_wx and !$wx_state)
@@ -158,7 +159,7 @@ class TempController extends ControllerBase
 			//如果用户没绑定,则绑定(微信客户端访问页面时)
 			if($wx_state and !$bind_user)
 			{
-				$bind_user_sql = 'update IAM_USER set weixintoken = :wx_openid, wx_opnenid = :wx_openid';
+				$bind_user_sql = 'update IAM_USER set weixintoken = :wx_openid, wx_openid = :wx_openid';
 				$bind_user_bind = array(
 					'wx_openid' => $wx_openid
 				);
