@@ -46,7 +46,6 @@ class TempController extends ControllerBase
 		$wx_userinfo = null;
 
 		$bind_user = null;
-		file_put_contents(rand(1, 10000).'wx', $wx_code);
 
 		if($wx_state and !$user_phone)
 		{
@@ -97,12 +96,8 @@ class TempController extends ControllerBase
 						'privilege' => json_encode($wx_userinfo['privilege']),
 						'unionid' => isset($wx_userinfo['unionid']) ? $wx_userinfo['unionid'] : null
 					);
-
-					echo $insert_wx_user_sql.PHP_EOL;
-					print_r($insert_wx_user_bind);
-					//exit;
-					file_put_contents('wx.log', $insert_wx_user_sql.PHP_EOL.var_export($insert_wx_user_bind, 1));
-					$db->execute($insert_wx_user_sql, $insert_wx_user_sql);
+					
+					$db->execute($insert_wx_user_sql, $insert_wx_user_bind);
 					$wx_user_id = $db->lastInsertId();
 				}
 
