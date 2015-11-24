@@ -9,7 +9,7 @@ class TempController extends ControllerBase
 
 	public function initialize()
 	{
-		ini_set('display_errors', 0);
+		ini_set('display_errors', 1);
 	}
 
 	public function insuranceShareDescribeAction()
@@ -60,12 +60,12 @@ class TempController extends ControllerBase
 				print_r($wx_token);
 				echo PHP_EOL;
 				
+				exit;
 
 
 				$bind_user_list = User::getUserList(array(
 					'wx_opnenid' => $wx_token['openid']
 				));
-				exit;
 
 				if(!empty($bind_user_list))
 				{
