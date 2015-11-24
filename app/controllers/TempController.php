@@ -185,6 +185,7 @@ class TempController extends ControllerBase
 						'p_user_id' => $p_user_id ? $p_user_id : '',
 						'aid' => 228
 					);
+					print_r($get_view_bind);exit;
 					$view_result = $db->query($get_view_sql, $get_view_bind);
 					$view_result->setFetchMode(Db::FETCH_ASSOC);
 					$view_record_list = $view_result->fetchAll();
