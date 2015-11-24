@@ -73,7 +73,7 @@ class TempController extends ControllerBase
 				$wx_userinfo = json_decode($wx_userinfo_json, true);
 				$this->view->disable();
 				print_r($wx_userinfo);
-				
+				exit;
 				//保存微信用户信息
 				
 				$db = $this->db;
