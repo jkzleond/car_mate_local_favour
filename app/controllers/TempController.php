@@ -96,7 +96,7 @@ class TempController extends ControllerBase
 						'privilege' => json_encode($wx_userinfo['privilege']),
 						'unionid' => isset($wx_userinfo['unionid']) ? $wx_userinfo['unionid'] : null
 					);
-					
+
 					$db->execute($insert_wx_user_sql, $insert_wx_user_bind);
 					$wx_user_id = $db->lastInsertId();
 				}
@@ -118,8 +118,9 @@ class TempController extends ControllerBase
 					$insert_view_bind = array(
 						'p_user_id' => $p_user_id,
 						'wx_user_id' => $wx_user_id,
-						'aid' => $aid
+						'aid' => 228
 					);
+					//file_put_contents('wx.log', $insert_view_sql);
 					$insert_view_success = $db->execute($insert_view_sql, $insert_view_bind);
 				}
 			}
