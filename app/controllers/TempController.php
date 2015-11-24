@@ -85,7 +85,7 @@ class TempController extends ControllerBase
 				
 				if(!$wx_user_id)
 				{
-					$insert_wx_user_sql = 'insert into WX_USER (openid, nickname, sex, province, city, country, privilege, unionid) values (:openid, :nickname, :sex, :province, :city, :country, :privilege, :unionid)';
+					$insert_wx_user_sql = 'insert into WX_USER (openid, nickname, sex, province, city, country, headimgurl,privilege, unionid) values (:openid, :nickname, :sex, :province, :city, :country, :headimgurl, :privilege, :unionid)';
 					$insert_wx_user_bind = array(
 						'openid' => $wx_userinfo['openid'],
 						'nickname' => $wx_userinfo['nickname'],
@@ -93,8 +93,9 @@ class TempController extends ControllerBase
 						'province' => $wx_userinfo['province'],
 						'city' => $wx_userinfo['city'],
 						'country' => $wx_userinfo['country'],
+						'headimgurl' => $wx_userinfo['headimgurl'],
 						'privilege' => $wx_userinfo['privilege'],
-						'unionid' => $wx_userinfo['unionid']
+						'unionid' => !isset($wx_userinfo['unionid']) ? $wx_userinfo['unionid'] : null
 					);
 					$db->execute($insert_wx_user_sql, $insert_wx_user_sql);
 					$wx_user_id = $db->lastInsertId();
