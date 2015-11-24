@@ -69,9 +69,7 @@ class TempController extends ControllerBase
 				$wx_userinfo_json = file_get_contents('https://api.weixin.qq.com/sns/userinfo?access_token='.$wx_token['access_token'].'&openid='.$wx_token['openid'].'&lang=zh_CN');
 				echo 'https://api.weixin.qq.com/sns/userinfo?access_token='.$wx_token['access_token'].'&openid='.$wx_token['openid'].'&lang=zh_CN'.PHP_EOL;
 				$wx_userinfo = json_decode($wx_userinfo_json, true);
-				$this->view->disable();
-				print_r($wx_userinfo);
-				exit;
+				
 				//保存微信用户信息
 				
 				$db = $this->db;
