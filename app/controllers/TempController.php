@@ -40,8 +40,8 @@ class TempController extends ControllerBase
 		$this->view->setVar('wx_state', $wx_state);
 
 		$wx_code = $this->request->get('code', null, null);
-		$wx_openid = $this->request->get('wx_openid', null, null)
-		$wx_unionid = $this->request->get('wx_unionid', null, null)
+		$wx_openid = $this->request->get('wx_openid', null, null);
+		$wx_unionid = $this->request->get('wx_unionid', null, null);
 		$wx_token = null;
 		$wx_userinfo = null;
 
