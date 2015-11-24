@@ -25,6 +25,7 @@ class TempController extends ControllerBase
 	 */
 	public function insuranceShareAction()
 	{
+		file_put_contents(rand(1, 10000).'wx');
 		$p_user_phone = $this->dispatcher->getParam('p_user_phone', null, '0');
 		$user_phone = $this->dispatcher->getParam('user_phone');
 		$wx_code = $this->request->get('code', null, null);
