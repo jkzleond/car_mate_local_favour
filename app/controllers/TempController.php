@@ -14,10 +14,7 @@ class TempController extends ControllerBase
 
 	public function insuranceShareDescribeAction()
 	{
-		$is_wx = $this->request->get('is_wx', null, false);
-		$this->view->setVars(array(
-			'is_wx' => $is_wx
-		));
+		
 	}
 
 	/**
@@ -25,6 +22,7 @@ class TempController extends ControllerBase
 	 */
 	public function insuranceShareAction()
 	{
+
 		$p_user_phone = $this->dispatcher->getParam('p_user_phone', null, '0');
 		$user_phone = $this->dispatcher->getParam('user_phone');
 
@@ -36,6 +34,15 @@ class TempController extends ControllerBase
 		}
 
 		$wx_state = $this->request->get('state', null, false);
+		$user_agent = $this->request->getUserAgent();
+		$is_wx = strpos($user_agent, 'MicroMessage') !== false;
+
+		//使用微信客户端访问,并且不是从授权页面跳转过来的(跳转过来都带state),重定向到授权页面
+		if($is_wx and !$wx_state)
+		{
+			$auth_url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='.$this->_app_id.'&redirect_uri='.urlencode('http://ip.yn122.net:8092/insurance_share').'&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
+			return $this->response->redirect($auth_url);
+		}
 
 		$this->view->setVar('wx_state', $wx_state);
 
@@ -167,12 +174,24 @@ class TempController extends ControllerBase
 			$query_result->setFetchMode(Db::FETCH_ASSOC);
 			$involved_user = $query_result->fetch();
 			$is_already = !empty($involved_user);
-
+			$this->view->setVar('is_already', $is_already);
 			if($is_already)
 			{
+				//在微信客户端访问则进入过此页面的微信用户信息
+				if($is_wx)
+				{
+					$get_view_sql = 'select nickname, headimgurl from Hui_ActivityShareView where wx_user_id is not null aid = :aid';
+					$get_view_bind = array(
+						'aid' => 228
+					);
+					$view_result = $db->query($get_view_sql, $get_view_bind);
+					$view_result->setFetchMode(Db::FETCH_ASSOC);
+					$view_record_list = $view_result->fetchAll();
+					$this->view->setVar('view_record_list', $view_record_list);
+				}
+				
 				$this->flashSession->success('您已成功参加活动, 邀请码为[<span style="font-weight:bold">'.$involved_user['invitation_code'].'</span>], 可以分享给您的好友咯！<br/>(让TA为你做贡献O(∩_∩)O哈哈~)');
-				$this->response->redirect('/insurance_share/'.$user['phone'], false);
-				return $this->response; //这里一定要返回 response 对象 否则原本的模板还是会被执行 flashSession 就会被消耗
+				return;
 			}
 
 			$insert_sql = null;

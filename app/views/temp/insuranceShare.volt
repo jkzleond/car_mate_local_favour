@@ -59,9 +59,25 @@
 	<table class="fx_div_sr_table">
 		<tr>
 			<td>
-				<span style="font-size: 20px; font-weight: bold">您已参加活动</span>
+				<?php $this->flashSession->output(); ?>
 			</td>
 		</tr>
+		<?php if($is_wx and !empty($view_record_list)){ ?>
+		<tr>
+			<td>
+				有以下{{ count(view_record_list) }}已经点击过您分享的页面,他们是:
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<ul style="">
+					{% for view_record in view_record_list %}
+					<li><img src="{{ view_record['headimgurl'] }}" alt="" style="width:32px;height:32px;"><span>{{ view_record['nickname'] }}</span></li>
+					{% endfo %}
+				</ul>
+			</td>
+		</tr>
+		<?php } ?>
 	</table>
 	{% endif %}
 </div>
