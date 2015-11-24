@@ -65,7 +65,7 @@
 		<?php if($is_wx and !empty($view_record_list)){ ?>
 		<tr>
 			<td>
-				有以下{{ count(view_record_list) }}已经点击过您分享的页面,他们是:
+				有以下<?php count($view_record_list); ?>已经点击过您分享的页面,他们是:
 			</td>
 		</tr>
 		<tr>
