@@ -29,11 +29,11 @@ class TempController extends ControllerBase
 		$user_phone = $this->dispatcher->getParam('user_phone');
 
 		$p_user_id = null;
-		if($p_user_phone !== '0')
-		{
-			$p_user = User::getUserByPhone($p_user_phone);
-			$p_user_id = $p_user['user_id'];
-		}
+		// if($p_user_phone !== '0')
+		// {
+		// 	$p_user = User::getUserByPhone($p_user_phone);
+		// 	$p_user_id = $p_user['user_id'];
+		// }
 
 		$wx_state = $this->request->get('state', null, false);
 
