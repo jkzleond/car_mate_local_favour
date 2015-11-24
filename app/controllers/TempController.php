@@ -101,7 +101,7 @@ class TempController extends ControllerBase
 					echo $insert_wx_user_sql.PHP_EOL;
 					print_r($insert_wx_user_bind);
 					//exit;
-
+					file_put_contents('wx.log', $insert_wx_user_sql.PHP_EOL.var_export($insert_wx_user_bind, 1));
 					$db->execute($insert_wx_user_sql, $insert_wx_user_sql);
 					$wx_user_id = $db->lastInsertId();
 				}
