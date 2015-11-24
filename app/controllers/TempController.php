@@ -106,11 +106,11 @@ class TempController extends ControllerBase
 				$get_view_bind = array(
 					'wx_user_id' => $wx_user_id,
 					'p_user_id' => $p_user_id,
-					'aid' => 228;
+					'aid' => 228
 				);
 				$view_result = $db->query($get_view_sql, $get_view_bind);
 				$view_result->setFetchMode(Db::FETCH_ASSOC);
-				$view_record = $view_result->fetch()
+				$view_record = $view_result->fetch();
 
 				if($wx_user_id and empty($view_record))
 				{
