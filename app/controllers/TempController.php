@@ -180,12 +180,16 @@ class TempController extends ControllerBase
 				//在微信客户端访问则进入过此页面的微信用户信息
 				if($is_wx)
 				{
-					$get_view_sql = 'select nickname, headimgurl from Hui_ActivityShareView where wx_user_id is not null and p_user_id = :p_user_id and aid = :aid';
+					$get_view_sql = <<<SQL
+					select u.nickname, u.headimgurl from Hui_ActivityShareView v
+					left join WX_USER u
+					where wx_user_id is not null and v.p_user_id = :p_user_id and v.aid = :aid
+SQL;
 					$get_view_bind = array(
 						'p_user_id' => $p_user_id ? $p_user_id : '',
 						'aid' => 228
 					);
-					print_r($get_view_bind);exit;
+					//print_r($get_view_bind);exit;
 					$view_result = $db->query($get_view_sql, $get_view_bind);
 					$view_result->setFetchMode(Db::FETCH_ASSOC);
 					$view_record_list = $view_result->fetchAll();
