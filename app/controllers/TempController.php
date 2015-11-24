@@ -65,6 +65,7 @@ class TempController extends ControllerBase
 				$bind_user_list = User::getUserList(array(
 					'wx_opnenid' => $wx_token['openid']
 				));
+				exit;
 
 				if(!empty($bind_user_list))
 				{
@@ -77,7 +78,6 @@ class TempController extends ControllerBase
 				$this->view->disable();
 				print_r($wx_userinfo);
 				
-				exit;
 				//保存微信用户信息
 				
 				$db = $this->db;
