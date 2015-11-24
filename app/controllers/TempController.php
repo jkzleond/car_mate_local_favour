@@ -9,7 +9,7 @@ class TempController extends ControllerBase
 
 	public function initialize()
 	{
-		ini_set('display_errors', 1);
+		ini_set('display_errors', 0);
 	}
 
 	public function insuranceShareDescribeAction()
@@ -139,6 +139,17 @@ class TempController extends ControllerBase
 		{
 			$this->view->setVar('is_user', true);
 			$this->view->setVar('p_user_phone', $p_user_phone);
+
+			//查找上家分享码
+			$query_sql = 'select invitation_code from ActivityUser where userid = :user_id and aid = :aid';
+			$query_bind = array(
+				'user_id' => $p_user_id,
+				'aid' => 228
+			);
+			$query_result = $db->query($query_sql, $query_bind);
+			$query_result->setFetchMode(Db::FETCH_ASSOC);
+			$involved_p_user = $query_result->fetch();
+			$this->view->setVar('invitation_code', !empty($involved_p_user) ? $involved_p_user['invitation_code'] : '');
 			return;
 		}
 
@@ -146,7 +157,6 @@ class TempController extends ControllerBase
 
 		if(empty($user))
 		{	
-
 			$this->view->setVar('is_user', false);
 			$this->view->setVar('p_user_phone', $p_user_phone);
 			return;
@@ -190,7 +200,7 @@ SQL;
 						'p_user_id' => $p_user_id ? $p_user_id : '',
 						'aid' => 228
 					);
-					//print_r($get_view_bind);exit;
+					
 					$view_result = $db->query($get_view_sql, $get_view_bind);
 					$view_result->setFetchMode(Db::FETCH_ASSOC);
 					$view_record_list = $view_result->fetchAll();
@@ -198,11 +208,9 @@ SQL;
 				}
 
 				$this->flashSession->success('您已成功参加活动, 邀请码为[<span style="font-weight:bold">'.$involved_user['invitation_code'].'</span>], 可以分享给您的好友咯！<br/>(让TA为你做贡献O(∩_∩)O哈哈~)');
+				$this->view->setVar('p_user_phone', $user['phone']);
 				return;
 			}
-
-			$insert_sql = null;
-			$insert_bind = null;
 	
 			$invitation_code = strtoupper((str_pad(dechex($user['id']), 5, '0', STR_PAD_LEFT)));
 
