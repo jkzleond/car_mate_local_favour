@@ -25,6 +25,8 @@ class TempController extends ControllerBase
 		$p_user_phone = $this->dispatcher->getParam('p_user_phone', null, '0');
 		$user_phone = $this->request->get('user_phone', null, null);
 		
+		$this->view->setVar('p_user_phone', $p_user_phone);
+
 		$p_user_id = null;
 		if($p_user_phone !== '0')
 		{
@@ -53,7 +55,7 @@ class TempController extends ControllerBase
 		$wx_userinfo = null;
 
 		$bind_user = null;
-		return;
+
 		$db = $this->db;
 
 		if($wx_state and !$user_phone)
@@ -138,8 +140,7 @@ class TempController extends ControllerBase
 		if(!$user_phone and !$bind_user)
 		{
 			$this->view->setVar('is_user', true);
-			$this->view->setVar('p_user_phone', $p_user_phone);
-
+			
 			//查找上家分享码
 			$query_sql = 'select invitation_code from ActivityUser where userid = :user_id and aid = :aid';
 			$query_bind = array(
@@ -154,7 +155,7 @@ class TempController extends ControllerBase
 		}
 
 		$user = !empty($bind_user) ? $bind_user : User::getUserByPhone($user_phone);
-
+		return;
 		if(empty($user))
 		{	
 			$this->view->setVar('is_user', false);
