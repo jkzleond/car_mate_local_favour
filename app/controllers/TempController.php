@@ -172,7 +172,7 @@ class TempController extends ControllerBase
 		else
 		{	
 
-			$db = $this->db;
+			//$db = $this->db;
 
 			//如果用户没绑定,则绑定(微信客户端访问页面时)
 			if($wx_state and !$bind_user)
