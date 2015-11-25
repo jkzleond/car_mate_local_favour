@@ -40,7 +40,6 @@
 			</td>
 		</tr>
 		{% if not is_user %}
-		<?php var_dump($is_user); ?>
 		<tr>
 			<td >
 				<div  class="fx_div_sr_z">注：<br />

@@ -26,6 +26,7 @@ class TempController extends ControllerBase
 		$user_phone = $this->request->get('user_phone', null, null);
 		
 		$this->view->setVar('p_user_phone', $p_user_phone);
+		$this->view->setVar('is_user', true);
 
 		$p_user_id = null;
 		if($p_user_phone !== '0')
@@ -139,7 +140,7 @@ class TempController extends ControllerBase
 
 		if(!$user_phone and !$bind_user)
 		{
-			$this->view->setVar('is_user', true);
+			
 			
 			//查找上家分享码
 			$query_sql = 'select invitation_code from ActivityUser where userid = :user_id and aid = :aid';
@@ -227,7 +228,7 @@ SQL;
 			$insert_au_success = $db->execute($insert_au_sql, $insert_au_bind);
 
 
-			$this->flashSession->success('您已成功参加活动, 邀请码为[<span style="font-weight:bold">'.$involved_user['invitation_code'].'</span>], 可以分享给您的好友咯！<br/>(让TA为你做贡献O(∩_∩)O哈哈~)');
+			$this->flashSession->success('您已成功参加活动, 邀请码为[<span style="font-weight:bold">'.$invitation_code.'</span>], 可以分享给您的好友咯！<br/>(让TA为你做贡献O(∩_∩)O哈哈~)');
 			$this->view->setVar('p_user_phone', $user['phone']);
 			return;
 		}
