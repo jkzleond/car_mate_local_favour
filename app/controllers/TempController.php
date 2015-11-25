@@ -188,6 +188,7 @@ class TempController extends ControllerBase
 			$is_already = !empty($involved_user);
 
 			$this->view->setVar('is_already', $is_already);
+			return;
 			if($is_already)
 			{
 				//在微信客户端访问则进入过此页面的微信用户信息
