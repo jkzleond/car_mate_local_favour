@@ -22,9 +22,9 @@ class TempController extends ControllerBase
 	 */
 	public function insuranceShareAction()
 	{
-		$p_user_phone = $this->dispatcher->getParam('p_user_phone', null, '0');
-		$user_phone = $this->dispatcher->get('user_phone', null, null);
-		echo $user_hone;exit;
+		$p_user_phone = $this->request->getParam('p_user_phone', null, '0');
+		$user_phone = $this->request->get('user_phone', null, null);
+		
 		$p_user_id = null;
 		if($p_user_phone !== '0')
 		{
