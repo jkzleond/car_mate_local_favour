@@ -9,7 +9,7 @@ class TempController extends ControllerBase
 
 	public function initialize()
 	{
-		ini_set('display_errors', 0);
+		ini_set('display_errors', 1);
 	}
 
 	public function insuranceShareDescribeAction()
@@ -43,6 +43,7 @@ class TempController extends ControllerBase
 		{
 			$auth_url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='.$this->_app_id.'&redirect_uri='.urlencode('http://ip.yn122.net:8092/insurance_share').'&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
 			//return $this->response->redirect($auth_url);
+			return;
 		}
 
 		$this->view->setVar('wx_state', $wx_state);
