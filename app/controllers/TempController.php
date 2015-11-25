@@ -56,6 +56,8 @@ class TempController extends ControllerBase
 
 		$bind_user = null;
 
+		$db = $this->db;
+		
 		if($wx_state and !$user_phone)
 		{
 
@@ -79,7 +81,6 @@ class TempController extends ControllerBase
 				
 				//保存微信用户信息
 				
-				$db = $this->db;
 
 				$get_wx_user_sql = 'select top 1 id from WX_USER where openid = :openid';
 				$get_wx_user_bind = array('openid' => $wx_userinfo['openid']);
