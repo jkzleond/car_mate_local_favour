@@ -212,10 +212,10 @@ SQL;
 						'aid' => 228
 					);
 					
-					$view_result = $db->query($get_view_sql, $get_view_bind);
-					$view_result->setFetchMode(Db::FETCH_ASSOC);
-					$view_record_list = $view_result->fetchAll();
-					$this->view->setVar('view_record_list', $view_record_list);
+					$record_result = $db->query($get_view_sql, $get_view_bind);
+					$record_result->setFetchMode(Db::FETCH_ASSOC);
+					$record_list = $view_result->fetchAll();
+					$this->view->setVar('view_record_list', $record_list);
 				}
 
 				$this->flashSession->success('您已成功参加活动, 邀请码为[<span style="font-weight:bold">'.$involved_user['invitation_code'].'</span>], 可以分享给您的好友咯！<br/>(让TA为你做贡献O(∩_∩)O哈哈~)');
