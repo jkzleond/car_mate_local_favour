@@ -82,7 +82,7 @@
 	</table>
 	{% endif %}
 </div>
-
+{% if not is_already %}
 <script type="text/javascript">
 	/**
 	 * 参加活按钮点击
@@ -113,7 +113,7 @@
 		})
 	})(window, document);
 </script>
-
+{% endif %}
 <script type="text/javascript">
   /*
    * 注意：
@@ -133,7 +133,7 @@
 	function callback_config(config){
 		console.log(config);
 		wx.config({
-            debug: true,
+            debug: false,
             appId: config.appId,
             timestamp: config.timestamp,
             nonceStr: config.nonceStr,
@@ -184,7 +184,7 @@
         var wxData = {
         "appId": "",
         "imgUrl" : 'http://www.rttwy.com/yurenjie/images/logo.png',
-        "link" : 'http://ip.yn122.net:8092/insurance_share' + (p_user_phone ? '/' + p_user_phone : '');
+        "link" : 'http://ip.yn122.net:8092/insurance_share' + (p_user_phone ? '/' + p_user_phone : ''),
         "desc" : '车险免单，还不快来？',
         "title" : "车友惠福利：您的车险免单啦！"
         };
@@ -235,8 +235,6 @@
         wx.error(function (res) {
         	alert(res.errMsg);
         });
-
-        alert('config_callback');
 	}
 	
 	
@@ -244,7 +242,6 @@
 	script.src =  "http://116.55.248.76/wxjs_config/config.php?callback=callback_config&url=" + encodeURIComponent( window.location.href.split('#')[0] );
 	var body = document.getElementsByTagName('body')[0];
 	body.appendChild(script);
-	alert('load_config');
 </script>
 </body>
 </html>
