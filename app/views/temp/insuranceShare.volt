@@ -235,6 +235,8 @@
         wx.error(function (res) {
         	alert(res.errMsg);
         });
+
+        alert('config_callback');
 	}
 	
 	
