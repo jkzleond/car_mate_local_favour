@@ -9,7 +9,7 @@ class TempController extends ControllerBase
 
 	public function initialize()
 	{
-		ini_set('display_errors', 1);
+		ini_set('display_errors', 0);
 	}
 
 	public function insuranceShareDescribeAction()
@@ -186,7 +186,7 @@ class TempController extends ControllerBase
 			$query_result->setFetchMode(Db::FETCH_ASSOC);
 			$involved_user = $query_result->fetch();
 			$is_already = !empty($involved_user);
-			return;
+
 			$this->view->setVar('is_already', $is_already);
 			if($is_already)
 			{

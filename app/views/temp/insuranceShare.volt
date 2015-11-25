@@ -14,13 +14,13 @@
 	<img src="{{ url('/assets/temp/insuranceShare/img/crsj.jpg') }}" width="100%" style="max-width: 100%; min-width: 320px;" />
 </div>
 <div class="fx_div_sr">
+	<input type="hidden" name="p_user_phone" value="{{ p_user_phone }}" />
+	<input type="hidden" name="wx_state" value="{{ wx_state }}" />
+	<input type="hidden" name="wx_openid" value="{{ wx_openid }}" />
 	{% if not is_already %}
 	<table  class="fx_div_sr_table" cellpadding="0" cellspacing="10">
 		<tr>
 			<td style="color: #3F3F3F;">
-				<input type="hidden" name="p_user_phone" value="{{ p_user_phone }}" />
-				<input type="hidden" name="wx_state" value="{{ wx_state }}" />
-				<input type="hidden" name="wx_openid" value="{{ wx_openid }}" />
 				<input id="phone_input" name="phone" type="text"  class="fx_div_sr_input" placeholder="输入您的手机号"/>
 			</td>
 		</tr>
@@ -82,6 +82,7 @@
 	</table>
 	{% endif %}
 </div>
+{% if not is_already %}
 <script type="text/javascript">
 	/**
 	 * 参加活按钮点击
@@ -112,6 +113,7 @@
 		})
 	})(window, document);
 </script>
+{% endif %}
 <script type="text/javascript">
   /*
    * 注意：
