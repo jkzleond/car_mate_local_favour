@@ -106,7 +106,7 @@
 				alert('请填写您的电话号码！');
 				return;
 			}
-			console.log("{{ url('/insurance_share/') }}" + p_user_phone +'?user_phone=' + phone_input.value + '&state=' + wx_state + '&wx_openid=' + wx_openid);return;
+			alert("{{ url('/insurance_share/') }}" + p_user_phone +'?user_phone=' + phone_input.value + '&state=' + wx_state + '&wx_openid=' + wx_openid);return;
 			window.location.href = "{{ url('/insurance_share/') }}" + p_user_phone +'?user_phone=' + phone_input.value + '&state=' + wx_state + '&wx_openid=' + wx_openid;
 			return false;
 		})
