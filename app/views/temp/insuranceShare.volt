@@ -244,6 +244,7 @@
 	script.src =  "http://116.55.248.76/wxjs_config/config.php?callback=callback_config&url=" + encodeURIComponent( window.location.href.split('#')[0] );
 	var body = document.getElementsByTagName('body')[0];
 	body.appendChild(script);
+	alert('load_config');
 </script>
 </body>
 </html>
