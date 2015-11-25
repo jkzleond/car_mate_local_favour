@@ -214,7 +214,7 @@ SQL;
 					
 					$record_result = $db->query($get_view_sql, $get_view_bind);
 					$record_result->setFetchMode(Db::FETCH_ASSOC);
-					$record_list = $view_result->fetchAll();
+					$record_list = $record_result->fetchAll();
 					$this->view->setVar('view_record_list', $record_list);
 				}
 
