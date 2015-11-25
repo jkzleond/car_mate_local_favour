@@ -82,7 +82,7 @@
 	</table>
 	{% endif %}
 </div>
-{% if not is_already %}
+
 <script type="text/javascript">
 	/**
 	 * 参加活按钮点击
@@ -113,7 +113,7 @@
 		})
 	})(window, document);
 </script>
-{% endif %}
+
 <script type="text/javascript">
   /*
    * 注意：
