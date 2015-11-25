@@ -9,7 +9,7 @@ class TempController extends ControllerBase
 
 	public function initialize()
 	{
-		ini_set('display_errors', 0);
+		ini_set('display_errors', 1);
 	}
 
 	public function insuranceShareDescribeAction()
