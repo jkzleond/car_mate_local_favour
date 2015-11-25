@@ -169,9 +169,10 @@ class TempController extends ControllerBase
 			//如果用户没绑定,则绑定(微信客户端访问页面时)
 			if($wx_state and !$bind_user)
 			{
-				$bind_user_sql = 'update IAM_USER set weixintoken = :wx_openid, wx_openid = :wx_openid';
+				$bind_user_sql = 'update IAM_USER set weixintoken = :wx_openid, wx_openid = :wx_openid where userid = :user_id';
 				$bind_user_bind = array(
-					'wx_openid' => $wx_openid
+					'wx_openid' => $wx_openid,
+					'user_id' => $user['user_id']
 				);
 				$bind_user_success = $db->execute($bind_user_sql, $bind_user_bind);
 			}
@@ -206,7 +207,7 @@ SQL;
 					$view_record_list = $view_result->fetchAll();
 					$this->view->setVar('view_record_list', $view_record_list);
 				}
-
+				return;
 				$this->flashSession->success('您已成功参加活动, 邀请码为[<span style="font-weight:bold">'.$involved_user['invitation_code'].'</span>], 可以分享给您的好友咯！<br/>(让TA为你做贡献O(∩_∩)O哈哈~)');
 				$this->view->setVar('p_user_phone', $user['phone']);
 				return;
