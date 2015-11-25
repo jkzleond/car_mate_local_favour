@@ -133,7 +133,7 @@
 	function callback_config(config){
 		console.log(config);
 		wx.config({
-            debug: false,
+            debug: true,
             appId: config.appId,
             timestamp: config.timestamp,
             nonceStr: config.nonceStr,
