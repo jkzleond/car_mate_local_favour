@@ -227,9 +227,9 @@ SQL;
 			$insert_au_success = $db->execute($insert_au_sql, $insert_au_bind);
 
 
-			$this->flashSession->success('您已成功参加活动, 邀请码为['.$invitation_code.'], 可以分享给您的好友咯！<br/>(让TA为你做贡献O(∩_∩)O哈哈~)');
-			$this->response->redirect('/insurance_share/'.$user['phone'], false);
-			return $this->response; //这里一定要返回 response 对象 否则原本的模板还是会被执行 flashSession 就会被消耗
+			$this->flashSession->success('您已成功参加活动, 邀请码为[<span style="font-weight:bold">'.$involved_user['invitation_code'].'</span>], 可以分享给您的好友咯！<br/>(让TA为你做贡献O(∩_∩)O哈哈~)');
+			$this->view->setVar('p_user_phone', $user['phone']);
+			return;
 		}
 	}
 
