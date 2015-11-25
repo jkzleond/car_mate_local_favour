@@ -42,10 +42,9 @@ class TempController extends ControllerBase
 		if($is_wx and !$wx_state)
 		{
 			$auth_url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='.$this->_app_id.'&redirect_uri='.urlencode('http://ip.yn122.net:8092/insurance_share').'&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
-			//return $this->response->redirect($auth_url);
-			return;
+			return $this->response->redirect($auth_url);
 		}
-
+		return;
 		$this->view->setVar('wx_state', $wx_state);
 
 		$wx_code = $this->request->get('code', null, null);
@@ -57,7 +56,7 @@ class TempController extends ControllerBase
 		$bind_user = null;
 
 		$db = $this->db;
-		
+
 		if($wx_state and !$user_phone)
 		{
 
