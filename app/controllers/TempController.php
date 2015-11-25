@@ -43,7 +43,7 @@ class TempController extends ControllerBase
 		//使用微信客户端访问,并且不是从授权页面跳转过来的(跳转过来都带state),重定向到授权页面
 		if($is_wx and !$wx_state)
 		{
-			$auth_url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='.$this->_app_id.'&redirect_uri='.urlencode('http://ip.yn122.net:8092/insurance_share').'&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
+			$auth_url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='.$this->_app_id.'&redirect_uri='.urlencode('http://ip.yn122.net:8092/insurance_share/'.$p_user_phone).'&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
 			return $this->response->redirect($auth_url);
 		}
 
@@ -69,7 +69,7 @@ class TempController extends ControllerBase
 				$wx_token = json_decode($wx_token_json, true);
 				
 				$bind_user_list = User::getUserList(array(
-					'wx_openid' => $wx_token['openid']
+					'wx_openid' => isset($wx_token['openid']) ? $wx_token['openid'] : 'cyh', //避免wx_openid为null时,取到所有用户
 				));
 
 				if(!empty($bind_user_list))
