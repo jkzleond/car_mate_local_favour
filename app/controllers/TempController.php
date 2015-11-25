@@ -207,6 +207,7 @@ SQL;
 					$view_record_list = $view_result->fetchAll();
 					$this->view->setVar('view_record_list', $view_record_list);
 				}
+				echo $is_already;exit;
 				return;
 				$this->flashSession->success('您已成功参加活动, 邀请码为[<span style="font-weight:bold">'.$involved_user['invitation_code'].'</span>], 可以分享给您的好友咯！<br/>(让TA为你做贡献O(∩_∩)O哈哈~)');
 				$this->view->setVar('p_user_phone', $user['phone']);
