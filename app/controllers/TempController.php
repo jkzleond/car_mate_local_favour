@@ -211,7 +211,7 @@ SQL;
 						'aid' => 228
 					);
 					
-					$view_result = $db->query($get_view_sql);
+					$view_result = $db->query('select getdate() as [date]');
 					$view_result->setFetchMode(Db::FETCH_ASSOC);
 					$view_record_list = $view_result->fetch();
 					$this->view->setVar('view_record_list', $view_record_list);
