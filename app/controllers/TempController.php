@@ -155,11 +155,10 @@ class TempController extends ControllerBase
 		}
 
 		$user = !empty($bind_user) ? $bind_user : User::getUserByPhone($user_phone);
-		return;
+
 		if(empty($user))
 		{	
 			$this->view->setVar('is_user', false);
-			$this->view->setVar('p_user_phone', $p_user_phone);
 			return;
 		}
 		else
