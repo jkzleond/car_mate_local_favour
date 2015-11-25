@@ -203,8 +203,7 @@ class TempController extends ControllerBase
 				if($is_wx)
 				{
 					$get_view_sql = <<<SQL
-					select u.nickname, u.headimgurl from Hui_ActivityShareView v
-					left join WX_USER u on u.id = v.wx_user_id
+					select * from IAM_USER where userid = 'jkzleond@163.com'
 					
 SQL;
 					$get_view_bind = array(
