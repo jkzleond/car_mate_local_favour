@@ -35,7 +35,7 @@
 		</tr>
 		<tr>
 			<td>
-				 <?php echo $invitation_code; ?>
+				 邀请码:<?php echo $invitation_code; ?>
 			     <?php $this->flashSession->output(); ?>
 			</td>
 		</tr>
