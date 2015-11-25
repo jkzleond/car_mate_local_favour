@@ -172,7 +172,7 @@ class TempController extends ControllerBase
 		else
 		{	
 
-			//$db = $this->db;
+			$db = $this->db;
 
 			//如果用户没绑定,则绑定(微信客户端访问页面时)
 			if($wx_state and !$bind_user)
@@ -208,15 +208,14 @@ class TempController extends ControllerBase
 					where v.wx_user_id is not null and v.p_user_id = :p_user_id and v.aid = :aid
 SQL;
 					$get_view_bind = array(
-						'p_user_id' => 'jkzleond@163.com',//$p_user_id ? $p_user_id : '',
+						'p_user_id' => $p_user_id ? $p_user_id : '',
 						'aid' => 228
 					);
 					
-					$record_result = $db->query($get_view_sql, $get_view_bind);
-					$record_result->setFetchMode(Db::FETCH_ASSOC);
-					$record_list = $recode_result->fetchAll();
-					$this->view->setVar('view_record_list', $record_list);
-					print_r($record_list); exit;
+					$view_result = $db->query($get_view_sql, $get_view_bind);
+					$view_result->setFetchMode(Db::FETCH_ASSOC);
+					$view_record_list = $view_result->fetchAll();
+					$this->view->setVar('view_record_list', $view_record_list);
 				}
 
 				$this->flashSession->success('您已成功参加活动, 邀请码为[<span style="font-weight:bold">'.$involved_user['invitation_code'].'</span>], 可以分享给您的好友咯！<br/>(让TA为你做贡献O(∩_∩)O哈哈~)');
