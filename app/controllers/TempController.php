@@ -59,7 +59,7 @@ class TempController extends ControllerBase
 
 		$db = $this->db;
 
-		if($wx_state and !$user_phone)
+		if($is_wx and $wx_state and !$user_phone)
 		{
 
 			if($wx_code)
@@ -79,6 +79,13 @@ class TempController extends ControllerBase
 
 				$wx_userinfo_json = file_get_contents('https://api.weixin.qq.com/sns/userinfo?access_token='.$wx_token['access_token'].'&openid='.$wx_token['openid'].'&lang=zh_CN');
 				$wx_userinfo = json_decode($wx_userinfo_json, true);
+
+				//如果获取用户信息失败,则重新获取code授权
+				if(empty($wx_userinfo) or !isset($wx_userinfo['openid']) )
+				{
+					$auth_url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='.$this->_app_id.'&redirect_uri='.urlencode('http://ip.yn122.net:8092/insurance_share/'.$p_user_phone).'&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
+					return $this->response->redirect($auth_url);
+				}
 				
 				//保存微信用户信息
 				

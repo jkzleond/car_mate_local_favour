@@ -35,7 +35,12 @@
 		</tr>
 		<tr>
 			<td>
-				 邀请码:<?php echo $invitation_code; ?>
+				 <?php 
+				 	if($invitation_code)
+				 	{
+				 		echo '邀请码:'.$invitation_code;
+				 	} 
+				 ?>
 			     <?php $this->flashSession->output(); ?>
 			</td>
 		</tr>
@@ -62,6 +67,7 @@
 		<tr>
 			<td>
 				<?php $this->flashSession->output(); ?>
+				<?php var_dump($view_record_list); ?>
 			</td>
 		</tr>
 		<?php if($is_wx and !empty($view_record_list)){ ?>
