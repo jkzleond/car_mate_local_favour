@@ -14,7 +14,7 @@
 		<table style="width:100%; height:100%" cellpadding="0" cellspacing="10">
 			<tr>
 				<td>
-					<a href="{{ url('/insurance_share') }}">
+					<a href="{{ url('/insurance_share?state=STATE') }}">
 						<img src="{{ url('/assets/temp/insuranceShare/img/bt_hy.jpg') }}" style="max-width: 100%; min-width: 100px; width: 80%; height: 40%;"/>	
 					</a>
 				</td>
