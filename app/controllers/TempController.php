@@ -22,23 +22,6 @@ class TempController extends ControllerBase
 	 */
 	public function insuranceShareAction()
 	{
-		$db = $this->db;
-		$get_view_sql = <<<SQL
-		select u.nickname, u.headimgurl from Hui_ActivityShareView v
-		left join WX_USER u on u.id = v.wx_user_id
-		where v.wx_user_id is not null and v.p_user_id = :p_user_id and v.aid = :aid
-SQL;
-		$get_view_bind = array(
-			'p_user_id' => 'jkzleond@163.com',
-			'aid' => 228
-		);
-		
-		$view_result = $db->query($get_view_sql, $get_view_bind);
-		$view_result->setFetchMode(Db::FETCH_ASSOC);
-		$view_record_list = $view_result->fetchAll();
-		print_r($view_record_list);exit;
-
-
 		$p_user_phone = $this->dispatcher->getParam('p_user_phone', null, '0');
 		$user_phone = $this->request->get('user_phone', null, null);
 		
@@ -233,6 +216,7 @@ SQL;
 					$view_result->setFetchMode(Db::FETCH_ASSOC);
 					$view_record_list = $view_result->fetchAll();
 					$this->view->setVar('view_record_list', $view_record_list);
+					print_r($view_record_list); exit;
 				}
 
 				$this->flashSession->success('您已成功参加活动, 邀请码为[<span style="font-weight:bold">'.$involved_user['invitation_code'].'</span>], 可以分享给您的好友咯！<br/>(让TA为你做贡献O(∩_∩)O哈哈~)');
