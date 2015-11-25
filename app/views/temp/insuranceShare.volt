@@ -40,6 +40,7 @@
 			</td>
 		</tr>
 		{% if not is_user %}
+		<?php var_dump($is_user); ?>
 		<tr>
 			<td >
 				<div  class="fx_div_sr_z">注：<br />
@@ -107,7 +108,7 @@
 				alert('请填写您的电话号码！');
 				return;
 			}
-			alert("{{ url('/insurance_share/') }}" + p_user_phone +'?user_phone=' + phone_input.value + '&state=' + wx_state + '&wx_openid=' + wx_openid);return;
+			
 			window.location.href = "{{ url('/insurance_share/') }}" + p_user_phone +'?user_phone=' + phone_input.value + '&state=' + wx_state + '&wx_openid=' + wx_openid;
 			return false;
 		})

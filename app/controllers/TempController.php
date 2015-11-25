@@ -188,7 +188,7 @@ class TempController extends ControllerBase
 			$is_already = !empty($involved_user);
 
 			$this->view->setVar('is_already', $is_already);
-			return;
+
 			if($is_already)
 			{
 				//在微信客户端访问则进入过此页面的微信用户信息
@@ -209,9 +209,10 @@ SQL;
 					$view_record_list = $view_result->fetchAll();
 					$this->view->setVar('view_record_list', $view_record_list);
 				}
-				/*$this->flashSession->success('您已成功参加活动, 邀请码为[<span style="font-weight:bold">'.$involved_user['invitation_code'].'</span>], 可以分享给您的好友咯！<br/>(让TA为你做贡献O(∩_∩)O哈哈~)');
+
+				$this->flashSession->success('您已成功参加活动, 邀请码为[<span style="font-weight:bold">'.$involved_user['invitation_code'].'</span>], 可以分享给您的好友咯！<br/>(让TA为你做贡献O(∩_∩)O哈哈~)');
 				$this->view->setVar('p_user_phone', $user['phone']);
-				return;*/
+				return;
 			}
 	
 			$invitation_code = strtoupper((str_pad(dechex($user['id']), 5, '0', STR_PAD_LEFT)));
