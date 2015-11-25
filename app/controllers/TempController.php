@@ -25,7 +25,7 @@ class TempController extends ControllerBase
 
 		$p_user_phone = $this->dispatcher->getParam('p_user_phone', null, '0');
 		$user_phone = $this->dispatcher->getParam('user_phone');
-
+		echo $user_hone;exit;
 		$p_user_id = null;
 		if($p_user_phone !== '0')
 		{
@@ -44,7 +44,7 @@ class TempController extends ControllerBase
 			$auth_url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='.$this->_app_id.'&redirect_uri='.urlencode('http://ip.yn122.net:8092/insurance_share').'&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
 			return $this->response->redirect($auth_url);
 		}
-		return;
+
 		$this->view->setVar('wx_state', $wx_state);
 
 		$wx_code = $this->request->get('code', null, null);
