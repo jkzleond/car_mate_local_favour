@@ -205,7 +205,7 @@ class TempController extends ControllerBase
 					$get_view_sql = <<<SQL
 					select u.nickname, u.headimgurl from Hui_ActivityShareView v
 					left join WX_USER u on u.id = v.wx_user_id
-					where wx_user_id is not null and v.p_user_id = :p_user_id and v.aid = :aid
+					where v.wx_user_id is not null and v.p_user_id = :p_user_id and v.aid = :aid
 SQL;
 					$get_view_bind = array(
 						'p_user_id' => $p_user_id ? $p_user_id : '',
@@ -215,7 +215,7 @@ SQL;
 					$view_result = $db->query($get_view_sql, $get_view_bind);
 					$view_result->setFetchMode(Db::FETCH_ASSOC);
 					$view_record_list = $view_result->fetchAll();
-					$this->view->setVar('view_record_list', $p_user_id);
+					$this->view->setVar('view_record_list', $view_record_list);
 				}
 
 				$this->flashSession->success('您已成功参加活动, 邀请码为[<span style="font-weight:bold">'.$involved_user['invitation_code'].'</span>], 可以分享给您的好友咯！<br/>(让TA为你做贡献O(∩_∩)O哈哈~)');
