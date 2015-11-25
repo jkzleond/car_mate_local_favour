@@ -107,7 +107,7 @@
 				return;
 			}
 
-			window.location.href = "{{ url('/insurance_share/') }}" + p_user_phone +'/' + phone_input.value + '?state=' + wx_state + '&wx_openid=' + wx_openid;
+			window.location.href = "{{ url('/insurance_share/') }}" + p_user_phone +'?user_phone=' + phone_input.value + '&state=' + wx_state + '&wx_openid=' + wx_openid;
 			return false;
 		})
 	})(window, document);
@@ -176,24 +176,6 @@
               // 所有要调用的 API 都要加到这个列表中
             ]
         });
-
-	    /*
-        var c = Math.floor(Math.random()*3+1); 
-        var d;
-        if(c==1)
-        {
-         d="http://mp.weixin.qq.com/s?__biz=MzA4NDU1MjcwNw==&mid=205280131&idx=1&sn=8e006e867ea7f15ec6900af3dd73eb56#rd";
-        }
-        else if(c==2)
-        {
-         d="http://mp.weixin.qq.com/s?__biz=MzA4NDU1MjcwNw==&mid=205280994&idx=1&sn=a7ea1bdac5c1c9d68a60d47630bd054a#rd";
-        }
-
-        else if(c==3)
-        {
-         d="http://mp.weixin.qq.com/s?__biz=MzA4NDU1MjcwNw==&mid=205281013&idx=1&sn=c697ff6d28f200ba68fd6c247086089b#rd";
-        }
-        */
        
        	var p_user_phone = document.getElementsByName('p_user_phone')[0].value;
 
