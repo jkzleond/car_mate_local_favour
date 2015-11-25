@@ -79,7 +79,7 @@
 			<td>
 				<ul style="">
 					{% for view_record in view_record_list %}
-					<li style="height: 10px;"><img src="{{ view_record['headimgurl'] }}" alt="" style="width:32px;height:32px;"><span style="display:inline-block; height:10px; line-height:10px; margin-left:10px; padding:4px;">{{ view_record['nickname'] }}</span></li>
+					<li style="height: 32px;"><img src="{{ view_record['headimgurl'] }}" alt="" style="width:32px;height:32px;"><span style="display:inline-block; height:32px; line-height:32px; margin-left:10px; padding:4px;">{{ view_record['nickname'] }}</span><span style="display:inline-block; height:32px; line-height:32px; margin-left:10px; padding:4px;">{{ view_record['create_date'] }}</span></li>
 					{% endfor %}
 				</ul>
 			</td>
