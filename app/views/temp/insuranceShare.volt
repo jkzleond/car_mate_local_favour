@@ -67,7 +67,6 @@
 		<tr>
 			<td>
 				<?php $this->flashSession->output(); ?>
-				<?php var_dump($view_record_list); ?>
 			</td>
 		</tr>
 		<?php if($is_wx and !empty($view_record_list)){ ?>
@@ -80,7 +79,7 @@
 			<td>
 				<ul style="">
 					{% for view_record in view_record_list %}
-					<li><img src="{{ view_record['headimgurl'] }}" alt="" style="width:32px;height:32px;"><span>{{ view_record['nickname'] }}</span></li>
+					<li style="height: 10px;"><img src="{{ view_record['headimgurl'] }}" alt="" style="width:32px;height:32px;"><span style="display:inline-block; height:10px; line-height:10px; margin-left:10px; padding:4px;">{{ view_record['nickname'] }}</span></li>
 					{% endfor %}
 				</ul>
 			</td>
@@ -250,5 +249,10 @@
 	var body = document.getElementsByTagName('body')[0];
 	body.appendChild(script);
 </script>
+<style type="text/css">
+	ul {
+		list-style: none;
+	}
+</style>
 </body>
 </html>
