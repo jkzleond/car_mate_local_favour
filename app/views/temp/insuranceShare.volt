@@ -106,7 +106,7 @@
 				alert('请填写您的电话号码！');
 				return;
 			}
-
+			console.log("{{ url('/insurance_share/') }}" + p_user_phone +'?user_phone=' + phone_input.value + '&state=' + wx_state + '&wx_openid=' + wx_openid);return;
 			window.location.href = "{{ url('/insurance_share/') }}" + p_user_phone +'?user_phone=' + phone_input.value + '&state=' + wx_state + '&wx_openid=' + wx_openid;
 			return false;
 		})
@@ -182,7 +182,7 @@
         var wxData = {
         "appId": "",
         "imgUrl" : 'http://www.rttwy.com/yurenjie/images/logo.png',
-        "link" : 'http://ip.yn122.net/insurance_share/describe', //+ (p_user_phone ? '/' + p_user_phone : '' ),
+        "link" : 'http://ip.yn122.net:8092/insurance_share/describe', //+ (p_user_phone ? '/' + p_user_phone : '' ),
         "desc" : '车险免单，还不快来？',
         "title" : "车友惠福利：您的车险免单啦！"
         };
