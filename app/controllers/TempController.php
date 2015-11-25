@@ -29,7 +29,7 @@ class TempController extends ControllerBase
 		where v.wx_user_id is not null and v.p_user_id = :p_user_id and v.aid = :aid
 SQL;
 		$get_view_bind = array(
-			'p_user_id' => 'jkzleond@163.com'
+			'p_user_id' => 'jkzleond@163.com',
 			'aid' => 228
 		);
 		
