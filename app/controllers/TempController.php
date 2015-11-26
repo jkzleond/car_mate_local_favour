@@ -105,7 +105,7 @@ class TempController extends ControllerBase
 					$insert_wx_user_sql = 'insert into WX_USER (openid, nickname, sex, province, city, country, headimgurl,privilege, unionid) values (:openid, :nickname, :sex, :province, :city, :country, :headimgurl, :privilege, :unionid)';
 					$insert_wx_user_bind = array(
 						'openid' => $wx_userinfo['openid'],
-						'nickname' => $wx_userinfo['nickname'],
+						'nickname' => base64_encode($wx_userinfo['nickname']),
 						'sex' => $wx_userinfo['sex'],
 						'province' => $wx_userinfo['province'],
 						'city' => $wx_userinfo['city'],
