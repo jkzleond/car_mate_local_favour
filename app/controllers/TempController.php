@@ -97,7 +97,7 @@ class TempController extends ControllerBase
 				$wx_user = $wx_user_result->fetch();
 
 				$wx_user_id = !empty($wx_user) ? $wx_user['id'] : null;
-
+				exit;
 				//没有此微信用户记录则添加
 				
 				if(!$wx_user_id)
@@ -208,7 +208,7 @@ class TempController extends ControllerBase
 					where v.wx_user_id is not null and v.p_user_id = :p_user_id and v.aid = :aid
 SQL;
 					$get_view_bind = array(
-						'p_user_id' => $p_user_id ? $p_user_id : '',
+						'p_user_id' => $user['user_id'],
 						'aid' => 228
 					);
 					
