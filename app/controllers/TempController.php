@@ -15,34 +15,28 @@ class TempController extends ControllerBase
 
 		//解决微信andriod版两次请求的并发问题,使用文件所
 		//文件名称为微信code+.lock,两次请求使用同一个code
-		$wx_code = $this->request->get('code', null, null);
+		$lock_time = $this->request->get('lock_time', null, null);
 
-		if($wx_code)
+		if($lock_time)
 		{
-			$lock_file = $wx_code.'.lock';
+			$lock_file = $lock_time.'.lock';
 
-			if(!file_exists($lock_file))
+			while(file_exists($lock_file))
 			{
-				touch($lock_file);
+				
 			}
-			else
-			{
-				while(file_exists($lock_file))
-				{
-					
-				}
-
-			}
+			
+			touch($lock_file);
 		}
 	}
 
 	public function afterExecuteRoute()
 	{
 		//解除锁
-		$wx_code = $this->request->get('code', null, null);
-		$lock_file = $wx_code.'.lock';
+		$lock_time = $this->request->get('lock_time', null, null);
+		$lock_file = $lock_time.'.lock';
 
-		if($wx_code and file_exists($lock_file))
+		if($lock_time and file_exists($lock_file))
 		{
 			unlink($lock_file);
 		}
@@ -84,7 +78,7 @@ class TempController extends ControllerBase
 		//使用微信客户端访问,并且不是从授权页面跳转过来的(跳转过来都带state),重定向到授权页面
 		if($is_wx and !$wx_state and !$wx_userinfo)
 		{
-			$auth_url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='.$this->_app_id.'&redirect_uri='.urlencode('http://ip.yn122.net:8092/insurance_share/'.$p_user_phone).'&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
+			$auth_url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='.$this->_app_id.'&redirect_uri='.urlencode('http://ip.yn122.net:8092/insurance_share/'.$p_user_phone.'?lock_time='.floor(microtime(true)*100)).'&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
 			return $this->response->redirect($auth_url);
 		}
 
@@ -114,7 +108,7 @@ class TempController extends ControllerBase
 					//如果获取用户信息失败,则重新获取code授权
 					if(empty($wx_userinfo) or !isset($wx_userinfo['openid']) )
 					{
-						$auth_url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='.$this->_app_id.'&redirect_uri='.urlencode('http://ip.yn122.net:8092/insurance_share/'.$p_user_phone).'&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
+						$auth_url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='.$this->_app_id.'&redirect_uri='.urlencode('http://ip.yn122.net:8092/insurance_share/'.$p_user_phone.'?lock_time='.floor(microtime(true)*100)).'&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
 						return $this->response->redirect($auth_url);
 					}
 
