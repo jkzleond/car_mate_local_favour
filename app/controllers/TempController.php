@@ -112,7 +112,7 @@ class TempController extends ControllerBase
 						return $this->response->redirect($auth_url);
 					}
 
-					$this->cookies->set('wx_userinfo_json', $wx_userinfo_json, 25920000);
+					$this->cookies->set('wx_userinfo_json', $wx_userinfo_json);
 				}
 				
 				//保存微信用户信息
