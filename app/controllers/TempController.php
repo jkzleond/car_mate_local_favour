@@ -114,9 +114,6 @@ class TempController extends ControllerBase
 						'privilege' => json_encode($wx_userinfo['privilege']),
 						'unionid' => isset($wx_userinfo['unionid']) ? $wx_userinfo['unionid'] : null
 					);
-					//file_put_contents('wx_user_bind', var_export($insert_wx_user_bind, 1), FILE_APPEND);
-					//var_dump($insert_wx_user_bind);
-					//exit;
 
 					$db->execute($insert_wx_user_sql, $insert_wx_user_bind);
 					$wx_user_id = $db->lastInsertId();
