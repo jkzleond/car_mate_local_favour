@@ -75,7 +75,7 @@ class TempController extends ControllerBase
 		$is_wx = strpos($user_agent, 'MicroMessenger') !== false;
 		$this->view->setVar('is_wx', $is_wx);
 
-		$wx_userinfo_json = $this->cookies->get('wx_userinfo_json')->getValue();
+		$wx_userinfo_json = $this->cookies->get('wx_userinfo_json')->getValue('trim');
 		$wx_userinfo = json_decode($wx_userinfo_json, true);
 		file_put_contents('wx_userinfo.log', var_export($wx_userinfo_json, 1)."\r\n", FILE_APPEND);
 		//print_r($wx_userinfo_json); exit;
