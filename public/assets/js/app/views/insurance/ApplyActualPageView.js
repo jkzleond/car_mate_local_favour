@@ -7,15 +7,22 @@ define([
     'underscore',
     'backbone',
     'models/insurance/InsuranceActualFormModel',
+    'models/activity/ActivityUserModel', //车险20免一活动,获取邀请码需要
     'text!templates/insurance/apply_actual_page.html'
-], function($, _, Backbone, InsuranceActualFormModel, pageTpl){
+], function($, _, Backbone, InsuranceActualFormModel, 
+    ActivityUserModel, //车险20免一活动,获取邀请码需要 
+    pageTpl){
     $(pageTpl).appendTo('body');
     var ApplyActualPage = Backbone.View.extend({
         el: '#insurance_apply_actual_page',
         initialize: function(){
             this.model = new InsuranceActualFormModel();
+            this.activity_user_model = new ActivityUserModel();
+            this.activity_p_user_model = new ActivityUserModel();
             this.listenTo(this.model, 'change:info_id', this._render);
             this.listenTo(this.model, 'invalid', this._onFormModelInvalid);
+            this.listenTo(this.activity_user_model, 'sync', this._renderInvitationCode);
+            this.listenTo(this.activity_p_user_model, 'change:invitation_code', this._renderInvitationCode);
             //绑定缩略图img事件
             this.$el.find('img.thumbnail').bind('load', _.bind(this._onThumbnailImageLoad, this));
 
@@ -284,6 +291,10 @@ define([
         _onFormModelInvalid: function(model, err){
             $.cm.toast({msg: err});
         },
+        _renderInvitationCode: function(model, new_invitation_code, options){
+            //获取到邀请码后回填并禁用控件
+            this.$el.find('[name="invitation_code"]').val(new_invitation_code).prop('disabled', true);
+        },
         //收集表单数据到模型
         _collectionFormData: function(){
             var self = this;
@@ -336,6 +347,13 @@ define([
                     'insurance_card': insurance_card
                 },{silent: true});    
          }
+     },
+     //重置视图
+     reset: function(){
+        //获取车险20免一邀请码需要
+        this.apply_actual_page_view.activity_user_model.set('aid', 228);
+        this.apply_actual_page_view.activity_user_model.set('user_id', G.user.user_id);
+        this.apply_actual_page_view.activity_user_model.fetch(); 
      }
     });
     return ApplyActualPage;

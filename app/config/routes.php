@@ -214,6 +214,11 @@ $router->addPost('/activity/sign_up/', array(
     'action' => 'signUp'
 ));
 
+$router->addGet('/activity/{aid:\d+}/user/{user_id:*}', array(
+    'controller' => 'activity',
+    'action' => 'getActivityUser'
+));
+
 
 /*车辆信息*/
 $router->addGet('/car_info/{user_id:.*}/{hphm:.*}', array(

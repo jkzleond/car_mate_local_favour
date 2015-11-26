@@ -400,6 +400,38 @@ SQL;
         return !empty($result[0]);
     }
 
+    //获取单个活动参与用户信息
+    public static function getActivityUser(array $criteria=null)
+    {
+        $crt = new Criteria($criteria);
+        $condition_arr = array();
+        $condition_str = '';
+        $bind = array();
+
+        if($crt->aid)
+        {
+            $condition_arr[] = 'aid = :aid';
+            $bind['aid'] = $crt->aid;
+        }
+
+        if($crt->user_id)
+        {
+            $condition_arr[] = 'user_id = :user_id';
+            $bind['user_id'] = $crt->user_id;
+        }
+
+        if(!empty($condition_arr))
+        {
+            $condition_str = 'where '.implode(' and ', $condition_arr);
+        }
+
+        $sql = <<<SQL
+        select id, userid as user_id, invitation_code, aid from ActivityUser
+        $condition_str
+SQL;
+        return self::fetchOne($sql, $bind, null, Db::FETCH_ASSOC);
+    }
+
     /**
      * 添加活动用户
      * @param array $user_info

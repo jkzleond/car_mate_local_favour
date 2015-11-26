@@ -136,6 +136,15 @@ class ActivityController extends ControllerBase
         $this->view->setVars($return_data);
     }
 
+    //获取单个活动参与用户信息
+    public function getActivityUserAction()
+    {
+        $json_data = $this->request->getJsonRawBody(true);
+        $activity_user = Activity::getActivityUser($json_data);
+
+        $this->setVar('row' => $activity_user);
+    }
+
     /**
      * 发布活动
      */

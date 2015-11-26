@@ -106,7 +106,7 @@ define([
             }
             $(':mobile-pagecontainer').pagecontainer('change', '#insurance_apply_actual_page');
             this.apply_actual_page_view.is_compulsory = is_compulsory;
-            this.apply_actual_page_view.model.set('info_id', info_id);
+            this.apply_actual_page_view.model.set('info_id', info_id); 
         },
         //精算价格
         actuaryPrice: function(info_id){

@@ -35,6 +35,13 @@
 		</tr>
 		<tr>
 			<td>
+				<a id="rule_btn" href="{{ url('/insurance_share/describe') }}?p_user_phone={{ p_user_phone }}">
+					<img src="{{ url('/assets/temp/insuranceShare/img/bt_gz.png') }}" style="max-width: 100%; min-width: 320px; width: 80%;"  />
+				</a>
+			</td>
+		</tr>
+		<tr>
+			<td>
 				 <?php 
 				 	if($invitation_code)
 				 	{
