@@ -114,10 +114,10 @@ class TempController extends ControllerBase
 						'privilege' => json_encode($wx_userinfo['privilege']),
 						'unionid' => isset($wx_userinfo['unionid']) ? $wx_userinfo['unionid'] : null
 					);
+					exit;
 
 					$db->execute($insert_wx_user_sql, $insert_wx_user_bind);
 					$wx_user_id = $db->lastInsertId();
-					exit;
 				}
 
 				$get_view_sql = 'select top 1 id from Hui_ActivityShareView where wx_user_id = :wx_user_id and p_user_id = :p_user_id and aid = :aid';
