@@ -73,7 +73,7 @@ class TempController extends ControllerBase
 
 		$wx_userinfo_json = $this->cookies->get('wx_userinfo_json')->getValue('trim');
 		$wx_userinfo = json_decode($wx_userinfo_json, true);
-		file_put_contents('wx_userinfo.log', var_export($wx_userinfo, 1)."\r\n", FILE_APPEND);
+		file_put_contents('wx_userinfo.log', '['.mircotime(true).']'.var_export($wx_userinfo, 1)."\r\n", FILE_APPEND);
 		
 		//使用微信客户端访问,并且不是从授权页面跳转过来的(跳转过来都带state),重定向到授权页面
 		if($is_wx and !$wx_state and !$wx_userinfo)
