@@ -124,7 +124,7 @@ class TempController extends ControllerBase
 				//保存微信用户信息
 				
 				$bind_user_list = User::getUserList(array(
-					'wx_openid' => isset($wx_token['openid']) ? $wx_token['openid'] : 'cyh', //避免wx_openid为null时,取到所有用户
+					'wx_openid' => isset($wx_userinfo['openid']) ? $wx_userinfo['openid'] : 'cyh', //避免wx_openid为null时,取到所有用户
 				));
 
 				if(!empty($bind_user_list))
