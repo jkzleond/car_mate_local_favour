@@ -74,8 +74,8 @@ class TempController extends ControllerBase
 		$user_agent = $this->request->getUserAgent();
 		$is_wx = strpos($user_agent, 'MicroMessenger') !== false;
 		$this->view->setVar('is_wx', $is_wx);
-		$wx_userinfo = $this->cookies->get('wx_userinfo')->getValue();
 		$this->cookies->delete('wx_userinfo');
+		$wx_userinfo = $this->cookies->get('wx_userinfo')->getValue();
 		print_r($wx_userinfo);exit;
 		//使用微信客户端访问,并且不是从授权页面跳转过来的(跳转过来都带state),重定向到授权页面
 		if($is_wx and !$wx_state and !$wx_userinfo)
