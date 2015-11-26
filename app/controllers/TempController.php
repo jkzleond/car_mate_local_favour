@@ -10,6 +10,40 @@ class TempController extends ControllerBase
 	public function initialize()
 	{
 		ini_set('display_errors', 0);
+
+		//解决微信andriod版两次请求的并发问题,使用文件所
+		//文件名称为微信code+.lock,两次请求使用同一个code
+		$wx_code = $this->request->get('code', null, null);
+
+		if($wx_code)
+		{
+			$lock_file = $wx_code.'.lock';
+
+			if(!file_exists($lock_file))
+			{
+				touch($lock_file);
+			}
+			else
+			{
+				while(file_exists($lock_file))
+				{
+					
+				}
+
+			}
+		}
+	}
+
+	public function afterExecuteRoute()
+	{
+		//解除锁
+		$wx_code = $this->request->get('code', null, null);
+		$lock_file = $wx_code.'.lock';
+
+		if($wx_code and file_exists($lock_file))
+		{
+			unlink($lock_file);
+		}
 	}
 
 	public function insuranceShareDescribeAction()
@@ -41,8 +75,9 @@ class TempController extends ControllerBase
 		$is_wx = strpos($user_agent, 'MicroMessenger') !== false;
 		$this->view->setVar('is_wx', $is_wx);
 
+		$wx_userinfo = $this->cookies->get('wx_userinfo');
 		//使用微信客户端访问,并且不是从授权页面跳转过来的(跳转过来都带state),重定向到授权页面
-		if($is_wx and !$wx_state)
+		if($is_wx and !$wx_state and !$wx_userinfo)
 		{
 			$auth_url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='.$this->_app_id.'&redirect_uri='.urlencode('http://ip.yn122.net:8092/insurance_share/'.$p_user_phone).'&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
 			return $this->response->redirect($auth_url);
@@ -65,9 +100,26 @@ class TempController extends ControllerBase
 
 			if($wx_code)
 			{
+				if(!$wx_userinfo)
+				{
+					$wx_token_json = file_get_contents('https://api.weixin.qq.com/sns/oauth2/access_token?appid='.$this->_app_id.'&secret='.$this->_app_secret.'&code='.$wx_code.'&grant_type=authorization_code');
+					$wx_token = json_decode($wx_token_json, true);
+					
+
+					$wx_userinfo_json = file_get_contents('https://api.weixin.qq.com/sns/userinfo?access_token='.$wx_token['access_token'].'&openid='.$wx_token['openid'].'&lang=zh_CN');
+					$wx_userinfo = json_decode($wx_userinfo_json, true);
+
+					//如果获取用户信息失败,则重新获取code授权
+					if(empty($wx_userinfo) or !isset($wx_userinfo['openid']) )
+					{
+						$auth_url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='.$this->_app_id.'&redirect_uri='.urlencode('http://ip.yn122.net:8092/insurance_share/'.$p_user_phone).'&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
+						return $this->response->redirect($auth_url);
+					}
+
+					$this->cookies->set('wx_userinfo', $wx_userinfo);
+				}
 				
-				$wx_token_json = file_get_contents('https://api.weixin.qq.com/sns/oauth2/access_token?appid='.$this->_app_id.'&secret='.$this->_app_secret.'&code='.$wx_code.'&grant_type=authorization_code');
-				$wx_token = json_decode($wx_token_json, true);
+				//保存微信用户信息
 				
 				$bind_user_list = User::getUserList(array(
 					'wx_openid' => isset($wx_token['openid']) ? $wx_token['openid'] : 'cyh', //避免wx_openid为null时,取到所有用户
@@ -77,19 +129,6 @@ class TempController extends ControllerBase
 				{
 					$bind_user = $bind_user_list[0];
 				}
-
-				$wx_userinfo_json = file_get_contents('https://api.weixin.qq.com/sns/userinfo?access_token='.$wx_token['access_token'].'&openid='.$wx_token['openid'].'&lang=zh_CN');
-				$wx_userinfo = json_decode($wx_userinfo_json, true);
-
-				//如果获取用户信息失败,则重新获取code授权
-				if(empty($wx_userinfo) or !isset($wx_userinfo['openid']) )
-				{
-					$auth_url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='.$this->_app_id.'&redirect_uri='.urlencode('http://ip.yn122.net:8092/insurance_share/'.$p_user_phone).'&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
-					return $this->response->redirect($auth_url);
-				}
-				
-				//保存微信用户信息
-				
 
 				$get_wx_user_sql = 'select top 1 id from WX_USER where openid = :openid';
 				$get_wx_user_bind = array('openid' => $wx_userinfo['openid']);

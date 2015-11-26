@@ -126,6 +126,6 @@ $di->setShared('flashSession', function() use($di) {
 
 $di->set('crypt', function () {
     $crypt = new Phalcon\Crypt();
-    $crypt->setKey('car_mate');
+    $crypt->setKey('car_mate_local_favour');
     return $crypt;
 });
