@@ -15,7 +15,7 @@ class TempController extends ControllerBase
 	public function insuranceShareDescribeAction()
 	{
 		$p_user_phone = $this->request->get('p_user_phone', null, '0');
-		$this->view->setVar('p_user_phone');
+		$this->view->setVar('p_user_phone', $p_user_phone);
 	}
 
 	/**
