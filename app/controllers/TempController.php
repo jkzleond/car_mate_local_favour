@@ -76,6 +76,7 @@ class TempController extends ControllerBase
 		$this->view->setVar('is_wx', $is_wx);
 
 		$wx_userinfo = $this->cookies->get('wx_userinfo');
+		print_r($wx_userinfo);exit;
 		//使用微信客户端访问,并且不是从授权页面跳转过来的(跳转过来都带state),重定向到授权页面
 		if($is_wx and !$wx_state and !$wx_userinfo)
 		{
@@ -89,7 +90,6 @@ class TempController extends ControllerBase
 		$wx_openid = $this->request->get('wx_openid', null, null);
 		$wx_unionid = $this->request->get('wx_unionid', null, null);
 		$wx_token = null;
-		$wx_userinfo = null;
 
 		$bind_user = null;
 
