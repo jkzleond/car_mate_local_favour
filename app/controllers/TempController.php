@@ -95,6 +95,18 @@ class TempController extends ControllerBase
 
 		$bind_user = null;
 
+		if($wx_userinfo)
+		{
+			$bind_user_list = User::getUserList(array(
+				'wx_openid' => isset($wx_userinfo['openid']) ? $wx_userinfo['openid'] : 'cyh', //避免wx_openid为null时,取到所有用户
+			));
+
+			if(!empty($bind_user_list))
+			{
+				$bind_user = $bind_user_list[0];
+			}
+		}
+		
 		$db = $this->db;
 
 		if($is_wx and $wx_state and !$user_phone)
@@ -123,15 +135,6 @@ class TempController extends ControllerBase
 				
 				//保存微信用户信息
 				
-				$bind_user_list = User::getUserList(array(
-					'wx_openid' => isset($wx_userinfo['openid']) ? $wx_userinfo['openid'] : 'cyh', //避免wx_openid为null时,取到所有用户
-				));
-
-				if(!empty($bind_user_list))
-				{
-					$bind_user = $bind_user_list[0];
-				}
-
 				$get_wx_user_sql = 'select top 1 id from WX_USER where openid = :openid';
 				$get_wx_user_bind = array('openid' => $wx_userinfo['openid']);
 				$wx_user_result = $db->query($get_wx_user_sql, $get_wx_user_bind);
