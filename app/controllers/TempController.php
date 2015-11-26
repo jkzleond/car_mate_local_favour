@@ -97,7 +97,7 @@ class TempController extends ControllerBase
 				$wx_user = $wx_user_result->fetch();
 
 				$wx_user_id = !empty($wx_user) ? $wx_user['id'] : null;
-				exit;
+
 				//没有此微信用户记录则添加
 				
 				if(!$wx_user_id)
@@ -117,6 +117,7 @@ class TempController extends ControllerBase
 
 					$db->execute($insert_wx_user_sql, $insert_wx_user_bind);
 					$wx_user_id = $db->lastInsertId();
+					exit;
 				}
 
 				$get_view_sql = 'select top 1 id from Hui_ActivityShareView where wx_user_id = :wx_user_id and p_user_id = :p_user_id and aid = :aid';
