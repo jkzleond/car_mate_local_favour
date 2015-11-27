@@ -115,8 +115,8 @@
 					<li style="height: 48px; margin-top: 5px;">
 						<img src="{{ view_record['headimgurl'] }}" alt="" style="width:48px;height:48px;float:left">
 						<div style="height:48px;margin-left:10px;float:left; text-align:left">
-							<div style="height:40px; line-height:40px; padding:4px;"><?php echo base64_decode($view_record['nickname']);  ?></div>
-							<div style="height:40px; line-height:40px; padding:4px;">{{ view_record['create_date'] }}</div>
+							<div style="height:16px; line-height:16px; padding:4px;"><?php echo base64_decode($view_record['nickname']);  ?></div>
+							<div style="height:16px; line-height:16px; padding:4px;">{{ view_record['create_date'] }}</div>
 						</div>
 					</li>
 					{% endfor %}
