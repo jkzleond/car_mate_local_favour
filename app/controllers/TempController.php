@@ -261,7 +261,7 @@ SQL;
 
 				if($p_user_id)
 				{
-					$this->flashSession->success('您也获得了邀请码哦！<br/> 邀请码为[<span style="font-weight:bold">'.$involved_user['invitation_code'].'</span>], 可以点击右上角分享给您的好友，也可以将邀请码告知您的好友，在车友惠精算时填写邀请码！');
+					$this->flashSession->success('您也获得了邀请码哦！<br/> 邀请码为[<span style="color:orange;font-size:1.5em;font-weight:bold">'.$involved_user['invitation_code'].'</span>], 可以点击右上角分享给您的好友，也可以将邀请码告知您的好友，在车友惠精算时填写邀请码！');
 				}
 				else
 				{
@@ -285,7 +285,7 @@ SQL;
 
 			if($p_user_id)
 			{
-				$this->flashSession->success('您也获得了邀请码哦！<br/> 邀请码为[<span style="font-weight:bold">'.$involved_user['invitation_code'].'</span>], 可以点击右上角分享给您的好友，也可以将邀请码告知您的好友，在车友惠精算时填写邀请码！');
+				$this->flashSession->success('您也获得了邀请码哦！<br/> 邀请码为[<span style="color:orange;font-size:1.5em;font-weight:bold">'.$involved_user['invitation_code'].'</span>], 可以点击右上角分享给您的好友，也可以将邀请码告知您的好友，在车友惠精算时填写邀请码！');
 			}
 			else
 			{
