@@ -33,8 +33,8 @@
 		您将增加一次抽检机会
 		{% else%}
 		<span style="line-height: 100%">	
-		邀请码: <br><br><br>
-		<b style="color:orange; font-size:5em;">{{ invitation_code }}</b>
+		<b style="font-size: 1.2em">邀请码:</b><br><br><br>
+		<b style="color:orange; font-size:4.2em;">{{ invitation_code }}</b>
 		</span>
 		{% endif%}
 	</div>
@@ -73,7 +73,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td>
+			<td style="font-weight:bold">
 				<?php $this->flashSession->output(); ?>
 			</td>
 		</tr>
@@ -98,7 +98,7 @@
 	{% else %}
 	<table class="fx_div_sr_table">
 		<tr>
-			<td>
+			<td style="font-weight:bold;">
 				<?php $this->flashSession->output(); ?>
 			</td>
 		</tr>
