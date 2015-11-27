@@ -7,18 +7,18 @@ define([
     'underscore',
     'backbone',
     'models/insurance/InsuranceActualFormModel',
-    'models/activity/ActivityUserModel', //车险20免一活动,获取邀请码需要
+    //'models/activity/ActivityUserModel', //车险20免一活动,获取邀请码需要
     'text!templates/insurance/apply_actual_page.html'
 ], function($, _, Backbone, InsuranceActualFormModel, 
-    ActivityUserModel, //车险20免一活动,获取邀请码需要 
+    //ActivityUserModel, //车险20免一活动,获取邀请码需要 
     pageTpl){
     $(pageTpl).appendTo('body');
     var ApplyActualPage = Backbone.View.extend({
         el: '#insurance_apply_actual_page',
         initialize: function(){
             this.model = new InsuranceActualFormModel();
-            this.activity_user_model = new ActivityUserModel();
-            this.activity_p_user_model = new ActivityUserModel();
+            //this.activity_user_model = new ActivityUserModel();
+            //this.activity_p_user_model = new ActivityUserModel();
             this.listenTo(this.model, 'change:info_id', this._render);
             this.listenTo(this.model, 'invalid', this._onFormModelInvalid);
             this.listenTo(this.activity_user_model, 'sync', this._renderInvitationCode);
