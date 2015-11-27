@@ -147,6 +147,7 @@ class ActivityController extends ControllerBase
 
     /**
      * 发布活动
+     * 
      */
     public function addActivityAction()
     {
