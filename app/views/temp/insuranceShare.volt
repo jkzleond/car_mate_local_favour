@@ -15,7 +15,7 @@
 </style>
 <body  class="body_fx">
 
-<div style="position:relative; color:white; font-size: 1em; line-height: 100%; text-align: center; vertical-align: middle">
+<div style="position:relative; color:white; font-size: 1em; line-height: 1.2em; text-align: center; vertical-align: middle">
 	<img src="{{ url('/assets/temp/insuranceShare/img/crsj.jpg?123') }}" width="100%" style="max-width: 100%; min-width: 320px;" />
 	<div style="width: 70%; height: 60%;position:absolute; top: 0px; left: 0px; padding: 10% 15%">
 		{% if p_user_phone != 0 and !is_success and !is_already %}
