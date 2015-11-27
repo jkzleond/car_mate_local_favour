@@ -4,14 +4,37 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=no" />
 <link rel="stylesheet" type="text/css" href="{{ url('/assets/temp/insuranceShare/css/css.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ url('/assets/temp/insuranceShare/css/ext_css.css') }}" />
 <script type="text/javascript" src="{{ url('/assets/temp/insuranceShare/js/jweixin-1.0.0.js') }}"></script>
 <title>参与分享吧！</title>
 </head>
-
+<style type="text/css">
+	ul {
+		list-style: none;
+	}
+</style>
 <body  class="body_fx">
 
-<div>
+<div style="position:relative; color:white; font-size: 1.2em; text-align: center">
 	<img src="{{ url('/assets/temp/insuranceShare/img/crsj.jpg') }}" width="100%" style="max-width: 100%; min-width: 320px;" />
+	<div style="width: 70%; height: 60%;position:absolute; top: 0px; left: 0px; padding: 10% 15%">
+		{% if p_user_phone != 0 and !is_success and !is_already %}
+		我的好友邀请您参加车险免单活动。<br>
+		只要邀请<b style="color:yellow">20</b>个好友购买保险，他的车险就可以免单啦! <br>
+		就差一步! <br>
+		打开车友惠在"保险巨惠"中申请精算，填入我的邀请码(<b style="color:orangered"><?php if($invitation_code){ echo $invitation_code; } ?></b>)，我就可以免单啦！ <br>
+		<b style="color:yellow">你也可以参加哦↓↓↓</b>
+		{% elseif !is_success and !is_already %}
+		<b style="color:yellow; font-size: 1.5em">请输入您的车友惠账号</b><br>
+		<b style="color:yellow; font-size: 1.2em">(一般为您的手机号码)</b><br>
+		<br>
+		以方便您参加免单活动及抽奖活动<br>
+		每成功邀请一位好友购买车险<br>
+		您将增加一次抽检机会
+		{% else%}
+		<?php $this->flashSession->output(); ?>
+		{% endif%}
+	</div>
 </div>
 <div class="fx_div_sr">
 	<input type="hidden" name="p_user_phone" value="{{ p_user_phone }}" />
@@ -28,27 +51,22 @@
 	<table style="width: 100%;" cellpadding="0" cellspacing="10">
 		<tr>
 			<td>
-				<a id="submit_btn" href="">
-					<img src="{{ url('/assets/temp/insuranceShare/img/bt_hy.png') }}" style="max-width: 100%; min-width: 320px; width: 80%;"  />
+				<a class='ui-btn ui-corner-all bg-red color-white' style="width: 75%; padding: 2%; margin: auto; font-size: 1.2em; font-weight: bold;" id="submit_btn" href="">
+				{% if p_user_phone == 0 %}
+				我要参加活动
+				{% else %}
+				帮他一把
+				{% endif %}
+					<!-- <img src="{{ url('/assets/temp/insuranceShare/img/bt_hy.png') }}" style="max-width: 100%; min-width: 320px; width: 80%;"  /> -->
 				</a>
 			</td>
 		</tr>
 		<tr>
 			<td>
-				<a id="rule_btn" href="{{ url('/insurance_share/describe') }}?p_user_phone={{ p_user_phone }}">
-					<img src="{{ url('/assets/temp/insuranceShare/img/bt_gz.png') }}" style="max-width: 100%; min-width: 320px; width: 80%;"  />
+				<a id="rule_btn" class='ui-btn ui-corner-all bg-green color-white' style="width: 75%; padding: 2%; margin: auto; font-size: 1.2em; font-weight: bold;" href="{{ url('/insurance_share/describe') }}?p_user_phone={{ p_user_phone }}">
+					查看活动规则>>>
+					<!-- <img src="{{ url('/assets/temp/insuranceShare/img/bt_gz.png') }}" style="max-width: 100%; min-width: 320px; width: 80%;"  /> -->
 				</a>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				 <?php 
-				 	if($invitation_code)
-				 	{
-				 		echo '邀请码:'.$invitation_code;
-				 	} 
-				 ?>
-			     <?php $this->flashSession->output(); ?>
 			</td>
 		</tr>
 		{% if not is_user %}
@@ -199,7 +217,7 @@
         "imgUrl" : 'http://ip.yn122.net:8092/assets/temp/insuranceShare/img/share_icon.jpg',
         "link" : 'http://ip.yn122.net:8092/insurance_share' + (p_user_phone ? '/' + p_user_phone : ''),
         "desc" : '车险免单，还不快来？',
-        "title" : "车友惠福利：您的车险免单啦！"
+        "title" : "还差一点，我的车险就免单啦！快来帮我！"
         };
         var str_mp = "weixin://profile/gh_8592a4c9c934";//关注的链接
         wx.ready(function () {
@@ -256,10 +274,5 @@
 	var body = document.getElementsByTagName('body')[0];
 	body.appendChild(script);
 </script>
-<style type="text/css">
-	ul {
-		list-style: none;
-	}
-</style>
 </body>
 </html>

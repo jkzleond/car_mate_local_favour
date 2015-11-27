@@ -259,7 +259,14 @@ SQL;
 					$this->view->setVar('view_record_list', $record_list);
 				}
 
-				$this->flashSession->success('您已成功参加活动, 邀请码为[<span style="font-weight:bold">'.$involved_user['invitation_code'].'</span>], 可以分享给您的好友咯！<br/>(让TA为你做贡献O(∩_∩)O哈哈~)');
+				if($p_user_id)
+				{
+					$this->flashSession->success('您也获得了邀请码哦！<br/> 邀请码为[<span style="font-weight:bold">'.$involved_user['invitation_code'].'</span>], 可以点击右上角分享给您的好友，也可以将邀请码告知您的好友，在车友惠精算时填写邀请码！');
+				}
+				else
+				{
+					$this->flashSession->success('您已成功参加活动<br/>邀请码为[<span style="color:orange;font-size:1.5em;font-weight:bold">'.$involved_user['invitation_code'].'</span>], 可以点击右上角分享给您的好友，也可以将邀请码告知您的好友，在车友惠精算时填写邀请码！<br/>成功邀请<b style="color:yellow">20</b>个好友购买保险，您的车险就可以免单啦');
+				}
 				$this->view->setVar('p_user_phone', $user['phone']);
 				return;
 			}
@@ -276,8 +283,16 @@ SQL;
 			$insert_au_success = $db->execute($insert_au_sql, $insert_au_bind);
 
 
-			$this->flashSession->success('您已成功参加活动, 邀请码为[<span style="font-weight:bold">'.$invitation_code.'</span>], 可以分享给您的好友咯！<br/>(让TA为你做贡献O(∩_∩)O哈哈~)');
+			if($p_user_id)
+			{
+				$this->flashSession->success('您也获得了邀请码哦！<br/> 邀请码为[<span style="font-weight:bold">'.$involved_user['invitation_code'].'</span>], 可以点击右上角分享给您的好友，也可以将邀请码告知您的好友，在车友惠精算时填写邀请码！');
+			}
+			else
+			{
+				$this->flashSession->success('您已成功参加活动<br/>邀请码为[<span style="color:orange;font-size:1.5em;font-weight:bold">'.$involved_user['invitation_code'].'</span>], 可以点击右上角分享给您的好友，也可以将邀请码告知您的好友，在车友惠精算时填写邀请码！<br/>成功邀请<b style="color:yellow">20</b>个好友购买保险，您的车险就可以免单啦');
+			}
 			$this->view->setVar('p_user_phone', $user['phone']);
+			$this->view->setVar('is_success', true);
 			return;
 		}
 	}

@@ -4,7 +4,7 @@
 define([
 	'backbone'
 ],function(Backbone){
-	var ActivityUserModel = Backbone.model.extend({
+	var ActivityUserModel = Backbone.Model.extend({
 		url: function(){
 			return '/activity/' + this.get('aid') + '/user/' + this.get('user_id');
 		},
@@ -14,4 +14,5 @@ define([
             return resp.row; //服务端所有返回的模型数据都放在row里
 		}
 	});
+	return ActivityUserModel;
 });

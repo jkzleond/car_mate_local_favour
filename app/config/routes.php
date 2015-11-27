@@ -214,7 +214,8 @@ $router->addPost('/activity/sign_up/', array(
     'action' => 'signUp'
 ));
 
-$router->addGet('/activity/{aid:\d+}/user/{user_id:*}', array(
+//获取单个活动信息
+$router->addGet('/activity/{aid:\d+}/user/{user_id:.*}', array(
     'controller' => 'activity',
     'action' => 'getActivityUser'
 ));
