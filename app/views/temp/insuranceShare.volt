@@ -32,7 +32,10 @@
 		每成功邀请一位好友购买车险<br>
 		您将增加一次抽检机会
 		{% else%}
-		<?php $this->flashSession->output(); ?>
+		<span style="line-height: 100%">	
+		邀请码: <br><br><br>
+		<b style="color:orange; font-size:5em;">{{ invitation_code }}</b>
+		</span>
 		{% endif%}
 	</div>
 </div>
@@ -67,6 +70,11 @@
 					查看活动规则>>>
 					<!-- <img src="{{ url('/assets/temp/insuranceShare/img/bt_gz.png') }}" style="max-width: 100%; min-width: 320px; width: 80%;"  /> -->
 				</a>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<?php $this->flashSession->output(); ?>
 			</td>
 		</tr>
 		{% if not is_user %}
