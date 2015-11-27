@@ -15,7 +15,7 @@
 </style>
 <body  class="body_fx">
 
-<div style="position:relative; color:white; font-size: 1.2em; text-align: center">
+<div style="position:relative; color:white; font-size: 1em; text-align: center">
 	<img src="{{ url('/assets/temp/insuranceShare/img/crsj.jpg?123') }}" width="100%" style="max-width: 100%; min-width: 320px;" />
 	<div style="width: 70%; height: 60%;position:absolute; top: 0px; left: 0px; padding: 10% 15%">
 		{% if p_user_phone != 0 and !is_success and !is_already %}
@@ -25,8 +25,8 @@
 		打开车友惠在"保险巨惠"中申请精算，填入我的邀请码(<b style="color:orangered"><?php if($invitation_code){ echo $invitation_code; } ?></b>)，我就可以免单啦！ <br>
 		<b style="color:yellow">你也可以参加哦↓↓↓</b>
 		{% elseif !is_success and !is_already %}
-		<b style="color:yellow; font-size: 1.5em">请输入您的车友惠账号</b><br>
-		<b style="color:yellow; font-size: 1.2em">(一般为您的手机号码)</b><br>
+		<b style="color:yellow; font-size: 1.2em">请输入您的车友惠账号</b><br>
+		<b style="color:yellow; font-size: 1em">(一般为您的手机号码)</b><br>
 		<br>
 		以方便您参加免单活动及抽奖活动<br>
 		每成功邀请一位好友购买车险<br>
