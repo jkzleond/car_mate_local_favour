@@ -21,7 +21,7 @@
 		{% if p_user_phone != 0 and !is_success and !is_already %}
 		只要邀请<b style="color:orange">20</b>个好友购买保险，我的车险就可以免单啦! <br>
 		打开车友惠在"保险巨惠"中申请精算，填入我的邀请码:<br>
-		<b style="color:orange; font-size: 1.3em"><?php if($invitation_code){ echo $invitation_code; } ?></b><br>
+		<b style="color:yellow; font-size: 1.3em"><?php if($invitation_code){ echo $invitation_code; } ?></b><br>
 		我就可以免单啦！ <br>
 		<b style="color:yellow">你也可以参加哦！</b>
 		{% elseif !is_success and !is_already %}
