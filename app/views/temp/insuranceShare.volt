@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" href="{{ url('/assets/temp/insuranceShare/css/css.css') }}" />
 <link rel="stylesheet" type="text/css" href="{{ url('/assets/temp/insuranceShare/css/ext_css.css?123') }}" />
 <script type="text/javascript" src="{{ url('/assets/temp/insuranceShare/js/jweixin-1.0.0.js') }}"></script>
-<title>参与分享吧！</title>
+<title>{% if p_user_phone %}还差一点，车险就免单啦！快来帮我！{% else %}车险免单咯，快来哦！{% endif %}</title>
 </head>
 <style type="text/css">
 	ul {
@@ -19,11 +19,11 @@
 	<img src="{{ url('/assets/temp/insuranceShare/img/crsj.jpg?123') }}" width="100%" style="max-width: 100%; min-width: 320px;" />
 	<div style="width: 70%; height: 60%;position:absolute; top: 0px; left: 0px; padding: 10% 15%">
 		{% if p_user_phone != 0 and !is_success and !is_already %}
-		我的好友邀请您参加车险免单活动。<br>
-		只要邀请<b style="color:orange">20</b>个好友购买保险，他的车险就可以免单啦! <br>
-		就差一步! <br>
-		打开车友惠在"保险巨惠"中申请精算，填入我的邀请码(<b style="color:orangered"><?php if($invitation_code){ echo $invitation_code; } ?></b>)，我就可以免单啦！ <br>
-		<b style="color:yellow">你也可以参加哦↓↓↓</b>
+		只要邀请<b style="color:orange">20</b>个好友购买保险，我的车险就可以免单啦! <br>
+		打开车友惠在"保险巨惠"中申请精算，填入我的邀请码:<br>
+		<b style="color:orangered; font-size: 1.3em"><?php if($invitation_code){ echo $invitation_code; } ?></b><br>
+		我就可以免单啦！ <br>
+		<b style="color:yellow">你也可以参加哦！</b>
 		{% elseif !is_success and !is_already %}
 		<b style="color:yellow; font-size: 1.2em">请输入您的车友惠账号</b><br>
 		<b style="color:yellow; font-size: 1em">(一般为您的手机号码)</b><br>
@@ -31,7 +31,7 @@
 		以方便您参加免单活动及抽奖活动<br>
 		每成功邀请一位好友购买车险<br>
 		您将增加一次抽检机会
-		{% else%}
+		{% else %}
 		<span style="line-height: 100%">	
 		<b style="font-size: 1.2em">邀请码:</b><br><br><br>
 		<b style="color:orange; font-size:4.2em;">{{ invitation_code }}</b>
@@ -44,6 +44,15 @@
 	<input type="hidden" name="wx_state" value="{{ wx_state }}" />
 	<input type="hidden" name="wx_openid" value="{{ wx_openid }}" />
 	{% if not is_already %}
+	{% if p_user_phone != 0 and !is_success and !is_already %}
+	<table class="fx_div_sr_table" cellpadding="0" cellspacing="10">
+		<tr>
+			<td style="color: #3F3F3F;">
+				输入账号后你也可以获得一个邀请码哦！有了邀请码，你的车险也可以免单啦！
+			</td>
+		</tr>
+	</table>
+	{% endif %}
 	<table  class="fx_div_sr_table" cellpadding="0" cellspacing="10">
 		<tr>
 			<td style="color: #3F3F3F;">
