@@ -112,11 +112,11 @@
 			<td>
 				<ul style="">
 					{% for view_record in view_record_list %}
-					<li style="height: 64px;">
-						<img src="{{ view_record['headimgurl'] }}" alt="" style="width:64px;height:64px;float:left">
-						<div style="height:64px;margin-left:10px;float:left">
-							<div style="height:24px; line-height:24px; padding:4px;"><?php echo base64_decode($view_record['nickname']);  ?></div>
-							<div style="height:24px; line-height:24px; padding:4px;">{{ view_record['create_date'] }}</div>
+					<li style="height: 48px; margin-top: 5px;">
+						<img src="{{ view_record['headimgurl'] }}" alt="" style="width:48px;height:48px;float:left">
+						<div style="height:48px;margin-left:10px;float:left; text-align:left">
+							<div style="height:40px; line-height:40px; padding:4px;"><?php echo base64_decode($view_record['nickname']);  ?></div>
+							<div style="height:40px; line-height:40px; padding:4px;">{{ view_record['create_date'] }}</div>
 						</div>
 					</li>
 					{% endfor %}
