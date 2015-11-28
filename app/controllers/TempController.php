@@ -105,6 +105,8 @@ class TempController extends ControllerBase
 					$wx_userinfo_json = file_get_contents('https://api.weixin.qq.com/sns/userinfo?access_token='.$wx_token['access_token'].'&openid='.$wx_token['openid'].'&lang=zh_CN');
 					$wx_userinfo = json_decode($wx_userinfo_json, true);
 
+					file_put_contents('wx_userinfo.log', '[pull_userinfo]'.var_export($wx_userinfo, 1)."\r\n", FILE_APPEND);
+
 					//如果获取用户信息失败,则重新获取code授权
 					if(empty($wx_userinfo) or !isset($wx_userinfo['openid']) )
 					{
