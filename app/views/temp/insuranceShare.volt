@@ -53,6 +53,7 @@
 		</tr>
 	</table>
 		{% endif %}
+		{% if !is_success %}
 	<table  class="fx_div_sr_table" cellpadding="0" cellspacing="10">
 		<tr>
 			<td style="color: #3F3F3F;">
@@ -60,6 +61,7 @@
 			</td>
 		</tr>
 	</table>
+		{% endif %}
 	<table style="width: 100%;" cellpadding="0" cellspacing="10">
 		<tr>
 			<td>
