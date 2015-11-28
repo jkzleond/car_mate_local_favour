@@ -219,11 +219,11 @@ class TempController extends ControllerBase
 			//$db = $this->db;
 
 			//如果用户没绑定,则绑定(微信客户端访问页面时)
-			if($wx_state and !$bind_user)
+			if($is_wx and !$bind_user)
 			{
 				$bind_user_sql = 'update IAM_USER set weixintoken = :wx_openid, wx_openid = :wx_openid where userid = :user_id';
 				$bind_user_bind = array(
-					'wx_openid' => $wx_openid,
+					'wx_openid' => $wx_userinfo['openid'],
 					'user_id' => $user['user_id']
 				);
 				$bind_user_success = $db->execute($bind_user_sql, $bind_user_bind);
