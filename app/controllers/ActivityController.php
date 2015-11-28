@@ -142,7 +142,7 @@ class ActivityController extends ControllerBase
         $json_data = $this->request->getJsonRawBody(true);
         $activity_user = Activity::getActivityUser($json_data);
 
-        $this->setVar(array('row' => $activity_user));
+        $this->setVars(array('row' => $activity_user));
     }
 
     /**
