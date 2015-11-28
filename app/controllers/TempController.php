@@ -292,7 +292,7 @@ SQL;
 			{
 				$this->flashSession->success('您已成功参加活动<br/>可以点击右上角分享给您的好友，也可以将邀请码告知您的好友，在车友惠精算时填写邀请码！<br/>成功邀请<b style="color:orange">20</b>个好友购买保险，您的车险就可以免单啦');
 			}
-			$this->view->setVar('invitation_code', $involved_user['invitation_code']);
+			$this->view->setVar('invitation_code', $invitation_code);
 			$this->view->setVar('p_user_phone', $user['phone']);
 			$this->view->setVar('is_success', true);
 			return;

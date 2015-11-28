@@ -44,7 +44,7 @@
 	<input type="hidden" name="wx_state" value="{{ wx_state }}" />
 	<input type="hidden" name="wx_openid" value="{{ wx_openid }}" />
 	{% if not is_already %}
-	{% if p_user_phone != 0 and !is_success and !is_already %}
+		{% if p_user_phone != 0 and !is_success %}
 	<table class="fx_div_sr_table" cellpadding="0" cellspacing="10">
 		<tr>
 			<td style="color: #3F3F3F;">
@@ -52,7 +52,7 @@
 			</td>
 		</tr>
 	</table>
-	{% endif %}
+		{% endif %}
 	<table  class="fx_div_sr_table" cellpadding="0" cellspacing="10">
 		<tr>
 			<td style="color: #3F3F3F;">
