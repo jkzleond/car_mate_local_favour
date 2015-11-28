@@ -63,15 +63,17 @@
 	<table style="width: 100%;" cellpadding="0" cellspacing="10">
 		<tr>
 			<td>
+			{% if !is_success %}
 				<a class='ui-btn ui-corner-all bg-red color-white' style="width: 75%; padding: 2%; margin: auto; font-size: 1.2em; font-weight: bold;" id="submit_btn" href="">
-				{% if p_user_phone == 0 and !is_success %}
+				{% if p_user_phone == 0 %}
 				我要参加活动
-				{% elseif !is_success %}
+				{% else%}
 				帮他一把
 				{% endif %}
 					<!-- <img src="{{ url('/assets/temp/insuranceShare/img/bt_hy.png') }}" style="max-width: 100%; min-width: 320px; width: 80%;"  /> -->
 				</a>
 			</td>
+			{% endif %}
 		</tr>
 		<tr>
 			<td>
