@@ -264,11 +264,11 @@ SQL;
 
 				if($p_user_id)
 				{
-					$this->flashSession->success('您也获得了邀请码哦！<br/>可以点击右上角分享给您的好友，也可以将邀请码告知您的好友，在车友惠精算时填写邀请码！');
+					$this->flashSession->success('您也获得了邀请码哦！<br/>可以点击右上角分享给您的好友，也可以将邀请码告知您的好友，在保险精算时填写邀请码！如有疑问请<a href="tel:400-009-0047">拨打服务热线</a>或<a href="http://wpa.qq.com/msgrd?v=3&uin=1011973383&site=qq&menu=yes">加客服QQ</a>联系我们');
 				}
 				else
 				{
-					$this->flashSession->success('您已成功参加活动<br/>可以点击右上角分享给您的好友，也可以将邀请码告知您的好友，在车友惠精算时填写邀请码！<br/>成功邀请<b style="color:orange">20</b>个好友购买保险，您的车险就可以免单啦');
+					$this->flashSession->success('您已成功参加活动<br/>可以点击右上角分享给您的好友，也可以将邀请码告知您的好友，在保险精算时填写邀请码！<br/>成功邀请<b style="color:orange">20</b>个好友购买保险，您的车险就可以免单啦！如有疑问请<a href="tel:400-009-0047">拨打服务热线</a>或<a href="http://wpa.qq.com/msgrd?v=3&uin=1011973383&site=qq&menu=yes">加客服QQ</a>联系我们');
 				}
 				$this->view->setVar('invitation_code', $involved_user['invitation_code']);
 				$this->view->setVar('p_user_phone', $user['phone']);
@@ -289,11 +289,11 @@ SQL;
 
 			if($p_user_id)
 			{
-				$this->flashSession->success('您也获得了邀请码哦！<br/> 可以点击右上角分享给您的好友，也可以将邀请码告知您的好友，在车友惠精算时填写邀请码！');
+				$this->flashSession->success('您也获得了邀请码哦！<br/> 可以点击右上角分享给您的好友，也可以将邀请码告知您的好友，在保险精算时填写邀请码！如有疑问请<a href="tel:400-009-0047">拨打服务热线</a>或<a href="http://wpa.qq.com/msgrd?v=3&uin=1011973383&site=qq&menu=yes">加客服QQ</a>联系我们');
 			}
 			else
 			{
-				$this->flashSession->success('您已成功参加活动<br/>可以点击右上角分享给您的好友，也可以将邀请码告知您的好友，在车友惠精算时填写邀请码！<br/>成功邀请<b style="color:orange">20</b>个好友购买保险，您的车险就可以免单啦');
+				$this->flashSession->success('您已成功参加活动<br/>可以点击右上角分享给您的好友，也可以将邀请码告知您的好友，在保险精算时填写邀请码！<br/>成功邀请<b style="color:orange">20</b>个好友购买保险，您的车险就可以免单啦！如有疑问请<a href="tel:400-009-0047">拨打服务热线</a>或<a href="http://wpa.qq.com/msgrd?v=3&uin=1011973383&site=qq&menu=yes">加客服QQ</a>联系我们');
 			}
 			$this->view->setVar('invitation_code', $invitation_code);
 			$this->view->setVar('p_user_phone', $user['phone']);

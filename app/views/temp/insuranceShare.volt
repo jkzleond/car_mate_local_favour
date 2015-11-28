@@ -64,9 +64,9 @@
 		<tr>
 			<td>
 				<a class='ui-btn ui-corner-all bg-red color-white' style="width: 75%; padding: 2%; margin: auto; font-size: 1.2em; font-weight: bold;" id="submit_btn" href="">
-				{% if p_user_phone == 0 %}
+				{% if p_user_phone == 0 and !is_success %}
 				我要参加活动
-				{% else %}
+				{% elseif !is_success %}
 				帮他一把
 				{% endif %}
 					<!-- <img src="{{ url('/assets/temp/insuranceShare/img/bt_hy.png') }}" style="max-width: 100%; min-width: 320px; width: 80%;"  /> -->
@@ -106,6 +106,14 @@
 	</table>
 	{% else %}
 	<table class="fx_div_sr_table">
+		<tr>
+			<td>
+				<a id="rule_btn" class='ui-btn ui-corner-all bg-green color-white' style="width: 75%; padding: 2%; margin: auto; font-size: 1.2em; font-weight: bold;" href="{{ url('/insurance_share/describe') }}?p_user_phone={{ p_user_phone }}">
+					查看活动规则>>>
+					<!-- <img src="{{ url('/assets/temp/insuranceShare/img/bt_gz.png') }}" style="max-width: 100%; min-width: 320px; width: 80%;"  /> -->
+				</a>
+			</td>
+		</tr>
 		<tr>
 			<td style="font-weight:bold;">
 				<?php $this->flashSession->output(); ?>
