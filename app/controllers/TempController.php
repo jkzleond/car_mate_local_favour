@@ -73,7 +73,7 @@ class TempController extends ControllerBase
 
 		$wx_userinfo_json = $this->cookies->get('wx_userinfo_json')->getValue('trim');
 		$wx_userinfo = json_decode($wx_userinfo_json, true);
-		file_put_contents('wx_userinfo.log', '['.microtime(true).']'.var_export($wx_userinfo, 1)."\r\n", FILE_APPEND);
+		file_put_contents('wx_userinfo.log', '['.microtime(true).']'.var_export($wx_userinfo_json, 1)."\r\n", FILE_APPEND);
 		
 		//使用微信客户端访问,并且不是从授权页面跳转过来的(跳转过来都带state),重定向到授权页面
 		if($is_wx and !$wx_state and !$wx_userinfo)
@@ -108,6 +108,7 @@ class TempController extends ControllerBase
 					//如果获取用户信息失败,则重新获取code授权
 					if(empty($wx_userinfo) or !isset($wx_userinfo['openid']) )
 					{
+						file_put_contents('wx_userinfo.log', "[re_auth]\r\n", FILE_APPEND);
 						$auth_url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='.$this->_app_id.'&redirect_uri='.urlencode('http://ip.yn122.net:8092/insurance_share/'.$p_user_phone.'?lock_time='.floor(microtime(true)*100)).'&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
 						return $this->response->redirect($auth_url);
 					}
