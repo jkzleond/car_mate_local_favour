@@ -142,12 +142,11 @@ class ActivityController extends ControllerBase
         $json_data = $this->request->getJsonRawBody(true);
         $activity_user = Activity::getActivityUser($json_data);
 
-        $this->setVar('row' => $activity_user);
+        $this->setVar(array('row' => $activity_user));
     }
 
     /**
      * 发布活动
-     * 
      */
     public function addActivityAction()
     {
