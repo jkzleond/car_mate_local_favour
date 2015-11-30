@@ -81,9 +81,15 @@ define([
             this.model.clear({silent: true});
             this.model.set('info_id', info_id, {silent: true});
 
-            this.$el.find('[name]:visible').each(function(i, n){
+            var self = this;
+            this.$el.find('[name]:visible:not([data-ignore])').each(function(i, n){
                 var key = $(n).attr('name');
                 var value = $(n).val();
+
+                if(key == 'hphm' && value)
+                {
+                    value = self.$el.find('[name="hphm_header"]').val() + value;
+                }
 
                 self.model.set(key, value, {silent: true});
             });

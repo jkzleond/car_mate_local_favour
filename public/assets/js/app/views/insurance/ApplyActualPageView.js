@@ -7,22 +7,20 @@ define([
     'underscore',
     'backbone',
     'models/insurance/InsuranceActualFormModel',
-    //'models/activity/ActivityUserModel', //车险20免一活动,获取邀请码需要
+    'models/activity/ActivityPuserModel', //车险20免一活动,获取邀请码需要
     'text!templates/insurance/apply_actual_page.html'
 ], function($, _, Backbone, InsuranceActualFormModel, 
-    //ActivityUserModel, //车险20免一活动,获取邀请码需要 
+    ActivityPuserModel, //车险20免一活动,获取邀请码需要 
     pageTpl){
     $(pageTpl).appendTo('body');
     var ApplyActualPage = Backbone.View.extend({
         el: '#insurance_apply_actual_page',
         initialize: function(){
             this.model = new InsuranceActualFormModel();
-            //this.activity_user_model = new ActivityUserModel();
-            //this.activity_p_user_model = new ActivityUserModel();
+            this.activity_puser_model = new ActivityPuserModel();
             this.listenTo(this.model, 'change:info_id', this._render);
             this.listenTo(this.model, 'invalid', this._onFormModelInvalid);
-            this.listenTo(this.activity_user_model, 'sync', this._renderInvitationCode);
-            this.listenTo(this.activity_p_user_model, 'change:invitation_code', this._renderInvitationCode);
+            this.listenTo(this.activity_puser_model, 'change:invitation_code', this._renderInvitationCode);
             //绑定缩略图img事件
             this.$el.find('img.thumbnail').bind('load', _.bind(this._onThumbnailImageLoad, this));
 
@@ -302,12 +300,18 @@ define([
             this.model.clear({silent: true});
             this.model.set('info_id', info_id, {silent: true});
 
-            this.$el.find('[name]:visible').each(function(i, n){
+            var self = this;
+            this.$el.find('[name]:visible:not([data-ignore])').each(function(i, n){
 
                 if($(n).is('input:checkbox') && !$(n).prop('checked')) return;
 
                 var key = $(n).attr('name');
                 var value = $(n).val();
+
+                if(key == 'hphm' && value)
+                {
+                    value = self.$el.find('[name=hphm_header]').val() + value;
+                }
 
                 self.model.set(key, value, {silent: true});
             });
@@ -350,10 +354,12 @@ define([
      },
      //重置视图
      reset: function(){
+        //重置表单
+        this.$el.find('[name="invitation_code"]').val('').prop('disabled', false);
         //获取车险20免一邀请码需要
-        this.apply_actual_page_view.activity_user_model.set('aid', 228);
-        this.apply_actual_page_view.activity_user_model.set('user_id', G.user.user_id);
-        this.apply_actual_page_view.activity_user_model.fetch(); 
+        this.activity_puser_model.set('aid', 228);
+        this.activity_puser_model.set('user_id', G.user.user_id);
+        this.activity_puser_model.fetch(); 
      }
     });
     return ApplyActualPage;

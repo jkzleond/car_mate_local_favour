@@ -88,8 +88,7 @@ class InsuranceController extends ControllerBase
     {
         $form_data = $this->request->getJsonRawBody(true);
         $info_id = $form_data['info_id'];
-//        print_r($form_data);
-//        return;
+
         $is_using_attach = !empty($form_data['driving_license_a']);
 
         $info = Insurance::getInsuranceInfoById($info_id);
@@ -139,6 +138,27 @@ class InsuranceController extends ControllerBase
         }
 
         $success = Insurance::updateInsuranceInfo($info_id, $info_update);
+
+        //邀请码处理
+        if( isset($form_data['invitation_code']) )
+        {
+            $is_involved = Activity::isUserJoin($user['user_id'], 228);
+
+            if(!$is_involved)
+            {
+                $p_user = Activity::getActivityUser(array(
+                    'invitation_code' => $form_data['invitation_code']
+                ));
+
+                if(!empty($p_user))
+                {
+                    Activity::addActivityUser(array(
+                        'user_id' => $user['user_id'],
+                        'p_user_id' => $p_user['user_id']
+                    ), 228);
+                }
+            }
+        }
 
         $return_data = array(
             'success' => $success

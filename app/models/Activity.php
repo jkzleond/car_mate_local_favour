@@ -420,6 +420,12 @@ SQL;
             $bind['user_id'] = $crt->user_id;
         }
 
+        if($crt->invitation_code)
+        {
+            $condition_arr[] = 'invitation_code = :invitation_code';
+            $bind['invitation_code'] = $crt->invitation_code;
+        }
+
         if(!empty($condition_arr))
         {
             $condition_str = 'where '.implode(' and ', $condition_arr);
@@ -429,6 +435,27 @@ SQL;
         select id, userid as user_id, invitation_code, aid from ActivityUser
         $condition_str
 SQL;
+        return self::fetchOne($sql, $bind, null, Db::FETCH_ASSOC);
+    }
+
+    /**
+     * 获取活动上家信息
+     * @param  int|string $aid
+     * @param  string     $user_id
+     * @return array
+     */
+    public static function getActivityPuser($aid, $user_id)
+    {
+
+        $sql = <<<SQL
+        select invitation_code from ActivityUser
+        where aid = :aid and userid = ( select top 1 p_user_id from ActivityUser where aid = :aid and userid = :user_id )
+SQL;
+        $bind = array(
+            'aid' => $aid,
+            'user_id' => $user_id
+        );
+        
         return self::fetchOne($sql, $bind, null, Db::FETCH_ASSOC);
     }
 
@@ -443,15 +470,17 @@ SQL;
         $crt = new Criteria($user_info);
         $sql = <<<SQL
         insert into ActivityUser(userid, aid, state, options, payType,
-		selected, submitTime) values(:user_id, :aid, 0, :options, :pay_type,
-		:selected,getDate())
+		selected, submitTime, p_user_id, invitation_code) values(:user_id, :aid, 0, :options, :pay_type,
+		:selected,getDate(), :p_user_id, :invitation_code)
 SQL;
         $bind = array(
             'user_id' => $crt->user_id,
             'aid' => $aid,
             'options' => $crt->options,
             'pay_type' => $crt->pay_type,
-            'selected' => $crt->selected
+            'selected' => $crt->selected,
+            'p_user_id' => $crt->p_user_id,
+            'invitation_code' => $crt->invitation_code
         );
 
         return self::nativeExecute($sql, $bind);

@@ -136,13 +136,29 @@ class ActivityController extends ControllerBase
         $this->view->setVars($return_data);
     }
 
-    //获取单个活动参与用户信息
+    /**
+     * 获取单个活动参与用户信息
+     */
     public function getActivityUserAction()
     {
         $json_data = $this->request->getJsonRawBody(true);
         $activity_user = Activity::getActivityUser($json_data);
 
-        $this->setVars(array('row' => $activity_user));
+        $this->view->setVars(array(
+            'row' => $activity_user
+        ));
+    }
+
+    /**
+     *获取活动上家信息
+     */
+    public function getActivityPuserAction($aid, $user_id)
+    {
+        $activity_puser = Activity::getActivityPuser($aid, $user_id);
+
+        $this->view->setVars(array(
+            'row' => $activity_puser
+        ));
     }
 
     /**

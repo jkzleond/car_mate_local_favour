@@ -8,7 +8,7 @@ define(
 			},
 			validate: function(attrs, options){
 				var phone_regexp = /\d{11}/;
-				var hphm_regexp = /^[A-Z][a-z\d]{6}$/;
+				var hphm_regexp = /^[\u4e00-\u9fa5][A-Z][A-Za-z\d]{5}$/;
 	            var cn_str_reg = /^[\u4e00-\u9fa5]+$/;
 	            var id_no_reg = /^\d{17}[\d\w]$/;
 	            if(!_.isUndefined(attrs.phone) && !phone_regexp.test(attrs.phone))

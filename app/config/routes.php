@@ -220,6 +220,12 @@ $router->addGet('/activity/{aid:\d+}/user/{user_id:.*}', array(
     'action' => 'getActivityUser'
 ));
 
+//获取活动上家信息(用于扩散性活动)
+$router->addGet('/activity/{aid:\d+}/{user_id:.*}/puser', array(
+    'controller' => 'activity',
+    'action' => 'getActivityPuser'
+));
+
 
 /*车辆信息*/
 $router->addGet('/car_info/{user_id:.*}/{hphm:.*}', array(

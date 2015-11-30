@@ -13,16 +13,25 @@ define([
         },
         validate: function(attrs, options){
             var phone_regexp = /\d{11}/;
+            var hphm_regexp = /^[\u4e00-\u9fa5][A-Z][A-Za-z\d]{5}$/;
             var cn_str_reg = /^[\u4e00-\u9fa5]+$/;
             var id_no_reg = /^\d{17}[\d\w]$/;
             if(!_.isUndefined(attrs.phone) && !phone_regexp.test(attrs.phone))
             {
                 return '手机号码不合法';
             }
+
             if(_.isUndefined(attrs.no_hphm) && !_.isUndefined(attrs.hphm) && !attrs.hphm)
             {
                 return '请填写车牌号';
             }
+
+            if(!_.isUndefined(attrs.hphm) && !hphm_regexp.test(attrs.hphm))
+            {
+                return '号牌号码不正确';
+            }
+
+
             if(!_.isUndefined(attrs.auto_name) && !attrs.auto_name)
             {
                 return '请填写车辆品牌种类(车型)';

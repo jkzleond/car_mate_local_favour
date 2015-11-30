@@ -104,7 +104,7 @@ define([
             var model_attrs = {
                 damage: true
             };
-            this.$el.find('[name]:enabled:visible').each(function(index, feild){
+            this.$el.find('[name][data-ignore!="true"]:enabled:visible').each(function(index, feild){
                 var attr_key = $(feild).attr('name');
                 var attr_value = $(feild).val() || 0;
 
