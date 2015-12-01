@@ -71,7 +71,7 @@ class TempController extends ControllerBase
 		}
 		else
 		{
-			$this->view->setVar('user_phone', fasle);
+			$this->view->setVar('user_phone', false);
 		}
 
 		$this->view->setVar('p_user_phone', $p_user_phone);
