@@ -55,11 +55,6 @@ class TempController extends ControllerBase
 		if($user_id)
 		{
 			$user = User::getUserInfoById($user_id);
-		}
-
-		$this->view->setVar('client_type', $client_type);
-		if($client_type)
-		{
 			$this->view->setVar('is_in_car_mate', true);
 		}
 		else
