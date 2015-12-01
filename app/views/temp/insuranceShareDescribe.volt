@@ -14,9 +14,15 @@
 		<table style="width:100%; height:100%" cellpadding="0" cellspacing="10">
 			<tr>
 				<td>
-					<a href="{{ url('/insurance_share') }}/{{ p_user_phone }}{% if user_phone %}?user_phone={{ user_phone }}{% endif %}">
+					{% if not is_in_car_mate %}
+					<a href="{{ url('/insurance_share') }}/{{ p_user_phone }}">
 						<img src="{{ url('/assets/temp/insuranceShare/img/bt_hy.jpg') }}" style="max-width: 100%; min-width: 100px; width: 80%; height: 40%;"/>	
 					</a>
+					{% else %}
+					<a href="{{ url('/?userId=') }}{{ user_id }}&location_url=<?php echo base64_encode('http://ip.yn122.net:8092/insurance_share/'.$user_phone); ?>#discovery/595">
+						<img src="{{ url('/assets/temp/insuranceShare/img/bt_hy.jpg') }}" style="max-width: 100%; min-width: 100px; width: 80%; height: 40%;"/>	
+					</a>
+					{% endif %}
 				</td>
 				<td>
 					{% if not is_in_car_mate %}
