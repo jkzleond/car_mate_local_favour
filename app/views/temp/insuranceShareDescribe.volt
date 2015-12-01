@@ -14,14 +14,20 @@
 		<table style="width:100%; height:100%" cellpadding="0" cellspacing="10">
 			<tr>
 				<td>
-					<a href="{{ url('/insurance_share') }}/{{ p_user_phone }}">
+					<a href="{{ url('/insurance_share') }}/{{ p_user_phone }}{% if user_phone %}?user_phone={{ user_phone }}{% endif %}">
 						<img src="{{ url('/assets/temp/insuranceShare/img/bt_hy.jpg') }}" style="max-width: 100%; min-width: 100px; width: 80%; height: 40%;"/>	
 					</a>
 				</td>
 				<td>
+					{% if not is_in_car_mate %}
 					<a href="http://116.55.248.76/cyh_weixin/joinus.html">
 						<img src="{{ url('/assets/temp/insuranceShare/img/bt_bf.jpg') }}" style="max-width: 100%; min-width: 100px; width: 80%; height: 40%;"/>
 					</a>
+					{% else %}
+					<a href="http://ip.yn122.net:8092/?userId={{ user_id }}&&clientType={{ client_type }}">
+						<img src="{{ url('/assets/temp/insuranceShare/img/bt_bf.jpg') }}" style="max-width: 100%; min-width: 100px; width: 80%; height: 40%;"/>
+					</a>
+					{% endif %}
 				</td>
 			</tr>
 		</table>

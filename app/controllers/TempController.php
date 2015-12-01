@@ -45,6 +45,35 @@ class TempController extends ControllerBase
 	public function insuranceShareDescribeAction()
 	{
 		$p_user_phone = $this->request->get('p_user_phone', null, '0');
+
+		$user_id = $this->request->get('userId', null, null);
+		$client_type = $this->request->get('clientType', null, null);
+
+		$this->view->setVar('user_id', $user_id);
+		if($user_id)
+		{
+			$user = User::getUserInfoById($user_id);
+		}
+
+		$this->view->setVar('client_type', $client_type);
+		if($client_type)
+		{
+			$this->view->setVar('is_in_car_mate', true);
+		}
+		else
+		{
+			$this->view->setVar('is_in_car_mate', false);
+		}
+
+		if(!empty($user))
+		{
+			$this->view->setVar('user_phone', $user['phone']);
+		}
+		else
+		{
+			$this->view->setVar('user_phone', fasle);
+		}
+
 		$this->view->setVar('p_user_phone', $p_user_phone);
 	}
 
@@ -53,7 +82,16 @@ class TempController extends ControllerBase
 	 */
 	public function insuranceShareAction()
 	{
-		$p_user_phone = $this->dispatcher->getParam('p_user_phone', null, '0');
+		$p_user_phone = $this->dispatcher->getParam('p_user_phone', null, null);
+		$phone = $this->request->get('phone', null, null); //车友惠里面带的用户电话号码
+
+		if($phone)
+		{
+			$phone = base64_decode($phone);
+		}
+
+		$p_user_phone = $p_user_phone ? $p_user_phone : ( $phone ? $phone : '0' );
+
 		$user_phone = $this->request->get('user_phone', null, null);
 		
 		$this->view->setVar('p_user_phone', $p_user_phone);
