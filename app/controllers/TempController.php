@@ -49,7 +49,7 @@ class TempController extends ControllerBase
 		$user_id = $this->request->get('userId', null, null);
 		$client_type = $this->request->get('clientType', null, null);
 
-		print_r($_GET);
+		file_put_contents('des.log', var_export($_GET));
 
 		$this->view->setVar('user_id', $user_id);
 		if($user_id)

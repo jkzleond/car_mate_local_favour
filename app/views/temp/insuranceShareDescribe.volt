@@ -30,11 +30,6 @@
 					{% endif %}
 				</td>
 			</tr>
-			<tr>
-				<td>
-					is_in_car_mate:{{ is_in_car_mate }}
-				</td>
-			</tr>
 		</table>
 	</div>
 </body>
