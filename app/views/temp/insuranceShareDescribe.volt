@@ -24,7 +24,7 @@
 						<img src="{{ url('/assets/temp/insuranceShare/img/bt_bf.jpg') }}" style="max-width: 100%; min-width: 100px; width: 80%; height: 40%;"/>
 					</a>
 					{% else %}
-					<a href="http://ip.yn122.net:8092/?userId={{ user_id }}&&clientType={{ client_type }}">
+					<a href="http://ip.yn122.net:8092/?userId={{ user_id }}#insurance">
 						<img src="{{ url('/assets/temp/insuranceShare/img/bt_bf.jpg') }}" style="max-width: 100%; min-width: 100px; width: 80%; height: 40%;"/>
 					</a>
 					{% endif %}
