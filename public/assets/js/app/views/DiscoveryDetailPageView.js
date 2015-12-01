@@ -56,7 +56,17 @@ define([
             model.set('title', '', {silent: true});
         },
         renderContent: function(model){
-            this.$el.find('#discovery_content').html(model.get('content'));
+            var content = '';
+            if(model.get('id') == 595)
+            {
+                //如果是车险免单的活动
+                content = '<iframe src="http://ip.yn122.net:8092/insurance_share/describe/0?user_id=' + G.user.user_id + '" frameborder="0" style="width:100%;height:100%"></iframe>';
+            }
+            else
+            {
+                content = model.get('content');
+            }
+            this.$el.find('#discovery_content').html(content);
         }
     });
     return DiscoveryDetailView;

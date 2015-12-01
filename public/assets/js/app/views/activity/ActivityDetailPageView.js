@@ -34,13 +34,6 @@ define([
             this.$el.find('#activity_sign_up_btn').hide();
             if(model.keys().length == 0) return; //当clear时就直接返回,不渲染模板以免报错
             $('title').text(this.model.get('name'));
-
-            if(this.model.get('id') == 595)
-            {
-                this.model.set('is_link_url', true);
-                this.model.set('link_url', 'http://ip.yn122.net:8092/insurance_share/describe/0?user_id=' + G.user.user_id);
-            }
-
             this.$el.find('.detail-container').append(this.detail_tpl(model.toJSON()));
 
             var state = model.get('state');
