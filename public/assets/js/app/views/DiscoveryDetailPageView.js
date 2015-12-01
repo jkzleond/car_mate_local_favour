@@ -60,10 +60,10 @@ define([
             if(model.get('id') == 595)
             {
                 //如果是车险免单的活动
-                content = '<iframe src="http://ip.yn122.net:8092/insurance_share/describe?user_id=' + G.user.user_id + '" frameborder="0" style="width:100%;height:100%"></iframe>';
+                content = '<iframe src="http://ip.yn122.net:8092/insurance_share/describe?userId=' + G.user.user_id + '" frameborder="0" style="width:100%;height:100%"></iframe>';
                 var win_width = $(window).width();
                 var win_height = $(window).height();
-                this.$el.find('#discovery_content').width(win_width).height(win_height - 40);
+                this.$el.find('#discovery_content').width(win_width).height(win_height - 80);
             }
             else
             {
