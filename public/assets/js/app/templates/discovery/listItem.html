@@ -5,9 +5,17 @@ img_src = 'data:image/png;base64,' + pic_data;
 } else {
 img_src = '/assets/img/DefaultFavour.jpg';
 }
+
+var discovery_url = '#discovery/' + id;
+
+if(id == 595)
+{
+    discovery_url = 'http://ip.yn122.net:8092/?userId=' + G.user.user_id + '&location_url=' + base64encode('http://ip.yn122.net:8092/insurance_share/' + G.user.phone) + discovery_url;
+}
+
 %>
 <li class="cm-bg-color-white cm-row-fluid">
-    <a class="cm-block cm-btn cm-row-fluid" href="#discovery/<%= id %>">
+    <a class="cm-block cm-btn cm-row-fluid" href="<%= discovery_url %>">
         <img src="<%=img_src%>" class="cm-span3"/>
         <div class="cm-span8" style="margin-left: 5%">
             <h5 style="min-height: 2em; max-height: 2em;"><%= title %></h5>

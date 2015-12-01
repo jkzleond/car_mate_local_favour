@@ -64,7 +64,6 @@ define([
                 //var win_width = $(window).width();
                 var win_height = $(window).height();
                 this.$el.find('#discovery_content').height(win_height - 80);
-                window.history.replaceState({}, '', '/insurance_share/' + G.user.phone);
             }
             else
             {
