@@ -32,7 +32,6 @@
 			</tr>
 			<tr>
 				<td>
-					user_phone:{{ user_phone }}
 					is_in_car_mate:{{ is_in_car_mate }}
 				</td>
 			</tr>
