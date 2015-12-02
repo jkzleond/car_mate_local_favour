@@ -80,13 +80,13 @@ class TempController extends ControllerBase
 	public function insuranceShareAction()
 	{
 		$user_agent = $this->request->getUserAgent();
-		$is_in_car_mate = strpos($user_agent, 'yn122') !== false;
+		$is_in_car_mate = strpos($user_agent, 'YN122') !== false;
 		$location_url = $this->request->get('location_url', null, null);
 		//不在车优惠环境并且存在跳转参数,则跳转
 		if(!$is_in_car_mate and $location_url)
 		{
-			//$location_url = base64_decode($location_url);
-			//return $this->response->redirect($location_url);
+			$location_url = base64_decode($location_url);
+			return $this->response->redirect($location_url);
 		}
 
 		$p_user_phone = $this->dispatcher->getParam('p_user_phone', null, '0');
