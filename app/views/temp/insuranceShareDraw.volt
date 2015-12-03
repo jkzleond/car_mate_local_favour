@@ -143,7 +143,7 @@
 
 	             with(ctx) {
 	                 beginPath()
-	                 arc(e.pageX - offset.left, e.pageY - offset.top, 10, 0, Math.PI * 2);
+	                 arc(e.pageX - offset.left, e.pageY - offset.top, 15, 0, Math.PI * 2);
 	                 fill();
 	             }
 
