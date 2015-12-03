@@ -145,6 +145,7 @@
 
 	             $('.audio')[0].play();
 	        }
+	        return false;
 	    } 
 
 
