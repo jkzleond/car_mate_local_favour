@@ -76,7 +76,7 @@
 </body>
 <script type="text/javascript">
 	(function(window, document, $){
-		$('#debug').html(window.DeviceMotionEvent);
+		$('#debug').html(typeof window.DeviceMotionEvent);
 		//a标签事件
 		$('a').click(function(event){
 			event.preventDefault();
@@ -118,7 +118,7 @@
 	    var last_update = 0;
 	    var x = y = z = last_x = last_y = last_z = 0;
 
-	   	$('#debug').html(window.DeviceMotionEvent);
+	   	$('#debug').html(typeof window.DeviceMotionEvent);
 	    //如果设备支持加速度传感器,则注册摇一摇事件	
 	    if(window.DeviceMotionEvent)
 	    {
