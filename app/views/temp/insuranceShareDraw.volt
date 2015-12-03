@@ -114,6 +114,15 @@
 	    canvas.addEventListener('mousedown', eventDown);
 	    canvas.addEventListener('mouseup', eventUp);
 	    canvas.addEventListener('mousemove', eventMove);
+
+	    var last_update = 0;
+	    var x = y = z = last_x = last_y = last_z = 0;
+
+	    //如果设备支持加速度传感器,则注册摇一摇事件
+	    if(window.DeviceMotionEvent)
+	    {
+	    	window.addEventListener('devicemotion', motionHandler);
+	    }
 	    
 	    var mousedown = false;
 	    var win_width = $(window).innerWidth();
@@ -150,6 +159,26 @@
 	             $('.audio')[0].play();
 	        }
 	        return false;
+	    }
+
+	    function motionHandler(e)
+	    {
+	    	var acceleration = e.accelerationIncludingGravity;
+	    	var cur_time = Date.now();
+	    	var diff_time = cur_time - last_update;
+	    	last_update = cur_time;
+
+	    	x = acceleration.x;
+	    	y = acceleration.y;
+	    	z = acceleration.z;
+
+	    	var speed = Math.abs( (x + y + z) - (last_x + last_y + last_z) ) / diff_time * 10000;
+
+	    	alert(speed);
+
+	    	last_x = x;
+	    	last_y = y;
+	    	last_z = z;
 	    }
 	})(window, document, jQuery)
 </script>
