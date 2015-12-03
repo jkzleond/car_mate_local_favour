@@ -117,6 +117,13 @@ SQL;
         return self::fetchOne($sql, $bind, null, Db::FETCH_ASSOC);
     }
 
+    public static function addReadCount($id)
+    {
+        $sql = "update LocalFavour set countFavourRead = countFavourRead + 1 where id = :id";
+        $bind = array('id' => $id);
+        return self::nativeExecute($sql, $bind);
+    }
+
     /**
      * 为指定id的发现添加回复
      * @param $local_favour_id

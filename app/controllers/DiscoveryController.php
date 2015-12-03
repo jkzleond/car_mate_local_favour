@@ -34,6 +34,7 @@ class DiscoveryController extends ControllerBase
     public function getDetailAction($id)
     {
         $discovery = LocalFavour::getLocalFavourDetailById($id);
+        LocalFavour::addReadCount($id);
         $this->view->setVars(array(
             'row' => $discovery
         ));
