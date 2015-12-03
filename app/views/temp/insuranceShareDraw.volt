@@ -119,6 +119,7 @@
 	    var x = y = z = last_x = last_y = last_z = 0;
 
 	    //如果设备支持加速度传感器,则注册摇一摇事件
+	    alert(window.DeviceMotionEvent);
 	    if(window.DeviceMotionEvent)
 	    {
 	    	window.addEventListener('devicemotion', motionHandler);
