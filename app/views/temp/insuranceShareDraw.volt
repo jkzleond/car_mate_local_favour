@@ -121,12 +121,16 @@
 
 	   	function eventDown(e){
 	        e.preventDefault();
+	        e.stopPropagation();//阻止事件冒泡
 	        mousedown=true;
+	        return false;
 	    }
 
 	    function eventUp(e){
 	        e.preventDefault();
+	        e.stopPropagation();//阻止事件冒泡
 	        mousedown=false;
+	        return false;
 	    }
 
 	    function eventMove(e){
@@ -146,11 +150,7 @@
 	             $('.audio')[0].play();
 	        }
 	        return false;
-	    } 
-
-
-
-
+	    }
 	})(window, document, jQuery)
 </script>
 </html>
