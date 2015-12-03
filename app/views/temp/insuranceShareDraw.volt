@@ -118,8 +118,8 @@
 	    var last_update = 0;
 	    var x = y = z = last_x = last_y = last_z = 0;
 
-	    //如果设备支持加速度传感器,则注册摇一摇事件
-	    alert(window.DeviceMotionEvent);
+	   	$('#debug').html(window.DeviceMotionEvent);
+	    //如果设备支持加速度传感器,则注册摇一摇事件	
 	    if(window.DeviceMotionEvent)
 	    {
 	    	window.addEventListener('devicemotion', motionHandler);
@@ -175,7 +175,7 @@
 
 	    	var speed = Math.abs( (x + y + z) - (last_x + last_y + last_z) ) / diff_time * 10000;
 
-	    	alert(speed);
+	    	$('#debug').html(speed);
 
 	    	last_x = x;
 	    	last_y = y;
