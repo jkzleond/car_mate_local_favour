@@ -76,7 +76,7 @@
 </body>
 <script type="text/javascript">
 	(function(window, document, $){
-		$('#debug').html('haha');
+		$('#debug').html(window.DeviceMotionEvent);
 		//a标签事件
 		$('a').click(function(event){
 			event.preventDefault();
