@@ -130,7 +130,8 @@
 	    }
 
 	    function eventMove(e){
-	        e.preventDefault();
+	        e.preventDefault();//阻止默认事件
+	        e.stopPropagation();//阻止事件冒泡
 	        if(mousedown) {
 	             if(e.changedTouches){
 	                 e=e.changedTouches[e.changedTouches.length-1];
