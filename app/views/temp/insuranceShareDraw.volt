@@ -76,7 +76,7 @@
 </body>
 <script type="text/javascript">
 	(function(window, document, $){
-
+		$('#debug').html('haha');
 		//a标签事件
 		$('a').click(function(event){
 			event.preventDefault();
@@ -181,6 +181,6 @@
 	    	last_y = y;
 	    	last_z = z;
 	    }
-	})(window, document, jQuery)
+	})(window, document, jQuery);
 </script>
 </html>
