@@ -182,9 +182,9 @@
 
 	    	//$('#debug').html('x:' + x + '<br>y:' + y + '<br>z:' + z);
 
-	    	$('#debug').html(speed);
-	    	if(speed > 1000)
+	    	if(speed > 50)
 	    	{
+	    		$('#debug').html(speed);
 	    	}
 		
 	    	last_x = x;
