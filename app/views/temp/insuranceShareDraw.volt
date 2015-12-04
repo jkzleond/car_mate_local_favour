@@ -170,17 +170,21 @@
 	    	var diff_time = cur_time - last_update;
 	    	last_update = cur_time;
 
+	    	var dx = acceleration.x - last_x;
+	    	var dy = acceleration.y - last_y;
+	    	var dz = acceleration.z - last_z;
+
 	    	x = acceleration.x;
 	    	y = acceleration.y;
 	    	z = acceleration.z;
 
-	    	var speed = Math.sqrt(x*x + y*y + z*z) / diff_time * 1000;
+	    	var speed = Math.sqrt(dx*dx + dy*dy + dz*dz) / diff_time * 1000;
 
 	    	//$('#debug').html('x:' + x + '<br>y:' + y + '<br>z:' + z);
 
+	    	$('#debug').html(speed);
 	    	if(speed > 1000)
 	    	{
-	    		$('#debug').html(speed);
 	    	}
 		
 	    	last_x = x;
