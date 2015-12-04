@@ -176,7 +176,7 @@
 
 	    	var speed = Math.abs( (x + y + z) - (last_x + last_y + last_z) ) / diff_time * 10000;
 
-	    	$('#debug').html('x:' + x + ',y:' + y + ',z:' + z);
+	    	$('#debug').html('x:' + x + '<br>y:' + y + '<br>z:' + z);
 	    	/*
 	    	if(speed > 1000)
 	    	{
