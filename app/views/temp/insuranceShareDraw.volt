@@ -174,15 +174,14 @@
 	    	y = acceleration.y;
 	    	z = acceleration.z;
 
-	    	var speed = Math.abs( (x + y + z) - (last_x + last_y + last_z) ) / diff_time * 10000;
+	    	var speed = Math.sqrt(x*x + y*y + z*z) / diff_time * 10000;
 
-	    	$('#debug').html('x:' + x + '<br>y:' + y + '<br>z:' + z);
-	    	/*
+	    	//$('#debug').html('x:' + x + '<br>y:' + y + '<br>z:' + z);
+
 	    	if(speed > 1000)
 	    	{
 	    		$('#debug').html(speed);
 	    	}
-			*/
 		
 	    	last_x = x;
 	    	last_y = y;
