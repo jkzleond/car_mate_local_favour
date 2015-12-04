@@ -174,7 +174,7 @@
 	    	y = acceleration.y;
 	    	z = acceleration.z;
 
-	    	var speed = Math.sqrt(x*x + y*y + z*z) / diff_time * 10000;
+	    	var speed = Math.sqrt(x*x + y*y + z*z) / diff_time * 1000;
 
 	    	//$('#debug').html('x:' + x + '<br>y:' + y + '<br>z:' + z);
 
