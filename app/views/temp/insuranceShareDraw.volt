@@ -74,6 +74,7 @@
 </div>
 
 </body>
+{% if is_on_time and chance > 0 %}
 <script type="text/javascript">
 	(function(window, document, $){
 		$('#debug').html(typeof window.DeviceMotionEvent);
@@ -108,12 +109,12 @@
 
 	    ctx.globalCompositeOperation = 'destination-out';
 
-	    canvas.addEventListener('touchstart', eventDown);
-	    canvas.addEventListener('touchend', eventUp);
-	    canvas.addEventListener('touchmove', eventMove);
-	    canvas.addEventListener('mousedown', eventDown);
-	    canvas.addEventListener('mouseup', eventUp);
-	    canvas.addEventListener('mousemove', eventMove);
+	    canvas.addEventListener('touchstart', eventDown, false);
+	    canvas.addEventListener('touchend', eventUp, false);
+	    canvas.addEventListener('touchmove', eventMove, false);
+	    canvas.addEventListener('mousedown', eventDown, false);
+	    canvas.addEventListener('mouseup', eventUp, false);
+	    canvas.addEventListener('mousemove', eventMove, false);
 
 	    var last_update = 0;
 	    var x = y = z = last_x = last_y = last_z = 0;
@@ -183,4 +184,5 @@
 	    }
 	})(window, document, jQuery);
 </script>
+{% endif %}
 </html>
