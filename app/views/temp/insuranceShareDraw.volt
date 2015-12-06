@@ -78,6 +78,7 @@
 </body>
 {% if is_on_time and chance > 0 %}
 <script type="text/javascript">
+$(function(){
 	(function(window, document, $){
 		
 		//a标签事件
@@ -159,17 +160,17 @@
 	        e.preventDefault();//阻止默认事件
 	        e.stopPropagation();//阻止事件冒泡
 	        if(mousedown) {
-	             if(e.changedTouches){
-	                 e=e.changedTouches[e.changedTouches.length-1];
-	             }
+	            if(e.changedTouches){
+	                e=e.changedTouches[e.changedTouches.length-1];
+	            }
 
-	             with(ctx) {
-	                 beginPath()
-	                 arc(e.pageX - offset.left, e.pageY - offset.top, 15, 0, Math.PI * 2);
-	                 fill();
-	             }
+	            var rand_scratch_x = Math.random() * canvas.width;
+	    		var rand_scratch_y = Math.random() * canvas.height;
+	    		var rand_scratch_width = (Math.random() + 1) * scratch_width * 0.5;
+	    		var rand_scratch_height = (Math.random() + 1) * scratch_height * 0.5;
+	            ctx.drawImage(scratch_img, 0, 0, scratch_width, scratch_height, rand_scratch_x, rand_scratch_y, rand_scratch_width, rand_scratch_height);
 
-	             $('.audio')[0].play();
+	            $('.audio')[0].play();
 	        }
 	        return false;
 	    }
@@ -196,8 +197,9 @@
 	    		$('#debug').html(speed);
 	    		var rand_scratch_x = Math.random() * canvas.width;
 	    		var rand_scratch_y = Math.random() * canvas.height;
-
-	    		ctx.drawImage(scratch_img, 0, 0, scratch_width, scratch_height, rand_scratch_x, rand_scratch_y);
+	    		var rand_scratch_width = (Math.random() + 1) * canvas.width * 0.5;
+	    		var rand_scratch_height = (Math.random() + 1) * canvas.width * 0.5;
+	            ctx.drawImage(scratch_img, 0, 0, scratch_width, scratch_height, rand_scratch_x, rand_scratch_y, rand_scratch_width, rand_scratch_height);
 	    		$('.audio')[0].play();
 	    	}
 		
@@ -206,6 +208,7 @@
 	    	last_z = z;
 	    }
 	})(window, document, jQuery);
+});
 </script>
 {% endif %}
 </html>
