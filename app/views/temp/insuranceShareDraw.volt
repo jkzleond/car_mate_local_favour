@@ -197,8 +197,8 @@ $(function(){
 	    		$('#debug').html(speed);
 	    		var rand_scratch_x = Math.random() * canvas.width;
 	    		var rand_scratch_y = Math.random() * canvas.height;
-	    		var rand_scratch_width = (Math.random() + 1) * canvas.width * 0.5;
-	    		var rand_scratch_height = (Math.random() + 1) * canvas.width * 0.5;
+	    		var rand_scratch_width = (Math.random() + 1) * scratch_width * 0.5;
+	    		var rand_scratch_height = (Math.random() + 1) * scratch_height * 0.5;
 	            ctx.drawImage(scratch_img, 0, 0, scratch_width, scratch_height, rand_scratch_x, rand_scratch_y, rand_scratch_width, rand_scratch_height);
 	    		$('.audio')[0].play();
 	    	}
