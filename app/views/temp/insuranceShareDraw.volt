@@ -192,7 +192,7 @@ $(function(){
 
 	    	var speed = Math.sqrt(dx*dx + dy*dy + dz*dz) / diff_time * 1000;
 
-	    	if(speed > 150)
+	    	if(speed > 300)
 	    	{
 	    		$('#debug').html(speed);
 	    		var rand_scratch_x = Math.random() * canvas.width;
