@@ -81,7 +81,7 @@
 				</a>
 			</td>
 		</tr>
-			{% if is_success or is_already %}
+			{% if is_success %}
 		<tr>
 			<td>
 				{% if not is_in_car_mate %}
@@ -127,6 +127,19 @@
 					查看活动规则>>>
 					<!-- <img src="{{ url('/assets/temp/insuranceShare/img/bt_gz.png') }}" style="max-width: 100%; min-width: 320px; width: 80%;"  /> -->
 				</a>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				{% if not is_in_car_mate %}
+				<a class='ui-btn ui-corner-all color-white' style="width: 75%; padding: 2%; margin: auto; font-size: 1.2em; font-weight: bold; background-color: orangered;" href="http://ip.yn122.net:8092/?userId={{ user_id }}#insurance">
+					去计算保费
+				</a>
+				{% else %}
+				<a class='ui-btn ui-corner-all color-white' style="width: 75%; padding: 2%; margin: auto; font-size: 1.2em; font-weight: bold; background-color: orangered;" href="#insurance">
+					去计算保费
+				</a>
+				{% endif %}
 			</td>
 		</tr>
 		<tr>
