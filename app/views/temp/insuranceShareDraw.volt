@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -179,8 +179,6 @@
 	    	z = acceleration.z;
 
 	    	var speed = Math.sqrt(dx*dx + dy*dy + dz*dz) / diff_time * 1000;
-
-	    	//$('#debug').html('x:' + x + '<br>y:' + y + '<br>z:' + z);
 
 	    	if(speed > 50)
 	    	{

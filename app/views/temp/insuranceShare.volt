@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -25,12 +25,9 @@
 		我就可以免单啦！ <br>
 		<b style="color:yellow">你也可以参加哦！</b>
 		{% elseif !is_success and !is_already %}
-		<b style="color:yellow; font-size: 1.2em">请输入您的车友惠账号</b><br>
-		<b style="color:yellow; font-size: 1em">(一般为您的手机号码)</b><br>
+		<b style="color:yellow; font-size: 1.2em">请输入您的手机号码</b><br>
 		<br>
 		以方便您参加免单活动及抽奖活动<br>
-		每成功邀请一位好友购买车险<br>
-		您将增加一次抽检机会
 		{% else %}
 		<span style="line-height: 100%">	
 		<b style="font-size: 1.2em">邀请码:</b><br><br><br>
@@ -81,10 +78,24 @@
 			<td>
 				<a id="rule_btn" class='ui-btn ui-corner-all bg-green color-white' style="width: 75%; padding: 2%; margin: auto; font-size: 1.2em; font-weight: bold;" href="{{ url('/insurance_share/describe') }}?p_user_phone={{ p_user_phone }}">
 					查看活动规则>>>
-					<!-- <img src="{{ url('/assets/temp/insuranceShare/img/bt_gz.png') }}" style="max-width: 100%; min-width: 320px; width: 80%;"  /> -->
 				</a>
 			</td>
 		</tr>
+			{% if is_success or is_already %}
+		<tr>
+			<td>
+				{% if not is_in_car_mate %}
+				<a class='ui-btn ui-corner-all color-white' style="width: 75%; padding: 2%; margin: auto; font-size: 1.2em; font-weight: bold; background-color: orangered;" href="http://ip.yn122.net:8092/?userId={{ user_id }}#insurance">
+					去计算保费
+				</a>
+				{% else %}
+				<a class='ui-btn ui-corner-all color-white' style="width: 75%; padding: 2%; margin: auto; font-size: 1.2em; font-weight: bold; background-color: orangered;" href="#insurance">
+					去计算保费
+				</a>
+				{% endif %}
+			</td>
+		</tr>
+			{% endif %}
 		<tr>
 			<td style="font-weight:bold">
 				<?php $this->flashSession->output(); ?>

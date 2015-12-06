@@ -89,6 +89,8 @@ class TempController extends ControllerBase
 			return $this->response->redirect($location_url);
 		}
 
+		$this->view->setVar('is_in_car_mate', $is_in_car_mate);
+
 		$p_user_phone = $this->dispatcher->getParam('p_user_phone', null, '0');
 
 		$user_phone = $this->request->get('user_phone', null, null);
@@ -245,98 +247,120 @@ class TempController extends ControllerBase
 
 		$user = !empty($bind_user) ? $bind_user : User::getUserByPhone($user_phone);
 
+		//未注册的用户
 		if(empty($user))
 		{	
 			$this->view->setVar('is_user', false);
-			return;
-		}
-		else
-		{	
 
-			//$db = $this->db;
+			$client_type = null;
 
-			//如果用户没绑定,则绑定(微信客户端访问页面时)
-			if($is_wx and !$bind_user)
+			if( strpos($user_agent, 'iPhone') !== false )
 			{
-				$bind_user_sql = 'update IAM_USER set weixintoken = :wx_openid, wx_openid = :wx_openid where userid = :user_id';
-				$bind_user_bind = array(
-					'wx_openid' => $wx_userinfo['openid'],
-					'user_id' => $user['user_id']
-				);
-				$bind_user_success = $db->execute($bind_user_sql, $bind_user_bind);
+				$client_type = 'iPhone';
+			}
+			elseif( strpos($user_agent, 'iPod') !== false )
+			{
+				$client_type = 'iPod';
+			}
+			elseif( strpos($user_agent, 'iPad') !== false )
+			{
+				$client_type = 'iPad';
+			}
+			elseif( strpos($user_agent, 'Android') !== false )
+			{
+				$client_type = 'Android';
 			}
 
-			$query_sql = 'select invitation_code from ActivityUser where userid = :user_id and aid = :aid';
-			$query_bind = array(
-				'user_id' => $user['user_id'],
-				'aid' => 228
+			$register_result = file_get_contents('http://192.168.3.31/vehIllegalQuery/index.php?mod=Member&act=RegisterSave&PWD='.$user_phone.'&PHONE='.$user_phone.'&clientType='.$client_type);
+
+			$user = array(
+				'user_id' => $user_phone.'@yn122.net',
+				'phone' => $user_phone
 			);
-			$query_result = $db->query($query_sql, $query_bind);
-			$query_result->setFetchMode(Db::FETCH_ASSOC);
-			$involved_user = $query_result->fetch();
-			$is_already = !empty($involved_user);
+		}
 
-			$this->view->setVar('is_already', $is_already);
+		$this->view->setVar('user_id', $user['user_id']);
+		
+		//如果用户没绑定,则绑定(微信客户端访问页面时)
+		if($is_wx and !$bind_user)
+		{
+			$bind_user_sql = 'update IAM_USER set weixintoken = :wx_openid, wx_openid = :wx_openid where userid = :user_id';
+			$bind_user_bind = array(
+				'wx_openid' => $wx_userinfo['openid'],
+				'user_id' => $user['user_id']
+			);
+			$bind_user_success = $db->execute($bind_user_sql, $bind_user_bind);
+		}
 
-			if($is_already)
+		$query_sql = 'select invitation_code from ActivityUser where userid = :user_id and aid = :aid';
+		$query_bind = array(
+			'user_id' => $user['user_id'],
+			'aid' => 228
+		);
+		$query_result = $db->query($query_sql, $query_bind);
+		$query_result->setFetchMode(Db::FETCH_ASSOC);
+		$involved_user = $query_result->fetch();
+		$is_already = !empty($involved_user);
+
+		$this->view->setVar('is_already', $is_already);
+
+		if($is_already)
+		{
+			//在微信客户端访问则进入过此页面的微信用户信息
+			if($is_wx)
 			{
-				//在微信客户端访问则进入过此页面的微信用户信息
-				if($is_wx)
-				{
-					$get_view_sql = <<<SQL
-					select u.nickname, u.headimgurl, convert(varchar(20), v.create_date, 20) as create_date from Hui_ActivityShareView v
-					left join WX_USER u on u.id = v.wx_user_id
-					where v.wx_user_id is not null and v.p_user_id = :p_user_id and v.aid = :aid
+				$get_view_sql = <<<SQL
+				select u.nickname, u.headimgurl, convert(varchar(20), v.create_date, 20) as create_date from Hui_ActivityShareView v
+				left join WX_USER u on u.id = v.wx_user_id
+				where v.wx_user_id is not null and v.p_user_id = :p_user_id and v.aid = :aid
 SQL;
-					$get_view_bind = array(
-						'p_user_id' => $user['user_id'],
-						'aid' => 228
-					);
-					
-					$record_result = $db->query($get_view_sql, $get_view_bind);
-					$record_result->setFetchMode(Db::FETCH_ASSOC);
-					$record_list = $record_result->fetchAll();
-					$this->view->setVar('view_record_list', $record_list);
-				}
-
-				if($p_user_id)
-				{
-					$this->flashSession->success('您也获得了邀请码哦！<br/>可以点击右上角分享给您的好友，也可以将邀请码告知您的好友，在保险精算时填写邀请码！如有疑问请<a href="tel:400-009-0047">拨打服务热线</a>或<a href="http://wpa.qq.com/msgrd?v=3&uin=1011973383&site=qq&menu=yes">加客服QQ</a>联系我们');
-				}
-				else
-				{
-					$this->flashSession->success('您已成功参加活动<br/>可以点击右上角分享给您的好友，也可以将邀请码告知您的好友，在保险精算时填写邀请码！<br/>成功邀请<b style="color:orange">20</b>个好友购买保险，您的车险就可以免单啦！如有疑问请<a href="tel:400-009-0047">拨打服务热线</a>或<a href="http://wpa.qq.com/msgrd?v=3&uin=1011973383&site=qq&menu=yes">加客服QQ</a>联系我们');
-				}
-				$this->view->setVar('invitation_code', $involved_user['invitation_code']);
-				$this->view->setVar('p_user_phone', $user['phone']);
-				return;
+				$get_view_bind = array(
+					'p_user_id' => $user['user_id'],
+					'aid' => 228
+				);
+				
+				$record_result = $db->query($get_view_sql, $get_view_bind);
+				$record_result->setFetchMode(Db::FETCH_ASSOC);
+				$record_list = $record_result->fetchAll();
+				$this->view->setVar('view_record_list', $record_list);
 			}
-	
-			$invitation_code = strtoupper((str_pad(dechex($user['id']), 5, '0', STR_PAD_LEFT)));
-
-			$insert_au_sql = 'insert into ActivityUser(userid, aid, p_user_id, invitation_code) values (:user_id, :aid, :p_user_id, :invitation_code)';
-			$insert_au_bind = array(
-				'user_id' => $user['user_id'],
-				'aid' => 228,
-				'p_user_id' => $p_user_id,
-				'invitation_code' => $invitation_code
-			);					
-			$insert_au_success = $db->execute($insert_au_sql, $insert_au_bind);
-
 
 			if($p_user_id)
 			{
-				$this->flashSession->success('您也获得了邀请码哦！<br/> 可以点击右上角分享给您的好友，也可以将邀请码告知您的好友，在保险精算时填写邀请码！如有疑问请<a href="tel:400-009-0047">拨打服务热线</a>或<a href="http://wpa.qq.com/msgrd?v=3&uin=1011973383&site=qq&menu=yes">加客服QQ</a>联系我们');
+				$this->flashSession->success('您也获得了邀请码哦！<br/>可以点击右上角分享给您的好友，也可以将邀请码告知您的好友，在保险精算时填写邀请码！如有疑问请<a href="tel:400-009-0047">拨打服务热线</a>或<a href="http://wpa.qq.com/msgrd?v=3&uin=1011973383&site=qq&menu=yes">加客服QQ</a>联系我们');
 			}
 			else
 			{
 				$this->flashSession->success('您已成功参加活动<br/>可以点击右上角分享给您的好友，也可以将邀请码告知您的好友，在保险精算时填写邀请码！<br/>成功邀请<b style="color:orange">20</b>个好友购买保险，您的车险就可以免单啦！如有疑问请<a href="tel:400-009-0047">拨打服务热线</a>或<a href="http://wpa.qq.com/msgrd?v=3&uin=1011973383&site=qq&menu=yes">加客服QQ</a>联系我们');
 			}
-			$this->view->setVar('invitation_code', $invitation_code);
+			$this->view->setVar('invitation_code', $involved_user['invitation_code']);
 			$this->view->setVar('p_user_phone', $user['phone']);
-			$this->view->setVar('is_success', true);
 			return;
 		}
+
+		$invitation_code = strtoupper((str_pad(dechex($user['id']), 5, '0', STR_PAD_LEFT)));
+
+		$insert_au_sql = 'insert into ActivityUser(userid, aid, p_user_id, invitation_code) values (:user_id, :aid, :p_user_id, :invitation_code)';
+		$insert_au_bind = array(
+			'user_id' => $user['user_id'],
+			'aid' => 228,
+			'p_user_id' => $p_user_id,
+			'invitation_code' => $invitation_code
+		);					
+		$insert_au_success = $db->execute($insert_au_sql, $insert_au_bind);
+
+
+		if($p_user_id)
+		{
+			$this->flashSession->success('您也获得了邀请码哦！<br/> 可以点击右上角分享给您的好友，也可以将邀请码告知您的好友，在保险精算时填写邀请码！如有疑问请<a href="tel:400-009-0047">拨打服务热线</a>或<a href="http://wpa.qq.com/msgrd?v=3&uin=1011973383&site=qq&menu=yes">加客服QQ</a>联系我们');
+		}
+		else
+		{
+			$this->flashSession->success('您已成功参加活动<br/>可以点击右上角分享给您的好友，也可以将邀请码告知您的好友，在保险精算时填写邀请码！<br/>成功邀请<b style="color:orange">20</b>个好友购买保险，您的车险就可以免单啦！如有疑问请<a href="tel:400-009-0047">拨打服务热线</a>或<a href="http://wpa.qq.com/msgrd?v=3&uin=1011973383&site=qq&menu=yes">加客服QQ</a>联系我们');
+		}
+		$this->view->setVar('invitation_code', $invitation_code);
+		$this->view->setVar('p_user_phone', $user['phone']);
+		$this->view->setVar('is_success', true);
 	}
 
 	/**

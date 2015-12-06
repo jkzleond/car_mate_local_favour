@@ -24,7 +24,7 @@
 					</a>
 					{% endif %}
 				</td>
-				<td>
+				<!-- <td>
 					{% if not is_in_car_mate %}
 					<a href="http://116.55.248.76/cyh_weixin/joinus.html">
 						<img src="{{ url('/assets/temp/insuranceShare/img/bt_bf.jpg') }}" style="max-width: 100%; min-width: 100px; width: 80%; height: 40%;"/>
@@ -34,7 +34,7 @@
 						<img src="{{ url('/assets/temp/insuranceShare/img/bt_bf.jpg') }}" style="max-width: 100%; min-width: 100px; width: 80%; height: 40%;"/>
 					</a>
 					{% endif %}
-				</td>
+				</td> -->
 			</tr>
 		</table>
 	</div>
