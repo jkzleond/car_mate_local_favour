@@ -277,6 +277,9 @@ class TempController extends ControllerBase
 				'user_id' => $user_phone.'@yn122.net',
 				'phone' => $user_phone
 			);
+
+			$this->view->setVar('car_mate_user_phone', $user_phone);
+			$this->view->setVar('car_mate_pwd', $user_phone);
 		}
 
 		$this->view->setVar('user_id', $user['user_id']);

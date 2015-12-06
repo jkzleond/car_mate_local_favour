@@ -105,8 +105,10 @@
 		<tr>
 			<td >
 				<div  class="fx_div_sr_z">注：<br />
-				您不是车友惠用户，请先下载车友惠APP，注
-				册后即可参加活动。<br />
+				您不是车友惠老用户，我们已经为您注册了车友惠账号<br />
+				用户名: {{ car_mate_user_phone }} <br/>
+				密码: {{ car_mate_pwd }} <br/>
+				更多精彩尽在车友惠
 				</div>	
 			</td>
 		</tr>
