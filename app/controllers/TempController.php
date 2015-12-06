@@ -274,7 +274,7 @@ class TempController extends ControllerBase
 			$register_result = file_get_contents('http://192.168.3.31/vehIllegalQuery/index.php?mod=Member&act=RegisterSave&PWD='.$user_phone.'&PHONE='.$user_phone.'&clientType='.$client_type);
 
 			$user = User::getUserByPhone($user_phone);
-
+			
 			$this->view->setVar('car_mate_user_phone', $user_phone);
 			$this->view->setVar('car_mate_pwd', $user_phone);
 		}

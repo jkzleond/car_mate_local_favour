@@ -31,6 +31,8 @@
 					{% else %}
 					谢谢惠顾,您没中奖,下一定会是大奖^_^
 					{% endif %}
+					<img id="redbag_skin_img" src="{{ url('/assets/temp/insuranceShare/img/redbag_skin.png') }}" style="display: none;" alt="">
+					<img id="scratch_img" src="{{ url('/assets/temp/insuranceShare/img/scratch.png') }}" style="display: none;" alt="">
 					<canvas id="scratch_canvas" width="100%" height="100%" style="position:absolute; top:0px; left:0px">
 					</canvas>
 				</div>
@@ -100,11 +102,20 @@
 		var canvas = $canvas[0];
 
 		var ctx = canvas.getContext('2d');
-		ctx.fillStyle = 'transparent';
+		/*ctx.fillStyle = 'transparent';
 		ctx.fillRect(0, 0, width, height);
 		ctx.fillStyle = 'gray'; 
-        ctx.fillRect(0, 0, width, height);
+        ctx.fillRect(0, 0, width, height);*/
 
+        //绘制位图
+        var img = document.getElementById('redbag_skin_img');
+        var img_width = $('#redbag_skin_img').width();
+        var img_height = $('#redbag_skin_img').height();
+        var scratch_img = document.getElementById('scratch_img');
+        var scratch_width = $('#scratch_img').width();
+        var scratch_height = $('#scratch_img').height();
+        
+        ctx.drawImage(img, 0, 0, img_width, img_height, 0, 0, canvas.width, canvas.height);
  
 
 	    ctx.globalCompositeOperation = 'destination-out';
@@ -180,9 +191,14 @@
 
 	    	var speed = Math.sqrt(dx*dx + dy*dy + dz*dz) / diff_time * 1000;
 
-	    	if(speed > 50)
+	    	if(speed > 150)
 	    	{
 	    		$('#debug').html(speed);
+	    		var rand_scratch_x = Math.random() * canvas.width;
+	    		var rand_scratch_y = Math.random() * canvas.height;
+
+	    		ctx.drawImage(scratch_img, 0, 0, scratch_width, scratch_height, rand_scratch_x, rand_scratch_y);
+	    		$('.audio')[0].play();
 	    	}
 		
 	    	last_x = x;
