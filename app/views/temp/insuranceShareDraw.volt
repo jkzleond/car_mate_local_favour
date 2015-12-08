@@ -8,7 +8,7 @@
 <title>来抽它!使劲刮！</title>
 </head>
 
-<body class="body_zj ">
+<body class="body_zj" style="display:none">
 <audio class="audio" src="{{ url('/assets/temp/insuranceShare/audio/scratch.mp3') }}" preload="auto"></audio>
 <div>
 	<img src="{{url('/assets/temp/insuranceShare/img/top.jpg')}}" width="100%" style="max-width: 100%; min-width: 320px;" />
@@ -78,20 +78,49 @@
 </body>
 {% if is_on_time and chance > 0 %}
 <script type="text/javascript">
-$(function(){
-	(function(window, document, $){
-		
-		//a标签事件
-		$('a').click(function(event){
-			event.preventDefault();
-			var href = $(this).attr('href');
-			var param = window.location.href.match(/\?.*/) || '';
-			window.location.href = href + param;
-			return false;
-		});
+(function(window, document, $){
+	
+	//a标签事件
+	$('a').click(function(event){
+		event.preventDefault();
+		var href = $(this).attr('href');
+		var param = window.location.href.match(/\?.*/) || '';
+		window.location.href = href + param;
+		return false;
+	});
 
+	var audio = $('.audio')[0];
+	var img = document.getElementById('redbag_skin_img');
+    var scratch_img = document.getElementById('scratch_img');
 
-		var $container = $('#scratch_container');
+    var resource_load_count = 3;
+
+    audio.addEventListener('load', function(e){
+    	resource_load_count--;
+    	if(resource_load_count == 0)
+    	{
+    		onResourceLoad();
+    	}
+    });
+    img.addEventListener('load', function(e){
+    	resource_load_count--;
+    	if(resource_load_count == 0)
+    	{
+    		onResourceLoad();
+    	}
+    });
+    scratch_img.addEventListener('load', function(e){
+    	resource_load_count--;
+    	if(resource_load_count == 0)
+    	{
+    		onResourceLoad();
+    	}
+    });
+
+    function onResourceLoad(){
+    	$('body').fadeIn();
+
+    	var $container = $('#scratch_container');
 		var $canvas = $('#scratch_canvas');
 		var width = $container.innerWidth();
 		var height = $container.innerHeight();
@@ -106,18 +135,16 @@ $(function(){
 		/*ctx.fillStyle = 'transparent';
 		ctx.fillRect(0, 0, width, height);
 		ctx.fillStyle = 'gray'; 
-        ctx.fillRect(0, 0, width, height);*/
+	    ctx.fillRect(0, 0, width, height);*/
 
-        //绘制位图
-        var img = document.getElementById('redbag_skin_img');
-        var img_width = $('#redbag_skin_img').width();
-        var img_height = $('#redbag_skin_img').height();
-        var scratch_img = document.getElementById('scratch_img');
-        var scratch_width = $('#scratch_img').width();
-        var scratch_height = $('#scratch_img').height();
-        
-        ctx.drawImage(img, 0, 0, img_width, img_height, 0, 0, canvas.width, canvas.height);
- 
+	    //绘制位图
+	    var img_width = $('#redbag_skin_img').width();
+	    var img_height = $('#redbag_skin_img').height();
+	    var scratch_width = $('#scratch_img').width();
+	    var scratch_height = $('#scratch_img').height();
+	    
+	    ctx.drawImage(img, 0, 0, img_width, img_height, 0, 0, canvas.width, canvas.height);
+
 
 	    ctx.globalCompositeOperation = 'destination-out';
 
@@ -170,7 +197,10 @@ $(function(){
 	    		var rand_scratch_height = (Math.random() + 1) * scratch_height * 0.5;
 	            ctx.drawImage(scratch_img, 0, 0, scratch_width, scratch_height, rand_scratch_x, rand_scratch_y, rand_scratch_width, rand_scratch_height);
 
-	            $('.audio')[0].play();
+	            if(audio.paused)
+	            {
+	            	audio.play();
+	            }
 	        }
 	        return false;
 	    }
@@ -207,8 +237,8 @@ $(function(){
 	    	last_y = y;
 	    	last_z = z;
 	    }
-	})(window, document, jQuery);
-});
+    }
+})(window, document, jQuery);
 </script>
 {% endif %}
 </html>
