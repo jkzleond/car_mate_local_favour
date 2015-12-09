@@ -8,7 +8,7 @@
 <title>来抽它!使劲刮！</title>
 </head>
 
-<body class="body_zj" style="display:none">
+<body class="body_zj">
 <audio class="audio" src="{{ url('/assets/temp/insuranceShare/audio/scratch.mp3') }}" preload="auto"></audio>
 <div>
 	<img src="{{url('/assets/temp/insuranceShare/img/top.jpg')}}" width="100%" style="max-width: 100%; min-width: 320px;" />
@@ -23,7 +23,7 @@
 	</table>
 	<table cellpadding="0" cellspacing="0" class="zj_div_cj" align="center">
 		<tr>
-			<td>
+			<td id="draw_container" style="display:none">
 				{% if is_on_time and chance > 0 %}
 				<div id="scratch_container" class="zj_div_cj_div" style="position:relative">
 					{% if is_bingo %}
@@ -95,7 +95,7 @@
 
     var resource_load_count = 3;
 
-    audio.addEventListener('load', function(e){
+    audio.addEventListener('canplay', function(e){
     	resource_load_count--;
     	if(resource_load_count == 0)
     	{
@@ -118,8 +118,7 @@
     });
 
     function onResourceLoad(){
-    	$('body').fadeIn();
-
+		$('#draw_container').fadeIn();
     	var $container = $('#scratch_container');
 		var $canvas = $('#scratch_canvas');
 		var width = $container.innerWidth();
