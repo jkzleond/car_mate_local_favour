@@ -746,7 +746,7 @@ SQL;
      */
     public static function getMinDiscount()
     {
-        $sql = 'select top 1 discount, gift, gift2 from Insurance_Discount order by discount asc, gift desc, gift2 desc';
+        $sql = 'select top 1 discount, gift, gift2 from Insurance_Discount order by discount asc, gift2 desc, gift desc';
         return self::fetchOne($sql, null, null, Db::FETCH_ASSOC);
     }
 

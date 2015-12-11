@@ -15,5 +15,44 @@ class IndexController extends ControllerBase
     	$index_pic = Adv::getIndexAdv();
     	$this->view->setVar('index_pic', $index_pic);
     }
+
+    public function mricroMessengerEntranceAction()
+    {
+        $this->view->disable();
+
+        $key = $this->request->get('key', null, null);
+        if(!$key)
+        {
+            echo 'key验证失败!';
+            return;
+        }
+
+        $key_arr = explode(base64_decode($key), '|');
+        $app_id = $key_arr[0];
+        $app_secret = $key_arr[1];
+
+        if(!$app_id or !$app_secret)
+        {
+            echo 'key验证失败';
+            return;
+        }
+
+        $user_agent = $this->request->getUserAgent();
+
+        if(strpos('MicroMessenger', $user_agent) === false)
+        {
+            echo '请在微信环境中打开!';
+            return;
+        }
+
+        $wx_redirect_url = urlencode('http://ip.yn122.net:8092/wx_login?app_id='.$app_id.'&app_secret='.$app_secret);
+        $oauth2_url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='.$app_id.'&redirect_uri='.$wx_redirect_url.'&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect';
+        return $this->response->redirect($oauth2_url);
+    }
+
+    public function microMessengerLoginAction()
+    {
+
+    }
 }
 

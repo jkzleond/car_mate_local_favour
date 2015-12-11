@@ -286,3 +286,16 @@ $router->addGet('/insurance_share/draw/{aid:\d+}', array(
     'action' => 'insuranceShareDraw'
 ));
 
+/*
+微信公开登录入口
+ */
+$router->addGet('/wxentrance', array(
+    'controller' => 'index',
+    'action' => 'microMessengerEntrance'
+));
+
+$router->addGet('/wx_login', array(
+    'controller' => 'index',
+    'action' => 'microMessengerLogin'
+));
+
