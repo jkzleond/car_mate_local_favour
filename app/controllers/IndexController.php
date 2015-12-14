@@ -44,7 +44,7 @@ class IndexController extends ControllerBase
 
         $user_agent = $this->request->getUserAgent();
         print_r($user_agent);
-        if(strpos('MicroMessenger', $user_agent) === false)
+        if(strpos($user_agent, 'MicroMessenger') === false)
         {
             echo '请在微信环境中打开!';
             return;
