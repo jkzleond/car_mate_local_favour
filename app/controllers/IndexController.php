@@ -19,7 +19,7 @@ class IndexController extends ControllerBase
     /**
      * 公开的微信入口
      */
-    public function mricroMessengerEntranceAction()
+    public function microMessengerEntranceAction()
     {
         $this->view->disable();
 
@@ -30,7 +30,7 @@ class IndexController extends ControllerBase
             return;
         }
 
-        $key_arr = explode(base64_decode($key), '|');
+        $key_arr = explode('|', base64_decode($key));
         $app_id = $key_arr[0];
         $app_secret = $key_arr[1];
 
