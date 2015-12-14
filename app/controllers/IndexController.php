@@ -72,7 +72,7 @@ class IndexController extends ControllerBase
         $access_token_json = file_get_contents($access_token_url);
         $access_token_info = json_decode($access_token_json, true);
         $openid = $access_token_info['openid'];
-        
+        print_r($access_token_info);exit;
         $bind_user = User::getWxBindUser($openid, $source); 
 
         if(!$bind_user)
