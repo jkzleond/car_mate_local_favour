@@ -112,8 +112,15 @@ class IndexController extends ControllerBase
         $source = $this->request->getPost('source');
         $user_phone = $this->request->getPost('user_phone');
 
-        $user = User::getUserByPhone($user_phone);
+        $this->view->setVars(array(
+            'openid' => $openid,
+            'source' => $source,
+            'bind_success' => false,
+            'is_user' => true
+        ));
         
+        $user = User::getUserByPhone($user_phone);
+
         if(empty($user))
         {
             $user_agent = $this->request->getUserAgent();
