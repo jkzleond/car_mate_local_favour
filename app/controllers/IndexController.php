@@ -118,7 +118,7 @@ class IndexController extends ControllerBase
             'bind_success' => false,
             'is_user' => true
         ));
-        
+
         $user = User::getUserByPhone($user_phone);
 
         if(empty($user))
@@ -159,6 +159,7 @@ class IndexController extends ControllerBase
         $bind_success = User::wxBindUser($user['user_id'], $openid, $source);
 
         $this->view->setVar('bind_success', $bind_success);
+        $this->view->setVar('user_id', $user['user_id']);
 
         $this->view->pick('index/microMessengerBind');
     }

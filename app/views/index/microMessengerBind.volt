@@ -37,7 +37,7 @@
 				{% if not is_user %}
 			<a href="http://116.55.248.76/cyh_weixin/joinus.html" data-theme="g" class="ui-btn ui-corner-all" style="padding:0.7em 0.5%; margin: 0.5%; width: 99%;color:white">下载车友惠App</a>
 				{% endif %}
-			<a href="http:ip.yn122.net:8092/?userId={{ user_id }}#insurance" data-theme="f" class="ui-btn ui-corner-all" style="padding:0.7em 0.5%; margin: 0.5%; width: 99%;color:white">去计算保费>>></a>
+			<a href="http:ip.yn122.net:8092/?userId={{ user_id }}#insurance" data-theme="d" class="ui-btn ui-corner-all" style="padding:0.7em 0.5%; margin: 0.5%; width: 99%;color:white">去计算保费>>></a>
 			{% endif %}
 		</div>
 	</div>
