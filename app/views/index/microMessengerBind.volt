@@ -17,8 +17,7 @@
 			</p>
 			<form action="/user/bind/wx" method="post">
 				<div class="ui-field-contain">
-					<label for="user_phone_input">电话号码</label>
-					<input id="user_phone_input" type="text" placeholder="您的电话号码">
+					<input id="user_phone_input" name="user_phone" type="text" placeholder="您的电话号码">
 				</div>
 				<input type="hidden" name="openid" value="{{ openid }}">
 				<input type="hidden" name="source" value="{{ source }}">
