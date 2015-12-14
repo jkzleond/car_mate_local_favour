@@ -2,3 +2,4 @@ app/config/config.php
 app/cache/**
 *.sublime-workspace
 *.sublime-project
+.tag*
