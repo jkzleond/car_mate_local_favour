@@ -154,8 +154,8 @@ SQL;
                 'source' => $source
             );
         }
-
-        return self::nativeExecute($sql, $bind);
+        echo $sql.PHP_EOL; print_r($bind); exit;
+        //return self::nativeExecute($sql, $bind);
     }
 
     /**
