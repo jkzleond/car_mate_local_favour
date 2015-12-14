@@ -17,7 +17,7 @@ class MissionFilter extends Plugin
         Mission::resetDailyMissionState();
         //领取自动任务
         $user = $this->session->get('user');
-        if(isset($user['user_id']) and $user['nick_name'] != '游客')
+        if(isset($user['user_id']) and $user['nickname'] != '游客')
         {
             Mission::assignAutoAssignMission($user['user_id']);
         }
@@ -27,7 +27,7 @@ class MissionFilter extends Plugin
     {
         //判断任务条件设置非自动交付任务的满足字段,并且处理自动交付任务(奖励)
         $user = $this->session->get('user');
-        if(isset($user['user_id']) and $user['nick_name'] != '游客')
+        if(isset($user['user_id']) and $user['nickname'] != '游客')
         {
             $user_mission_state = Mission::getFullProgressInMissionState($user['user_id']);
 
