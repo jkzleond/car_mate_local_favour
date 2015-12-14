@@ -71,8 +71,8 @@ class IndexController extends ControllerBase
         $access_token_url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='.$app_id.'&secret='.$app_secret.'&code='.$code.'&grant_type=authorization_code';
         $access_token_json = file_get_contents($access_token_url);
         $access_token_info = json_decode($access_token_json);
-        $openid = $access_token['openid'];
-
+        $openid = $access_token_info['openid'];
+        
         $bind_user = User::getWxBindUser($openid, $source); 
 
         if(!$bind_user)
