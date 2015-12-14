@@ -113,7 +113,7 @@ class IndexController extends ControllerBase
         $user_phone = $this->request->getPost('user_phone');
 
         $user = User::getUserByPhone($user_phone);
-
+        print_r($user);exit;
         if(empty($user))
         {
             $user_agent = $this->request->getUserAgent();
