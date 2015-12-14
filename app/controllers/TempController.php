@@ -3,7 +3,7 @@ use \Phalcon\Db;
 
 class TempController extends ControllerBase
 {
-	//微信appid,secrect
+	//微信appid,secret
 	private $_app_id = 'wx1f42c4cb56c5095d';
 	private $_app_secret = '276e08a1e2d2c9680823e6ddd0720c4c';
 
@@ -219,7 +219,7 @@ class TempController extends ControllerBase
 		if($wx_userinfo)
 		{
 			$bind_user_list = User::getUserList(array(
-				'wx_openid' => isset($wx_userinfo['openid']) ? $wx_userinfo['openid'] : 'cyh', //避免wx_openid为null时,取到所有用户
+				'wx_openid' => isset($wx_userinfo['openid']) ? $wx_userinfo['openid'] : 'cyh' //避免wx_openid为null时,取到所有用户
 			));
 
 			if(!empty($bind_user_list))

@@ -299,3 +299,14 @@ $router->addGet('/wx_login', array(
     'action' => 'microMessengerLogin'
 ));
 
+//微信用户绑定页面
+$router->addGet('/user/bind/wx', array(
+    'controller' => 'index',
+    'action' => 'microMessengerBind'
+));
+
+$router->addPost('/user/bind/wx', array(
+    'controller' => 'index',
+    'action' => 'doMicroMessengerBind'
+));
+

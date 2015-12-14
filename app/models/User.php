@@ -92,6 +92,73 @@ SQL;
     }
 
     /**
+     * 获取微信绑定用户
+     * @param  string $openid 微信openid
+     * @param  string $source 微信openid来源,不同的公众号代号,如车友惠服务号为cm
+     * @return array
+     */
+    public static function getWxBindUser($openid, $source='cm')
+    {
+        $sql = null;
+        $bind = array('openid' => $openid);
+        if($source == 'cm')
+        {
+            $sql = <<<SQL
+            select userid as user_id from IAM_USER where weixintoken = :openid
+SQL;
+        }
+        else
+        {
+            $sql = <<<SQL
+            select userid as user_id from IAM_USER u
+            left join WX_User wxu on wxu.user_id = u.userid
+            where wxu.openid = :openid and source = :source
+SQL;
+            $bind['source'] = $source;
+        }
+
+        return self::fetchOne($sql, $bind, Db::FETCH_ASSOC);
+    }
+
+    /**
+     * 绑定微信用户
+     * @param  string $user_id
+     * @param  string $openid
+     * @param  string $source  
+     * @return bool
+     */
+    public static function wxBindUser($user_id, $openid, $source='cm')
+    {
+        $sql = null;
+        $bind = null;
+
+        if($source == 'cm')
+        {
+            $sql = <<<SQL
+            update IAM_USER set weixintoken = :openid, wx_openid = :openid
+            where userid = :user_id
+SQL;
+            $bind = array(
+                'user_id' => $user_id,
+                'openid' => $openid
+            );
+        }
+        else
+        {
+            $sql = <<<SQL
+            insert into WX_USER (openid, user_id, source) values(:opendid, :user_id, :source)
+SQL;
+            $bind = array(
+                'openid' => $openid,
+                'user_id' => $user_id,
+                'source' => $source
+            );
+        }
+
+        return self::nativeExecute($sql, $bind);
+    }
+
+    /**
      * 获取当前登录的用户信息
      * @return mixed
      */
