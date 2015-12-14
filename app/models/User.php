@@ -117,7 +117,7 @@ SQL;
             $bind['source'] = $source;
         }
 
-        return self::fetchOne($sql, $bind, Db::FETCH_ASSOC);
+        return self::fetchOne($sql, $bind, null, Db::FETCH_ASSOC);
     }
 
     /**
