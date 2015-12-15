@@ -287,26 +287,21 @@ $router->addGet('/insurance_share/draw/{aid:\d+}', array(
 ));
 
 /*
-微信公开登录入口
+保险巨惠微信公开登录入口
  */
-$router->addGet('/wxentrance', array(
-    'controller' => 'index',
+$router->addGet('/insurance/wxentrance', array(
+    'controller' => 'insurance',
     'action' => 'microMessengerEntrance'
 ));
 
-$router->addGet('/wx_login', array(
-    'controller' => 'index',
+$router->addGet('/insurance/wx_login', array(
+    'controller' => 'insurance',
     'action' => 'microMessengerLogin'
 ));
 
 //微信用户绑定页面
-$router->addGet('/user/bind/wx', array(
-    'controller' => 'index',
+$router->addGet('/insurance/bind/wx', array(
+    'controller' => 'insurance',
     'action' => 'microMessengerBind'
-));
-
-$router->addPost('/user/bind/wx', array(
-    'controller' => 'index',
-    'action' => 'doMicroMessengerBind'
 ));
 
