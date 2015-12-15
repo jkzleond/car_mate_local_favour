@@ -542,11 +542,6 @@ class InsuranceController extends ControllerBase
 
         if($user_phone)
         {   
-            $this->view->disable();
-            print_r(array(
-                'openid' => $openid,
-                'source' => $source
-            ));exit;
             file_put_contents('../bind.log', $source.PHP_EOL, FILE_APPEND);
             $this->_doMicroMessengerBind($user_phone, $openid, $source);
         }
@@ -594,7 +589,7 @@ class InsuranceController extends ControllerBase
                 'car_mate_pwd' => $user_phone
             ));
         }
-
+        print_r($source);exit;
         $bind_success = User::wxBindUser($user['user_id'], $openid, $source);
 
         $this->view->setVar('bind_success', $bind_success);
