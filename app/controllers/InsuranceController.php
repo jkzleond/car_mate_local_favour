@@ -528,7 +528,6 @@ class InsuranceController extends ControllerBase
      */
     public function microMessengerBindAction()
     {
-        $this->view->disable();
         $openid = $this->request->get('openid');
         $source = $this->request->get('source');
         
@@ -543,6 +542,7 @@ class InsuranceController extends ControllerBase
 
         if($user_phone)
         {   
+            $this->view->disable();
             print_r(array(
                 'openid' => $openid,
                 'source' => $source
