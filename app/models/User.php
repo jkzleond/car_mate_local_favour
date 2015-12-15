@@ -179,7 +179,7 @@ SQL;
             }
 
         }
-        
+        file_put_contents('../bind.log', $sql.PHP_EOL.var_export($bind, 1).PHP_EOL, FILE_APPEND);
         return self::nativeExecute($sql, $bind);
     }
 
