@@ -105,7 +105,7 @@ class IndexController extends ControllerBase
 
         if($user_phone)
         {
-            $this->_doMicroMessengerBind($user_phone, $openid, $source)
+            $this->_doMicroMessengerBind($user_phone, $openid, $source);
         }
     }
 
