@@ -477,7 +477,7 @@ class InsuranceController extends ControllerBase
         }
 
         $source = $this->request->get('source', null, 'cm');
-
+        print_r($source);exit;
         $user_agent = $this->request->getUserAgent();
         print_r($user_agent);
         if(strpos($user_agent, 'MicroMessenger') === false)
