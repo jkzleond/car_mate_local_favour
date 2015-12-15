@@ -158,7 +158,7 @@ SQL;
             if($wx_user['count'] == 0)
             {
                 $sql = <<<SQL
-                insert into WX_USER (openid, user_id, source) values(:opendid, :user_id, :source)
+                insert into WX_USER (openid, user_id, source) values(:openid, :user_id, :source)
 SQL;
                 $bind = array(
                     'openid' => $openid,
