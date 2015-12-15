@@ -21,13 +21,13 @@
 			<p style="text-align:center">
 				您的账号还没有绑定,请先进行绑定
 			</p>
-			<form action="/user/bind/wx" method="post">
+			<form action="/user/bind/wx" method="get">
 				<div class="ui-field-contain">
 					<input id="user_phone_input" name="user_phone" type="text" placeholder="您的电话号码">
 				</div>
 				<input type="hidden" name="openid" value="{{ openid }}">
 				<input type="hidden" name="source" value="{{ source }}">
-				<button data-theme="g" style="padding:0.7em 0.5%; margin: 0.5%; width: 99%;color:white">绑定</button>
+				<button data-theme="g" style="padding:0.7em 0.5%; margin: 10px 1%; width: 98%;color:white">绑定</button>
 			</form>
 			{% else %}
 			<p style="text-align:center">
@@ -41,9 +41,9 @@
 				{% endif %}
 			</p>
 				{% if not is_user %}
-			<a href="http://116.55.248.76/cyh_weixin/joinus.html" class="ui-btn ui-corner-all ui-btn-g" style="padding:0.7em 0.5%; margin: 0.5%; width: 99%;color:white">下载车友惠App</a>
+			<a href="http://116.55.248.76/cyh_weixin/joinus.html" class="ui-btn ui-corner-all ui-btn-g" style="padding:0.7em 0.5%; margin: 10px 1%; width: 98%;color:white">下载车友惠App</a>
 				{% endif %}
-			<a href="http://ip.yn122.net:8092/?userId={{ user_id }}#insurance" class="ui-btn ui-corner-all ui-btn-f" style="padding:0.7em 0.5%; margin: 0.5%; width: 99%;color:white">去计算保费>>></a>
+			<a href="http://ip.yn122.net:8092/?userId={{ user_id }}#insurance" class="ui-btn ui-corner-all ui-btn-f" style="padding:0.7em 0.5%; margin: 10px 1%; width: 98%;color:white">去计算保费>>></a>
 			{% endif %}
 		</div>
 	</div>

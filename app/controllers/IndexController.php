@@ -94,6 +94,7 @@ class IndexController extends ControllerBase
     {
         $openid = $this->request->get('openid');
         $source = $this->request->get('source');
+        $user_phone = $this->request->get('user_phone', null, null);
 
         $this->view->setVars(array(
             'openid' => $openid,
@@ -101,24 +102,19 @@ class IndexController extends ControllerBase
             'bind_success' => false,
             'is_user' => true
         ));
+
+        if($user_phone)
+        {
+            $this->_doMicroMessengerBind($user_phone, $openid, $source)
+        }
     }
 
     /**
      * 处理微信用户绑定
      */
-    public function doMicroMessengerBindAction()
+    private function _doMicroMessengerBind($user_phone, $openid, $source='cm')
     {
-        $openid = $this->request->getPost('openid');
-        $source = $this->request->getPost('source');
-        $user_phone = $this->request->getPost('user_phone');
-
-        $this->view->setVars(array(
-            'openid' => $openid,
-            'source' => $source,
-            'bind_success' => false,
-            'is_user' => true
-        ));
-
+        
         $user = User::getUserByPhone($user_phone);
 
         if(empty($user))
@@ -160,8 +156,6 @@ class IndexController extends ControllerBase
 
         $this->view->setVar('bind_success', $bind_success);
         $this->view->setVar('user_id', $user['user_id']);
-
-        $this->view->pick('index/microMessengerBind');
     }
 }
 
