@@ -1,0 +1,46 @@
+            update IAM_USER set weixintoken = :openid, wx_openid = :openid
+            where userid = :user_id
+array (
+  'user_id' => 'jkzleond@163.com',
+  'openid' => 'oiFacjvkFkyyj6ml4Nyz59uifxgM',
+)            update IAM_USER set weixintoken = :openid, wx_openid = :openid
+            where userid = :user_id
+array (
+  'user_id' => 'jkzleond@163.com',
+  'openid' => 'oiFacjvkFkyyj6ml4Nyz59uifxgM',
+)            update IAM_USER set weixintoken = :openid, wx_openid = :openid
+            where userid = :user_id
+array (
+  'user_id' => 'jkzleond@163.com',
+  'openid' => 'oiFacjvkFkyyj6ml4Nyz59uifxgM',
+)            update IAM_USER set weixintoken = :openid, wx_openid = :openid
+            where userid = :user_id
+array (
+  'user_id' => 'jkzleond@163.com',
+  'openid' => 'oiFacjvkFkyyj6ml4Nyz59uifxgM',
+)            update IAM_USER set weixintoken = :openid, wx_openid = :openid
+            where userid = :user_id
+array (
+  'user_id' => 'jkzleond@163.com',
+  'openid' => 'oiFacjvkFkyyj6ml4Nyz59uifxgM',
+)            update IAM_USER set weixintoken = :openid, wx_openid = :openid
+            where userid = :user_id
+array (
+  'user_id' => 'jkzleond@163.com',
+  'openid' => 'oiFacjvkFkyyj6ml4Nyz59uifxgM',
+)            update IAM_USER set weixintoken = :openid, wx_openid = :openid
+            where userid = :user_id
+array (
+  'user_id' => 'jkzleond@163.com',
+  'openid' => 'oiFacjvkFkyyj6ml4Nyz59uifxgM',
+)            update IAM_USER set weixintoken = :openid, wx_openid = :openid
+            where userid = :user_id
+array (
+  'user_id' => 'jkzleond@163.com',
+  'openid' => 'oiFacjvkFkyyj6ml4Nyz59uifxgM',
+)            update IAM_USER set weixintoken = :openid, wx_openid = :openid
+            where userid = :user_id
+array (
+  'user_id' => 'jkzleond@163.com',
+  'openid' => 'oiFacjvkFkyyj6ml4Nyz59uifxgM',
+)
