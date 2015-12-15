@@ -146,7 +146,7 @@ SQL;
         else
         {
             $get_wx_user_sql = <<<SQL
-            select top 1 count(1) from WX_USER where openid = :openid and source = :source
+            select top 1 count(1) as [count] from WX_USER where openid = :openid and source = :source
 SQL;
             $get_wx_user_bind = array(
                 'openid' => $openid,
@@ -155,7 +155,7 @@ SQL;
 
             $wx_user = self::fetchOne($get_wx_user_sql, $get_wx_user_bind, null, Db::FETCH_ASSOC);
 
-            if(!$wx_user)
+            if($wx_user['count'] == 0)
             {
                 $sql = <<<SQL
                 insert into WX_USER (openid, user_id, source) values(:opendid, :user_id, :source)
