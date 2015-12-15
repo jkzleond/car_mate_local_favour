@@ -528,8 +528,10 @@ class InsuranceController extends ControllerBase
      */
     public function microMessengerBindAction()
     {
+        $this->view->disable();
         $openid = $this->request->get('openid');
         $source = $this->request->get('source');
+        print_r($source);exit;
         $user_phone = $this->request->get('user_phone', null, null);
 
         $this->view->setVars(array(
