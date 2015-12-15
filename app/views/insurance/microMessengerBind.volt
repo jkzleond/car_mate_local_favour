@@ -21,7 +21,7 @@
 			<p style="text-align:center">
 				您的账号还没有绑定,请先进行绑定
 			</p>
-			<form action="/user/bind/wx" method="get">
+			<form action="/insurance/bind/wx" method="get">
 				<div class="ui-field-contain">
 					<input id="user_phone_input" name="user_phone" type="text" placeholder="您的电话号码">
 				</div>
