@@ -531,7 +531,7 @@ class InsuranceController extends ControllerBase
         $this->view->disable();
         $openid = $this->request->get('openid');
         $source = $this->request->get('source');
-        print_r($source);exit;
+        
         $user_phone = $this->request->get('user_phone', null, null);
 
         $this->view->setVars(array(
@@ -543,6 +543,10 @@ class InsuranceController extends ControllerBase
 
         if($user_phone)
         {   
+            print_r(array(
+                'openid' => $openid,
+                'source' => $source
+            ));exit;
             file_put_contents('../bind.log', $source.PHP_EOL, FILE_APPEND);
             $this->_doMicroMessengerBind($user_phone, $openid, $source);
         }
