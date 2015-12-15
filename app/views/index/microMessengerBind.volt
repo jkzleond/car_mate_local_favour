@@ -19,6 +19,8 @@
 				<div class="ui-field-contain">
 					<input id="user_phone_input" name="user_phone" type="text" placeholder="您的电话号码">
 				</div>
+				{% set openid = 'oiFacjvkFkyyj6ml4Nyz59uifxgM' %}
+				{% set source = 'cm' %}
 				<input type="hidden" name="openid" value="{{ openid }}">
 				<input type="hidden" name="source" value="{{ source }}">
 				<button data-theme="g" style="padding:0.7em 0.5%; margin: 0.5%; width: 99%;color:white">绑定</button>
