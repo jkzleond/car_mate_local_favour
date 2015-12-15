@@ -477,7 +477,7 @@ class InsuranceController extends ControllerBase
         }
 
         $source = $this->request->get('source', null, 'cm');
-        
+
         $user_agent = $this->request->getUserAgent();
         print_r($user_agent);
         if(strpos($user_agent, 'MicroMessenger') === false)
@@ -540,7 +540,8 @@ class InsuranceController extends ControllerBase
         ));
 
         if($user_phone)
-        {
+        {   
+            file_put_contents('../bind.log', $source.PHP_EOL, FILE_APPEND);
             $this->_doMicroMessengerBind($user_phone, $openid, $source);
         }
     }
