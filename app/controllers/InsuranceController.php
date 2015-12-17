@@ -487,7 +487,6 @@ class InsuranceController extends ControllerBase
         }
 
         $wx_redirect_url = urlencode('http://ip.yn122.net:8092/insurance/wx_login?appid='.$app_id.'&secret='.$app_secret.'&source='.$source);
-        file_put_contents('../bind.log', PHP_EOL.'http://ip.yn122.net:8092/insurance/wx_login?appid='.$app_id.'&secret='.$app_secret.'&source='.$source);
         $oauth2_url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='.$app_id.'&redirect_uri='.$wx_redirect_url.'&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect';
         return $this->response->redirect($oauth2_url);
     }
