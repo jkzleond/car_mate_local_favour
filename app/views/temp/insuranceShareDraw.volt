@@ -65,7 +65,9 @@
 				</a>
 			</td>
 			<td>
-				<img src="{{url('/assets/temp/insuranceShare/img/xx.png')}}" style="max-width: 100%; min-width: 100px; width:80%;" />
+				<a href="{{url('/insurance_share/win_list/228')}}">
+					<img src="{{url('/assets/temp/insuranceShare/img/xx.png')}}" style="max-width: 100%; min-width: 100px; width:80%;" />
+				</a>
 			</td>
 		</tr>
 		<tr>

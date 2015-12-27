@@ -492,58 +492,82 @@ SQL;
 				else
 				{
 					//未达到单日限额, 处理中奖
-					
-					//计算6位随机码
-					$code_str = '';
-
-					for($i = 0; $i < 6; $i++)
+					do
 					{
-						//利用ascii码表
-						$rand_ord = rand(48, 122);
+						//计算6位随机码
+						$code_str = '';
 
-						//处理不是数字或字母的ord
-						if($rand_ord > 57 and $rand_ord < 65)
+						for($i = 0; $i < 6; $i++)
 						{
-							$rand_ord = 51;
-						}	
-						elseif($rand_ord > 90 and $rand_ord < 97)
-						{
-							$rand_ord = 101;
-						}
-						elseif($rand_ord == 48 or $rand_ord == 111)
-						{
-							//把0和o换成q
-							$rand_ord = 113;
-						}
-						elseif($rand_ord == 79 )
-						{
-							//把O换成Q
-							$rand_ord = 81;
+							//利用ascii码表
+							$rand_ord = rand(48, 122);
+
+							//处理不是数字或字母的ord
+							if($rand_ord > 57 and $rand_ord < 65)
+							{
+								$rand_ord = 51;
+							}	
+							elseif($rand_ord > 90 and $rand_ord < 97)
+							{
+								$rand_ord = 101;
+							}
+							elseif($rand_ord == 48 or $rand_ord == 111)
+							{
+								//把0和o换成q
+								$rand_ord = 113;
+							}
+							elseif($rand_ord == 79 )
+							{
+								//把O换成Q
+								$rand_ord = 81;
+							}
+
+							$code_str .= chr($rand_ord);
 						}
 
-						$code_str .= chr($rand_ord);
-					}
-
-					$bingo_sql = <<<SQL
-					insert into AwardGain (aid, awid, userid, winDate, randomCode) values (:aid, :award_id, :user_id, getdate(), :code)
+						$bingo_sql = <<<SQL
+						insert into AwardGain (aid, awid, userid, winDate, randomCode) values (:aid, :award_id, :user_id, getdate(), :code)
 SQL;
-					$bingo_bind = array(
-						'aid' => $aid,
-						'award_id' => $award['id'],
-						'user_id' => $user['user_id'],
-						'code' => $code_str
-					);
+						$bingo_bind = array(
+							'aid' => $aid,
+							'award_id' => $award['id'],
+							'user_id' => $user['user_id'],
+							'code' => $code_str
+						);
 
-					$bingo_success = $db->execute($bingo_sql, $bingo_bind);
-
+						$bingo_success = $db->execute($bingo_sql, $bingo_bind);
+						$err_info = $db->getInternalHandler()->errorInfo();
+					}
+					while($err_info[1] == '2672'); //领取码重复则重新计算领取码后insert
+					
 					$this->view->setVar('award', $award);
-
 				}
-
 			}
 		}
+	}
 
+	/**
+	 * 中奖列表页面
+	 */
+	public function winListAction($aid)
+	{
+		$user = User::getCurrentUser();
+		$db = $this->db;
 
+		$get_win_list_sql = <<<SQL
+		select a.name, a.value, convert(varchar(20), ag.winDate, 20) as win_date, ag.randomCode as random_code from AwardGain ag
+		left join Award a on a.id = ag.awid
+		where ag.aid = :aid and ag.userid = :user_id
+SQL;
+		$get_win_list_bind = array(
+			'aid' => $aid,
+			'user_id' => $user['user_id']
+		);
 
+		$win_list_result = $db->query($get_win_list_sql, $get_win_list_bind);
+		$win_list_result->setFetchMode(Db::FETCH_ASSOC);
+		$win_list = $win_list_result->fetchAll();
+
+		$this->view->setVar('win_list', $win_list);
 	}
 }

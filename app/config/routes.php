@@ -286,6 +286,12 @@ $router->addGet('/insurance_share/draw/{aid:\d+}', array(
     'action' => 'insuranceShareDraw'
 ));
 
+//中奖列表
+$router->addGet('/insurance_share/win_list/{aid:\d+}', array(
+    'controller' => 'temp',
+    'action' => 'winList'
+));
+
 /*
 保险巨惠微信公开登录入口
  */
