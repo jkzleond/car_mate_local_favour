@@ -61,7 +61,7 @@
 		{% if chance >= 20 %}
 		<tr>
 			<td colspan="2">
-				<a href="{{url('/insurance_share/draw_certain/228')}}">
+				<a href="{{url('/insurance_share/draw/228?is_certain=true')}}">
 					<img src="{{url('/assets/temp/insuranceShare/img/bt_20.png')}}" style="max-width: 100%; min-width: 320px; width:80%;" />
 				</a>
 			</td>

@@ -371,10 +371,17 @@ SQL;
 		//$this->view->disable();
 		$user = User::getCurrentUser();
 		$chance = Activity::getDrawChance($aid, $user['user_id']); //获取抽奖机会
+		$is_certain = $this->request->get('is_certain', null, false); //是否花费20次抽奖机会必中
 		$this->view->setVar('chance', $chance);
 		$this->view->setVar('session_id', $this->session->getSessionId);
 
 		if($chance == 0)
+		{
+			return;
+		}
+
+		//必中必须花费20次抽奖机会,机会不够则直接返回
+		if($is_certain and $chance < 20)
 		{
 			return;
 		}
@@ -424,9 +431,10 @@ SQL;
 		{
 			//在抽奖时段则开始抽奖
 			
+			$minus = $is_certain ? 20 : 1;
 			//减少抽奖机会
 			$minus_chance_sql = <<<SQL
-			update AwardChance set chance = chance - 1, updateDate = getdate() where userid = :user_id and aid = :aid
+			update AwardChance set chance = chance - $minus, updateDate = getdate() where userid = :user_id and aid = :aid
 			and chance > 0
 SQL;
 			$minus_chance_bind = array(
@@ -438,8 +446,17 @@ SQL;
 			$period_id = isset($valid_time['period_id']) ? $valid_time['period_id'] : null;
 			$is_period = $valid_time['is_period'];
 
-			mt_srand(time()); //以时间戳做随机种子
-			$award_rand = mt_rand(1, 10000); //计算随机数
+			$award_rand = 10000;
+
+			if(!$is_certain)
+			{
+				mt_srand(time()); //以时间戳做随机种子
+				$award_rand = mt_rand(1, 10000); //计算随机数
+			}
+			else
+			{
+				$award_rand = 0; //必中
+			}
 
 			//查询中奖几率大于随机数的奖品
 			$get_award_sql = <<<SQL
