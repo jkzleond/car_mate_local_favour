@@ -48,10 +48,10 @@
 			</td>
 		</tr>
 	</table>
-	<table style="width: 100%" cellpadding="0" cellspacing="10">
+	<table style="width: 100%" cellpadding="0" cellspacing="10" align="center">
 		{% if is_on_time and chance > 0 %}
 		<tr>
-			<td colspan="2">
+			<td colspan="2" align="center">
 				<a href="{{url('/insurance_share/draw/228')}}">
 					<img src="{{url('/assets/temp/insuranceShare/img/bt_gj.png')}}" style="max-width: 100%; min-width: 320px; width:80%;" />
 				</a>
@@ -60,7 +60,7 @@
 		{% endif %}
 		{% if chance >= 20 %}
 		<tr>
-			<td colspan="2">
+			<td colspan="2" align="center">
 				<a href="{{url('/insurance_share/draw/228?is_certain=true')}}">
 					<img src="{{url('/assets/temp/insuranceShare/img/bt_20.png')}}" style="max-width: 100%; min-width: 320px; width:80%;" />
 				</a>
@@ -68,12 +68,12 @@
 		</tr>
 		{% endif %}
 		<tr>
-			<td>
+			<td align="center">
 				<a href="{{url('/insurance_share/describe')}}">
 					<img src="{{url('/assets/temp/insuranceShare/img/gz.png')}}" style="max-width: 100%; min-width: 100px; width:80%;" />
 				</a>
 			</td>
-			<td>
+			<td align="center">
 				<a href="{{url('/insurance_share/win_list/228')}}">
 					<img src="{{url('/assets/temp/insuranceShare/img/xx.png')}}" style="max-width: 100%; min-width: 100px; width:80%;" />
 				</a>
