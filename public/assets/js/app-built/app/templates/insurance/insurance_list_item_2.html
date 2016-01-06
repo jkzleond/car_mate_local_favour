@@ -1,0 +1,20 @@
+<div class="fs_list_box">
+    <a class="cm-block cm-span12" href="#insurance/price/<%= id %>">
+        <table style="width: 100%">
+            <tr>
+                <td valign="top">
+                    <div class="fs_list_box_bt ">
+                        <span class="cm-label cm-bg-prim">申请精算时间:</span><%= new Date(last_modified_time).toString('yyyy-MM-dd') %>
+                    </div>
+                    <div class="fs_list_box_bt ">
+                        <span class="cm-label cm-bg-prim">比价最低：</span><%= min_after_discount %>
+                    </div>
+                    <div class="fs_list_box_bt ">
+                        <span class="cm-label cm-bg-prim">预计出单赠送礼包：</span><%= gift_money %>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </a>
+</div>
+<div class="fs_list_box_fgx"></div>

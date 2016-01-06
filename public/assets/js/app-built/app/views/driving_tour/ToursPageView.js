@@ -1,0 +1,1 @@
+define(["jquery","backbone","text!templates/driving_tour/tours_page.html","collections/driving_tour/TourCollection","views/driving_tour/TourListView"],function(e,t,n,r,i){e(n).appendTo("body");var s=t.View.extend({initialize:function(){this.tour_list_view=new i({el:"#tour_list_view",collection:new r})}});return s});

@@ -1,0 +1,52 @@
+<%
+var img_src = null;
+if (pic_data) {
+img_src = 'data:image/png;base64,' + pic_data;
+} else {
+img_src = '/assets/img/DefaultFavour.jpg';
+}
+
+var date_str = '';
+var state_str = '';
+var label_bg_color = '';
+
+if (state == 2) {
+    state_str = '已过期';
+    label_bg_color = 'red';
+} else if(state == 3) {
+    state_str = '审核中';
+    label_bg_color = 'yellow';
+}
+date_str = new Date(start_date).toString('yyyy-MM-dd') + '至' + new Date(end_date).toString('yyyy-MM-dd');
+
+%>
+
+<div class="fs_list_box">
+    <a class="cm-block cm-span12" href="#tour/detail/<%= id %>">
+        <table style="width: 100%">
+            <tr>
+                <td style="width: 100px">
+                    <img src="<%= img_src %>" width="100" height="100" />
+                </td>
+                <td valign="top">
+                    <div class="fs_list_box_bt ">
+                        <%= name %>
+                    </div>
+                    <div class="fs_list_box_bt ">
+                        时间：<%= date_str %>
+                    </div>
+                    <div class="fs_list_box_bt ">
+                        地点：<%= place %>
+                    </div>
+                    <div class="fs_list_box_bt ">
+                        <span class="cm-left">报名人数：<%= user_num %>人</span>
+                        <span class="cm-label cm-right" style="background-color:<%= label_bg_color %>">
+                            <%= state_str %>
+                        </span>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </a>
+</div>
+<div class="fs_list_box_fgx"></div>

@@ -1,0 +1,1 @@
+define(["backbone","models/CityModel"],function(e,t){var n=e.Collection.extend({initialize:function(){this.province_id=null},model:t,url:function(){return"/citise/"+this.province_id},parse:function(e,t){return e.rows},setProvinceId:function(e){return this.province_id==e?this:(this.province_id=e,this.fetch({reset:!0}),this.trigger("change:province_id",this,e),this)}});return n});

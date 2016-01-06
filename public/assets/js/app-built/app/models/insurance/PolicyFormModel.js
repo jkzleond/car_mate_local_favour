@@ -1,0 +1,1 @@
+define(["underscore","backbone"],function(e,t){var n=t.Model.extend({url:function(){return"/insurance/"+this.get("info_id")+"/apply_policy"},parse:function(e,t){return e.row||{}},validate:function(e,t){if(!e.info_id)return"没有选择保险信息";if(!e.company_id)return"请选择保险公司(点击柱状图)"}});return n});

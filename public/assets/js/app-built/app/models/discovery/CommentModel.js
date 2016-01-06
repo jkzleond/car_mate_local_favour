@@ -1,0 +1,1 @@
+define(["backbone"],function(e){var t=e.Model.extend({url:function(){var e=this.get("pid"),t=this.get("id");return t?"/discovery/"+e+"/comments/"+t:"/discovery/"+e+"/comments"},parse:function(e,t){return t.collection?e:e.row},validate:function(e,t){if(e.contents.length>100||e.contents.length<5)return"内容长度不能小于5或大于100"}});return t});

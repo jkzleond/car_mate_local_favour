@@ -1,0 +1,1 @@
+define(["backbone"],function(e){var t=e.Model.extend({url:function(){return"/insurance/"+this.get("insurance_info_id")+"/order_info"},parse:function(e,t){return t.collection?e:e.row||{}},validate:function(e,t){if(!e.address||!e.province_id||!e.city_id)return"请填写收单地址"}});return t});

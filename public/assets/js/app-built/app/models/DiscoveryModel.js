@@ -1,0 +1,1 @@
+define(["jquery","backbone","collections/discovery/CommentCollection"],function(e,t,n){var r=t.Model.extend({urlRoot:"/discovery",initialize:function(e,t){this.comments=new n,this.listenTo(this,"change:id",this._onIdChange)},parse:function(e,t){return t.collection?e:e.row},_onIdChange:function(){this.comments.setDiscoveryId(this.get("id")),this.comments.fetch()}});return r});

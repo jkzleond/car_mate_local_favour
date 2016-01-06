@@ -1,0 +1,1 @@
+define(["jquery","backbone"],function(e,t){var n=t.Model.extend({urlRoot:"/clock_in.json",parse:function(e,t){return e.row}});return n});

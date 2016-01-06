@@ -1,0 +1,1 @@
+define(["collections/PaginationCollection","models/insurance/InsuranceInfoModel"],function(e,t){var n=e.extend({model:t,initialize:function(t,n){n||(n={}),e.prototype.initialize.call(this,t,n),this.type=n.type||"1"},url:function(){return"/insurances/"+this.type}});return n});

@@ -1,0 +1,155 @@
+<%
+    var standard_compulsory = Number(result.standardCompulsoryInsurance);
+    var standard_damage = Number(result.standardDamageInsurance);
+    var standard_third = Number(result.standardThird);
+    var standard_driver = Number(result.standardDriver);
+    var standard_passenger = Number(result.standardPassenger);
+    var standard_robbery = Number(result.standardRobbery);
+    var standard_glass = Number(result.standardGlass);
+    var standard_scratch = Number(result.standardScratch);
+    var standard_self_ignition = Number(result.standardSelfIgnition);
+    var standard_optional_deductible = Number(result.standardOptionalDeductible);
+    var standard_not_deductible = Number(result.standardNotDeductible);
+    var total_standard = Number(result.totalStandard);
+
+    var after_discount_compulsory = Number(result.afterDiscountCompulsoryInsurance);
+    var after_discount_damage = Number(result.afterDiscountDamageInsurance);
+    var after_discount_third = Number(result.afterDiscountThird);
+    var after_discount_driver = Number(result.afterDiscountDriver);
+    var after_discount_passenger = Number(result.afterDiscountPassenger);
+    var after_discount_robbery = Number(result.afterDiscountRobbery);
+    var after_discount_glass = Number(result.afterDiscountGlass);
+    var after_discount_scratch = Number(result.afterDiscountScratch);
+    var after_discount_self_ignition = Number(result.afterDiscountSelfIgnition);
+    var after_discount_optional_deductible = Number(result.afterDiscountOptionalDeductible);
+    var after_discount_not_deductible = Number(result.afterDiscountNotDeductible);
+    var total_after_discount = Number(result.totalAfterDiscount);
+
+    var gift_money = Number(result.giftMoney);
+
+%>
+<table  class="bx_xxnr_div_table">
+    <tr>
+        <td>保险公司</td>
+    </tr>
+</table>
+<table  class="bx_xxnr_div_table_txt" align="center">
+    <tr>
+        <td><%= result.company_name %></td>
+    </tr>
+</table>
+<table  class="bx_xxnr_div_table">
+    <tr>
+        <td>精算详细列表</td>
+    </tr>
+</table>
+<table  class="insurance-price-detail bx_xxnr_div_table_txt" align="center">
+    <tr>
+        <td></td>
+        <th colspan="2">标准保费</th>
+        <th colspan="2">优惠保费</th>
+    </tr>
+    <% if( standard_compulsory != 0 ){ %>
+    <tr>
+        <th>交强险</th>
+        <td colspan="2"><%= standard_compulsory.toFixed(2) %></td>
+        <td colspan="2"><%= after_discount_compulsory.toFixed(2) %></td>
+    </tr>
+    <% } %>
+    <% if( standard_damage != 0 ){ %>
+    <tr>
+        <th>车损险</th>
+        <td colspan="2"><%= standard_damage.toFixed(2) %></td>
+        <td colspan="2"><%= after_discount_damage.toFixed(2) %></td>
+    </tr>
+    <% } %>
+    <% if( standard_third != 0 ){ %>
+    <tr>
+        <%
+            var standard_third_str = null;
+            var after_discount_third_str = null;
+            if(standard_third < 0){
+                standard_third_str = '待算';
+                after_discount_third_str = '待算';
+            }else{
+                standard_third_str = standard_third.toFixed(2);
+                after_discount_third_str = after_discount_third.toFixed(2);
+            }
+        %>
+        <th>第三者险</th>
+        <td colspan="2"><%= standard_third_str %></td>
+        <td colspan="2"><%= after_discount_third.toFixed(2) %></td>
+    </tr>
+    <% } %>
+    <% if( standard_driver != 0 ){ %>
+    <tr>
+        <th>司机座位险</th>
+        <td colspan="2"><%= standard_driver.toFixed(2) %></td>
+        <td colspan="2"><%= after_discount_driver.toFixed(2) %></td>
+    </tr>
+    <% } %>
+    <% if( standard_passenger != 0 ){ %>
+    <tr>
+        <th>乘客座位险</th>
+        <td colspan="2"><%= standard_passenger.toFixed(2) %></td>
+        <td colspan="2"><%= after_discount_passenger.toFixed(2) %></td>
+    </tr>
+    <% } %>
+    <% if( standard_robbery != 0 ){ %>
+    <tr>
+        <th>盗抢险</th>
+        <td colspan="2"><%= standard_robbery.toFixed(2) %></td>
+        <td colspan="2"><%= after_discount_robbery.toFixed(2) %></td>
+    </tr>
+    <% } %>
+    <% if( standard_glass != 0 ){ %>
+    <tr>
+        <th>玻璃单独破损险</th>
+        <td colspan="2"><%= standard_glass.toFixed(2) %></td>
+        <td colspan="2"><%= after_discount_glass.toFixed(2) %></td>
+    </tr>
+    <% } %>
+    <% if( standard_scratch != 0 ){ %>
+    <tr>
+        <th>划痕</th>
+        <td colspan="2"><%= standard_scratch.toFixed(2) %></td>
+        <td colspan="2"><%= after_discount_scratch.toFixed(2) %></td>
+    </tr>
+    <% } %>
+    <% if( standard_self_ignition != 0 ){ %>
+    <tr>
+        <th>自然</th>
+        <td colspan="2"><%= standard_self_ignition.toFixed(2) %></td>
+        <td colspan="2"><%= after_discount_self_ignition.toFixed(2) %></td>
+    </tr>
+    <% } %>
+    <% if( standard_optional_deductible != 0 ){ %>
+    <tr>
+        <th>可选免赔</th>
+        <td colspan="2"><%= standard_optional_deductible.toFixed(2) %></td>
+        <td colspan="2"><%= after_discount_optional_deductible.toFixed(2) %></td>
+    </tr>
+    <% } %>
+    <% if( standard_not_deductible != 0 ){ %>
+    <tr>
+        <th>不计免赔</th>
+        <td colspan="2"><%= standard_not_deductible.toFixed(2) %></td>
+        <td colspan="2"><%= after_discount_not_deductible.toFixed(2) %></td>
+    </tr>
+    <% } %>
+    <tr>
+        <th style="background-color: orangered">总价</th>
+        <td colspan="2"><%= total_standard.toFixed(2) %></td>
+        <td colspan="2"><%= total_after_discount.toFixed(2) %></td>
+    </tr>
+</table>
+<table  class="bx_xxnr_div_table">
+    <tr>
+        <td>出单赠送礼包金额</td>
+    </tr>
+</table>
+<table  class="bx_xxnr_div_table_txt" align="center">
+    <tr>
+        <td><%= gift_money.toFixed(2) %></td>
+    </tr>
+</table>

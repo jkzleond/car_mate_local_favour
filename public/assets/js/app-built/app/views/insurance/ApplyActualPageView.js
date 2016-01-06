@@ -1,0 +1,40 @@
+/*
+                    var form_data = new FormData();
+                    form_data.append('pic', file);
+                    
+                    //ajax上传文件
+                    $.ajax({
+                        url:'/upload/file',
+                        method: 'POST',
+                        data: form_data,
+                        dataType: 'json',
+                        processData: false,
+                        contentType: false
+                    }).done(function(data){
+                        if(data.success)
+                        {
+                            self.$el.find('[name="driving_license_a"]').val(data.path);
+                        }
+                    });*/
+
+/*
+                    var form_data = new FormData();
+                    form_data.append('pic', file);
+
+                    //ajax上传文件
+                    $.ajax({
+                        url:'/upload/file',
+                        method: 'POST',
+                        data: form_data,
+                        dataType: 'json',
+                        processData: false,
+                        contentType: false
+                    }).done(function(data){
+                        if(data.success)
+                        {
+                            self.$el.find('[name="driving_license_b"]').val(data.path);
+
+                        }
+                    });*/
+
+define(["jquery","underscore","backbone","models/insurance/InsuranceActualFormModel","models/activity/ActivityPuserModel","text!templates/insurance/apply_actual_page.html"],function(e,t,n,r,i,s){e(s).appendTo("body");var o=n.View.extend({el:"#insurance_apply_actual_page",initialize:function(){this.model=new r,this.activity_puser_model=new i,this.listenTo(this.model,"change:info_id",this._render),this.listenTo(this.model,"invalid",this._onFormModelInvalid),this.listenTo(this.activity_puser_model,"change:invitation_code",this._renderInvitationCode),this.$el.find("img.thumbnail").bind("load",t.bind(this._onThumbnailImageLoad,this)),navigator.userAgent.indexOf("Android")!=-1&&this.$el.find(".to-file").hide(),this._renderSelect()},events:{"click .to-file":"_onToFileClick","click .to-manual":"_onToManualClick","click .upload-license-a-btn":"_onUploadLicenseABtnClick","click .upload-license-b-btn":"_onUploadLicenseBBtnClick","click .upload-idcard-btn":"_onUploadIdCardBtnClick","click .upload-insurance-card-btn":"_onUploadInsuranceCardBtnClick","click .apply-actual-btn":"_onApplyActualClick","click canvas.thumbnail":"_onThumbnailClick",'change [name="no_hphm"]':"_onNoHphmChange","change .driving-license-a-file":"_onLicenseAFileChange","change .driving-license-b-file":"_onLicenseBFileChange","change .idcard-file":"_onIdcardFileChange","change .insurance-card-file":"_onInsuranceCardFileChange"},_onToFileClick:function(e){this.$el.find(".manual-form").hide(),this.$el.find(".file-form").show()},_onToManualClick:function(e){this.$el.find(".file-form").hide(),this.$el.find(".manual-form").show()},_onUploadLicenseABtnClick:function(e){this.$el.find(".driving-license-a-file").click()},_onUploadLicenseBBtnClick:function(e){this.$el.find(".driving-license-b-file").click()},_onUploadIdCardBtnClick:function(e){this.$el.find(".idcard-file").click()},_onUploadInsuranceCardBtnClick:function(e){this.$el.find(".insurance-card-file").click()},_onThumbnailClick:function(e){var t=e.target;this.$el.find("#insurance_attach_preview_img").attr("src",t.toDataURL()),this.$el.find("#insurance_attach_preview_popup").popup("open")},_onNoHphmChange:function(t){var n=e(t.target).prop("checked");n?this.$el.find('[name="hphm"]').prop("disabled",!0).attr("placeholder","还未获取牌照,不需填写").text(""):this.$el.find('[name="hphm"]').prop("disabled",!1).attr("placeholder","")},_onLicenseAFileChange:function(t,n){var r=this;if(n)r.$el.find("img.thumbnail-license-a").attr("src","data:image/png;base64,"+decodeURIComponent(n.result));else{var i=e(t.target).prop("files")[0],s=new FileReader;s.onload=function(e){var t=e.target.result;r.$el.find("img.thumbnail-license-a").attr("src",t)},s.readAsDataURL(i)}},_onLicenseBFileChange:function(t,n){var r=this;if(n)r.$el.find("img.thumbnail-license-b").attr("src","data:image/png;base64,"+decodeURIComponent(n.result));else{var i=e(t.target).prop("files")[0],s=new FileReader;s.onload=function(e){var t=e.target.result;r.$el.find("img.thumbnail-license-b").attr("src",t)},s.readAsDataURL(i)}},_onIdcardFileChange:function(t,n){var r=this;if(n)r.$el.find("img.thumbnail-idcard").attr("src","data:image/png;base64,"+decodeURIComponent(n.result));else{var i=e(t.target).prop("files")[0],s=new FileReader;s.onload=function(e){var t=e.target.result;r.$el.find("img.thumbnail-idcard").attr("src",t)},s.readAsDataURL(i)}},_onInsuranceCardFileChange:function(t,n){var r=this;if(n)r.$el.find("img.thumbnail-insurance-card").attr("src","data:image/png;base64,"+decodeURIComponent(n.result));else{var i=e(t.target).prop("files")[0],s=new FileReader;s.onload=function(e){var t=e.target.result;r.$el.find("img.thumbnail-insurance-card").attr("src",t)},s.readAsDataURL(i)}},_onThumbnailImageLoad:function(t){var n=t.target,r=n.width,i=n.height,s=640,o=480,u=e(t.target).attr("data-rel"),a=this.$el.find(u)[0],f=a.getContext("2d"),l=0,c=0,h=0,p=0;r>i?(h=s,p=s/r*i,c=(o-p)/2):(p=o,h=o/i*r,l=(s-h)/2),f.clearRect(0,0,a.width,a.height),f.drawImage(n,l,c,h,p),e(a).attr("data-ready","true")},_onApplyActualClick:function(e){this._collectionFormData(),this.model.isValid()&&this.model.save()},_render:function(e,t){this.$el.find("[name=phone]").val(G.user.phone||""),this.is_compulsory?this.$el.find(".apply-actual-btn").text("我要投保"):this.$el.find(".apply-actual-btn").text("我要精算")},_renderSelect:function(){var e=new Date,t=e.getFullYear(),n=t-25;for(var r=t;r>=n;r--)this.$el.find("[name=first_year]").append('<option value="'+r+'">'+r+"年</option>"),this.$el.find("[name=insurance_year]").append('<option value="'+r+'">'+r+"年</option>");for(var i=12;i>=1;i--)this.$el.find("[name=first_month]").append('<option value="'+i+'">'+i+"月</option>"),this.$el.find("[name=insurance_month]").append('<option value="'+i+'">'+i+"月</option>")},_onFormModelInvalid:function(t,n){e.cm.toast({msg:n})},_renderInvitationCode:function(e,t,n){this.$el.find('[name="invitation_code"]').val(t).prop("disabled",!0)},_collectionFormData:function(){var t=this,n=this.model.get("info_id");this.model.clear({silent:!0}),this.model.set("info_id",n,{silent:!0});var t=this;this.$el.find("[name]:visible:not([data-ignore])").each(function(n,r){if(e(r).is("input:checkbox")&&!e(r).prop("checked"))return;var i=e(r).attr("name"),s=e(r).val();i=="hphm"&&s&&(s=t.$el.find("[name=hphm_header]").val()+s),t.model.set(i,s,{silent:!0})});if(this.$el.find(".file-form").is(":visible")){var r=null,i=null,s=null,o=null;if(this.$el.find("canvas.thumbnail-license-a").attr("data-ready")==="true"){var u=this.$el.find("canvas.thumbnail-license-a")[0];r=u.toDataURL().match(/data:image\/.*;base64,(.*)/)[1]}if(this.$el.find("canvas.thumbnail-license-b").attr("data-ready")==="true"){var a=this.$el.find("canvas.thumbnail-license-b")[0];i=a.toDataURL().match(/data:image\/.*;base64,(.*)/)[1]}if(this.$el.find("canvas.thumbnail-idcard").attr("data-ready")==="true"){var f=this.$el.find("canvas.thumbnail-idcard")[0];s=f.toDataURL().match(/data:image\/.*;base64,(.*)/)[1]}if(this.$el.find("canvas.thumbnail-insurance-card").attr("data-ready")==="true"){var l=this.$el.find("canvas.thumbnail-insurance-card")[0];o=l.toDataURL().match(/data:image\/.*;base64,(.*)/)[1]}this.model.set({driving_license_a:r,driving_license_b:i,idcard:s,insurance_card:o},{silent:!0})}},reset:function(){this.$el.find('[name="invitation_code"]').val("").prop("disabled",!1),this.activity_puser_model.set("aid",228),this.activity_puser_model.set("user_id",G.user.user_id),this.activity_puser_model.fetch()}});return o});

@@ -1,0 +1,1 @@
+define(["backbone"],function(e){var t=e.Model.extend({urlRoot:"/activity",validate:function(e,t){if(!e.name||e.name&&e.name.length<10)return"活动名称必须在10个字以上!";if(!e.start_date||!e.end_date)return"请设置开始和结束时间!";if(!e.place)return"请填写活动地点!";if(!e.contents||e.contents&&e.contents<16)return"内容必须在16个字以上!"}});return t});

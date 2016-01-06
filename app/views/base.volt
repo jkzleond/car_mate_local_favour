@@ -17,7 +17,7 @@
     {% endblock %}
     {% block header_js %}
     <script type="text/javascript" src="{{ url('/assets/js/date.js') }}"></script>
-    <script type="text/javascript" src="{{ url('/assets/js/require.js') }}" data-main="{{ url('/assets/js/app/main.js?bust=5.2.16') }}"></script>
+    <script type="text/javascript" src="{{ url('/assets/js/require.js') }}" data-main="{{ url('/assets/js/app-built/app/main.js?bust=5.2.16') }}"></script>
 <!--    <script type="text/javascript" src="{{ url('/assets/js/jquery-2.js') }}"></script>-->
 <!--    <script type="text/javascript" src="{{ url('/assets/js/jquery.mobile-1.4.5.js') }}"></script>-->
 <!--    <script type="text/javascript" src="{{ url('/assets/js/underscore.js') }}"></script>-->

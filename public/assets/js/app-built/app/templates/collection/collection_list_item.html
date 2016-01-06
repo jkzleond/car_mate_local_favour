@@ -1,0 +1,34 @@
+<%
+var url = null;
+
+if(type == 'activity')
+{
+    url = '#activity/detail/' + rel_id;
+}
+else if(type == 'discovery')
+{
+    url = '#discovery/' + rel_id;
+}
+else if(type == 'tour')
+{
+    url = '#tour/detail/' + rel_id;
+}
+%>
+
+<div class="fs_list_box">
+    <a class="cm-block cm-span12" href="<%= url %>">
+        <table style="width: 100%">
+            <tr>
+                <td style="width: 100px">
+                    <img src="<%= img %>" width="100%" height="auto" />
+                </td>
+                <td valign="center">
+                    <div class="fs_list_box_bt ">
+                        <%= title %>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </a>
+</div>
+<div class="fs_list_box_fgx"></div>

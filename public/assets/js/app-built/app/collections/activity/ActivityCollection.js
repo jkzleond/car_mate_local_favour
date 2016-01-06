@@ -1,0 +1,1 @@
+define(["collections/PaginationCollection","models/activity/ActivityModel"],function(e,t){var n=e.extend({model:t,initialize:function(t,n){n||(n={}),e.prototype.initialize.call(this,t,n),this.type=n.type||"all"},url:function(){if(this.type=="all")return"/activitise";if(this.type=="my")return"/activitise/my"}});return n});

@@ -1,0 +1,206 @@
+<%
+    var car_type_id = info.car_type_id;
+    var standard_compulsory = Number(result.standardCompulsoryInsurance) || 0.00;
+    var standard_damage = Number(result.standardDamageInsurance) || 0.00;
+    var standard_third = Number(result.standardThird) || 0.00;
+    var standard_driver = Number(result.standardDriver) || 0.00;
+    var standard_passenger = Number(result.standardPassenger) || 0.00;
+    var standard_robbery = Number(result.standardRobbery) || 0.00;
+    var standard_glass = Number(result.standardGlass) || 0.00;
+    var standard_scratch = Number(result.standardScratch) || 0.00;
+    var standard_self_ignition = Number(result.standardSelfIgnition) || 0.00;
+    var standard_optional_deductible = Number(result.standardOptionalDeductible) || 0.00;
+    var standard_not_deductible = Number(result.standardNotDeductible) || 0.00;
+    var total_standard = Number(result.totalStandard) || 0.00;
+
+    var discount = Number(company.discount);
+    var car_price_discount = Number(company.car_price_discount);
+    var coefficient = Number(result.coefficient || 0);
+    var after_discount_compulsory = Number(result.afterDiscountCompulsoryInsurance) || 0.00;
+
+    //计算含折价折扣的折扣后车损险保费
+    var after_discount_damage = 0;
+    var car_price = 0;
+
+    if(coefficient == 1)
+    {
+    car_price = (standard_damage - 619.00) * 100 / 1.47 * car_price_discount;
+    after_discount_damage = Math.round((car_price * 1.47 / 100.0 + 619.0) * 100) / 100;
+    }
+    else if(coefficient == 2)
+    {
+    car_price = (standard_damage - 590.00) * 100 / 1.40 * car_price_discount;
+    after_discount_damage = Math.round((car_price * 1.40 / 100.0 + 590.0) * 100) / 100;
+    }
+    else if(coefficient == 3 || coefficient == 4 || coefficient == 5)
+    {
+    car_price = (standard_damage - 584.00) * 100 / 1.39 * car_price_discount;
+    after_discount_damage = Math.round((car_price * 1.39 / 100.0 + 584.0) * 100) /100;
+    }
+    else if(coefficient == 6)
+    {
+    car_price = (standard_damage - 602.00) * 100 / 1.43 * car_price_discount;
+    after_discount_damage = Math.round((car_price * 1.43 / 100.0 + 602.0) * 100) / 100;
+    }
+
+    var after_discount_third = standard_third * discount;
+    var after_discount_driver = standard_driver * discount;
+    var after_discount_passenger = standard_passenger * discount;
+    var after_discount_robbery = standard_robbery * discount;
+    var after_discount_glass = standard_glass * discount;
+    var after_discount_scratch = standard_scratch * discount;
+    var after_discount_self_ignition = standard_self_ignition * discount;
+    var after_discount_optional_deductible = standard_optional_deductible * discount;
+    var after_discount_not_deductible = standard_not_deductible * discount;
+    var total_after_discount = (total_standard - standard_compulsory) * discount + after_discount_compulsory;
+
+    var gift1 = Number(company.gift);
+    var gift2 = Number(company.gift2);
+    var gift3 = Number(company.gift3);
+
+    var gift_money = 0;
+    
+    if(car_type_id == 1)
+    {
+        if(after_discount_damage != 0)
+        {
+            //因为车损险和交强险折扣是单独计算
+            total_after_discount = (total_standard - standard_damage - standard_compulsory) * discount + after_discount_damage + after_discount_compulsory;
+
+            gift_money = total_after_discount * gift1;
+        }
+        else
+        {
+            gift_money = total_after_discount * gift2;
+        }
+    }
+    else
+    {
+        gift_money = 0; //营运车辆暂时无礼包
+    }
+%>
+<table  class="bx_xxnr_div_table">
+    <tr>
+        <td>保险公司</td>
+    </tr>
+</table>
+<table  class="bx_xxnr_div_table_txt" align="center">
+    <tr>
+        <td><%= company.name %></td>
+    </tr>
+</table>
+<table  class="bx_xxnr_div_table">
+    <tr>
+        <td>初算详细列表</td>
+    </tr>
+</table>
+<table  class="insurance-price-detail bx_xxnr_div_table_txt" align="center">
+    <tr>
+        <td></td>
+        <th colspan="2">标准保费</th>
+        <th colspan="2">优惠保费</th>
+    </tr>
+    <% if( standard_compulsory != 0 ){ %>
+    <tr>
+        <th>交强险</th>
+        <td colspan="2"><%= standard_compulsory.toFixed(2) %></td>
+        <td colspan="2"><%= after_discount_compulsory.toFixed(2) %></td>
+    </tr>
+    <% } %>
+    <% if( standard_damage != 0 ){ %>
+    <tr>
+        <th>车损险</th>
+        <td colspan="2"><%= standard_damage.toFixed(2) %></td>
+        <td colspan="2"><%= after_discount_damage.toFixed(2) %></td>
+    </tr>
+    <% } %>
+    <% if( standard_third != 0 ){ %>
+    <tr>
+        <%
+            var standard_third_str = null;
+            var after_discount_third_str = null;
+            if(standard_third < 0){
+                standard_third_str = '待算';
+                after_discount_third_str = '待算';
+            }else{
+                standard_third_str = standard_third.toFixed(2);
+                after_discount_third_str = after_discount_third.toFixed(2);
+            }
+        %>
+        <th>第三者险</th>
+        <td colspan="2"><%= standard_third_str %></td>
+        <td colspan="2"><%= after_discount_third.toFixed(2) %></td>
+    </tr>
+    <% } %>
+    <% if( standard_driver != 0 ) { %>
+    <tr>
+        <th>司机座位险</th>
+        <td colspan="2"><%= standard_driver.toFixed(2) %></td>
+        <td colspan="2"><%= after_discount_driver.toFixed(2) %></td>
+    </tr>
+    <% } %>
+    <% if( standard_passenger != 0 ){ %>
+    <tr>
+        <th>乘客座位险</th>
+        <td colspan="2"><%= standard_passenger.toFixed(2) %></td>
+        <td colspan="2"><%= after_discount_passenger.toFixed(2) %></td>
+    </tr>
+    <% } %>
+    <% if( standard_robbery != 0 ){ %>
+    <tr>
+        <th>盗抢险</th>
+        <td colspan="2"><%= standard_robbery.toFixed(2) %></td>
+        <td colspan="2"><%= after_discount_robbery.toFixed(2) %></td>
+    </tr>
+    <% } %>
+    <% if( standard_glass != 0 ){ %>
+    <tr>
+        <th>玻璃单独破损险</th>
+        <td colspan="2"><%= standard_glass.toFixed(2) %></td>
+        <td colspan="2"><%= after_discount_glass.toFixed(2) %></td>
+    </tr>
+    <% } %>
+    <% if( standard_scratch != 0 ){ %>
+    <tr>
+        <th>划痕</th>
+        <td colspan="2"><%= standard_scratch.toFixed(2) %></td>
+        <td colspan="2"><%= after_discount_scratch.toFixed(2) %></td>
+    </tr>
+    <% } %>
+    <% if( standard_self_ignition != 0 ){ %>
+    <tr>
+        <th>自然</th>
+        <td colspan="2"><%= standard_self_ignition.toFixed(2) %></td>
+        <td colspan="2"><%= after_discount_self_ignition.toFixed(2) %></td>
+    </tr>
+    <% } %>
+    <% if( standard_optional_deductible != 0 ){ %>
+    <tr>
+        <th>可选免赔</th>
+        <td colspan="2"><%= standard_optional_deductible.toFixed(2) %></td>
+        <td colspan="2"><%= after_discount_optional_deductible.toFixed(2) %></td>
+    </tr>
+    <% } %>
+    <% if( standard_not_deductible != 0 ){ %>
+    <tr>
+        <th>不计免赔</th>
+        <td colspan="2"><%= standard_not_deductible.toFixed(2) %></td>
+        <td colspan="2"><%= after_discount_not_deductible.toFixed(2) %></td>
+    </tr>
+    <% } %>
+    <tr>
+        <th style="background-color: orangered">总价</th>
+        <td colspan="2"><%= total_standard.toFixed(2) %></td>
+        <td colspan="2"><%= total_after_discount.toFixed(2) %></td>
+    </tr>
+</table>
+<table  class="bx_xxnr_div_table">
+    <tr>
+        <td>出单赠送礼包金额</td>
+    </tr>
+</table>
+<table  class="bx_xxnr_div_table_txt" align="center">
+    <tr>
+        <td><%= gift_money.toFixed(2) %></td>
+    </tr>
+</table>

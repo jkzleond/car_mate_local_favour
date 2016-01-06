@@ -1,0 +1,1 @@
+define(["collections/PaginationCollection","models/driving_tour/TourModel"],function(e,t){var n=e.extend({model:t,initialize:function(t,n){n||(n={}),e.prototype.initialize.call(this,t,n)},url:function(){return"/driving_tours"}});return n});

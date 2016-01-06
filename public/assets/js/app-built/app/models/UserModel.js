@@ -1,0 +1,1 @@
+define(["backbone"],function(e){var t=e.Model.extend({urlRoot:"/user/info",initialize:function(e){this.attributes.user_id=e.user_id},url:function(){var e=this.get("user_id");return this.urlRoot+"/"+e+".json"},parse:function(e,t){return e.row}});return t});

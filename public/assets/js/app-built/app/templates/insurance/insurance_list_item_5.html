@@ -1,0 +1,20 @@
+<div class="fs_list_box">
+    <a class="cm-block cm-span12" href="#insurances/5">
+        <table style="width: 100%">
+            <tr>
+                <td valign="top">
+                    <div class="fs_list_box_bt ">
+                        <span class="cm-label cm-bg-prim">出单时间:</span><%= new Date(issuing_time || last_modified_time || create_date).toString('yyyy-MM-dd') %>
+                    </div>
+                    <div class="fs_list_box_bt ">
+                        <span class="cm-label cm-bg-prim">保单号：</span><%= insurance_no %>
+                    </div>
+                    <div class="fs_list_box_bt ">
+                        <span class="cm-label cm-bg-prim">保险公司：</span><%= company_name %>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </a>
+</div>
+<div class="fs_list_box_fgx"></div>

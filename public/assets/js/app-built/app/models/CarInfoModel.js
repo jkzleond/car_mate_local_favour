@@ -1,0 +1,1 @@
+define(["backbone"],function(e){var t=e.Model.extend({url:function(){return this.attributes.id?"/car_info/"+this.attributes.id:"/car_info/"+this.attributes.user_id+"/"+this.attributes.hphm},parse:function(e,t){return t.collection?e:e.row||{}}});return t});

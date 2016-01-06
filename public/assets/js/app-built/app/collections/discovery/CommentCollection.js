@@ -1,0 +1,1 @@
+define(["backbone","models/discovery/CommentModel","collections/PaginationCollection"],function(e,t,n){var r=n.extend({model:t,url:function(){return"/discovery/"+this.discovery_id+"/comments"},setDiscoveryId:function(e){this.discovery_id=e,this.reset()},getDiscoveryId:function(){return this.discovery_id}});return r});

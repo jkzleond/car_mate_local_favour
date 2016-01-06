@@ -1,0 +1,43 @@
+<%
+var order_info_xml = '<root><orderId>' + order_id + '<orderId><orderNo>' + order_no + '</orderNo><orderFee>' + order_fee + '</orderFee><payType><offline>1</offline><alipay>1</alipay><wxpay>1</wxpay></payType><des>' + encodeURIComponent('保险保费') + '</des></root>';
+
+var pay_uri = 'pay://yn.122.net/?ordername=' + encodeURIComponent('保险保费') + '&orderinfo=' + encodeURIComponent(base64encode(order_info_xml));
+%>
+
+<div class="fs_list_box">
+    <a class="cm-block cm-span12" href="#insurance/<%= info_id %>/actuary_result/">
+        <table style="width: 100%">
+            <tr>
+                <td valign="top">
+                    <div class="fs_list_box_bt ">
+                        <span class="cm-label cm-bg-prim">下单时间:</span><%= new Date(last_modified_time || create_date).toString('yyyy-MM-dd') %>
+                    </div>
+                    <div class="fs_list_box_bt ">
+                        <span class="cm-label cm-bg-prim">订单号：</span><%= order_no %>
+                    </div>
+                    <div class="fs_list_box_bt ">
+                        <span class="cm-label cm-bg-prim">订单状态：</span><%= order_state? '已支付' : '未支付' %>
+                    </div>
+                    <div class="fs_list_box_bt ">
+                        <span class="cm-label cm-bg-prim">标准保费：</span><%= totalStandard %>
+                    </div>
+                    <div class="fs_list_box_bt ">
+                        <span class="cm-label cm-bg-prim">车优惠出单价：</span><%= totalAfterDiscount %>
+                    </div>
+                    <div class="fs_list_box_bt ">
+                        <span class="cm-label cm-bg-prim">出单赠送礼包：</span><%= giftMoney %>
+                    </div>
+                </td>
+                <td style="text-align: center">
+                    <% if(!order_state){ %>
+                    <a href="<%= pay_uri %>" target="_blank" class="cm-btn cm-radius-s" style="background-color: orange; color:white; font-size: 0.75rem;">支付</a><br/>
+                    <% }else{ %>
+                    <span style="color:steelblue">等待出单</span><br/>
+                    <% } %>
+                    <a href="#insurance/<%= info_id %>/pay_order" class="cm-btn cm-radius-s cm-bg-prim" style="color:white; margin-top: 5px; font-size: 0.75rem;">详情</a>
+                </td>
+            </tr>
+        </table>
+    </a>
+</div>
+<div class="fs_list_box_fgx"></div>

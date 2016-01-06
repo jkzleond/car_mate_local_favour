@@ -1,0 +1,49 @@
+<!--新保险申请精算页面-->
+<div data-role="page" id="insurance_reservation_page" data-theme="a" style="padding-top: 44px; padding-bottom: 44px;">
+    <div data-role="header" class="cm-fixed" data-theme="g">
+        <a class="ui-btn-left ui-btn ui-icon-md-chevron-left ui-btn-icon-notext" href="#"></a>
+        <h1>保险巨惠-保险预约</h1>
+        <a class="ui-btn-right ui-btn ui-icon-md-menu ui-btn-icon-notext" href="#menu"><i class="icon-reorder"></i></a>
+    </div>
+    <div role="main" class="ui-content">
+        <div class="fb_box">
+            <div class="fb_box_bt">联系电话:
+                <input name="phone" type="text" class="fb_box_input" style="width: 60%; float: right" />
+            </div>
+        </div>
+        <div class="reservation-form">
+            <div class="fb_box">
+                <div class="fb_box_bt">车牌号:
+                    <input name="hphm" type="text" class="fb_box_input" style="width: 40%; float: right"/>
+                    <select name="hphm_header" data-ignore style="width:20%; float:right">
+                        <option value="云" selected>云</option>
+                    </select>
+                </div>
+                <div class="fb_box_bt">车辆品牌型号:
+                    <input name="auto_name" type="text" class="fb_box_input" style="width: 60%; float: right"/>
+                </div>
+                <div class="fb_box_bt">车架号:<input name="frame_number" type="text" class="fb_box_input" style="width: 60%; float: right"/>
+                </div>
+                <div class="fb_box_bt">发动机号:
+                    <input name="engine_number" type="text" class="fb_box_input" style="width: 60%; float: right"/>
+                </div>
+                <div class="fb_box_bt">报价日期:
+                    <input type="text" name="offer_date" class="fb_box_input" style="width: 60%; float: right" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div data-role="popup" id="insurance_reservation_result_popup" data-overlay-theme="g" data-theme="a" data-corners="true" data-enhance="false">
+        <a href="#" data-rel="back" data-theme="j" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right" style="background-color: #333; color: #FFF; border-color:#666; border-radius: 25em; position: absolute; right: -12px; top:-12px;"></a>
+        <div class="container" style="padding:5px 10px;">
+            <p>
+            感谢您的预约!<br>
+            客服将在指定时间为您提供报价.<br>
+            成功出单后您将额外获得车友惠<b style="color: orangered">50</b>元服务券.
+            </p>
+        </div>
+    </div>
+    <div data-role="footer" class="cm-fixed" style="background-color: rgba(0,0,0,0.2)">
+        <a class="reservation-btn" data-theme="g" style="padding:0.7em 0.5%;width: 99%;color:white;">立即预约</a>
+    </div>
+</div>

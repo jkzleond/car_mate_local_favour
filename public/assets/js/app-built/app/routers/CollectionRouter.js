@@ -1,0 +1,1 @@
+define(["jquery","backbone","views/collection/CollectionPageView","jqm"],function(e,t,n){var r=t.Router.extend({initialize:function(){this.collection_page_view=new n},routes:{"collection/list":"index"},index:function(){e(":mobile-pagecontainer").pagecontainer("change","#collection_page"),this.collection_page_view.reset()}});return r});

@@ -1,4 +1,3 @@
-<!--
 /* PCAS (Province City Area Selector 省、市、地区联动选择JS封装类) Ver 2.01 完整版 *\
 
 　制作时间:2005-12-30

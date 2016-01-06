@@ -1,0 +1,1 @@
+define(["backbone"],function(e){var t=e.View.extend({events:{"click .item":"onItemClick"},onItemClick:function(e){this.trigger("click:item",this,e.target)}});return t});

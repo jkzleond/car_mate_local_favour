@@ -3,7 +3,7 @@
  */
 
 var base_url = '';
-
+/*
 require.config({
     baseUrl: base_url + '/assets/js',
     paths: {
@@ -41,15 +41,14 @@ require.config({
         jqplot_bar: {
             deps: ['jquery']
         }
-        /*
         jqm_simple_dialog:{
             deps: ['jqm', 'jquery'],
             exports: 'JqmSimpleDialog'
         }
-        */
+        
     }
 });
-
+*/
 require(['jquery'], function($){
 
     //初始化命名空间

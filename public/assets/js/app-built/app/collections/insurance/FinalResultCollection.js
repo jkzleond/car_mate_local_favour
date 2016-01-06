@@ -1,0 +1,1 @@
+define(["backbone","models/insurance/FinalResultModel"],function(e,t){var n=e.Collection.extend({model:t,initialize:function(e,t){t||(t={}),this.info_id=t.info_id||""},url:function(){return"/insurance/"+this.info_id+"/actuary_results"},parse:function(e,t){return e.rows},setInfoId:function(e){this.info_id=e}});return n});

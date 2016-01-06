@@ -1,0 +1,1 @@
+define(["backbone","models/DiscoveryTypeModel"],function(e,t){var n=e.Collection.extend({model:t,initialize:function(){this.active_type=null},url:function(){return"/discover_type/"},setActiveType:function(e){if(this.active_type!=e||this.active_type===null)this.active_type=e,this.trigger("change:active_type",this)}});return n});

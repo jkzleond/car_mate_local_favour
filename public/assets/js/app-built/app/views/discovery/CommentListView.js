@@ -1,0 +1,1 @@
+define(["views/BaseListView","collections/discovery/CommentCollection","text!templates/discovery/comment_list_item.html"],function(e,t,n){var r=e.extend({initialize:function(r){r||(r={}),r.item_tpl||(r.item_tpl=n),e.prototype.initialize.call(this,r),this.collection||(this.collection=new t)}});return r});

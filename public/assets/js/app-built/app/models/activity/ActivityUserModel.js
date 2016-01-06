@@ -1,0 +1,1 @@
+define(["backbone"],function(e){var t=e.Model.extend({url:function(){return"/activity/"+this.get("aid")+"/user/"+this.get("user_id")},parse:function(e,t){return t.collection?e:e.row}});return t});

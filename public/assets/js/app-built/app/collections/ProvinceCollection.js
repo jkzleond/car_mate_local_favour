@@ -1,0 +1,1 @@
+define(["backbone","models/ProvinceModel"],function(e,t){var n=e.Collection.extend({model:t,url:function(){return"/provinces"},parse:function(e,t){return e.rows}});return n});
