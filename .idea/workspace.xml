@@ -2,210 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8f07917-5490-4cc2-8642-df40f151033e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/base.volt" afterPath="$PROJECT_DIR$/app/views/base.volt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/Base64.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/Base64.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/afui-3.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/afui-3.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/build-config.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/build-config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/collections/CityCollection.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/collections/CityCollection.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/collections/DiscoveryCollection.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/collections/DiscoveryCollection.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/collections/DiscoveryTypeCollection.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/collections/DiscoveryTypeCollection.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/collections/PaginationCollection.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/collections/PaginationCollection.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/collections/ProvinceCollection.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/collections/ProvinceCollection.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/collections/activity/ActivityCollection.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/collections/activity/ActivityCollection.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/collections/collection/CollectionCollection.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/collections/collection/CollectionCollection.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/collections/discovery/CommentCollection.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/collections/discovery/CommentCollection.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/collections/driving_tour/TourCollection.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/collections/driving_tour/TourCollection.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/collections/insurance/FinalResultCollection.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/collections/insurance/FinalResultCollection.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/collections/insurance/InsuranceCompanyCollection.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/collections/insurance/InsuranceCompanyCollection.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/collections/insurance/InsuranceInfoCollection.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/collections/insurance/InsuranceInfoCollection.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/main.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/models/CarInfoModel.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/models/CarInfoModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/models/CityModel.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/models/CityModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/models/ClockInModel.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/models/ClockInModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/models/DiscoveryModel.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/models/DiscoveryModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/models/DiscoveryTypeModel.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/models/DiscoveryTypeModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/models/ProvinceModel.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/models/ProvinceModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/models/UserModel.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/models/UserModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/models/activity/ActivityModel.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/models/activity/ActivityModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/models/activity/ActivityPubFormModel.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/models/activity/ActivityPubFormModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/models/activity/ActivityPuserModel.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/models/activity/ActivityPuserModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/models/activity/ActivitySignFormModel.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/models/activity/ActivitySignFormModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/models/activity/ActivityUserModel.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/models/activity/ActivityUserModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/models/collection/CollectionModel.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/models/collection/CollectionModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/models/discovery/CommentModel.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/models/discovery/CommentModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/models/driving_tour/TourModel.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/models/driving_tour/TourModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/models/driving_tour/TourSignFormModel.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/models/driving_tour/TourSignFormModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/models/insurance/FinalResultModel.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/models/insurance/FinalResultModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/models/insurance/InsuranceActualFormModel.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/models/insurance/InsuranceActualFormModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/models/insurance/InsuranceCompanyModel.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/models/insurance/InsuranceCompanyModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/models/insurance/InsuranceFormModel.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/models/insurance/InsuranceFormModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/models/insurance/InsuranceInfoModel.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/models/insurance/InsuranceInfoModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/models/insurance/InsuranceOrderInfoModel.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/models/insurance/InsuranceOrderInfoModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/models/insurance/InsuranceReservationFormModel.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/models/insurance/InsuranceReservationFormModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/models/insurance/InsuranceResultModel.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/models/insurance/InsuranceResultModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/models/insurance/PolicyFormModel.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/models/insurance/PolicyFormModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/routers/ActivityRouter.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/routers/ActivityRouter.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/routers/CollectionRouter.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/routers/CollectionRouter.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/routers/InsuranceRouter.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/routers/InsuranceRouter.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/routers/LocalFavourRouter.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/routers/LocalFavourRouter.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/routers/NewInsuranceRouter.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/routers/NewInsuranceRouter.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/routers/TourRouter.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/routers/TourRouter.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/activity/activitise_page.html" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/activity/activitise_page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/activity/activity_detail.html" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/activity/activity_detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/activity/activity_detail_page.html" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/activity/activity_detail_page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/activity/activity_list_item.html" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/activity/activity_list_item.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/activity/activity_number_snipper.html" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/activity/activity_number_snipper.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/activity/activity_sign_up_form.html" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/activity/activity_sign_up_form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/collection/collection_list_item.html" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/collection/collection_list_item.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/collection/collection_page.html" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/collection/collection_page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/discovery/comment_list_item.html" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/discovery/comment_list_item.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/discovery/comments_page_view.html" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/discovery/comments_page_view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/discovery/listItem.html" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/discovery/listItem.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/driving_tour/tour_detail.html" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/driving_tour/tour_detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/driving_tour/tour_detail_page.html" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/driving_tour/tour_detail_page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/driving_tour/tour_list_item.html" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/driving_tour/tour_list_item.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/driving_tour/tours_page.html" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/driving_tour/tours_page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/actuary_price_page.html" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/actuary_price_page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/apply_actual_compulsory_page.html" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/apply_actual_compulsory_page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/apply_actual_page.html" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/apply_actual_page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/compulsory_set_page.html" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/compulsory_set_page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/discount_detail.html" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/discount_detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/final_parity_price_page.html" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/final_parity_price_page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/first_price_page.html" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/first_price_page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/full_set_page.html" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/full_set_page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/insurance_list_item.html" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/insurance_list_item.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/insurance_list_item_1.html" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/insurance_list_item_1.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/insurance_list_item_2.html" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/insurance_list_item_2.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/insurance_list_item_3.html" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/insurance_list_item_3.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/insurance_list_item_4.html" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/insurance_list_item_4.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/insurance_list_item_5.html" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/insurance_list_item_5.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/insurance_list_page.html" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/insurance_list_page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/insurance_page.html" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/insurance_page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/order_info_detail.html" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/order_info_detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/parity_price_page.html" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/parity_price_page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/pay_order_page.html" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/pay_order_page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/profit_set_page.html" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/profit_set_page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/reservation_page.html" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/reservation_page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/result_detail.html" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/result_detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/value_set_page.html" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/templates/insurance/value_set_page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/views/BaseListView.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/views/BaseListView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/views/CitySelectView.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/views/CitySelectView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/views/ClockInView.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/views/ClockInView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/views/DiscoveryDetailPageView.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/views/DiscoveryDetailPageView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/views/DiscoveryListView.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/views/DiscoveryListView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/views/DiscoveryTypeView.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/views/DiscoveryTypeView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/views/NavView.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/views/NavView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/views/ProvinceSelectView.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/views/ProvinceSelectView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/views/UserStateView.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/views/UserStateView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/views/activity/ActivityDetailPageView.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/views/activity/ActivityDetailPageView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/views/activity/ActivityListView.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/views/activity/ActivityListView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/views/activity/ActivityPubFormView.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/views/activity/ActivityPubFormView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/views/collection/CollectionListView.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/views/collection/CollectionListView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/views/collection/CollectionPageView.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/views/collection/CollectionPageView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/views/discovery/CommentFormView.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/views/discovery/CommentFormView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/views/discovery/CommentListView.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/views/discovery/CommentListView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/views/discovery/CommentsPageView.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/views/discovery/CommentsPageView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/views/driving_tour/TourDetailPageView.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/views/driving_tour/TourDetailPageView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/views/driving_tour/TourListView.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/views/driving_tour/TourListView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/views/driving_tour/ToursPageView.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/views/driving_tour/ToursPageView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/views/insurance/ActuaryPricePageView.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/views/insurance/ActuaryPricePageView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/views/insurance/ApplyActualPageView.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/views/insurance/ApplyActualPageView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/views/insurance/CompulsorySetPageView.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/views/insurance/CompulsorySetPageView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/views/insurance/FinalParityPageView.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/views/insurance/FinalParityPageView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/views/insurance/FirstPricePageView.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/views/insurance/FirstPricePageView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/views/insurance/FullSetPageView.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/views/insurance/FullSetPageView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/views/insurance/InsuranceFormView.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/views/insurance/InsuranceFormView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/views/insurance/InsuranceListPageView.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/views/insurance/InsuranceListPageView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/views/insurance/InsuranceListView.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/views/insurance/InsuranceListView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/views/insurance/InsurancePageView.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/views/insurance/InsurancePageView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/views/insurance/ParityPageView.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/views/insurance/ParityPageView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/views/insurance/PayOrderPageView.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/views/insurance/PayOrderPageView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/views/insurance/ProfitSetPageView.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/views/insurance/ProfitSetPageView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/views/insurance/ReservationPageView.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/views/insurance/ReservationPageView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/app/views/insurance/ValueSetPageView.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/app/views/insurance/ValueSetPageView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/backbone.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/backbone.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/bootstrap.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/bootstrap.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/bootstrap.min.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/bootstrap.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/build-tools/build.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/build-tools/build.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/build-tools/r.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/build-tools/r.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/build.txt" afterPath="$PROJECT_DIR$/public/assets/js/app-built/build.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/date.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/date.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/jquery.jqplot.min.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/jquery.jqplot.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.BezierCurveRenderer.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.BezierCurveRenderer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.BezierCurveRenderer.min.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.BezierCurveRenderer.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.barRenderer.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.barRenderer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.barRenderer.min.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.barRenderer.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.blockRenderer.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.blockRenderer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.blockRenderer.min.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.blockRenderer.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.bubbleRenderer.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.bubbleRenderer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.bubbleRenderer.min.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.bubbleRenderer.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.canvasAxisLabelRenderer.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.canvasAxisLabelRenderer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.canvasAxisLabelRenderer.min.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.canvasAxisLabelRenderer.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.canvasAxisTickRenderer.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.canvasAxisTickRenderer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.canvasAxisTickRenderer.min.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.canvasAxisTickRenderer.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.canvasOverlay.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.canvasOverlay.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.canvasOverlay.min.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.canvasOverlay.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.canvasTextRenderer.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.canvasTextRenderer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.canvasTextRenderer.min.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.canvasTextRenderer.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.categoryAxisRenderer.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.categoryAxisRenderer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.categoryAxisRenderer.min.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.categoryAxisRenderer.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.ciParser.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.ciParser.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.ciParser.min.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.ciParser.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.cursor.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.cursor.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.cursor.min.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.cursor.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.dateAxisRenderer.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.dateAxisRenderer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.dateAxisRenderer.min.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.dateAxisRenderer.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.donutRenderer.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.donutRenderer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.donutRenderer.min.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.donutRenderer.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.dragable.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.dragable.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.dragable.min.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.dragable.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.enhancedLegendRenderer.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.enhancedLegendRenderer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.enhancedLegendRenderer.min.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.enhancedLegendRenderer.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.funnelRenderer.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.funnelRenderer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.funnelRenderer.min.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.funnelRenderer.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.highlighter.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.highlighter.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.highlighter.min.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.highlighter.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.json2.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.json2.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.json2.min.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.json2.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.logAxisRenderer.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.logAxisRenderer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.logAxisRenderer.min.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.logAxisRenderer.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.mekkoAxisRenderer.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.mekkoAxisRenderer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.mekkoAxisRenderer.min.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.mekkoAxisRenderer.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.mekkoRenderer.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.mekkoRenderer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.mekkoRenderer.min.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.mekkoRenderer.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.meterGaugeRenderer.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.meterGaugeRenderer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.meterGaugeRenderer.min.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.meterGaugeRenderer.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.mobile.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.mobile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.mobile.min.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.mobile.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.ohlcRenderer.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.ohlcRenderer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.ohlcRenderer.min.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.ohlcRenderer.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.pieRenderer.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.pieRenderer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.pieRenderer.min.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.pieRenderer.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.pointLabels.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.pointLabels.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.pointLabels.min.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.pointLabels.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.pyramidAxisRenderer.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.pyramidAxisRenderer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.pyramidAxisRenderer.min.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.pyramidAxisRenderer.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.pyramidGridRenderer.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.pyramidGridRenderer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.pyramidGridRenderer.min.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.pyramidGridRenderer.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.pyramidRenderer.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.pyramidRenderer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.pyramidRenderer.min.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.pyramidRenderer.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.trendline.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.trendline.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.trendline.min.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot/plugins/jqplot.trendline.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jqplot_bar.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jqplot_bar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jquery-2.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jquery-2.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jquery.datetimepicker.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jquery.datetimepicker.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jquery.mobile-1.4.5.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jquery.mobile-1.4.5.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jquery.mobile-1.4.5.min.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jquery.mobile-1.4.5.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jquery.mobile-1.4.5.min.map" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jquery.mobile-1.4.5.min.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jquery.mobile.simplediallog2.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jquery.mobile.simplediallog2.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/jquery.mobile.widget.ext.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/jquery.mobile.widget.ext.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/mobiscroll.custom-2.16.0.min.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/mobiscroll.custom-2.16.0.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/pcasunzip.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/pcasunzip.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/require.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/require.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/text.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/text.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app-built/underscore.js" afterPath="$PROJECT_DIR$/public/assets/js/app-built/underscore.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app/templates/insurance/apply_actual_page.html" afterPath="$PROJECT_DIR$/public/assets/js/app/templates/insurance/apply_actual_page.html" />
     </list>
     <ignored path="car_mate_local_favour.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -374,11 +171,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/assets/js/app-built/app/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="5212.8823">
-              <caret line="248" column="712972" selection-start-line="248" selection-start-column="712972" selection-end-line="248" selection-end-column="712972" />
+            <state vertical-scroll-proportion="0.33252722">
+              <caret line="248" column="712946" selection-start-line="248" selection-start-column="712946" selection-end-line="248" selection-end-column="712946" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -406,10 +203,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.volt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="base.volt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/base.volt">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.45487365">
+            <state vertical-scroll-proportion="-11.2">
               <caret line="19" column="139" selection-start-line="19" selection-start-column="139" selection-end-line="19" selection-end-column="139" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -473,8 +270,8 @@
         <option value="$PROJECT_DIR$/app/models/Activity.php" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/00c22065-8b70-4cbd-8d4f-6b5face1cdc9/console.sql" />
         <option value="$PROJECT_DIR$/public/assets/js/app/templates/insurance/apply_actual_page.html" />
-        <option value="$PROJECT_DIR$/public/assets/js/app-built/app/main.js" />
         <option value="$PROJECT_DIR$/app/views/base.volt" />
+        <option value="$PROJECT_DIR$/public/assets/js/app-built/app/main.js" />
       </list>
     </option>
   </component>
@@ -1477,21 +1274,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/app-built/app/main.js">
+    <entry file="file://$PROJECT_DIR$/app/views/base.volt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="5212.8823">
-          <caret line="248" column="712972" selection-start-line="248" selection-start-column="712972" selection-end-line="248" selection-end-column="712972" />
+        <state vertical-scroll-proportion="-11.2">
+          <caret line="19" column="139" selection-start-line="19" selection-start-column="139" selection-end-line="19" selection-end-column="139" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/index.volt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1503,12 +1292,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/base.volt">
+    <entry file="file://$PROJECT_DIR$/app/views/index.volt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45487365">
-          <caret line="19" column="139" selection-start-line="19" selection-start-column="139" selection-end-line="19" selection-end-column="139" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/app-built/app/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33252722">
+          <caret line="248" column="712946" selection-start-line="248" selection-start-column="712946" selection-end-line="248" selection-end-column="712946" />
           <folding>
-            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
