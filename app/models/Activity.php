@@ -522,7 +522,10 @@ SQL;
     {
         $connection = self::_getConnection();
         $connection->begin();
-        $success = self::addActivityUser($sign_data, $aid) && User::saveUserInfo($sign_data);
+        $add_activity_user_success = self::addActivityUser($sign_data, $aid);
+        $new_au_id = $connection->lastInsertId();
+        $save_user_info_success = User::saveUserInfo($sign_data);
+        $success = $add_activity_user_success and $save_user_info_success;
 
         if(!$success)
         {
@@ -534,7 +537,7 @@ SQL;
 
         if(!$success) return false;
 
-        return $connection->lastInsertId();
+        return $new_au_id;
     }
 
     /**

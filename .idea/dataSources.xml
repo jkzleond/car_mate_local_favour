@@ -5,7 +5,6 @@
       <driver-ref>sqlserver.ms</driver-ref>
       <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
       <jdbc-url>jdbc:sqlserver://116.55.248.76:31433;databaseName=IAMisDB</jdbc-url>
-      <libraries />
     </data-source>
   </component>
 </project>
