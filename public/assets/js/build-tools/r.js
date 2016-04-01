@@ -106,8 +106,7 @@ var requirejs, require, define, xpcUtil;
         };
 
         exec = function (string, name) {
-            return vm.runInThisContext(this.requirejsVars.require.makeNodeWrapper(string),
-                                       name ? fs.realpathSync(name) : '');
+            return vm.runInThisContext(this.requirejsVars.require.makeNodeWrapper(string), name ? fs.realpathSync(name) : '');
         };
 
         exists = function (fileName) {

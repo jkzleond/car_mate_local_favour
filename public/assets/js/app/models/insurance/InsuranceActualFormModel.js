@@ -48,10 +48,10 @@ define([
             {
                 return '请填写真实姓名';
             }
-            if(!_.isUndefined(attrs.sfzh) && (!attrs.sfzh || !id_no_reg.test(attrs.sfzh) ))
+            /*if(!_.isUndefined(attrs.sfzh) && (!attrs.sfzh || !id_no_reg.test(attrs.sfzh) ))
             {
                 return '请填写正确的身份证号';
-            }
+            }*/
             if(!_.isUndefined(attrs.driving_license_a) && !attrs.driving_license_a)
             {
                 return '请上传行车证正面';
