@@ -516,14 +516,15 @@ SQL;
      * 更新活动浏览量
      * @return bool
      */
-    public static function updateActivityViewNum()
+    public static function updateActivityViewNum($id)
     {
         $connection = self::_getConnection();
         try
         {
             $connection->begin();
-            $sql = 'update Activity set viewNum += 1';
-            $success = self::nativeExecute($sql);
+            $sql = 'update Activity set viewNum += 1 where id = :id';
+            $bind = array('id' => $id);
+            $success = self::nativeExecute($sql, $bind);
             if(!$success) throw new \Exception();
             $connection->commit();
         }
