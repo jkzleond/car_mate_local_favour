@@ -513,6 +513,29 @@ SQL;
     }
 
     /**
+     * 更新活动浏览量
+     * @return bool
+     */
+    public static function updateActivityViewNum()
+    {
+        $connection = self::_getConnection();
+        try
+        {
+            $connection->begin();
+            $sql = 'update Activity set viewNum += 1';
+            $success = self::nativeExecute($sql);
+            if(!$success) throw new \Exception();
+            $connection->commit();
+        }
+        catch(\Exception $e)
+        {
+            $connection->rollback();
+        }
+
+        return $success;
+    }
+
+    /**
      * 活动报名
      * @param array $sign_data
      * @param $aid
