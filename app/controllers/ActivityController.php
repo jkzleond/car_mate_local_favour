@@ -58,7 +58,7 @@ class ActivityController extends ControllerBase
         $is_user_join = Activity::isUserJoin($user['user_id'], $id);
 
         //更新浏览次数
-        Activity::updateActivityViewNum();
+        Activity::updateActivityViewNum($id);
 
         $activity['is_user_join'] = $is_user_join;
         $this->view->setVars(array(
