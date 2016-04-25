@@ -97,7 +97,7 @@ class InsuranceController extends ControllerBase
         $info_update = array(
             'state_id' => 2, //设置状态为待精算
             'last_modified_time' => date('Y-m-d H:i:s'),
-            'phone' => $form_data['phone'],
+            'phone' => $user['phone'],
             'weixin' => !empty($form_data['weixin']) ? $form_data['weixin'] : null
         );
 
@@ -129,7 +129,7 @@ class InsuranceController extends ControllerBase
                 $info_update['car_no_id'] = $new_car_no_id;
             }
             $info_update['user_name'] = $form_data['user_name'];
-            $info_update['sfzh'] = $form_data['sfzh'];
+            //$info_update['sfzh'] = $form_data['sfzh'];
         }
         else
         {

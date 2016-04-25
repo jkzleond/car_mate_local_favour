@@ -31,7 +31,7 @@ body{
 .title_div_dl {
 	float: left;
 	width: 40px;
- padding:2px;
+ 	padding:2px;
 }
 .title_div_gd {
 	float: right;
