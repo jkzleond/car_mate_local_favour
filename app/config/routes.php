@@ -253,6 +253,18 @@ $router->addPost('/upload/file/{data_type:.*}', array(
     'action' => 'upload'
 ));
 
+/*挪车提醒*/
+$move_car = new \Phalcon\Mvc\Router\Group(array(
+    'controller' => 'movecar'
+));
+$move_car->setPrefix('/move_car');
+//挪车首页
+$move_car->addGet('/', array(
+    'action' => 'index'
+));
+
+$router->mount($move_car);
+
 
 /*
 其他tmp
