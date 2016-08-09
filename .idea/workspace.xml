@@ -147,7 +147,7 @@
         <entry file="file://$PROJECT_DIR$/app/controllers/InsuranceController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.6989247">
-              <caret line="489" column="38" selection-start-line="489" selection-start-column="38" selection-end-line="489" selection-end-column="74" />
+              <caret line="489" column="106" selection-start-line="489" selection-start-column="106" selection-end-line="489" selection-end-column="106" />
               <folding />
             </state>
           </provider>
@@ -612,7 +612,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="0" width="1922" height="1055" extended-state="7" />
+    <frame x="-1" y="0" width="1922" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21367522" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1038,7 +1038,7 @@
     <entry file="file://$PROJECT_DIR$/app/controllers/InsuranceController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6989247">
-          <caret line="489" column="38" selection-start-line="489" selection-start-column="38" selection-end-line="489" selection-end-column="74" />
+          <caret line="489" column="106" selection-start-line="489" selection-start-column="106" selection-end-line="489" selection-end-column="106" />
           <folding />
         </state>
       </provider>
