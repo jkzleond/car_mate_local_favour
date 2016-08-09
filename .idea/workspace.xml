@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8f07917-5490-4cc2-8642-df40f151033e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/blade.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/car_mate_local_favour.iml" afterPath="$PROJECT_DIR$/.idea/car_mate_local_favour.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/InsuranceController.php" afterPath="$PROJECT_DIR$/app/controllers/InsuranceController.php" />
     </list>
     <ignored path="car_mate_local_favour.iws" />
@@ -149,8 +146,8 @@
       <file leaf-file-name="InsuranceController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/InsuranceController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.74910396">
-              <caret line="490" column="193" selection-start-line="490" selection-start-column="193" selection-end-line="490" selection-end-column="193" />
+            <state vertical-scroll-proportion="0.6989247">
+              <caret line="489" column="38" selection-start-line="489" selection-start-column="38" selection-end-line="489" selection-end-column="74" />
               <folding />
             </state>
           </provider>
@@ -615,7 +612,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="0" width="1922" height="1055" extended-state="6" />
+    <frame x="-1" y="0" width="1922" height="1055" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21367522" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1040,8 +1037,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/InsuranceController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.74910396">
-          <caret line="490" column="193" selection-start-line="490" selection-start-column="193" selection-end-line="490" selection-end-column="193" />
+        <state vertical-scroll-proportion="0.6989247">
+          <caret line="489" column="38" selection-start-line="489" selection-start-column="38" selection-end-line="489" selection-end-column="74" />
           <folding />
         </state>
       </provider>
