@@ -9,7 +9,11 @@ define([
     'models/insurance/InsuranceFormModel',
     'text!templates/insurance/insurance_page.html'
 ], function($, _, Backbone, InsuranceFormModel, pageTpl){
-    $(pageTpl).appendTo('body');
+    var page_element = $(pageTpl);
+    page_element.hide(); 
+    page_element.appendTo('body');
+    $('<div><h2>抱歉，该业务模块正在维护中......</h2></div>').appendTo('body');
+
     var InsurancePageView = Backbone.View.extend({
         form_model: new InsuranceFormModel(),
         el: '#insurance_page',
